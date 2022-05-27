@@ -8,11 +8,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-
-&mt {
-  //  flavor = "tap-preferred";
-   // tapping_term_ms = <200>;
-};
+#define DEFAULT 0
+#define LEFT_THUMB 1
+#define RIGHT_THUMB 2
+#define TRI_LAYER 3
+#define LEFT_DOUBLE_THUMB 4
+#define RIGHT_DOUBLE_THUMB 5
+#define UTILITY 6
 
 / { 
 
