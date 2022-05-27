@@ -18,48 +18,36 @@
 
 / { 
 
-    combos {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <LEFT_THUMB RIGHT_THUMB>;
+            then-layer = <TRI_LAYER>;
+        };
+      };
+      combos {
         compatible = "zmk,combos";
-        combo_esc {
+        left_double_thumb_layer {
             timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
+            key-positions = <30 31>;
+            bindings = <&mo LEFT_DOUBLE_THUMB>;
         };
-        
-         combo_tab {
+        right_double_thumb_layer {
             timeout-ms = <50>;
-            key-positions = <10 11>;
-            bindings = <&kp TAB>;
+            key-positions = <30 31>;
+            bindings = <&mo RIGHT_DOUBLE_THUMB>;
         };
-        
-            combo_ralt {
+        utility_layer_left_access {
             timeout-ms = <50>;
-            key-positions = <17 16>;
-            bindings = <&kp RALT>;
+            key-positions = <10 20>;
+            bindings = <&mo UTILITY>;
         };
-        
-                    combo_lalt {
+        utility_layer_right_access {
             timeout-ms = <50>;
-            key-positions = <11 12>;
-            bindings = <&kp LALT>;
+            key-positions = <19 29>;
+            bindings = <&mo UTILITY>;
         };
-        
-                           combo_lgui {
-            timeout-ms = <50>;
-            key-positions = <12 13>;
-            bindings = <&kp LGUI>;
-        };
-        
-        
-           combo_rgui {
-            timeout-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp RGUI>;
-        };
-        
-
-        
-    };
+      };
 
         keymap {
                 compatible = "zmk,keymap";
