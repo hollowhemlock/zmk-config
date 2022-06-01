@@ -18,20 +18,13 @@
 
 / { 
 
-    // conditional_layers {
-    //     compatible = "zmk,conditional-layers";
-    //     tri_layer {
-    //         if-layers = <LEFT_THUMB RIGHT_THUMB>;
-    //         then-layer = <TRI_LAYER>;
-    //     };
-    //   };
-      conditional_layers {
+    conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <LEFT_THUMB RIGHT_THUMB>;
+            then-layer = <TRI_LAYER>;
         };
-    };
+      };
       combos {
         compatible = "zmk,combos";
         left_double_thumb_layer {
@@ -72,7 +65,7 @@
                   &kp N1      &kp N2      &kp N3      &kp N4      &kp N5            &kp F6      &kp F7      &kp F8      &kp F9      &kp F10 
                   &sk LGUI    &sk LALT    &sk LCTRL   &sk LSHFT   &kp TAB           &kp N6      &kp N7      &kp N8      &kp N9      &kp N0 
                   &kp N6      &kp N7      &kp N8      &kp N9      &kp ESC           &none       &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT 
-                                                &none       &trans  			      &trans      &none 
+                                                &trans       &trans  			      &trans      &trans
             >;
 		};
 
@@ -81,7 +74,7 @@
                   &kp F1      &kp F2      &kp F3      &kp F4     &kp F5    	      &none       &none       &none       &none       &none
                   &kp N1      &kp N2      &kp N3      &kp N4     &kp N5 	      &none &sk RSHFT &sk RCTRL &sk RALT &sk RGUI
                   &kp GRAVE   &kp APOS    &kp BSLH    &none      &none   	&kp C_PREV &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP  &kp C_PLAY_PAUSE
-                            &none &trans  				&trans  &none
+                            &trans &trans  				&trans  &trans
             >;
 		};	
 		
