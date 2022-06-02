@@ -24,11 +24,11 @@
 
 / { 
     behaviors {
-        hsk: hold_preferred_sticky {
+        skh: sticky_key_hold {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_PREFERRED_STICKY";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
+            flavor = "tap-preferred";
             tapping-term-ms = <100>;
             quick-tap-ms = <0>;
             bindings = <&sk>, <&kp>;
