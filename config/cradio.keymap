@@ -87,7 +87,7 @@
 		right_thumb_layer { 
             bindings = <
                   &kp F1      &kp F2      &kp F3      &kp F4     &kp F5    	        &none       &none       &none       &none       &none
-                  &kp N1      &kp N2      &kp N3      &kp N4     &kp N5 	        &none       &sk RSHFT &sk RCTRL &sk RALT &sk RGUI
+                  &kp N1      &kp N2      &kp N3      &kp N4     &kp N5 	        &none       SHK(RSHFT)   SHK(RCTRL)     SHK(RALT)  SHK(RGUI)
                   &kp GRAVE   &kp APOS    &kp BSLH    &none      &none   	        &kp C_PREV  &kp C_NEXT  &kp C_VOL_DN    &kp C_VOL_UP  &kp C_PLAY_PAUSE
                             &trans &trans  				&trans  &trans
             >;
