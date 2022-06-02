@@ -96,7 +96,7 @@
 		tri_layer {
             bindings = <
                 &none  &none &none &none &none			                        &kp INSERT &kp HOME   &kp UP   &kp END  &kp BSPC
-                &shk LGUI LGUI    &shk LALT LALT    &shk LCTRL LCTRL   &shk LSHFT LSHFT  		&kp TAB &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
+                &shk LGUI LGUI    &shk LALT LALT    &shk LCTRL LCTRL   &shk LSHFT LSHFT &kp TAB  		&kp TAB &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
                 &none  &none &none &none &kp ESC 				                &kp ESC &kp PG_UP  &none  &kp PG_DN &kp DEL
                             &none &none  					&none &none
             >;
