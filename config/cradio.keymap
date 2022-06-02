@@ -28,8 +28,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_PREFERRED_STICKY";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
             bindings = <&kp>, <&sk>;
         };
     };
