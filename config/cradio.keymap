@@ -28,10 +28,9 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_PREFERRED_STICKY";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <100>;
-            quick-tap-ms = <0>;
-            bindings = <&sk>, <&kp>;
+            bindings = <&kp>, <&sk>;
         };
     };
     conditional_layers {
