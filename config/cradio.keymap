@@ -29,7 +29,13 @@
             compatible = "zmk,behavior-hold-tap";
             label = "STICKY_HOLD_KEY";
             #binding-cells = <2>;
-            tapping_term_ms = <200>;
+
+            /* 
+            tapping_term increased to minimize chance of single sticky in combo rolling
+            safe with &sk quick release flag
+            keep low to minimize delay for actions that depend on holding, e.g. ctrl+mouse scroll wheel to zoom
+            */
+            tapping_term_ms = <200>; 
             flavor = "tap-preferred";
             bindings = <&kp>, <&sk>;
         };
