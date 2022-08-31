@@ -61,12 +61,12 @@
         };
         utility_layer_left_access {
             timeout-ms = <50>;
-            key-positions = <10 20>;
+            key-positions = <13 14>;
             bindings = <&mo UTILITY>;
         };
         utility_layer_right_access {
             timeout-ms = <50>;
-            key-positions = <19 29>;
+            key-positions = <15 16>;
             bindings = <&mo UTILITY>;
         };
       };
@@ -134,12 +134,12 @@
 		};
             utility_layer {
             bindings = <
-                &bootloader  &reset &none &none &bt BT_CLR                                &bt BT_CLR &none &none &reset &bootloader
-                &none &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &none  &none &none &none &none 
-                &none &bt BT_SEL 4 &none &none &tog COLEMAK_DH                                             &none  &none &none &none &none        
+                &bootloader  &reset &out OUT_USB &out OUT_BLE &bt BT_CLR                                &bt BT_CLR &none &none &reset &bootloader
+                &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &none  &none &none &none &none 
+                &none &none &none &none &tog COLEMAK_DH                                             &none  &none &none &none &none        
                             &none &none 					                        &none &none
             >;
 		};
-        
+
 	};
 };
