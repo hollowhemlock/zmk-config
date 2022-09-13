@@ -41,6 +41,7 @@
             bindings = <&kp>, <&sk>;
         };
     };
+    // unused
     // conditional_layers {
     //     compatible = "zmk,conditional-layers";
     //     tri_layer {
@@ -48,14 +49,13 @@
     //         then-layer = <NAV_LAYER>;
     //     };
     //   };
-    // unused
-    //   combos {
-    //     compatible = "zmk,combos";
-    //     left_double_thumb_layer {
-    //         timeout-ms = <50>;
-    //         key-positions = <30 31>;
-    //         bindings = <&mo LEFT_DOUBLE_THUMB>;
-    //     };
+      combos {
+        compatible = "zmk,combos";
+        left_double_thumb_layer {
+            timeout-ms = <50>;
+            key-positions = <30 31>;
+            bindings = <&mo LEFT_DOUBLE_THUMB>;
+        };
         // was function layer, annoying to use
         // right_double_thumb_layer {
         //     timeout-ms = <50>;
