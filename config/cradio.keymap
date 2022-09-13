@@ -113,9 +113,9 @@
 		
 		nav_layer {
             bindings = <
-                &none  &none &none &none &none			                                        &none          &kp HOME   &kp UP   &kp END  &kp BSPC
+                &none  &none &none &none &none			                                        &kp DEL         &kp HOME   &kp UP   &kp END  &kp BSPC
                 &shk LSHFT LSHFT &shk LCTRL LCTRL &shk LALT LALT &shk LGUI LGUI &kp TAB  		&kp CAPS       &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
-                &none  &none &none &kp LGUI &kp ESC 				                            &kp INSERT     &kp PG_UP  &kp TAB  &kp PG_DN &kp DEL
+                &none  &none &none &kp LGUI &kp ESC 				                            &kp INSERT     &kp PG_UP  &kp TAB  &kp PG_DN &none 
                             &none &none  					&mo FUN_LAYER &mo NUMBER_LAYER
             >;
 		};	
