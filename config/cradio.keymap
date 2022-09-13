@@ -9,8 +9,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define DEFAULT 0
-#define COLEMAK_DH 1
+#define COLEMAK_DH 0
+#define QWERTY 1
 #define RIGHT_THUMB 2
 #define NUMBER_LAYER 3
 #define NAV_LAYER 4
@@ -76,20 +76,19 @@
 
         keymap {
                 compatible = "zmk,keymap";
-        default_layer {
-            bindings = <
-                  &kp Q       &kp W       &kp E       &kp R       &kp T 	      &kp Y       &kp U       &kp I       &kp O       &kp P 
-                  &kp A       &kp S       &kp D       &kp F       &kp G 	      &kp H       &kp J       &kp K       &kp L       &kp SEMI
-                  &kp Z       &kp X       &kp C       &kp V       &kp B	          &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
-                                                &mo NAV_LAYER   &kp SPACE  			      &mo FUN_LAYER   &mo NUMBER_LAYER
-            >;
-		};
-
         colemak_dh_layer {
             bindings = <
                   &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
                   &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
                   &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
+                                                &mo NAV_LAYER   &kp SPACE  			      &mo FUN_LAYER   &mo NUMBER_LAYER
+            >;
+		};
+        qwerty_layer {
+            bindings = <
+                  &kp Q       &kp W       &kp E       &kp R       &kp T 	      &kp Y       &kp U       &kp I       &kp O       &kp P 
+                  &kp A       &kp S       &kp D       &kp F       &kp G 	      &kp H       &kp J       &kp K       &kp L       &kp SEMI
+                  &kp Z       &kp X       &kp C       &kp V       &kp B	          &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
                                                 &mo NAV_LAYER   &kp SPACE  			      &mo FUN_LAYER   &mo NUMBER_LAYER
             >;
 		};
@@ -140,7 +139,7 @@
             bindings = <
                 &bootloader  &reset &out OUT_USB &out OUT_BLE &bt BT_CLR                                &bt BT_CLR &none &none &reset &bootloader
                 &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &none  &none &none &none &none 
-                &none &none &none &none &tog COLEMAK_DH                                             &none  &none &none &none &none        
+                &none &none &none &none &tog QWERTY                                             &none  &none &none &none &none        
                             &none &none 					                        &none &none
             >;
 		};
