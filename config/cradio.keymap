@@ -104,9 +104,9 @@
        	number_layer {
             bindings = <
                   &kp LBKT      &kp N7      &kp N8      &kp N9      &kp RBKT            &none  &none &none     &none   &none
-                  &kp APOS      &kp N4      &kp N5      &kp N6      &kp EQUAL           &none  &shk RGUI RGUI &shk RALT RALT &shk RCTRL RCTRL &shk RSHFT RSHFT
-                  &kp GRAVE     &kp N1      &kp N2      &kp N3      &kp BSLH            &none       &kp MINUS       &none       &none       &kp CAPS
-                                                &mo NAV_LAYER       &kp N0         			      &none       &none
+                  &kp  N0     &kp N4      &kp N5      &kp N6      &kp EQUAL           &none  &shk RGUI RGUI &shk RALT RALT &shk RCTRL RCTRL &shk RSHFT RSHFT
+                  &kp BSLH     &kp N1      &kp N2      &kp N3      &kp MINUS            &none       &kp APOS     &kp GRAVE              &none       &kp CAPS
+                                                &mo NAV_LAYER       &kp SPACE        			      &none       &none
             >;
 		};
 
