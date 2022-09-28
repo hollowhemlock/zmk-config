@@ -113,9 +113,9 @@
 		
 		nav_layer {
             bindings = <
-                &kp C_PREV  &kp C_PLAY_PAUSE &kp C_NEXT &none &none			                    &kp DEL         &kp HOME   &kp UP   &kp END  &kp BSPC
+                &kp C_PREV  &kp C_PLAY_PAUSE &kp C_NEXT &none &none			                    &kp DEL         &kp PG_UP   &kp UP   &kp PG_DN  &kp BSPC
                 &shk LSHFT LSHFT &shk LCTRL LCTRL &shk LALT LALT &shk LGUI LGUI &kp TAB  		&none     &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
-                &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP  &kp LGUI &kp ESC 				            &kp INSERT     &kp PG_UP  &kp TAB  &kp PG_DN &none 
+                &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP  &kp LGUI &kp ESC 				            &kp INSERT      &kp HOME &kp TAB  &kp END &none 
                             &none &none  					&mo FUN_LAYER &mo NUMBER_LAYER
             >;
 		};	
