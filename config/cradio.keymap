@@ -36,7 +36,6 @@
             keep low to minimize delay for actions that depend on holding, e.g. ctrl+mouse scroll wheel to zoom
             safe with &sk quick release flag
             */
-            hold-trigger-key-positions = <30 32 33>;
             tapping_term_ms = <200>; 
             flavor = "tap-preferred";
             bindings = <&kp>, <&sk>;
