@@ -19,7 +19,7 @@
 #define UTILITY 7
 
 &sk {
-    release-after-ms = <500>; // needs to be long enough for one handed modifiers. Short enough to allow mouse zooming.
+    release-after-ms = <500>; // needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
     quick-release;
     ignore-modifiers;
 };
