@@ -19,7 +19,7 @@
 #define UTILITY 7
 
 &sk {
-    release-after-ms = <500>; // needs to be long enough for one handed modifiers.
+    release-after-ms = <500>; // needs to be long enough for one handed modifiers. Short enough to allow mouse zooming.
     quick-release;
     ignore-modifiers;
 };
