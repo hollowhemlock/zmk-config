@@ -19,7 +19,7 @@
 #define UTILITY 7
 
 &sk {
-    release-after-ms = <2000>;
+    release-after-ms = <1000>;
     quick-release;
     ignore-modifiers;
 };
