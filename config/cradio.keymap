@@ -19,7 +19,7 @@
 #define UTILITY 7
 
 &sk {
-    release-after-ms = <1000>;
+    release-after-ms = <500>; // needs to be long enough for one handed modifiers.
     quick-release;
     ignore-modifiers;
 };
