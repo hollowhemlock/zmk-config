@@ -75,12 +75,12 @@
         // };
         utility_layer_left_access {
             timeout-ms = <50>;
-            key-positions = <13 14>;
+            key-positions = <23 24>;
             bindings = <&mo UTILITY>;
         };
         utility_layer_right_access {
             timeout-ms = <50>;
-            key-positions = <15 16>;
+            key-positions = <25 26>;
             bindings = <&mo UTILITY>;
         };
       };
