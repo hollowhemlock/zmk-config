@@ -19,13 +19,14 @@
 #define UTILITY 7
 
 &sk {
-    release-after-ms = <500>; // needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
+    release-after-ms = <500>; // Needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
     quick-release;
     ignore-modifiers;
 };
 
+// Important because errors without sticky layer are punishing and cause unconfident typing. e.g. a fast layer + enter roll
 &sl {
-    release-after-ms = <500>;
+    release-after-ms = <500>; // Can be shorter than &sk.
 };
 
 / { 
