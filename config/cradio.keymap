@@ -59,7 +59,7 @@
     //         then-layer = <NAV_LAYER>;
     //     };
     //   };
-      combos {
+    combos {
         toggle_gaming_layer {
             timeout-ms = <50>;
             key-positions = <15 16>;
