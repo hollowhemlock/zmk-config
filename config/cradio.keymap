@@ -16,6 +16,8 @@
 #define NAV_LAYER 4
 #define FUN_LAYER 5
 #define UTILITY 6
+#define GAMING_NUMBER_LAYER 7 
+#define GAMING_RIGHT_ALPHA_LAYER 8 
 
 &sk {
     release-after-ms = <500>; // Needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
@@ -109,9 +111,9 @@
 		};
 		gaming_layer { // does shift need to be next to the left of a
             bindings = <
-                  &kp TAB           &kp Q       &kp W       &kp E       &kp R     	        &none  &none &none &none &none
-                  &sl NUMBER_LAYER  &kp A       &kp S       &kp D       &kp F 	            &none  &none &none &none &none 
-                  &sl FUN_LAYER     &kp Z       &kp X       &kp C       &kp V   	        &none  &none &none &none &none
+                  &sl GAMING_RIGHT_ALPHA_LAYER   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
+                  &sl GAMING_NUMBER_LAYER       &kp A       &kp S       &kp D       &kp F 	            &none  &none &none &none &none 
+                  &sl FUN_LAYER                 &kp Z       &kp X       &kp C       &kp V   	        &none  &none &none &none &none
                             &sl NAV_LAYER &kp SPACE  				&trans  &trans
             >;
 		};	
@@ -125,10 +127,10 @@
             >;
 		};
 
-		
+    
 		nav_layer {
             bindings = <
-                &mt F1 N1      &mt F2 N2      &mt F3 N3      &mt F4 N4     &mt F5 N5            &kp DEL         &kp PG_UP   &kp UP   &kp PG_DN  &kp BSPC
+                &kp TAB      &none &none &none &none            &kp DEL         &kp PG_UP   &kp UP   &kp PG_DN  &kp BSPC
                 &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp TAB  		                            &none     &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
                 &none  &none &none &kp LGUI &kp ESC 				                            &kp INSERT      &kp HOME &kp TAB  &kp END &none 
                             &none &none  					&sl FUN_LAYER &sl NUMBER_LAYER
@@ -148,6 +150,22 @@
                 &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &none  &none &none &none &none 
                 &none &none &none &none &tog QWERTY                                             &none  &none &none &none &none        
                             &none &none 					                        &none &none
+            >;
+		};
+        gaming_number_layer {
+            bindings = <
+                  &kp LBKT      &kp N7      &kp N8      &kp N9      &kp T            &none  &none &none     &none   &none
+                  &kp  N0     &kp N4      &kp N5      &kp N6      &kp G           &none  &sk RGUI &sk RALT &sk RCTRL &sk RSHFT 
+                  &kp BSLH     &kp N1      &kp N2      &kp N3      &kp B            &none       &kp APOS     &kp GRAVE              &none       &kp CAPS
+                                                &none       &kp SPACE        			      &none       &none
+            >;
+		};
+        gaming_left_alpha_layer {
+            bindings = <
+                  &kp Y       &kp U       &kp I       &kp O       &kp P                     &none  &none &none &none &none
+                  &kp H       &kp J       &kp K       &kp L       &kp SEMI                  &none  &none &none &none &none
+                  &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH                 &none  &none &none &none &none
+                                                &none   &kp SPACE  			      &none &none
             >;
 		};
 	};
