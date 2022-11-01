@@ -20,14 +20,14 @@
 #define GAMING_RIGHT_ALPHA_LAYER 8 
 
 &sk {
-    release-after-ms = <500>; // Needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
+    release-after-ms = <250>; // Needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
     quick-release;
     ignore-modifiers;
 };
 
 // Important because errors without sticky layer are punishing and cause unconfident typing. e.g. a fast layer + enter roll
 &sl {
-    release-after-ms = <500>; // Can be shorter than &sk.
+    release-after-ms = <250>; // Can be shorter than &sk.
 };
 
 / { 
@@ -160,7 +160,7 @@
                                                 &none       &kp SPACE        			      &none       &none
             >;
 		};
-        gaming_left_alpha_layer {
+        gaming_right_alpha_layer {
             bindings = <
                   &kp Y       &kp U       &kp I       &kp O       &kp P                     &none  &none &none &none &none
                   &kp H       &kp J       &kp K       &kp L       &kp SEMI                  &none  &none &none &none &none
