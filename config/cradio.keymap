@@ -38,17 +38,12 @@
     // &shk RGUI RGUI &shk RALT RALT &shk RCTRL RCTRL &shk RSHFT RSHFT
     // behaviors {
    behaviors {
+        // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
         hsltk: hold_sticky_layer_tap_key {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_STICKY_TAP_KEY";
             #binding-cells = <2>;
-
-            /* 
-            tapping_term increased to minimize chance of single sticky in combo rolling
-            keep low to minimize delay for actions that depend on holding, e.g. ctrl+mouse scroll wheel to zoom
-            safe with &sk quick release flag
-            */
-            tapping_term_ms = <200>; 
+            tapping_term_ms = <100>; 
             flavor = "hold-preferred";
             bindings = <&sl>, <&kp>;
         };
