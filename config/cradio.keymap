@@ -2,6 +2,7 @@
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
+ * https://github.com/rhhub/zmk-config/actions
  */
 
 #include <behaviors.dtsi>
@@ -32,7 +33,7 @@
 
 // Initially used for gaming layer. Roll custom behavior if necessary.
 &mt {
-    tapping-term-ms = <200>;
+    tapping-term-ms = <150>;
 };
 
 / { 
@@ -46,21 +47,21 @@
         // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
         hsltk: hold_sticky_layer_tap_key {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_STICKY_TAP_KEY";
+            label = "HOLD_STICKY_LAYER_TAP_KEY";
             #binding-cells = <2>;
             tapping_term_ms = <150>; 
             flavor = "hold-preferred";
             bindings = <&sl>, <&kp>;
         };
         // TODO: incorporate alt into the thumb key
-        //  hsltk: hold_sticky_layer_tap_key {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     label = "HOLD_STICKY_TAP_KEY";
-        //     #binding-cells = <2>;
-        //     tapping_term_ms = <200>; 
-        //     flavor = "hold-preferred";
-        //     bindings = <&sl>, <&kp>;
-        // };
+         hktsl: hold_key_tap_sticky_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_KEY_TAP_STICKY_LAYER";
+            #binding-cells = <2>;
+            tapping_term_ms = <150>; 
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&sl>;
+        };
     };
 
     // unused
@@ -124,7 +125,7 @@
                   &kp TAB    &kp Q       &kp W       &kp E       &mt T R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
                   &kp LSHIFT &kp A       &kp S       &kp D       &mt G F 	            &none  &none &none &none &none 
                   &kp LCTRL  &kp Z       &kp X       &kp C       &mt B V   	        &none  &none &none &none &none
-                            &sl GAMING_NUMBER_LAYER &kp SPACE  				&trans  &trans
+                            &hktsl LALT GAMING_NUMBER_LAYER &kp SPACE  				&trans  &trans
             >;
 		};	  
 		// gaming_layer { // does shift need to be next to the left of a
