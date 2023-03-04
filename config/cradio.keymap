@@ -63,13 +63,13 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&sl>;
         };
-        td0: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
-        };
+        // td0: tap_dance_0 {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "TAP_DANCE_0";
+        //     #binding-cells = <2>;
+        //     tapping-term-ms = <200>;
+        //     bindings = <&kp>, <&kp>;
+        // };
     };
     
 
@@ -129,11 +129,11 @@
                                                 &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};
-		gaming_layer { // does shift need to be next to the left of a
+		gaming_layer { // How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
             bindings = <
-                  &kp TAB    &kp Q       &kp W       &kp E       &td0 R T     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-                  &kp LSHIFT &kp A       &kp S       &kp D       &td0 F G 	            &none  &none &none &none &none 
-                  &kp LCTRL  &kp Z       &kp X       &kp C       &td0 V B   	        &none  &none &none &none &none
+                  &kp TAB    &kp Q       &kp W       &kp E       &mt R T     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
+                  &kp LSHIFT &kp A       &kp S       &kp D       &mt F G 	            &none  &none &none &none &none 
+                  &kp LCTRL  &kp Z       &kp X       &kp C       &mt V B   	        &none  &none &none &none &none
                             &hktsl LALT GAMING_NUMBER_LAYER &kp SPACE  				&trans  &trans
             >;
 		};	  
