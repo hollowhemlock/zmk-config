@@ -31,7 +31,7 @@
     release-after-ms = <250>; // Can be shorter than &sk.
 };
 
-// Initially used for gaming layer. Roll custom behavior if necessary.
+// Initially used for gaming layer but can't use for gaming holds.
 &mt {
     tapping-term-ms = <150>;
 };
@@ -63,7 +63,15 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&sl>;
         };
+        td0: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
     };
+    
 
     // unused
     // conditional_layers {
@@ -123,9 +131,9 @@
 		};
 		gaming_layer { // does shift need to be next to the left of a
             bindings = <
-                  &kp TAB    &kp Q       &kp W       &kp E       &mt T R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-                  &kp LSHIFT &kp A       &kp S       &kp D       &mt G F 	            &none  &none &none &none &none 
-                  &kp LCTRL  &kp Z       &kp X       &kp C       &mt B V   	        &none  &none &none &none &none
+                  &kp TAB    &kp Q       &kp W       &kp E       &td R T     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
+                  &kp LSHIFT &kp A       &kp S       &kp D       &td F G 	            &none  &none &none &none &none 
+                  &kp LCTRL  &kp Z       &kp X       &kp C       &td V B   	        &none  &none &none &none &none
                             &hktsl LALT GAMING_NUMBER_LAYER &kp SPACE  				&trans  &trans
             >;
 		};	  
