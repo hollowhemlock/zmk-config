@@ -63,7 +63,7 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&sl>;
         };
-        td0: tap_dance_2 {
+        td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
             #binding-cells = <2>;
@@ -131,9 +131,9 @@
 		};
 		gaming_layer { // does shift need to be next to the left of a
             bindings = <
-                  &kp TAB    &kp Q       &kp W       &kp E       &td R T     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-                  &kp LSHIFT &kp A       &kp S       &kp D       &td F G 	            &none  &none &none &none &none 
-                  &kp LCTRL  &kp Z       &kp X       &kp C       &td V B   	        &none  &none &none &none &none
+                  &kp TAB    &kp Q       &kp W       &kp E       &td0 R T     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
+                  &kp LSHIFT &kp A       &kp S       &kp D       &td0 F G 	            &none  &none &none &none &none 
+                  &kp LCTRL  &kp Z       &kp X       &kp C       &td0 V B   	        &none  &none &none &none &none
                             &hktsl LALT GAMING_NUMBER_LAYER &kp SPACE  				&trans  &trans
             >;
 		};	  
