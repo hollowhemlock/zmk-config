@@ -11,7 +11,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define COLEMAK_DH 0
-// #define QWERTY 1
+#define QWERTY 1
 #define GAMING_LAYER 2
 #define NUMBER_LAYER 3
 #define NAV_LAYER 4
@@ -63,13 +63,13 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&sl>;
         };
-        // td_nav_esc: tap_dance_nav_esc {
-        //     compatible = "zmk,behavior-tap-dance";
-        //     label = "TAP_DANCE_0";
-        //     #binding-cells = <0>;
-        //     tapping-term-ms = <200>;
-        //     bindings = <&kp NAV_LAYER>, <&kp ESC>;
-        // };
+        td_nav_esc: tap_dance_nav_esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sl NAV_LAYER>, <&kp ESC>;
+        };
     };
     
 
@@ -118,7 +118,7 @@
                   &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
                   &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
                   &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
-                                                &kp ESC &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
+                                                &td_nav_esc   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};
         qwerty_layer {
