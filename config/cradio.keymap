@@ -63,13 +63,13 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&sl>;
         };
-        td_nav_esc: tap_dance_nav_esc {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&sl NAV_LAYER>, <&kp ESC>;
-        };
+        // td_nav_esc: tap_dance_nav_esc {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "TAP_DANCE_0";
+        //     #binding-cells = <0>;
+        //     tapping-term-ms = <200>;
+        //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
+        // };
     };
     
 
@@ -118,7 +118,7 @@
                   &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
                   &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
                   &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
-                                                &td_nav_esc   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
+                                                &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};
         qwerty_layer {
@@ -159,7 +159,7 @@
             bindings = <
                 &kp TAB      &none &none &none &none            &kp DEL         &kp PG_UP   &kp UP   &kp PG_DN  &kp BSPC
                 &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp TAB  		                            &none     &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
-                &none  &none &none &kp LGUI &kp ESC 				                            &kp INSERT      &kp HOME &kp TAB  &kp END &none 
+                &none  &none &kp ESC &kp LGUI &none 				                            &kp INSERT      &kp HOME &kp TAB  &kp END &none 
                             &none &none  					&sl FUN_LAYER &sl NUMBER_LAYER
             >;
 		};	
