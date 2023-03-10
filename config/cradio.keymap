@@ -10,6 +10,10 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+// Personal includes
+#include "../zmk-nodefree-config-main/helper.h" // source: https://github.com/urob/zmk-nodefree-config#user-content-fn-1-f030890b24c951bf9f1494dbf36d264d
+#include "includes/behaviours_homerow_mods.dtsi"
+
 #define COLEMAK_DH 0
 #define QWERTY 1
 #define GAMING_LAYER 2
@@ -116,11 +120,19 @@
         colemak_dh_layer {
             bindings = <
                   &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
-                  &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
+                  &hm_shift_l LSHFT A &hm_l LCTRL R &hm_l LALT S &hm_l LGUI T       &kp G 	      &kp M       &hm_l RGUI N &hm_l RALT E &hm_l RCTRL I &hm_shift_l RSHFT O
                   &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
                                                 &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};
+        // colemak_dh_layer {
+        //     bindings = <
+        //           &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
+        //           &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
+        //           &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
+        //                                         &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
+        //     >;
+		// };
         qwerty_layer {
             bindings = <
                   &kp Q       &kp W       &kp E       &kp R       &kp T 	      &kp Y       &kp U       &kp I       &kp O       &kp P 
