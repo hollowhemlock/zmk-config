@@ -10,10 +10,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-// Personal includes
-#include "../zmk-nodefree-config/helper.h" // source: https://github.com/urob/zmk-nodefree-config#user-content-fn-1-f030890b24c951bf9f1494dbf36d264d
-#include "includes/behaviors_homerow_mods.dtsi"
-
 #define COLEMAK_DH 0
 #define QWERTY 1
 #define GAMING_LAYER 2
@@ -23,6 +19,12 @@
 #define UTILITY 6
 #define GAMING_NUMBER_LAYER 7 
 #define GAMING_RIGHT_ALPHA_LAYER 8 
+
+// Personal includes
+#include "../zmk-nodefree-config/helper.h" // source: https://github.com/urob/zmk-nodefree-config#user-content-fn-1-f030890b24c951bf9f1494dbf36d264d
+#include "includes/behaviors_homerow_mods.dtsi"
+#include "includes/combos.dtsi" // must be after layer definitions
+
 
 &sk {
     release-after-ms = <250>; // Needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
@@ -74,16 +76,6 @@
 
        
     };
-    
-
-    // unused
-    // conditional_layers {
-    //     compatible = "zmk,conditional-layers";
-    //     tri_layer {
-    //         if-layers = <LEFT_THUMB NUMBER_LAYER>;
-    //         then-layer = <NAV_LAYER>;
-    //     };
-    //   };
     combos {
         compatible = "zmk,combos";
         toggle_gaming_layer {
@@ -112,6 +104,11 @@
         //     key-positions = <32 33>;
         //     bindings = <&mo FUN_LAYER>;
         // };
+        test_gaming_alt { 
+            timeout-ms = <50>;
+            key-positions = <25 26>;
+            bindings = <&kp LALT>;
+        };
       };
 
     keymap {
