@@ -112,14 +112,14 @@
         // };
         test_gaming_alt { 
             timeout-ms = <50>;
-            global-quick-tap-ms = <75>
+            global-quick-tap-ms = <75>;
             key-positions = <0 10>;
             bindings = <&kp LALT>;
             layers = <GAMING_LAYER>;
         };
         test_gaming_number { 
             timeout-ms = <50>;
-            global-quick-tap-ms = <75>
+            global-quick-tap-ms = <75>;
             key-positions = <1 11>;
             bindings = <&kp N1>;
             layers = <GAMING_LAYER>;
