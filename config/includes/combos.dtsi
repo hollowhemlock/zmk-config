@@ -13,6 +13,8 @@
 #define COMBO_TERM_FAST 20
 #define COMBO_TERM_SLOW 35
 
+
+// macro not working
 /* Punctuation (horizontal left hand) */
 ZMK_COMBO(esc,   &kp ALT,       LT4 LM4,     2, 20)
 // ZMK_COMBO(esc,   &kp N1,       LT3 LM3,     GAMING_LAYER, COMBO_TERM_FAST)
