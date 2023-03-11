@@ -29,7 +29,7 @@
 
 // Personal includes
 #include "includes/behaviors_homerow_mods.dtsi"
-#include "includes/combos.dtsi" // must be after layer definitions
+// #include "includes/combos.dtsi" // must be after layer definitions
 
 
 &sk {
@@ -112,8 +112,17 @@
         // };
         test_gaming_alt { 
             timeout-ms = <50>;
-            key-positions = <25 26>;
+            global-quick-tap-ms = <75>
+            key-positions = <0 10>;
             bindings = <&kp LALT>;
+            layers = <GAMING_LAYER>;
+        };
+        test_gaming_number { 
+            timeout-ms = <50>;
+            global-quick-tap-ms = <75>
+            key-positions = <1 11>;
+            bindings = <&kp N1>;
+            layers = <GAMING_LAYER>;
         };
       };
 
