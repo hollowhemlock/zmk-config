@@ -47,11 +47,7 @@
 #define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
 
-    // This was used for sub layer home row modifiers for some reason. I think I had an issue playing 5atisfactory.
-    // Maybe it was used to auto release the keys if held for a certain amount of time.
-    // Relevant implementations:    
-    // &shk LSHFT LSHFT &shk LCTRL LCTRL &shk LALT LALT &shk LGUI LGUI
-    // &shk RGUI RGUI &shk RALT RALT &shk RCTRL RCTRL &shk RSHFT RSHFT
+/ {
     // behaviors {
    behaviors {
         // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
@@ -193,7 +189,7 @@
         // };
       };
 
-        keymap {
+    keymap {
                 compatible = "zmk,keymap";
         colemak_dh_layer {
             bindings = <
