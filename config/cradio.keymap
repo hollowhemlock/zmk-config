@@ -47,8 +47,6 @@
 #define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
 
-    behaviors {
-/ { 
     // This was used for sub layer home row modifiers for some reason. I think I had an issue playing 5atisfactory.
     // Maybe it was used to auto release the keys if held for a certain amount of time.
     // Relevant implementations:    
