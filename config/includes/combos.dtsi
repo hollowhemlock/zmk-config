@@ -15,7 +15,7 @@
 
 // macro not working
 /* Punctuation (horizontal left hand) */
-ZMK_COMBO(esc,   &kp ALT,       0 10,     2, 20)
+ZMK_COMBO(esc,   &kp N1,       0 10,     2, 20)
 // ZMK_COMBO(esc,   &kp N1,       LT3 LM3,     GAMING_LAYER, COMBO_TERM_FAST)
 // ZMK_COMBO(tab,   &kp TAB,       LT2 LT1,     DEF NAV NUM, COMBO_TERM_FAST)
 
