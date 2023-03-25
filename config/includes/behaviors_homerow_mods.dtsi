@@ -42,7 +42,7 @@ ZMK_BEHAVIOR(hml_repeat, hold_tap,
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <175>;                // repeat on tap-into-hold
             global-quick-tap-ms = <150>;         // requires PR #1387
-            hold-trigger-key-positions = <KEYS_R KEYS_T>;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release;             // requires PR #1423
         };
 
@@ -56,7 +56,7 @@ ZMK_BEHAVIOR(hml_repeat, hold_tap,
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick_tap_ms = <175>;
             global-quick-tap-ms = <150>;         // requires PR #1387
-            hold-trigger-key-positions = <KEYS_L KEYS_T>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;             // requires PR #1423
         }; 
         hm: homerow_mods {
