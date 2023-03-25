@@ -5,7 +5,7 @@
   │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
   ╰───────╮ LH2 LH1 LH0 │ │ RH0 RH1 RH2 ╭───────╯
           ╰─────────────╯ ╰─────────────╯ */
-
+#include "../../zmk-nodefree-config/keypos_def/keypos_34keys.h"
 // use global-quick-tap-ms for combos (requires PR 1387)
 #undef COMBO_HOOK
 #define COMBO_HOOK global-quick-tap-ms = <75>;
@@ -16,7 +16,7 @@
 
 // macro not working
 /* Punctuation (horizontal left hand) */
-ZMK_COMBO(esc,   &kp N1,       0 10,     0, 20)
+ZMK_COMBO(esc,   &kp ALT,       LT4 LM4,     2, 20)
 // ZMK_COMBO(esc,   &kp N1,       LT3 LM3,     GAMING_LAYER, COMBO_TERM_FAST)
 // ZMK_COMBO(tab,   &kp TAB,       LT2 LT1,     DEF NAV NUM, COMBO_TERM_FAST)
 
