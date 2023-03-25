@@ -29,7 +29,7 @@
 
 // Personal includes
 #include "includes/behaviors_homerow_mods.dtsi"
-// #include "includes/combos.dtsi" // must be after layer definitions
+#include "includes/combos.dtsi" // must be after layer definitions
 
 
 &sk {
