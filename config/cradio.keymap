@@ -127,7 +127,7 @@
         colemak_dh_layer {
             bindings = <
                   &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
-                  &hm_l LSHFT A &hm_l LCTRL R &hm_l LALT S &hm_l LGUI T       &kp G 	      &kp M       &hm_r RGUI N &hm_r RALT E &hm_r RCTRL I &hm_r RSHFT O
+                  &hml LSHFT A &hml LCTRL R &hml LALT S &hml LGUI T       &kp G 	      &kp M       &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHFT O
                   &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
                                                 &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
             >;

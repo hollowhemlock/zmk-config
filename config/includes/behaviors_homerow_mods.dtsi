@@ -6,6 +6,17 @@
 #define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
 
+// replicate left-hand HRM for repeat combo
+ZMK_BEHAVIOR(hml_repeat, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    global-quick-tap-ms = <150>;
+    bindings = <&kp>, <&key_repeat>;
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;
+)
+
 / {
     behaviors {
          // Positional Homerow mods
@@ -19,7 +30,7 @@
 
         // Further optimization using urob's timerless homerow mods method:
         // https://github.com/urob/zmk-config#timeless-homerow-mods
-        hm_l: homerow_mods_left {
+        hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
@@ -33,7 +44,7 @@
             hold-trigger-on-release;             // requires PR #1423
         };
 
-        hm_r: homerow_mods_right {
+        hmr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_RIGHT";
             #binding-cells = <2>;
@@ -45,40 +56,7 @@
             global-quick-tap-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
-        };
-
-        // Positional Homerow mods for shift
-        // Use faster tapping term and disable some features that may
-        // cause false negatives.
-        // Not in original urob, doesn't work can't hit shift first in homerow combo
-        // hm_shift_l: hm_shift_l {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     label = "HOMEROW_MODS_FAST_LEFT";
-        //     #binding-cells = <2>;
-        //     bindings = <&kp>, <&kp>;
-
-        //     flavor = "balanced";
-        //     tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-        //     quick_tap_ms = <175>;
-        //     // global-quick-tap-ms = <150>;         // requires PR #1387
-        //     hold-trigger-key-positions = <KEYS_R KEYS_T>;
-        //     // hold-trigger-on-release;             // requires PR #1423
-        // };
-
-        // hm_shift_r: hm_shift_r {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     label = "HOMEROW_MODS_FAST_RIGHT";
-        //     #binding-cells = <2>;
-        //     bindings = <&kp>, <&kp>;
-
-        //     flavor = "balanced";
-        //     tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-        //     quick_tap_ms = <175>;
-        //     // global-quick-tap-ms = <150>;         // requires PR #1387
-        //     hold-trigger-key-positions = <KEYS_L KEYS_T>;
-        //     // hold-trigger-on-release;             // requires PR #1423
-        // };
-
+        }; 
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
