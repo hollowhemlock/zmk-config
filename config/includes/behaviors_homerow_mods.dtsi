@@ -6,6 +6,8 @@
 #define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
 
+#define QUICK_TAP_MS 175
+
 // replicate left-hand HRM for repeat combo
 ZMK_BEHAVIOR(hml_repeat, hold_tap,
     flavor = "balanced";
