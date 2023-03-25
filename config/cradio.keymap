@@ -82,45 +82,45 @@
 
        
     };
-    combos {
-        compatible = "zmk,combos";
-        toggle_gaming_layer {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&tog GAMING_LAYER>;
-        };
-        utility_layer_left_access {
-            timeout-ms = <50>;
-            key-positions = <23 24>;
-            bindings = <&mo UTILITY>;
-        };
-        utility_layer_right_access { timeout-ms = <50>; key-positions = <25 26>; bindings = <&mo UTILITY>; };
-        // left_double_thumb_layer {
-        //     timeout-ms = <50>;
-        //     key-positions = <30 31>;
-        //     bindings = <&sl LEFT_DOUBLE_THUMB>;
-        // };
-        // was function layer, annoying to use
-        // right_double_thumb_layer {
-        //     timeout-ms = <50>;
-        //     key-positions = <32 33>;
-        //     bindings = <&mo FUN_LAYER>;
-        // };
-        test_gaming_alt { 
-            timeout-ms = <50>;
-            global-quick-tap-ms = <75>;
-            key-positions = <0 10>;
-            bindings = <&kp LALT>;
-            layers = <GAMING_LAYER>;
-        };
-        test_gaming_number { 
-            timeout-ms = <50>;
-            global-quick-tap-ms = <75>;
-            key-positions = <1 11>;
-            bindings = <&kp N1>;
-            layers = <GAMING_LAYER>;
-        };
-      };
+    // combos {
+    //     compatible = "zmk,combos";
+    //     toggle_gaming_layer {
+    //         timeout-ms = <50>;
+    //         key-positions = <15 16>;
+    //         bindings = <&tog GAMING_LAYER>;
+    //     };
+    //     utility_layer_left_access {
+    //         timeout-ms = <50>;
+    //         key-positions = <23 24>;
+    //         bindings = <&mo UTILITY>;
+    //     };
+    //     utility_layer_right_access { timeout-ms = <50>; key-positions = <25 26>; bindings = <&mo UTILITY>; };
+    //     // left_double_thumb_layer {
+    //     //     timeout-ms = <50>;
+    //     //     key-positions = <30 31>;
+    //     //     bindings = <&sl LEFT_DOUBLE_THUMB>;
+    //     // };
+    //     // was function layer, annoying to use
+    //     // right_double_thumb_layer {
+    //     //     timeout-ms = <50>;
+    //     //     key-positions = <32 33>;
+    //     //     bindings = <&mo FUN_LAYER>;
+    //     // };
+    //     test_gaming_alt { 
+    //         timeout-ms = <50>;
+    //         global-quick-tap-ms = <75>;
+    //         key-positions = <0 10>;
+    //         bindings = <&kp N2>;
+    //         layers = <GAMING_LAYER>;
+    //     };
+    //     test_gaming_number { 
+    //         timeout-ms = <50>;
+    //         global-quick-tap-ms = <75>;
+    //         key-positions = <1 11>;
+    //         bindings = <&kp N1>;
+    //         layers = <GAMING_LAYER>;
+    //     };
+    //   };
 
     keymap {
                 compatible = "zmk,keymap";
