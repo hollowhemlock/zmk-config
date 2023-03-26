@@ -106,20 +106,20 @@
         //     key-positions = <32 33>;
         //     bindings = <&mo FUN_LAYER>;
         // };
-        test_gaming_alt { 
-            timeout-ms = <50>;
-            global-quick-tap-ms = <75>;
-            key-positions = <LT4 LM4>;
-            bindings = <&kp N2>;
-            layers = <GAMING_LAYER>;
-        };
-        test_gaming_number { 
-            timeout-ms = <50>;
-            global-quick-tap-ms = <75>;
-            key-positions = <1 11>;
-            bindings = <&kp N1>;
-            layers = <GAMING_LAYER>;
-        };
+        // test_gaming_alt { 
+        //     timeout-ms = <50>;
+        //     global-quick-tap-ms = <75>;
+        //     key-positions = <LT4 LM4>;
+        //     bindings = <&kp N2>;
+        //     layers = <GAMING_LAYER>;
+        // };
+        // test_gaming_number { 
+        //     timeout-ms = <50>;
+        //     global-quick-tap-ms = <75>;
+        //     key-positions = <1 11>;
+        //     bindings = <&kp N1>;
+        //     layers = <GAMING_LAYER>;
+        // };
       };
 
     keymap {
