@@ -14,12 +14,17 @@
 #define COMBO_TERM_SLOW 35
 
 // make homerow combos tap-only (so mods can be chorded correctly)
-#define HRC_RETURN &hml        LA(LCTRL) RETURN
-#define HRC_REPEAT &hml_repeat LS(LCTRL) 0
-#define HRC_LPAR   &hmr        RS(LCTRL) LPAR
-#define HRC_RPAR   &hmr        LA(LCTRL) RPAR
+// match to homerow mods on default keymap
 
+// │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
+// │ LS  LC  LA  LG  --- │ │ --- RG  RA  RC  RS  │
+#define HRC_RETURN &hml        LA(LCTRL) RETURN
+#define HRC_REPEAT &hml_repeat LA(LGUI) 0
+#define HRC_LPAR   &hmr        RA(RGUI) LPAR
+#define HRC_RPAR   &hmr        RA(RCTRL) RPAR
+ 
 /* Punctuation (horizontal left hand) */
+
 ZMK_COMBO(esc,   &kp ESC,       LT3 LT2,     COLEMAK_DH QWERTY NAV_LAYER, COMBO_TERM_FAST)
 ZMK_COMBO(tab,   &kp TAB,       LT2 LT1,     COLEMAK_DH QWERTY NAV_LAYER, COMBO_TERM_FAST)
 // ZMK_COMBO(mouse, &smart_mouse,  LT3 LT1,     COLEMAK_DH QWERTY NAV_LAYER, COMBO_TERM_FAST)
