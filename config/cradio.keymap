@@ -198,7 +198,7 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
             bindings = <
                 &kp TAB      &none &none &none &none            &kp DEL         &kp PG_UP   &kp UP   &kp PG_DN  &kp BSPC
                 &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp TAB  		                            &none     &kp LEFT  &kp DOWN &kp RIGHT &kp KP_ENTER 
-                &none  &none &kp ESC &kp LGUI &none 				                            &kp INSERT      &kp HOME &kp TAB  &kp END &none 
+                &none  &none &none &kp LGUI &none 				                            &kp INSERT      &kp HOME &kp TAB  &kp END &none 
                             &none &none  					&sl FUN_LAYER &sl NUMBER_LAYER
             >;
 		};	
