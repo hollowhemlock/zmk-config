@@ -9,15 +9,16 @@
 #define QUICK_TAP_MS 175
 
 // replicate left-hand HRM for repeat combo
-ZMK_BEHAVIOR(hml_repeat, hold_tap,
-    flavor = "balanced";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-    global-quick-tap-ms = <150>;
-    bindings = <&kp>, <&key_repeat>;
-    hold-trigger-key-positions = <KEYS_R THUMBS>;
-    hold-trigger-on-release;
-)
+// not in use moved repeat to top row
+// ZMK_BEHAVIOR(hml_repeat, hold_tap,
+//     flavor = "balanced";
+//     tapping-term-ms = <280>;
+//     quick-tap-ms = <QUICK_TAP_MS>;
+//     global-quick-tap-ms = <150>;
+//     bindings = <&kp>, <&key_repeat>;
+//     hold-trigger-key-positions = <KEYS_R THUMBS>;
+//     hold-trigger-on-release;
+// )
 
 / {
     behaviors {
