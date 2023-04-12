@@ -212,7 +212,7 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
 		};
             utility_layer {
             bindings = <
-                &bootloader  &reset &out OUT_USB &out OUT_BLE &bt BT_CLR                                &bt BT_CLR &none &none &reset &bootloader
+                &bootloader  &sys_reset &out OUT_USB &out OUT_BLE &bt BT_CLR                                &bt BT_CLR &none &none &reset &bootloader
                 &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &none  &none &none &none &none 
                 &none &none &none &none &tog QWERTY                                             &none  &none &none &none &none        
                             &none &none 					                        &none &none
