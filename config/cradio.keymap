@@ -104,10 +104,15 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
     };
     combos {
         compatible = "zmk,combos";
-        toggle_gaming_layer {
+        to_colemak_dh_layer {
             timeout-ms = <50>;
             key-positions = <15 16>;
-            bindings = <&tog GAMING_LAYER>;
+            bindings = <&to COLEMAK_DH>;
+        };
+        to_gaming_layer {
+            timeout-ms = <50>;
+            key-positions = <5 6>;
+            bindings = <&to GAMING_LAYER>;
         };
         utility_layer_left_access {
             timeout-ms = <50>;
