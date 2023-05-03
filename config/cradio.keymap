@@ -178,7 +178,7 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
                   &kp TAB    &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
                   &kp LSHIFT &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
                   &kp LCTRL  &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
-                            &hktsl LALT GAMING_NUMBER_LAYER &kp SPACE  				&sl FUN_LAYER   &sl NUMBER_LAYER
+                            &hktsl LALT GAMING_RIGHT_ALPHA_LAYER &kp SPACE  				&sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};	  
 		// gaming_layer { // does shift need to be next to the left of a
