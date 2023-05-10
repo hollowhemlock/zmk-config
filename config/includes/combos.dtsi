@@ -8,7 +8,7 @@
 
 // use global-quick-tap-ms for combos (requires PR 1387)
 #undef COMBO_HOOK
-#define COMBO_HOOK global-quick-tap-ms = <75>;
+#define COMBO_HOOK global-quick-tap-ms = <100>;
 
 #define COMBO_TERM_FAST 20
 #define COMBO_TERM_SLOW 35
@@ -37,9 +37,9 @@ ZMK_COMBO(copy,  &kp LC(INS),   LB3 LB2,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER
 ZMK_COMBO(paste, &kp LS(INS),   LB2 LB1,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_FAST)
 
 /* Horizontal combos - right hand */
-// TODO: Remove bspc, del combos
-ZMK_COMBO(bspc,  &kp BSPC,      RT1 RT2,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_FAST)
-ZMK_COMBO(del,   &kp DEL,       RT2 RT3,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_FAST)
+// Unused
+// ZMK_COMBO(bspc,  &kp BSPC,      RT1 RT2,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_FAST)
+// ZMK_COMBO(del,   &kp DEL,       RT2 RT3,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_FAST)
 
 ZMK_COMBO(lpar,  HRC_LPAR,      RM1 RM2,     COLEMAK_DH QWERTY NUMBER_LAYER, COMBO_TERM_FAST)
 ZMK_COMBO(rpar,  HRC_RPAR,      RM2 RM3,     COLEMAK_DH QWERTY NUMBER_LAYER, COMBO_TERM_FAST)
