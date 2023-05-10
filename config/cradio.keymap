@@ -69,6 +69,17 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
     mods = <(MOD_LCTL|MOD_RCTL)>;
 )
 
+/* Caps-word, num-word and smart-mouse */
+
+// tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
+ZMK_BEHAVIOR(smart_shft, mod_morph,
+    bindings = <&sk LSHFT>, <&caps_word>;
+    mods = <(MOD_LSFT)>;
+)
+&caps_word {  // mods deactivate caps-word, requires PR #1441
+    /delete-property/ ignore-modifiers;
+};
+
 / {
     // behaviors {
    behaviors {
@@ -119,7 +130,10 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
             key-positions = <23 24>;
             bindings = <&mo UTILITY>;
         };
-        utility_layer_right_access { timeout-ms = <50>; key-positions = <25 26>; bindings = <&mo UTILITY>; };
+        utility_layer_right_access { timeout-ms = <50>;
+            key-positions = <25 26>; 
+            bindings = <&mo UTILITY>;
+        };
         // left_double_thumb_layer {
         //     timeout-ms = <50>;
         //     key-positions = <30 31>;
@@ -146,7 +160,7 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
         //     layers = <GAMING_LAYER>;
         // };
       };
-
+// TODO: implement function layer
     keymap {
                 compatible = "zmk,keymap";
         colemak_dh_layer {
@@ -154,7 +168,7 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
                   &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SQT 
                   &hml LSHFT A &hml LCTRL R &hml LALT S &hml LGUI T       &kp G 	      &kp M       &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHFT O
                   &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &comma_morph    &dot_morph     &kp SLASH
-                                                &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
+                                                &sl NAV_LAYER   &kp SPACE  			      &smart_shft   &sl NUMBER_LAYER
             >;
 		};
         // colemak_dh_layer {
