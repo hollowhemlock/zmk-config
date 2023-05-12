@@ -26,6 +26,7 @@
 #define UTILITY 6
 #define GAMING_NUMBER_LAYER 7 
 #define GAMING_RIGHT_ALPHA_LAYER 8 
+#define UC 9
 
 // Personal includes
 #include "includes/behaviors_homerow_mods.dtsi"
@@ -159,7 +160,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
         //     bindings = <&kp N1>;
         //     layers = <GAMING_LAYER>;
         // };
-      };
+    };
 // TODO: implement function layer
     keymap {
                 compatible = "zmk,keymap";
@@ -207,7 +208,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
             bindings = <
                   &kp LBKT      &kp N7      &kp N8      &kp N9      &kp RBKT            &none  &none &none     &none   &none
                   &kp  N0     &kp N4      &kp N5      &kp N6      &kp EQUAL           &none  &sk RGUI &sk RALT &sk RCTRL &sk RSHFT 
-                  &kp BSLH     &kp N1      &kp N2      &kp N3      &kp MINUS            &none       &none &none              &caps_word       &kp SLASH
+                  &kp BSLH     &kp N1      &kp N2      &kp N3      &kp MINUS            &none       &none &none              &none       &kp SLASH
                                                 &sl NAV_LAYER       &kp SPACE        			      &none       &none
             >;
 		};
@@ -255,3 +256,15 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 		};
 	};
 };
+
+ZMK_LAYER(uc,
+//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+    X_LT     ___           &el_omega     &el_phi       &el_pi        &el_beta        X_MT     ___           &el_lambda    &el_upsilon   &el_psi       &de_eszett      X_RT
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LM     &el_alpha     &el_rho       &el_sigma     &el_tau       &el_gamma       X_MM     &el_mu        &el_nu        &el_epsilon   &el_iota      &el_omikron     X_RM
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LB     &el_zeta      &el_xi        &el_chi       &el_delta     &el_theta       X_MB     &el_kappa     &el_eta       &de_ae        &de_oe        &de_ue          X_RB
+//├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
+    X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
+//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰───────────────────────────╯                                           ╰──────╯
+)
