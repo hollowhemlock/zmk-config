@@ -51,6 +51,7 @@ ZMK_COMBO(rbkt,  &kp RBKT,      RB2 RB3,     COLEMAK_DH QWERTY NUMBER_LAYER, COM
 ZMK_COMBO(lbrc,  &kp LBRC,      RB1 RB2,     NAV_LAYER, COMBO_TERM_FAST) // from urob used on his nav layer
 ZMK_COMBO(rbrc,  &kp RBRC,      RB2 RB3,     NAV_LAYER, COMBO_TERM_FAST) // from urob used on his nav layer
 
+// TODO: add this line for more characters add layer
 // ZMK_COMBO(grk,   &sl UC,        RT1 RT3,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW) 
 // ZMK_COMBO(cpgrk, &sls 0,        RT1 RT2 RT3, COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW)
 
