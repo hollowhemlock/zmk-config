@@ -260,6 +260,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
             >;
 		};
         uc_layer {
+            // Doesn't work for windows. Needs different definitions.
             bindings = <
               //  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ 
                    &none           &el_omega     &el_phi       &el_pi        &el_beta         &none       &el_lambda    &el_upsilon   &el_psi       &de_eszett  
