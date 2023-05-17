@@ -94,10 +94,10 @@ ZMK_BEHAVIOR(smart_num, hold_tap,
 )
 ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
+    bindings = <&num_word>, <&sl NUMBER_LAYER>;  // reverse this for sticky-num on single tap
 )
 &num_word {  // num-word, requires PR #1441
-    layers = <NUM>;
+    layers = <NUMBER_LAYER>;
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
 };
 
