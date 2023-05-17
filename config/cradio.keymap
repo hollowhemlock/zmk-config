@@ -187,6 +187,8 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
 
 
      // TODO: clean up nones to trans if needed.
+     // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
+     // TODO: find a place for gaming functions when needed. must be fluid. maybe a combo on the thumb. can go 15 functions that way.
     keymap {
                 compatible = "zmk,keymap";
         colemak_dh_layer {
@@ -213,7 +215,7 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
                                                 &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};
-		gaming_layer { // How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
+		gaming_layer { // T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
             bindings = <
                   &kp TAB    &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
                   &kp LSHIFT &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
