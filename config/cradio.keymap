@@ -57,6 +57,7 @@ ZMK_BEHAVIOR(comma_morph, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
     bindings = <&kp COMMA>, <&comma_inner_morph>;
 )
+// Not needed greater than is on a combo
 ZMK_BEHAVIOR(comma_inner_morph, mod_morph,
     bindings = <&kp SEMICOLON>, <&kp LESS_THAN>;
     mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -67,6 +68,7 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
     bindings = <&kp DOT>, <&dot_inner_morph>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
+// Not needed greater than is on a combo
 ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
     bindings = <&kp COLON>, <&kp GREATER_THAN>;
     mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -96,9 +98,10 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&num_word>, <&sl NUMBER_LAYER>;  // reverse this for sticky-num on single tap
 )
+// TODO: maybe add semi colon to continue list.
 &num_word {  // num-word, requires PR #1441
     layers = <NUMBER_LAYER>;
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LSHIFT>;
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LSHIFT COLON>;
 };
 
 / {
