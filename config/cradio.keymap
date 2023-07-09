@@ -45,7 +45,6 @@
 &sl {
     release-after-ms = <250>; // Can be shorter than &sk.
 };
-
 // Initially used for gaming layer but can't use for gaming holds.
 &mt {
     tapping-term-ms = <150>;
