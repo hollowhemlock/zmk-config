@@ -51,6 +51,7 @@
 
 
 // tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
+// note: program hotkeys sometimes don't respond to non standard keys
 ZMK_BEHAVIOR(comma_morph, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
     bindings = <&kp COMMA>, <&kp SEMICOLON>;
@@ -62,6 +63,7 @@ ZMK_BEHAVIOR(comma_morph, mod_morph,
 // )
 
 // tap: dot | shift + tap: colon | ctrl + shift + tap: >
+// note: program hotkeys sometimes don't respond to non standard keys
 ZMK_BEHAVIOR(dot_morph, mod_morph,
     bindings = <&kp DOT>, <&kp COLON>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
