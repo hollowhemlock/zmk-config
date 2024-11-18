@@ -11,7 +11,6 @@
 
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/34.h"
-#include "zmk-helpers/unicode-chars/german.dtsi"
 #include "zmk-helpers/unicode-chars/greek.dtsi"
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
@@ -37,17 +36,21 @@
 &sk {
     release-after-ms = <250>; // Needs to be long enough for one handed modifiers. Short enough to allow mouse zooming and mitigage alt tab conflicts.
     quick-release;
-    ignore-modifiers;
+    // TODO: need to add back?
+    // ignore-modifiers; // urob doesn't have this
 };
 
 // Important because errors without sticky layer are punishing and cause unconfident typing. e.g. a fast layer + enter roll
 &sl {
     release-after-ms = <250>; // Can be shorter than &sk.
+    // TODO: need to remove following?
+    ignore-modifiers;          // allow chording sticky mods & layers
 };
+
 // Initially used for gaming layer but can't use for gaming holds.
-&mt {
-    tapping-term-ms = <150>;
-};
+// &mt {
+//     tapping-term-ms = <150>;
+// };
 
 
 // tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
