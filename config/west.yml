@@ -8,7 +8,7 @@ manifest:
     - name: urob
       url-base: https://github.com/urob
   projects:
-    - name: zmk-helpersn
+    - name: zmk-helpers
       path: modules/helpers
 
     - name: zmk
