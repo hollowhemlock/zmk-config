@@ -8,6 +8,8 @@ manifest:
     - name: urob
       url-base: https://github.com/urob
   projects:
+    - name: zmk-auto-layer
+      path: modules/auto-layer
     - name: zmk-helpers
       path: modules/helpers
 
