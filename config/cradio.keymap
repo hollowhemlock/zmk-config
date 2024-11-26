@@ -104,8 +104,7 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
     bindings = <&num_word>, <&sl NUMBER_LAYER>;  // reverse this for sticky-num on single tap
 )
 // TODO: maybe add semi colon to continue list.
-&num_word {  // num-word, requires PR #1441
-    layers = <NUMBER_LAYER>;
+&num_word {
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LSHIFT COLON>;
 };
 
