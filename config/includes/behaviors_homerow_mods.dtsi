@@ -1,13 +1,6 @@
 // Make sure settings.dtsi is included before this file
 
-
-
-
-#define HM_TAPPING_TERM 300
-#define HM_TAPPING_TERM_FAST 200
-
-#define QUICK_TAP_MS 175
-
+// #define QUICK_TAP_MS 175
 // replicate left-hand HRM for repeat combo
 // not in use moved repeat to top row
 // ZMK_BEHAVIOR(hml_repeat, hold_tap,
@@ -37,9 +30,8 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>,  <&kp>;
-
             flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM>;
+            tapping-term-ms = <300>;
             quick-tap-ms = <175>;                // repeat on tap-into-hold
             require-prior-idle-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_R THUMBS>;
@@ -50,23 +42,12 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
-
             flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM>;
+            tapping-term-ms = <300>;
             quick_tap_ms = <175>;
             require-prior-idle-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;             // requires PR #1423
-        }; 
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-
-            flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM>;
-            quick_tap_ms = <200>;
         };
-
     };
 };
