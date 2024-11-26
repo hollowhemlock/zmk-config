@@ -91,25 +91,12 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
     /delete-property/ ignore-modifiers;
 };
 
-// // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-// #define SMART_NUM &smart_num NUMBER_LAYER 0
-// ZMK_BEHAVIOR(smart_num, hold_tap,
-//     flavor = "balanced";
-//     tapping-term-ms = <200>;
-//     quick-tap-ms = <QUICK_TAP_MS>;
-//     bindings = <&mo>, <&num_dance>;
-// )
-// ZMK_BEHAVIOR(num_dance, tap_dance,
-//     tapping-term-ms = <200>;
-//     bindings = <&num_word>, <&sl NUMBER_LAYER>;  // reverse this for sticky-num on single tap
-// )
-
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
 #define SMART_NUM &smart_num NUMBER_LAYER 0
 ZMK_HOLD_TAP(smart_num,
     flavor = "balanced";
     tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
+    quick-tap-ms = <175>;t
     bindings = <&mo>, <&num_dance>;
 )
 ZMK_TAP_DANCE(num_dance,
