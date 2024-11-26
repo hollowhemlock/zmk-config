@@ -105,7 +105,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 // )
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUM 0
+#define SMART_NUM &smart_num NUMBER_LAYER 0
 ZMK_HOLD_TAP(smart_num,
     flavor = "balanced";
     tapping-term-ms = <200>;
