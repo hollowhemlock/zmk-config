@@ -238,7 +238,7 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
        	number_layer {
             bindings = <
                 &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
-                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &trans          &trans 
+                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &kp SEMI        &trans 
                 &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
                                                                 &trans          &trans          &trans          &trans      
             >;
