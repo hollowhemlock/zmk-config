@@ -115,7 +115,6 @@ ZMK_TAP_DANCE(num_dance,
         // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
         hsltk: hold_sticky_layer_tap_key {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_STICKY_LAYER_TAP_KEY";
             #binding-cells = <2>;
             tapping_term_ms = <150>; 
             flavor = "hold-preferred";
@@ -125,7 +124,6 @@ ZMK_TAP_DANCE(num_dance,
         // maybe not unstable because it is decided on the first key 
          hktsl: hold_key_tap_sticky_layer {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_KEY_TAP_STICKY_LAYER";
             #binding-cells = <2>;
             tapping_term_ms = <200>; 
             flavor = "tap-preferred";
