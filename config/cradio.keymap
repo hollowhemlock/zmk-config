@@ -250,7 +250,7 @@ ZMK_TAP_DANCE(num_dance,
                                                                 &none           &none           &sl FUN_LAYER   &sl NUMBER_LAYER
             >;
 		};	
-            fun_layer {
+        fun_layer {
             bindings = <
                 &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
                 &kp F11         &kp F4          &kp F5          &kp F6          &kp SLCK        &kp C_PP        &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
@@ -258,11 +258,11 @@ ZMK_TAP_DANCE(num_dance,
                                                                 &sl NAV_LAYER   &kp SPACE       &none           &none
             >;
 		};
-            utility_layer {
+        utility_layer {
             bindings = <
                 &bootloader     &sys_reset      &out OUT_USB    &out OUT_BLE    &bt BT_CLR      &bt BT_CLR      &none           &none           &sys_reset      &bootloader
                 &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
-                &none           &none           &none           &none           &tog QWERTY     &none           &none           &none           &none           &none        
+                &none           &none           &none           &none           &to QWERTY     &none           &none           &none           &none           &none        
                                                                 &none           &none           &none           &none
             >;
 		};
