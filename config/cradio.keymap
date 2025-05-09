@@ -247,7 +247,7 @@ ZMK_TAP_DANCE(num_dance,
                 &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
                 &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
                 &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
-                                                                &none           &none           &sl FUN_LAYER   &sl NUMBER_LAYER
+                                                                &none           &none           &kp K_CANCEL    &sl NUMBER_LAYER
             >;
 		};	
         fun_layer {
