@@ -141,17 +141,18 @@ ZMK_TAP_DANCE(num_dance,
        
     };
     combos {
+        // TODO: not generic can't add wider boards
         compatible = "zmk,combos";
-        to_colemak_dh_layer {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&to COLEMAK_DH>;
-        };
-        to_gaming_layer {
-            timeout-ms = <50>;
-            key-positions = <5 6>;
-            bindings = <&to GAMING_LAYER>;
-        };
+        // to_colemak_dh_layer {
+        //     timeout-ms = <50>;
+        //     key-positions = <15 16>;
+        //     bindings = <&to COLEMAK_DH>;
+        // };
+        // to_gaming_layer {
+        //     timeout-ms = <50>;
+        //     key-positions = <5 6>;
+        //     bindings = <&to GAMING_LAYER>;
+        // };
         utility_layer_left_access {
             timeout-ms = <50>;
             key-positions = <23 24>;
@@ -260,9 +261,9 @@ ZMK_TAP_DANCE(num_dance,
 		};
         utility_layer {
             bindings = <
-                &bootloader     &sys_reset      &out OUT_USB    &out OUT_BLE    &bt BT_CLR      &bt BT_CLR      &none           &none           &sys_reset      &bootloader
+                &sys_reset      &to GAMING_LAYER&to COLEMAK_DH  &to QWERTY      &out OUT_USB    &out OUT_USB    &none           &none           &none           &sys_reset   
                 &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
-                &none           &none           &none           &none           &to QWERTY     &none           &none           &none           &none           &none        
+                &bootloader     &none           &out OUT_BLE    &none           &bt BT_CLR      &bt BT_CLR      &none           &none           &none           &bootloader       
                                                                 &none           &none           &none           &none
             >;
 		};
