@@ -110,7 +110,6 @@ ZMK_TAP_DANCE(num_dance,
 // };
 
 / {
-    // behaviors {
    behaviors {
         // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
         hsltk: hold_sticky_layer_tap_key {
@@ -137,34 +136,20 @@ ZMK_TAP_DANCE(num_dance,
         //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
         // };
         // For vscode
-    td_ctrl_k_sticky: td_ctrl_k_sticky {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      bindings = <
-        &macro_ctrl_k
-        &sticky_ctrl
-      >;
-      tapping-term-ms = <300>;
-    };
-
-    macro_ctrl_k: macro_ctrl_k {
-      compatible = "zmk,behavior-macro";
-      label = "CTRL_K_MACRO";
-      #binding-cells = <0>;
-      bindings = <
-        &kp LC(K)
-      >;
-    };
-
-    sticky_ctrl: sticky_ctrl {
-      compatible = "zmk,behavior-sticky-key";
-      label = "STICKY_CTRL";
-      #binding-cells = <0>;
-      bindings = <&kp LCTRL>;
-    };
-  };
-};  
-    };
+        td_ctrl_k_sticky: td_ctrl_k_sticky {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K)>, <&sticky_ctrl>;
+            tapping-term-ms = <250>;
+        };
+        sticky_ctrl: sticky_ctrl {
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKY_CTRL";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL>;
+            release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
+        };
+    };  
     combos {
         // TODO: not generic can't add wider boards
         compatible = "zmk,combos";
