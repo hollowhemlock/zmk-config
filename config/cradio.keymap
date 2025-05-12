@@ -135,7 +135,9 @@ ZMK_TAP_DANCE(num_dance,
         //     tapping-term-ms = <200>;
         //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
         // };
+        // TODO: optimize release after, 
         // For vscode
+        // NOTE: some combination don't use ctrl but can be accessed by waiting release-after-ms
         sticky_long: sticky_long {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -144,6 +146,7 @@ ZMK_TAP_DANCE(num_dance,
         };
     };  
     macros {
+        // For vscode
         sq_Ck_stickyC: sq_Ck_stickyC {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -250,7 +253,7 @@ ZMK_TAP_DANCE(num_dance,
        	number_layer {
             bindings = <
                 &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
-                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sk  &kp SEMI 
+                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI
                 &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
                                                                 &trans          &trans          &trans          &trans      
             >;
