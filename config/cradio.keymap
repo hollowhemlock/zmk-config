@@ -137,14 +137,33 @@ ZMK_TAP_DANCE(num_dance,
         //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
         // };
         // For vscode
-        ctrl_k_hold_ctrl: behavior_custom_oneshot_hold {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CTRL_K_HOLD_CTRL";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp LC(K) &kp LC(NO)>;
-        };       
+    td_ctrl_k_sticky: td_ctrl_k_sticky {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      bindings = <
+        &macro_ctrl_k
+        &sticky_ctrl
+      >;
+      tapping-term-ms = <300>;
+    };
+
+    macro_ctrl_k: macro_ctrl_k {
+      compatible = "zmk,behavior-macro";
+      label = "CTRL_K_MACRO";
+      #binding-cells = <0>;
+      bindings = <
+        &kp LC(K)
+      >;
+    };
+
+    sticky_ctrl: sticky_ctrl {
+      compatible = "zmk,behavior-sticky-key";
+      label = "STICKY_CTRL";
+      #binding-cells = <0>;
+      bindings = <&kp LCTRL>;
+    };
+  };
+};  
     };
     combos {
         // TODO: not generic can't add wider boards
