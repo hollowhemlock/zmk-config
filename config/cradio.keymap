@@ -136,9 +136,15 @@ ZMK_TAP_DANCE(num_dance,
         //     tapping-term-ms = <200>;
         //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
         // };
-
-
-       
+        // For vscode
+        ctrl_k_hold_ctrl: behavior_custom_oneshot_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CTRL_K_HOLD_CTRL";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp LC(K) &kp LC(NO)>;
+        };       
     };
     combos {
         // TODO: not generic can't add wider boards
