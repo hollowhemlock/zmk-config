@@ -135,6 +135,20 @@ ZMK_TAP_DANCE(num_dance,
         //     tapping-term-ms = <200>;
         //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
         // };
+        // For vscode
+        sq_Ck_stickyC: sq_Ck_stickyC {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K)>, <&sticky_ctrl>;
+            tapping-term-ms = <250>;
+        };
+        sticky_ctrl: sticky_ctrl {
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKY_CTRL";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL>;
+            release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
+        };
     };  
     combos {
         // TODO: not generic can't add wider boards
@@ -234,7 +248,7 @@ ZMK_TAP_DANCE(num_dance,
        	number_layer {
             bindings = <
                 &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
-                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &kp LC(K)      &kp SEMI 
+                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI 
                 &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
                                                                 &trans          &trans          &trans          &trans      
             >;
