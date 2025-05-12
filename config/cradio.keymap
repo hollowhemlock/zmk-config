@@ -144,15 +144,6 @@ ZMK_TAP_DANCE(num_dance,
             release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
         };
     };  
-    macros {
-        sq_Ck_stickyC: sq_Ck_stickyC {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&kp LC(K)>
-                , <&sticky_ctrl_long>;
-        };
-    };
     combos {
         // TODO: not generic can't add wider boards
         compatible = "zmk,combos";
