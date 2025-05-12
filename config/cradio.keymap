@@ -136,12 +136,6 @@ ZMK_TAP_DANCE(num_dance,
         //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
         // };
         // For vscode
-        sticky_ctrl_long: sticky_ctrl_long {
-            compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <0>;
-            bindings = <&kp LCTRL>;
-            release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
-        };
     };  
     combos {
         // TODO: not generic can't add wider boards
