@@ -138,7 +138,6 @@ ZMK_TAP_DANCE(num_dance,
         // For vscode
         sticky_ctrl_long: sticky_ctrl_long {
             compatible = "zmk,behavior-sticky-key";
-            label = "STICKY_CTRL";
             #binding-cells = <0>;
             bindings = <&kp LCTRL>;
             release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
@@ -251,7 +250,7 @@ ZMK_TAP_DANCE(num_dance,
        	number_layer {
             bindings = <
                 &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
-                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI 
+                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sk  &kp SEMI 
                 &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
                                                                 &trans          &trans          &trans          &trans      
             >;
