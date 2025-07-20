@@ -170,11 +170,11 @@ ZMK_TAP_DANCE(num_dance,
         // };
         utility_layer_left_access {
             timeout-ms = <50>;
-            key-positions = <23 24>;
+            key-positions = <13 14>;
             bindings = <&mo UTILITY>;
         };
         utility_layer_right_access { timeout-ms = <50>;
-            key-positions = <25 26>; 
+            key-positions = <15 16>; 
             bindings = <&mo UTILITY>;
         };
         // left_double_thumb_layer {
@@ -276,9 +276,9 @@ ZMK_TAP_DANCE(num_dance,
 		};
         utility_layer {
             bindings = <
-                &sys_reset      &to GAMING_LAYER&to COLEMAK_DH  &to QWERTY      &out OUT_USB    &out OUT_USB    &none           &none           &none           &sys_reset   
+                &to QWERTY      &to GAMING_LAYER&to COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
                 &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
-                &bootloader     &none           &out OUT_BLE    &none           &bt BT_CLR      &bt BT_CLR      &none           &none           &none           &bootloader       
+                &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
                                                                 &none           &none           &none           &none
             >;
 		};
