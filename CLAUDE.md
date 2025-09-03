@@ -49,11 +49,12 @@ This configuration uses a hybrid approach combining:
    - `GAMING_RIGHT_ALPHA_LAYER` (8): Right-hand alpha for gaming
    - `UC` (9): Unicode characters (Greek letters, German characters)
 
-2. **Advanced Behaviors**:
-   - **Positional Homerow Mods**: Prevents accidental mod activation during rolls
-   - **Smart Shift**: Sticky shift with caps-word on double-tap
+2. **Advanced Behaviors** (using urob's "timeless" homerow mods approach):
+   - **Positional Homerow Mods**: Uses `balanced` flavor with `require-prior-idle-ms` to prevent accidental mod activation during rolls
+   - **Smart Shift**: Sticky shift with caps-word on double-tap (mod-morph behavior)
    - **Num-word**: Automatic number layer deactivation after non-numeric input
    - **Mod-morphs**: Context-sensitive punctuation (comma/semicolon, dot/colon)
+   - **Hold-tap optimizations**: `hold-trigger-on-release` for more reliable homerow mods
 
 3. **Combo System**: Extensive combo definitions in `config/includes/combos.dtsi`
    - Horizontal combos for common actions (Enter, Tab, Escape)
@@ -62,7 +63,11 @@ This configuration uses a hybrid approach combining:
    - Two-handed combos for layer access
 
 4. **Module Dependencies**:
-   - `zmk-helpers`: Core helper functions and macros
+   - `zmk-helpers`: urob's helper macros for simplified ZMK configuration
+     - `ZMK_BEHAVIOR`: Generic behavior creation (used for comma_morph, dot_morph, smart_shft)
+     - `ZMK_HOLD_TAP`: Hold-tap behaviors (smart_num)  
+     - `ZMK_TAP_DANCE`: Tap-dance behaviors (num_dance)
+     - `ZMK_COMBO`: Simplified combo definitions in combos.dtsi
    - `zmk-auto-layer`: Auto-layer functionality for num-word
    - Unicode character definitions for German and Greek letters
 
