@@ -61,6 +61,5 @@ manifest:
           - hal_stm32
           - lvgl
           - tinycrypt
-
   self:
     path: config
