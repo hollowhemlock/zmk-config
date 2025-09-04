@@ -125,100 +125,55 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUMBER_LAYER>, <&sl NUMBER_LAYER>
 //     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LSHIFT COLON>;
 // };
 
+
+// This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
+ZMK_HOLD_TAP(hsltk, 
+    bindings = <&sl>, <&kp>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <150>;
+)
+
+// used for gaming alt key; unusable if using modtap number keys and function keys for dyson sphere project
+// maybe not unstable because it is decided on the first key 
+ZMK_HOLD_TAP(hktsl,
+    bindings = <&kp>, <&sl>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <200>;
+)
+
+// ZMK_TAP_DANCE(td_nav_esc,
+//     bindings = <&sl NAV_LAYER>, <&kp ESC>;
+//     tapping-term-ms = <200>;
+// )
+
+// TODO: optimize release after, 
+// For vscode
+// NOTE: some combination don't use ctrl but can be accessed by waiting release-after-ms
+ZMK_BEHAVIOR(sticky_long, sticky_key,
+    bindings = <&kp>;
+    release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
+)
+
+// For vscode
+ZMK_MACRO(sq_Ck_stickyC,
+    bindings = <&kp LC(K)>, <&sticky_long LCTRL>;
+)
+
+// Convert combos to zmk-helpers macros
+// TODO: not generic can't add wider boards
+
+// ZMK_COMBO(to_colemak_dh_layer, &to COLEMAK_DH, 15 16, ALL, 50)
+// ZMK_COMBO(to_gaming_layer, &to GAMING_LAYER, 5 6, ALL, 50)
+
+ZMK_COMBO(utility_layer_left_access, &mo UTILITY, 13 14, ALL, 50)
+ZMK_COMBO(utility_layer_right_access, &mo UTILITY, 15 16, ALL, 50)
+
+// ZMK_COMBO(left_double_thumb_layer, &sl LEFT_DOUBLE_THUMB, 30 31, ALL, 50)
+// ZMK_COMBO(right_double_thumb_layer, &mo FUN_LAYER, 32 33, ALL, 50) // was function layer, annoying to use
+// ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, GAMING_LAYER, 50, 75) // require-prior-idle-ms
+// ZMK_COMBO(test_gaming_number, &kp N1, 1 11, GAMING_LAYER, 50, 75) // require-prior-idle-ms
+
 / {
-   behaviors {
-        // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
-        hsltk: hold_sticky_layer_tap_key {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping_term_ms = <150>; 
-            flavor = "hold-preferred";
-            bindings = <&sl>, <&kp>;
-        };
-        // used for gaming alt key; unusable if using modtap number keys and function keys for dyson sphere project
-        // maybe not unstable because it is decided on the first key 
-         hktsl: hold_key_tap_sticky_layer {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping_term_ms = <200>; 
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&sl>;
-        };
-        // td_nav_esc: tap_dance_nav_esc {
-        //     compatible = "zmk,behavior-tap-dance";
-        //     label = "TAP_DANCE_0";
-        //     #binding-cells = <0>;
-        //     tapping-term-ms = <200>;
-        //     bindings = <&sl NAV_LAYER>, <&kp ESC>;
-        // };
-        // TODO: optimize release after, 
-        // For vscode
-        // NOTE: some combination don't use ctrl but can be accessed by waiting release-after-ms
-        sticky_long: sticky_long {
-            compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <1>;
-            bindings = <&kp>;
-            release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
-        };
-    };  
-    macros {
-        // For vscode
-        sq_Ck_stickyC: sq_Ck_stickyC {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&kp LC(K)>
-                , <&sticky_long LCTRL>;
-        };
-    };
-    combos {
-        // TODO: not generic can't add wider boards
-        compatible = "zmk,combos";
-        // to_colemak_dh_layer {
-        //     timeout-ms = <50>;
-        //     key-positions = <15 16>;
-        //     bindings = <&to COLEMAK_DH>;
-        // };
-        // to_gaming_layer {
-        //     timeout-ms = <50>;
-        //     key-positions = <5 6>;
-        //     bindings = <&to GAMING_LAYER>;
-        // };
-        utility_layer_left_access {
-            timeout-ms = <50>;
-            key-positions = <13 14>;
-            bindings = <&mo UTILITY>;
-        };
-        utility_layer_right_access { timeout-ms = <50>;
-            key-positions = <15 16>; 
-            bindings = <&mo UTILITY>;
-        };
-        // left_double_thumb_layer {
-        //     timeout-ms = <50>;
-        //     key-positions = <30 31>;
-        //     bindings = <&sl LEFT_DOUBLE_THUMB>;
-        // };
-        // was function layer, annoying to use
-        // right_double_thumb_layer {
-        //     timeout-ms = <50>;
-        //     key-positions = <32 33>;
-        //     bindings = <&mo FUN_LAYER>;
-        // };
-        // test_gaming_alt { 
-        //     timeout-ms = <50>;
-        //     require-prior-idle-ms = <75>;
-        //     key-positions = <LT4 LM4>;
-        //     bindings = <&kp N2>;
-        //     layers = <GAMING_LAYER>;
-        // };
-        // test_gaming_number { 
-        //     timeout-ms = <50>;
-        //     require-prior-idle-ms = <75>;
-        //     key-positions = <1 11>;
-        //     bindings = <&kp N1>;
-        //     layers = <GAMING_LAYER>;
-        // };
-    };
 
 
      // TODO: clean up nones to trans if needed.
