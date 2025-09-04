@@ -64,8 +64,16 @@
 
 // TODO: move up more later?
 // Personal includes
-#include "includes/behaviors_homerow_mods.dtsi"
 #include "includes/combos.dtsi" // must be after layer definitions
+
+#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
+  ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
+               tapping-term-ms = <300>; quick-tap-ms = <QUICK_TAP_MS>;         \
+               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
+               hold-trigger-key-positions = <TRIGGER_POS>;)
+
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 
 // tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
 // note: program hotkeys sometimes don't respond to non standard keys
