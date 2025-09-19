@@ -22,7 +22,7 @@
 #define HRC_ENTER  &hml        LA(LGUI)  ENTER
 #define HRC_LPAR   &hmr        RA(RGUI)  LPAR
 #define HRC_RPAR   &hmr        RA(RCTRL) RPAR
- 
+
 /* Punctuation (horizontal left hand) */
 
 ZMK_COMBO(ret,   &key_repeat,   LT3 LT2,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_FAST)
@@ -52,7 +52,7 @@ ZMK_COMBO(lbrc,  &kp LBRC,      RB1 RB2,     NAV_LAYER, COMBO_TERM_FAST) // from
 ZMK_COMBO(rbrc,  &kp RBRC,      RB2 RB3,     NAV_LAYER, COMBO_TERM_FAST) // from urob used on his nav layer
 
 // TODO: add this line for more characters add layer
-// ZMK_COMBO(grk,   &sl UC,        RT1 RT3,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW) 
+// ZMK_COMBO(grk,   &sl UC,        RT1 RT3,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW)
 // ZMK_COMBO(cpgrk, &sls 0,        RT1 RT2 RT3, COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW)
 
 ZMK_COMBO(fun_layer,   &sl FUN_LAYER,        RH0 RH1,     COLEMAK_DH QWERTY NAV_LAYER, COMBO_TERM_SLOW)
@@ -77,35 +77,3 @@ ZMK_COMBO(under, &kp UNDER,     RM0 RB0,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER
 ZMK_COMBO(minus, &kp MINUS,     RM1 RB1,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW)
 ZMK_COMBO(excl,  &kp EXCL,      RM2 RB2,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW)
 ZMK_COMBO(pipe,  &kp PIPE,      RM3 RB3,     COLEMAK_DH QWERTY NAV_LAYER  NUMBER_LAYER, COMBO_TERM_SLOW)
-
-/* Gaming Layer */
-#define COMBO_TERM_GAM_FAST 20
-#define COMBO_TERM_GAM_SLOW 35
-// Verticalrs
-ZMK_COMBO(n1,  &kp N1,      LT4 LM4,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n2,  &kp N2,      LT3 LM3,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n3,  &kp N3,      LT2 LM2,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n4,  &kp N4,      LT1 LM1,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n5,  &kp N5,      LT0 LM0,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n6,  &kp N6,      LM4 LB4,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n7,  &kp N7,      LM3 LB3,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n8,  &kp N8,      LM2 LB2,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n9,  &kp N9,      LM1 LB1,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n0,  &kp N0,      LM0 LB0,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-
-
-// Horizontal
-/* Avoid combos between these keys. They are likely activated simultaneously.              
-  ╭─────────────────────╮ 
-  │ --- LT3 LT2 LT1 --- │ 
-  │ LM4 LM3 LM2 LM1 --- │ 
-  │ --- --- --- --- --- │ 
-  ╰───────╮ LH2 LH1 LH0 │  
-          ╰─────────────╯  */
-ZMK_COMBO(t,  &kp T,      LT1 LT0,     GAMING_LAYER, COMBO_TERM_GAM_SLOW)
-ZMK_COMBO(g,  &kp G,      LM1 LM0,     GAMING_LAYER, COMBO_TERM_GAM_SLOW)
-ZMK_COMBO(b,  &kp B,      LB1 LB0,     GAMING_LAYER, COMBO_TERM_GAM_SLOW)
-
-ZMK_COMBO(esc_gaming,  &kp ESC,      LT4 LT3,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(lgui,  &kp LGUI,      LB4 LB3,     GAMING_LAYER, COMBO_TERM_GAM_FAST)
-
