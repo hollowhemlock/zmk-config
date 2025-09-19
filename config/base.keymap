@@ -65,7 +65,8 @@
 
 // TODO: move up more later?
 // Personal includes
-#include "includes/combos.dtsi" // must be after layer definitions
+#include "includes/combos_main.dtsi"   // main typing layers combos
+#include "includes/combos_gaming.dtsi" // gaming layer combos
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
