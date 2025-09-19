@@ -13,14 +13,14 @@
 #endif
 
 #define COLEMAK_DH 0
-#define QWERTY 1
-#define GAMING_LAYER 2
-#define NUMBER_LAYER 3
-#define NAV_LAYER 4
-#define FUN_LAYER 5
-#define UTILITY 6
-#define GAMING_NUMBER_LAYER 7 
-#define GAMING_RIGHT_ALPHA_LAYER 8 
+#define NUMBER_LAYER 1
+#define NAV_LAYER 2
+#define FUN_LAYER 3
+#define UTILITY 4
+#define GAMING_LAYER 5
+#define GAMING_NUMBER_LAYER 6
+#define GAMING_RIGHT_ALPHA_LAYER 7
+#define QWERTY 8
 // #define UC 9
 
 #define XXX &none
