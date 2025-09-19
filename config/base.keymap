@@ -173,117 +173,94 @@ ZMK_COMBO(utility_layer_right_access, &mo UTILITY, 15 16, ALL, 50)
 // ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, GAMING_LAYER, 50, 75) // require-prior-idle-ms
 // ZMK_COMBO(test_gaming_number, &kp N1, 1 11, GAMING_LAYER, 50, 75) // require-prior-idle-ms
 
-/ {
+// TODO: clean up nones to trans if needed.
+// TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
+// TODO: find a place for gaming functions when needed. must be fluid. maybe a combo on the thumb. can go 15 functions that way.
 
+ZMK_LAYER(colemak_dh_layer,
+    &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J           &kp L           &kp U           &kp Y           &kp SQT 
+    &hml LSHFT A    &hml LCTRL R    &hml LALT S     &hml LGUI T     &kp G           &kp M           &hmr RGUI N     &hmr RALT E     &hmr RCTRL I    &hmr RSHFT O
+    &kp Z           &kp X           &kp C           &kp D           &kp V           &kp K           &kp H           &comma_morph    &dot_morph      &kp SLASH
+                                                    &sl NAV_LAYER   &kp SPACE       &smart_shft     SMART_NUM
+)
+// colemak_dh_layer {
+//     bindings = <
+//           &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
+//           &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
+//           &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
+//                                         &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
+//     >;
+// };
 
-     // TODO: clean up nones to trans if needed.
-     // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
-     // TODO: find a place for gaming functions when needed. must be fluid. maybe a combo on the thumb. can go 15 functions that way.
-    keymap {
-        compatible = "zmk,keymap";
-        colemak_dh_layer {
-            bindings = <
-                &kp Q           &kp W           &kp F           &kp P           &kp B 	        &kp J           &kp L           &kp U           &kp Y           &kp SQT 
-                &hml LSHFT A    &hml LCTRL R    &hml LALT S     &hml LGUI T     &kp G 	        &kp M           &hmr RGUI N     &hmr RALT E     &hmr RCTRL I    &hmr RSHFT O
-                &kp Z           &kp X           &kp C           &kp D           &kp V	        &kp K           &kp H           &comma_morph    &dot_morph      &kp SLASH
-                                                                &sl NAV_LAYER   &kp SPACE  	    &smart_shft     SMART_NUM
-            >;
-		};
-        // colemak_dh_layer {
-        //     bindings = <
-        //           &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
-        //           &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
-        //           &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
-        //                                         &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
-        //     >;
-		// };
-        qwerty_layer {
-            bindings = <
-                &kp Q           &kp W           &kp E           &kp R           &kp T 	        &kp Y           &kp U           &kp I           &kp O           &kp P 
-                &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &kp G 	        &kp H           &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI
-                &kp Z           &kp X           &kp C           &kp V           &kp B	        &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                                                &sl NAV_LAYER   &kp SPACE  	    &smart_shft     SMART_NUM
-            >;
-		};
-		gaming_layer { // T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
-            bindings = <
-                &kp TAB         &kp Q           &kp W           &kp E           &kp R     	    &kp Y           &kp U           &kp I           &kp O           &kp P 
-                &kp LSHIFT      &kp A           &kp S           &kp D           &kp F 	        &kp H           &kp J           &kp K           &kp L           &kp SEMI 
-                &kp LCTRL       &kp Z           &kp X           &kp C           &kp V   	    &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                                &hktsl LALT GAMING_RIGHT_ALPHA_LAYER &kp SPACE  &sl FUN_LAYER   &sl GAMING_RIGHT_ALPHA_LAYER
-            >;
-		};	  
-		// gaming_layer { // does shift need to be next to the left of a
-        //     bindings = <
-        //           &sl GAMING_RIGHT_ALPHA_LAYER   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-        //           &sl GAMING_NUMBER_LAYER       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
-        //           &sl FUN_LAYER                 &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
-        //                     &sl NAV_LAYER &kp SPACE  				&trans  &trans
-        //     >;
-		// };	  
-       	number_layer {
-            bindings = <
-                &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
-                &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI
-                &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
-                                                                &trans          &trans          &trans          &trans      
-            >;
-		};
-		nav_layer {
-            bindings = <
-                &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
-                &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
-                &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
-                                                                &none           &none           &kp K_CANCEL    &sl NUMBER_LAYER
-            >;
-		};	
-        fun_layer {
-            bindings = <
-                &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
-                &kp F11         &kp F4          &kp F5          &kp F6          &kp SLCK        &kp C_PP        &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
-                &kp F10         &kp F1          &kp F2          &kp F3          &kp PAUSE_BREAK &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP  
-                                                                &sl NAV_LAYER   &kp SPACE       &none           &none
-            >;
-		};
-        utility_layer {
-            bindings = <
-                &to QWERTY      &to GAMING_LAYER&to COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
-                &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
-                &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
-                                                                &none           &none           &none           &none
-            >;
-		};
-        gaming_number_layer {
-            bindings = <
-                &kp LGUI        &kp N7          &kp N8          &kp N9          &kp T           &none           &none           &none           &none           &none
-                &kp N0          &kp N4          &kp N5          &kp N6          &kp G           &none           &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
-                &kp ESC         &kp N1          &kp N2          &kp N3          &kp B           &none           &kp APOS        &kp GRAVE       &none           &kp CAPS
-                                                                &none           &kp SPACE       &none           &none
-            >;
-		};
-        gaming_right_alpha_layer {
-            bindings = <
-                &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC        &kp PG_UP       &kp UP          &kp PG_DN       &kp DEL
-                &kp H           &kp J           &kp K           &kp L           &kp SEMI        &none           &kp LEFT        &kp DOWN        &kp RIGHT       &kp KP_ENTER
-                &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH       &kp INSERT      &kp HOME        &kp TAB         &kp END         &none
-                                                                &none           &kp SPACE       &none           &none
-            >;
-		};
-        uc_layer {
-            // Doesn't work for windows. Needs different definitions.
-            bindings = <
-            //  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ 
-                   &none           &el_omega     &el_phi       &el_pi        &el_beta         &none       &el_lambda    &el_upsilon   &el_psi       &de_eszett  
-            //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-                   &el_alpha     &el_rho       &el_sigma     &el_tau       &el_gamma        &el_mu        &el_nu        &el_epsilon   &el_iota      &el_omikron 
-            //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-                   &el_zeta      &el_xi        &el_chi       &el_delta     &el_theta        &el_kappa     &el_eta       &de_ae        &de_oe        &de_ue      
-            //  ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ 
-                                                             &none          &none          &none           &none                                                   
-                                                    //    ╰─────────────┴─────────────╯  ╰───────────────────────────╯                                           
-            >;
-		};
-	};
-};
+ZMK_LAYER(qwerty_layer,
+    &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P 
+    &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &kp G           &kp H           &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI
+    &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
+                                                    &sl NAV_LAYER   &kp SPACE       &smart_shft     SMART_NUM
+)
+// T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
+ZMK_LAYER(gaming_layer,
+    &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp Y           &kp U           &kp I           &kp O           &kp P 
+    &kp LSHIFT      &kp A           &kp S           &kp D           &kp F           &kp H           &kp J           &kp K           &kp L           &kp SEMI 
+    &kp LCTRL       &kp Z           &kp X           &kp C           &kp V           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
+                                    &hktsl LALT GAMING_RIGHT_ALPHA_LAYER &kp SPACE   &sl FUN_LAYER   &sl GAMING_RIGHT_ALPHA_LAYER
+)	  
+// gaming_layer { // does shift need to be next to the left of a
+//     bindings = <
+//           &sl GAMING_RIGHT_ALPHA_LAYER   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
+//           &sl GAMING_NUMBER_LAYER       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
+//           &sl FUN_LAYER                 &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
+//                     &sl NAV_LAYER &kp SPACE  				&trans  &trans
+//     >;
+// };	  
+
+ZMK_LAYER(number_layer,
+    &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
+    &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI
+    &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
+                                                    &trans          &trans          &trans          &trans      
+)
+ZMK_LAYER(nav_layer,
+    &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
+    &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
+    &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
+                                                    &none           &none           &kp K_CANCEL    &sl NUMBER_LAYER
+)	
+ZMK_LAYER(fun_layer,
+    &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
+    &kp F11         &kp F4          &kp F5          &kp F6          &kp SLCK        &kp C_PP        &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
+    &kp F10         &kp F1          &kp F2          &kp F3          &kp PAUSE_BREAK &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP  
+                                                    &sl NAV_LAYER   &kp SPACE       &none           &none
+)
+ZMK_LAYER(utility_layer,
+    &to QWERTY      &to GAMING_LAYER&to COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
+    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
+    &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
+                                                    &none           &none           &none           &none
+)
+ZMK_LAYER(gaming_number_layer,
+    &kp LGUI        &kp N7          &kp N8          &kp N9          &kp T           &none           &none           &none           &none           &none
+    &kp N0          &kp N4          &kp N5          &kp N6          &kp G           &none           &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
+    &kp ESC         &kp N1          &kp N2          &kp N3          &kp B           &none           &kp APOS        &kp GRAVE       &none           &kp CAPS
+                                                    &none           &kp SPACE       &none           &none
+)
+ZMK_LAYER(gaming_right_alpha_layer,
+    &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC        &kp PG_UP       &kp UP          &kp PG_DN       &kp DEL
+    &kp H           &kp J           &kp K           &kp L           &kp SEMI        &none           &kp LEFT        &kp DOWN        &kp RIGHT       &kp KP_ENTER
+    &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH       &kp INSERT      &kp HOME        &kp TAB         &kp END         &none
+                                                    &none           &kp SPACE       &none           &none
+)
+// Doesn't work for windows. Needs different definitions.
+// ZMK_LAYER(uc_layer,
+// //  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ 
+//        &none           &el_omega     &el_phi       &el_pi        &el_beta         &none       &el_lambda    &el_upsilon   &el_psi       &de_eszett  
+// //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
+//        &el_alpha     &el_rho       &el_sigma     &el_tau       &el_gamma        &el_mu        &el_nu        &el_epsilon   &el_iota      &el_omikron 
+// //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
+//        &el_zeta      &el_xi        &el_chi       &el_delta     &el_theta        &el_kappa     &el_eta       &de_ae        &de_oe        &de_ue      
+// //  ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ 
+//                                                  &none          &none          &none           &none                                                   
+// //                                      ╰─────────────┴─────────────╯  ╰───────────────────────────╯                                           
+// )
 
 
