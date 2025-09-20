@@ -61,6 +61,37 @@ draw:
     yq -Yi '.combos.[].l = ["Combos"]' "{{ draw }}/base.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg"
 
+draw1:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/base.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg" --keys-only -s "["colemak","qwerty","nav","number"]"
+
+# parse & plot main combos (typing layers)
+draw-main-combos:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_main.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[0] | test("colemak|qwerty|nav|number"))]' "{{ draw }}/combos_main.yaml"
+    yq -Yi '.layers."Main Combos" = [range(34) | ""] | .combos.[].l = ["Main Combos"]' "{{ draw }}/combos_main.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" >"{{ draw }}/combos_main.svg"
+
+# parse & plot gaming combos
+draw-gaming-combos:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_gaming.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[0] | test("gaming"))]' "{{ draw }}/combos_gaming.yaml"
+    yq -Yi '.layers = {gaming_layer: .layers.gaming_layer, "Gaming Combos": [range(34) | ""]} | .combos.[].l = ["Gaming Combos"]' "{{ draw }}/combos_gaming.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" >"{{ draw }}/combos_gaming.svg"
+
+# draw all combo diagrams
+draw-all-combos: draw-main-combos draw-gaming-combos
+ 
+did: 
+    set -euo pipefail
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/did.yaml"
+
 # initialize west
 init:
     west init -l config

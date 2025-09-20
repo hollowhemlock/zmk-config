@@ -1,11 +1,9 @@
 parse_config:
   zmk_additional_includes:
     - "modules/zmk/helpers/include"
-
   zmk_preamble: |
     #include <zmk-helpers/key-labels/34.h>
     #define CONFIG_WIRELESS
-
   raw_binding_map:
     "&sys_reset": Reset
     "&bootloader": Boot
@@ -169,8 +167,6 @@ parse_config:
     UNDER: _
     UNDERSCORE: _
   zmk_combos: {}
-  zmk_preamble: '#define KEYMAP_DRAWER'
-  zmk_additional_includes: []
   draw_config:
     append_colon_to_layer_header: false
     dark_mode: auto
