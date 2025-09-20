@@ -55,7 +55,7 @@ ZMK_COMBO(rbrc,  &kp RBRC,      RB2 RB3,     NAV, COMBO_TERM_FAST) // from urob 
 // ZMK_COMBO(grk,   &sl UC,        RT1 RT3,     COLEMAK_DH QWERTY NAV  NUMBER, COMBO_TERM_SLOW)
 // ZMK_COMBO(cpgrk, &sls 0,        RT1 RT2 RT3, COLEMAK_DH QWERTY NAV  NUMBER, COMBO_TERM_SLOW)
 
-ZMK_COMBO(fun_layer,   &sl FUN,        RH0 RH1,     COLEMAK_DH QWERTY NAV, COMBO_TERM_SLOW)
+ZMK_COMBO(fun,   &sl FUN,        RH0 RH1,     COLEMAK_DH QWERTY NAV, COMBO_TERM_SLOW)
 
 /* Other symbols (vertical combos) */
 ZMK_COMBO(at,    &kp AT,        LT3 LM3,     COLEMAK_DH QWERTY NAV  NUMBER, COMBO_TERM_SLOW)
