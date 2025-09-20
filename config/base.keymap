@@ -199,7 +199,7 @@ ZMK_LAYER(l_l_colemak_dh,
 //     >;
 // };
 
-ZMK_LAYER(l_qwerty,
+ZMK_LAYER(l_l_qwerty,
     &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P 
     &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &kp G           &kp H           &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI
     &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
