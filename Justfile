@@ -65,7 +65,7 @@ draw1:
     #!/usr/bin/env bash
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/base.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg" --keys-only -s "["colemak","qwerty","nav","number"]"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg" --keys-only -s "["l_colemak","l_qwerty","l_nav","l_num"]"
 
 # parse & plot main combos (typing layers)
 draw-main-combos:
