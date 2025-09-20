@@ -1,0 +1,26 @@
+  preprocess: true
+  skip_binding_parsing: false
+  raw_binding_map: {}
+  sticky_label: sticky
+  toggle_label: toggle
+  tap_toggle_label: tap-toggle
+  trans_legend:
+    t: ▽
+    type: trans
+  layer_legend_map: {}
+  mark_alternate_layer_activators: false
+  modifier_fn_map:
+    left_ctrl: Ctl
+    right_ctrl: Ctl
+    left_shift: Sft
+    right_shift: Sft
+    left_alt: Alt
+    right_alt: AltGr
+    left_gui: Gui
+    right_gui: Gui
+    keycode_combiner: '{mods}+{key}'
+    mod_combiner: '{mod_1}+{mod_2}'
+    special_combinations:
+      left_ctrl+left_alt+left_gui+left_shift: Hyper
+      left_ctrl+left_alt+left_shift: Meh
+  zmk_remove_keycode_prefix: []
