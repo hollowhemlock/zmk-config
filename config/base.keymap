@@ -15,7 +15,7 @@
 // Layers
 // MAIN
 #define L_COLEMAK_DH 0
-#define L_NUMBER 1
+#define L_NUM 1
 #define L_NAV 2
 #define L_FUN 3
 #define L_UTILITY 4
@@ -120,11 +120,11 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-#define SMART_NUM &smart_num L_NUMBER 0
+#define SMART_NUM &smart_num L_NUM 0
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
     tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;
 )
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word L_NUMBER>, <&sl L_NUMBER>;  // reverse this for sticky-num on single tap
+ZMK_TAP_DANCE(num_dance, bindings = <&num_word L_NUM>, <&sl L_NUM>;  // reverse this for sticky-num on single tap
               tapping-term-ms = <200>; )
 
 // // TODO: maybe add semi colon to continue list.
@@ -195,7 +195,7 @@ ZMK_LAYER(l_colemak_dh,
 //           &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
 //           &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
 //           &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
-//                                         &sl L_NAV   &kp SPACE  			      &sl L_FUN   &sl L_NUMBER
+//                                         &sl L_NAV   &kp SPACE  			      &sl L_FUN   &sl L_NUM
 //     >;
 // };
 
@@ -221,7 +221,7 @@ ZMK_LAYER(l_gaming,
 //     >;
 // };	  
 
-ZMK_LAYER(l_number,
+ZMK_LAYER(l_num,
     &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
     &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI
     &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
@@ -231,7 +231,7 @@ ZMK_LAYER(l_nav,
     &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
     &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
     &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
-                                                    &none           &none           &kp K_CANCEL    &sl L_NUMBER
+                                                    &none           &none           &kp K_CANCEL    &sl L_NUM
 )	
 ZMK_LAYER(l_fun,
     &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
