@@ -22,7 +22,7 @@
 
 // GAMING
 #define L_GAM 5
-#define L_GAM_NUMBER 6
+#define L_GAM_NUM 6
 #define L_GAM_RIGHT_ALPHA 7
 
 // ALTERNATE
@@ -178,7 +178,7 @@ ZMK_COMBO(l_utility_right_access, &mo L_UTILITY, 15 16, ALL, 50)
 // ZMK_COMBO(l_left_double_thumb, &sl LEFT_DOUBLE_THUMB, 30 31, ALL, 50)
 // ZMK_COMBO(l_right_double_thumb, &mo L_FUN, 32 33, ALL, 50) // was function layer, annoying to use
 // ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, L_GAM, 50, 75) // require-prior-idle-ms
-// ZMK_COMBO(test_gaming_number, &kp N1, 1 11, L_GAM, 50, 75) // require-prior-idle-ms
+// ZMK_COMBO(test_gaming_num, &kp N1, 1 11, L_GAM, 50, 75) // require-prior-idle-ms
 
 // TODO: clean up nones to trans if needed.
 // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
@@ -215,7 +215,7 @@ ZMK_LAYER(l_gam,
 // l_gam { // does shift need to be next to the left of a
 //     bindings = <
 //           &sl L_GAM_RIGHT_ALPHA   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-//           &sl L_GAM_NUMBER       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
+//           &sl L_GAM_NUM       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
 //           &sl L_FUN                 &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
 //                     &sl L_NAV &kp SPACE  				&trans  &trans
 //     >;
@@ -245,7 +245,7 @@ ZMK_LAYER(l_utility,
     &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
                                                     &none           &none           &none           &none
 )
-ZMK_LAYER(l_gam_number,
+ZMK_LAYER(l_gam_num,
     &kp LGUI        &kp N7          &kp N8          &kp N9          &kp T           &none           &none           &none           &none           &none
     &kp N0          &kp N4          &kp N5          &kp N6          &kp G           &none           &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
     &kp ESC         &kp N1          &kp N2          &kp N3          &kp B           &none           &kp APOS        &kp GRAVE       &none           &kp CAPS
