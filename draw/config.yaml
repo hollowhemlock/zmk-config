@@ -168,8 +168,44 @@ parse_config:
     TILDE2: "~"
     UNDER: _
     UNDERSCORE: _
-
-draw_config:
-  append_colon_to_layer_header: false
-  dark_mode: auto
-  footer_text: "urob/zmk-config"
+  zmk_combos: {}
+  zmk_preamble: '#define KEYMAP_DRAWER'
+  zmk_additional_includes: []
+  draw_config:
+    append_colon_to_layer_header: false
+    dark_mode: auto
+    footer_text: "rhhub/zmk-config"
+    key_w: 60.0
+    key_h: 56.0
+    split_gap: 30.0
+    combo_w: 28.0
+    combo_h: 26.0
+    key_rx: 6.0
+    key_ry: 6.0
+    n_columns: 1
+    separate_combo_diagrams: false
+    combo_diagrams_scale: 2
+    inner_pad_w: 2.0
+    inner_pad_h: 2.0
+    outer_pad_w: 30.0
+    outer_pad_h: 56.0
+    line_spacing: 1.2
+    arc_radius: 6.0
+    small_pad: 2.0
+    legend_rel_x: 0.0
+    legend_rel_y: 0.0
+    draw_key_sides: false
+    key_side_pars:
+      rel_x: 0
+      rel_y: 4
+      rel_w: 12
+      rel_h: 12
+      rx: 4
+      ry: 4
+    svg_extra_style: ''
+    shrink_wide_legends: 7
+    style_layer_activators: true
+    glyph_tap_size: 14
+    glyph_hold_size: 12
+    glyph_shifted_size: 10
+    glyphs: {}
