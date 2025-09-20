@@ -82,7 +82,7 @@ draw-gaming-combos:
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_gaming.yaml"
     yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[0] | test("gaming"))]' "{{ draw }}/combos_gaming.yaml"
-    yq -Yi '.layers = {gaming_layer: .layers.gaming_layer, "Gaming Combos": [range(34) | ""]} | .combos.[].l = ["Gaming Combos"]' "{{ draw }}/combos_gaming.yaml"
+    yq -Yi '.layers = {l_gaming: .layers.l_gaming, "Gaming Combos": [range(34) | ""]} | .combos.[].l = ["Gaming Combos"]' "{{ draw }}/combos_gaming.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" >"{{ draw }}/combos_gaming.svg"
 
 # draw all combo diagrams
