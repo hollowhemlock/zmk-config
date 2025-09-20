@@ -15,15 +15,15 @@
 // Layers
 // MAIN
 #define COLEMAK_DH 0
-#define NUMBER_LAYER 1
-#define NAV_LAYER 2
-#define FUN_LAYER 3
+#define L_NUMBER 1
+#define L_NAV 2
+#define L_FUN 3
 #define UTILITY 4
 
 // GAMING
-#define GAMING_LAYER 5
-#define GAMING_NUMBER_LAYER 6
-#define GAMING_RIGHT_ALPHA_LAYER 7
+#define L_GAMING 5
+#define L_GAMING_NUMBER 6
+#define L_GAMING_RIGHT_ALPHA 7
 
 // ALTERNATE
 #define QWERTY 8
@@ -120,11 +120,11 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-#define SMART_NUM &smart_num NUMBER_LAYER 0
+#define SMART_NUM &smart_num L_NUMBER 0
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
     tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;
 )
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUMBER_LAYER>, <&sl NUMBER_LAYER>;  // reverse this for sticky-num on single tap
+ZMK_TAP_DANCE(num_dance, bindings = <&num_word L_NUMBER>, <&sl L_NUMBER>;  // reverse this for sticky-num on single tap
               tapping-term-ms = <200>; )
 
 // // TODO: maybe add semi colon to continue list.
@@ -149,7 +149,7 @@ ZMK_HOLD_TAP(hktsl,
 )
 
 // ZMK_TAP_DANCE(td_nav_esc,
-//     bindings = <&sl NAV_LAYER>, <&kp ESC>;
+//     bindings = <&sl L_NAV>, <&kp ESC>;
 //     tapping-term-ms = <200>;
 // )
 
@@ -170,15 +170,15 @@ ZMK_MACRO(sq_Ck_stickyC,
 // TODO: not generic can't add wider boards
 
 // ZMK_COMBO(to_l_colemak_dh, &to COLEMAK_DH, 15 16, ALL, 50)
-// ZMK_COMBO(to_l_gaming, &to GAMING_LAYER, 5 6, ALL, 50)
+// ZMK_COMBO(to_l_gaming, &to L_GAMING, 5 6, ALL, 50)
 
 ZMK_COMBO(l_utility_left_access, &mo UTILITY, 13 14, ALL, 50)
 ZMK_COMBO(l_utility_right_access, &mo UTILITY, 15 16, ALL, 50)
 
 // ZMK_COMBO(l_left_double_thumb, &sl LEFT_DOUBLE_THUMB, 30 31, ALL, 50)
-// ZMK_COMBO(l_right_double_thumb, &mo FUN_LAYER, 32 33, ALL, 50) // was function layer, annoying to use
-// ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, GAMING_LAYER, 50, 75) // require-prior-idle-ms
-// ZMK_COMBO(test_gaming_number, &kp N1, 1 11, GAMING_LAYER, 50, 75) // require-prior-idle-ms
+// ZMK_COMBO(l_right_double_thumb, &mo L_FUN, 32 33, ALL, 50) // was function layer, annoying to use
+// ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, L_GAMING, 50, 75) // require-prior-idle-ms
+// ZMK_COMBO(test_gaming_number, &kp N1, 1 11, L_GAMING, 50, 75) // require-prior-idle-ms
 
 // TODO: clean up nones to trans if needed.
 // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
@@ -188,14 +188,14 @@ ZMK_LAYER(l_colemak_dh,
     &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J           &kp L           &kp U           &kp Y           &kp SQT 
     &hml LSHFT A    &hml LCTRL R    &hml LALT S     &hml LGUI T     &kp G           &kp M           &hmr RGUI N     &hmr RALT E     &hmr RCTRL I    &hmr RSHFT O
     &kp Z           &kp X           &kp C           &kp D           &kp V           &kp K           &kp H           &comma_morph    &dot_morph      &kp SLASH
-                                                    &sl NAV_LAYER   &kp SPACE       &smart_shft     SMART_NUM
+                                                    &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
 )
 // l_colemak_dh {
 //     bindings = <
 //           &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
 //           &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
 //           &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
-//                                         &sl NAV_LAYER   &kp SPACE  			      &sl FUN_LAYER   &sl NUMBER_LAYER
+//                                         &sl L_NAV   &kp SPACE  			      &sl L_FUN   &sl L_NUMBER
 //     >;
 // };
 
@@ -203,21 +203,21 @@ ZMK_LAYER(l_qwerty,
     &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P 
     &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &kp G           &kp H           &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI
     &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                                    &sl NAV_LAYER   &kp SPACE       &smart_shft     SMART_NUM
+                                                    &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
 )
 // T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
 ZMK_LAYER(l_gaming,
     &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp Y           &kp U           &kp I           &kp O           &kp P 
     &kp LSHIFT      &kp A           &kp S           &kp D           &kp F           &kp H           &kp J           &kp K           &kp L           &kp SEMI 
     &kp LCTRL       &kp Z           &kp X           &kp C           &kp V           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                    &hktsl LALT GAMING_RIGHT_ALPHA_LAYER &kp SPACE   &sl FUN_LAYER   &sl GAMING_RIGHT_ALPHA_LAYER
+                                    &hktsl LALT L_GAMING_RIGHT_ALPHA &kp SPACE   &sl L_FUN   &sl L_GAMING_RIGHT_ALPHA
 )	  
 // l_gaming { // does shift need to be next to the left of a
 //     bindings = <
-//           &sl GAMING_RIGHT_ALPHA_LAYER   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-//           &sl GAMING_NUMBER_LAYER       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
-//           &sl FUN_LAYER                 &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
-//                     &sl NAV_LAYER &kp SPACE  				&trans  &trans
+//           &sl L_GAMING_RIGHT_ALPHA   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
+//           &sl L_GAMING_NUMBER       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
+//           &sl L_FUN                 &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
+//                     &sl L_NAV &kp SPACE  				&trans  &trans
 //     >;
 // };	  
 
@@ -231,16 +231,16 @@ ZMK_LAYER(l_nav,
     &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
     &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
     &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
-                                                    &none           &none           &kp K_CANCEL    &sl NUMBER_LAYER
+                                                    &none           &none           &kp K_CANCEL    &sl L_NUMBER
 )	
 ZMK_LAYER(l_fun,
     &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
     &kp F11         &kp F4          &kp F5          &kp F6          &kp SLCK        &kp C_PP        &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
     &kp F10         &kp F1          &kp F2          &kp F3          &kp PAUSE_BREAK &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP  
-                                                    &sl NAV_LAYER   &kp SPACE       &none           &none
+                                                    &sl L_NAV   &kp SPACE       &none           &none
 )
 ZMK_LAYER(l_utility,
-    &to QWERTY      &to GAMING_LAYER&to COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
+    &to QWERTY      &to L_GAMING&to COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
     &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
     &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
                                                     &none           &none           &none           &none
