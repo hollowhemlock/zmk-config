@@ -12,14 +12,20 @@
   #define _BT_SEL_KEYS_ &trans &trans &trans &trans &trans
 #endif
 
+// Layers
+// MAIN
 #define COLEMAK_DH 0
 #define NUMBER_LAYER 1
 #define NAV_LAYER 2
 #define FUN_LAYER 3
 #define UTILITY 4
+
+// GAMING
 #define GAMING_LAYER 5
 #define GAMING_NUMBER_LAYER 6
 #define GAMING_RIGHT_ALPHA_LAYER 7
+
+// ALTERNATE
 #define QWERTY 8
 // #define UC 9
 
