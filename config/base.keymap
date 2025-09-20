@@ -14,7 +14,7 @@
 
 // Layers
 // MAIN
-#define COLEMAK_DH 0
+#define L_COLEMAK_DH 0
 #define L_NUMBER 1
 #define L_NAV 2
 #define L_FUN 3
@@ -169,7 +169,7 @@ ZMK_MACRO(sq_Ck_stickyC,
 // Convert combos to zmk-helpers macros
 // TODO: not generic can't add wider boards
 
-// ZMK_COMBO(to_l_colemak_dh, &to COLEMAK_DH, 15 16, ALL, 50)
+// ZMK_COMBO(to_l_colemak_dh, &to L_COLEMAK_DH, 15 16, ALL, 50)
 // ZMK_COMBO(to_l_gaming, &to L_GAMING, 5 6, ALL, 50)
 
 ZMK_COMBO(l_utility_left_access, &mo UTILITY, 13 14, ALL, 50)
@@ -240,7 +240,7 @@ ZMK_LAYER(l_fun,
                                                     &sl L_NAV   &kp SPACE       &none           &none
 )
 ZMK_LAYER(l_utility,
-    &to QWERTY      &to L_GAMING&to COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
+    &to QWERTY      &to L_GAMING&to L_COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
     &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
     &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
                                                     &none           &none           &none           &none
