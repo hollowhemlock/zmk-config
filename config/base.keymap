@@ -15,20 +15,18 @@
 // Layers
 // MAIN
 #define L_CMK_DH 0
-#define L_QWERTY 8
-#define L_NUM 1
-#define L_NAV 2
-#define L_FUN 3
+#define L_QWERTY 1
+#define L_NUM 2
+#define L_NAV 3
+#define L_FUN 4
 
 // UTILITIES
-#define L_UTILITY 4
+#define L_UTILITY 5
 
 // GAMING
-#define L_GAM 5
-#define L_GAM_NUM 6
-#define L_GAM_R_ALPHA 7
-
-// #define UC 9
+#define L_GAM 6
+#define L_GAM_NUM 7
+#define L_GAM_R_ALPHA 8
 
 #define XXX &none
 #define ___ &trans
@@ -203,15 +201,7 @@ ZMK_LAYER(l_qwerty,
     &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
                                                     &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
 )
-// l_gam { // does shift need to be next to the left of a
-//     bindings = <
-//           &sl L_GAM_R_ALPHA   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
-//           &sl L_GAM_NUM       &kp A       &kp S       &kp D       &kp F 	            &kp H       &kp J       &kp K       &kp L       &kp SEMI 
-//           &sl L_FUN                 &kp Z       &kp X       &kp C       &kp V   	        &kp N       &kp M       &kp CMMA    &kp DOT     &kp SLASH
-//                     &sl L_NAV &kp SPACE  				&trans  &trans
-//     >;
-// };	  
-
+  
 ZMK_LAYER(l_num,
     &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
     &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &trans          &sq_Ck_stickyC  &kp SEMI
@@ -255,17 +245,3 @@ ZMK_LAYER(l_gam_r_alpha,
     &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH       &kp INSERT      &kp HOME        &kp TAB         &kp END         &none
                                                     &none           &kp SPACE       &none           &none
 )
-// Doesn't work for windows. Needs different definitions.
-// ZMK_LAYER(l_uc,
-// //  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ 
-//        &none           &el_omega     &el_phi       &el_pi        &el_beta         &none       &el_lambda    &el_upsilon   &el_psi       &de_eszett  
-// //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-//        &el_alpha     &el_rho       &el_sigma     &el_tau       &el_gamma        &el_mu        &el_nu        &el_epsilon   &el_iota      &el_omikron 
-// //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-//        &el_zeta      &el_xi        &el_chi       &el_delta     &el_theta        &el_kappa     &el_eta       &de_ae        &de_oe        &de_ue      
-// //  ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ 
-//                                                  &none          &none          &none           &none                                                   
-// //                                      ╰─────────────┴─────────────╯  ╰───────────────────────────╯                                           
-// )
-
-
