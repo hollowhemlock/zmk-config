@@ -17,6 +17,8 @@ _parse_targets $expr:
 _build_single $board $shield $snippet $artifact *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
+
+    # get date for unique artifact names
     artifact="${artifact:-${shield:+${shield// /+}-}${board}}"
     build_dir="{{ build / '$artifact' }}"
 
@@ -24,10 +26,11 @@ _build_single $board $shield $snippet $artifact *west_args:
     west build -s zmk/app -d "$build_dir" -b $board {{ west_args }} ${snippet:+-S "$snippet"} -- \
         -DZMK_CONFIG="{{ config }}" ${shield:+-DSHIELD="$shield"}
 
+    date=$(date +%Y%m%d_%H%M)
     if [[ -f "$build_dir/zephyr/zmk.uf2" ]]; then
-        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.uf2" "{{ out }}/$artifact.uf2"
+        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.uf2" "{{ out }}/$date-$artifact.uf2"
     else
-        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.bin" "{{ out }}/$artifact.bin"
+        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.bin" "{{ out }}/$date-$artifact.bin"
     fi
 
 # build firmware for matching targets
@@ -53,41 +56,34 @@ clean-all: clean
 clean-nix:
     nix-collect-garbage --delete-old
 
+# draw all combo diagrams
+draw: draw-base draw-main draw-gaming
+
 # parse & plot keymap
-draw:
+draw-base:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/base.yaml"
-    yq -Yi '.combos.[].l = ["Combos"]' "{{ draw }}/base.yaml"
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos Gaming >"{{ draw }}/base.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg"
 
-draw1:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/base.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" --keys-only -s l_colemak_dh l_qwerty l_nav l_num >"{{ draw }}/base.svg"
-
-# parse & plot main combos (typing layers)
-draw-main-combos:
+# parse & plot MAIN KEYMAP
+draw-main:
     #!/usr/bin/env bash
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_main.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[0] | test("colemak|qwerty|nav|number"))]' "{{ draw }}/combos_main.yaml"
-    yq -Yi '.layers."Main Combos" = [range(34) | ""] | .combos.[].l = ["Main Combos"]' "{{ draw }}/combos_main.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" >"{{ draw }}/combos_main.svg"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak","qwerty","nav","num", "fun", "uti"))]' "{{ draw }}/combos_main.yaml"
+    yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw }}/combos_main.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s l_colemak_dh l_nav l_num l_fun l_utility MAIN_COMBOS >"{{ draw }}/combos_main.svg"
 
-# parse & plot gaming combos
-draw-gaming-combos:
+# parse & plot GAMING KEYMAP
+draw-gaming:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_gaming.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[0] | test("gaming"))]' "{{ draw }}/combos_gaming.yaml"
-    yq -Yi '.layers = {l_gam: .layers.l_gam, "Gaming Combos": [range(34) | ""]} | .combos.[].l = ["Gaming Combos"]' "{{ draw }}/combos_gaming.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" >"{{ draw }}/combos_gaming.svg"
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers GAMING_COMBOS >"{{ draw }}/combos_gaming.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("l_gam"))]' "{{ draw }}/combos_gaming.yaml"
+    yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
-# draw all combo diagrams
-draw-all-combos: draw-main-combos draw-gaming-combos
- 
 did: 
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/did.yaml"
