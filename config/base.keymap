@@ -14,10 +14,13 @@
 
 // Layers
 // MAIN
-#define L_COLEMAK_DH 0
+#define L_CMK_DH 0
+#define L_QWERTY 8
 #define L_NUM 1
 #define L_NAV 2
 #define L_FUN 3
+
+// UTILITIES
 #define L_UTILITY 4
 
 // GAMING
@@ -25,8 +28,6 @@
 #define L_GAM_NUM 6
 #define L_GAM_R_ALPHA 7
 
-// ALTERNATE
-#define L_QWERTY 8
 // #define UC 9
 
 #define XXX &none
@@ -169,7 +170,7 @@ ZMK_MACRO(sq_Ck_stickyC,
 // Convert combos to zmk-helpers macros
 // TODO: not generic can't add wider boards
 
-// ZMK_COMBO(to_l_colemak_dh, &to L_COLEMAK_DH, 15 16, ALL, 50)
+// ZMK_COMBO(to_l_colemak_dh, &to L_CMK_DH, 15 16, ALL, 50)
 // ZMK_COMBO(to_l_gam, &to L_GAM, 5 6, ALL, 50)
 
 ZMK_COMBO(l_utility_l_access, &mo L_UTILITY, 13 14, ALL, 50)
@@ -184,20 +185,17 @@ ZMK_COMBO(l_utility_r_access, &mo L_UTILITY, 15 16, ALL, 50)
 // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
 // TODO: find a place for gaming functions when needed. must be fluid. maybe a combo on the thumb. can go 15 functions that way.
 
+#ifndef ZMK_BASE_LAYER
+  #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
+      ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
+#endif
+
 ZMK_LAYER(l_colemak_dh,
     &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J           &kp L           &kp U           &kp Y           &kp SQT 
     &hml LSHFT A    &hml LCTRL R    &hml LALT S     &hml LGUI T     &kp G           &kp M           &hmr RGUI N     &hmr RALT E     &hmr RCTRL I    &hmr RSHFT O
     &kp Z           &kp X           &kp C           &kp D           &kp V           &kp K           &kp H           &comma_morph    &dot_morph      &kp SLASH
                                                     &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
 )
-// l_colemak_dh {
-//     bindings = <
-//           &kp Q       &kp W       &kp F       &kp P       &kp B 	      &kp J       &kp L       &kp U       &kp Y       &kp SEMI 
-//           &kp A       &kp R       &kp S       &kp T       &kp G 	      &kp M       &kp N       &kp E       &kp I       &kp O
-//           &kp Z       &kp X       &kp C       &kp D       &kp V	          &kp K       &kp H       &kp CMMA    &kp DOT     &kp SLASH
-//                                         &sl L_NAV   &kp SPACE  			      &sl L_FUN   &sl L_NUM
-//     >;
-// };
 
 ZMK_LAYER(l_qwerty,
     &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P 
@@ -205,13 +203,6 @@ ZMK_LAYER(l_qwerty,
     &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
                                                     &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
 )
-// T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
-ZMK_LAYER(l_gam,
-    &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp Y           &kp U           &kp I           &kp O           &kp P 
-    &kp LSHIFT      &kp A           &kp S           &kp D           &kp F           &kp H           &kp J           &kp K           &kp L           &kp SEMI 
-    &kp LCTRL       &kp Z           &kp X           &kp C           &kp V           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                    &hktsl LALT L_GAM_R_ALPHA &kp SPACE   &sl L_FUN   &sl L_GAM_R_ALPHA
-)	  
 // l_gam { // does shift need to be next to the left of a
 //     bindings = <
 //           &sl L_GAM_R_ALPHA   &kp Q       &kp W       &kp E       &kp R     	        &kp Y       &kp U       &kp I       &kp O       &kp P 
@@ -231,20 +222,27 @@ ZMK_LAYER(l_nav,
     &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
     &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
     &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
-                                                    &none           &none           &kp K_CANCEL    &sl L_NUM
+    &none           &none           &kp K_CANCEL    &sl L_NUM
 )	
 ZMK_LAYER(l_fun,
     &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
     &kp F11         &kp F4          &kp F5          &kp F6          &kp SLCK        &kp C_PP        &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
     &kp F10         &kp F1          &kp F2          &kp F3          &kp PAUSE_BREAK &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP  
-                                                    &sl L_NAV   &kp SPACE       &none           &none
+    &sl L_NAV   &kp SPACE       &none           &none
 )
 ZMK_LAYER(l_utility,
-    &to L_QWERTY      &to L_GAM&to L_COLEMAK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
+    &to L_QWERTY    &to L_GAM       &to L_CMK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
     &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
     &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
-                                                    &none           &none           &none           &none
+    &none           &none           &none           &none
 )
+// T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
+ZMK_LAYER(l_gam,
+    &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp Y           &kp U           &kp I           &kp O           &kp P 
+    &kp LSHIFT      &kp A           &kp S           &kp D           &kp F           &kp H           &kp J           &kp K           &kp L           &kp SEMI 
+    &kp LCTRL       &kp Z           &kp X           &kp C           &kp V           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
+                                    &hktsl LALT L_GAM_R_ALPHA &kp SPACE   &sl L_FUN   &sl L_GAM_R_ALPHA
+)	  
 ZMK_LAYER(l_gam_num,
     &kp LGUI        &kp N7          &kp N8          &kp N9          &kp T           &none           &none           &none           &none           &none
     &kp N0          &kp N4          &kp N5          &kp N6          &kp G           &none           &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
