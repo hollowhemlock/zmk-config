@@ -1,4 +1,4 @@
-Working mishmash of default zmk syntax and an abstraction from https://github.com/urob/zmk-config. Highly suggest you check those out.
+Working mishmash of default zmk syntax and an abstraction from https://github.com/urob/zmk-config. 
 
 ## References
 
