@@ -5,6 +5,7 @@ config := absolute_path('config')
 build := absolute_path('.build')
 out := absolute_path('firmware')
 draw := absolute_path('draw')
+artifacts := absolute_path('artifacts')
 
 # parse build.yaml and filter targets by expression
 _parse_targets $expr:
@@ -26,11 +27,10 @@ _build_single $board $shield $snippet $artifact *west_args:
     west build -s zmk/app -d "$build_dir" -b $board {{ west_args }} ${snippet:+-S "$snippet"} -- \
         -DZMK_CONFIG="{{ config }}" ${shield:+-DSHIELD="$shield"}
 
-    date=$(date +%Y%m%d_%H%M)
     if [[ -f "$build_dir/zephyr/zmk.uf2" ]]; then
-        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.uf2" "{{ out }}/$date-$artifact.uf2"
+        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.uf2" "{{ out }}/$artifact.uf2"
     else
-        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.bin" "{{ out }}/$date-$artifact.bin"
+        mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.bin" "{{ out }}/$artifact.bin"
     fi
 
 # build firmware for matching targets
@@ -57,7 +57,7 @@ clean-nix:
     nix-collect-garbage --delete-old
 
 # draw all combo diagrams
-draw: draw-base draw-main draw-gaming
+draw: draw-base draw-main draw-gaming copy-artifacts
 
 # parse & plot keymap
 draw-base:
@@ -84,9 +84,15 @@ draw-gaming:
     yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
-did: 
-    set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/did.yaml"
+# copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
+copy-artifacts:
+    #!/usr/bin/env bash
+    date=$(date +%Y%m%d)
+    dateTime=$(date +%Y%m%d_%H%M%S)
+    mkdir -p "{{ artifacts }}/$date"
+    cp {{ out }}/*.{uf2,bin} "{{ artifacts }}/$date" 2>/dev/null || true
+    cp {{ draw }}/*.{yaml,svg} "{{ artifacts }}/$date" 2>/dev/null || true
+    echo "Copied artifacts to {{ artifacts }}/$date"
 
 # initialize west
 init:
