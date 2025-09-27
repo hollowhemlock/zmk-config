@@ -7,7 +7,6 @@ zephyr
 zmk
 
 # Drawings
-draw/base.yaml
 *.png
 *.odg
 
