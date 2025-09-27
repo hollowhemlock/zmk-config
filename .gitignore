@@ -5,6 +5,12 @@ modules
 firmware
 zephyr
 zmk
+
+# Drawings
 draw/base.yaml
+*.png
+*.odg
+
+artifacts
 
 .claude/settings.local.json
