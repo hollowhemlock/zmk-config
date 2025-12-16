@@ -38,14 +38,13 @@ build expr *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
     targets=$(just _parse_targets {{ expr }})
-
     [[ -z $targets ]] && echo "No matching targets found. Aborting..." >&2 && exit 1
     echo "$targets" | while IFS=, read -r board shield snippet artifact; do
         just _build_single "$board" "$shield" "$snippet" "$artifact" {{ west_args }}
     done
 
 # build firmware and autocommit changes
-build-commit expr *west_args:
+bld expr *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -55,13 +54,25 @@ build-commit expr *west_args:
     echo "Adding firmware files to git..."
     git add {{ out }}/*.{uf2,bin} 2>/dev/null || true
 
+    echo "Drawing combo diagrams..."
+    just draw
+
+    echo "Copying artifacts to timestamped folder..."
+    just copy-artifacts
+
+    echo "Adding diagram files to git..."
+    git add {{ draw }}/*.{yaml,svg} 2>/dev/null || true
+
+autocommit $model:
+    #!/usr/bin/env bash
+    set -euo pipefail
     # Check if there are changes to commit
     if git diff --cached --quiet; then
         echo "No new firmware files to commit."
     else
         date=$(date +%Y%m%d_%H%M)
-        git commit -m "feat: update firmware build for {{ expr }} - $date"
-        echo "Committed firmware build for {{ expr }}"
+        git commit -m "feat: update firmware build for $model - $date"
+        echo "Committed firmware build for $model"
     fi
 
 # clear build cache and artifacts
@@ -77,7 +88,7 @@ clean-nix:
     nix-collect-garbage --delete-old
 
 # draw all combo diagrams
-draw: draw-base draw-main draw-gaming copy-artifacts
+draw: draw-base draw-main draw-gaming
 
 # parse & plot keymap
 draw-base:
