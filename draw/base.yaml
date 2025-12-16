@@ -88,7 +88,7 @@ layers:
   - {type: trans}
   - {type: trans}
   - {type: trans}
-  - {type: trans}
+  - APP
   - '&sq_Ck_stickyC'
   - ;
   - {type: trans}
