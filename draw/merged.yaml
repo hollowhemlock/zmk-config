@@ -1,37 +1,37 @@
 layout: {zmk_keyboard: base}
 layers:
   merged:
-  - {t: Q, s: F12, h: l_qwerty, right: Tab}
-  - {t: W, s: F7, h: l_gam, left: '7'}
-  - {t: F, s: F8, h: l_colemak_dh, left: '8'}
-  - {t: P, s: F9, h: OUT BLE, left: '9'}
-  - {t: B, s: PSCRN, h: OUT USB}
-  - {t: J, right: PgUp}
-  - {t: L, right: Bspc}
-  - {t: U, right: ↑}
-  - {t: Y, right: Del}
+  - {t: Q, tl: F12, tr: l_qwerty, br: Tab}
+  - {t: W, tl: F7, tr: l_gam, bl: '7'}
+  - {t: F, tl: F8, tr: l_colemak_dh, bl: '8'}
+  - {t: P, tl: F9, tr: OUT BLE, bl: '9'}
+  - {t: B, tl: PSCRN, tr: OUT USB}
+  - {t: J, br: PgUp}
+  - {t: L, br: Bspc}
+  - {t: U, br: ↑}
+  - {t: Y, br: Del}
   - ''''
-  - {t: A, s: F11, h: BT1, left: '0', right: Shift}
-  - {t: R, s: F4, h: BT2, left: '4', right: Ctrl}
-  - {t: S, s: F5, h: BT3, left: '5', right: Alt}
-  - {t: T, s: F6, h: BT4, left: '6', right: Gui}
-  - {t: G, s: SLCK, h: BT, right: Tab}
-  - {t: M, s: '$$mdi:play-pause$$', right: PgDn}
-  - {t: N, s: Gui, right: ←}
-  - {t: E, s: Alt, left: APP, right: ↓}
-  - {t: I, s: Ctrl, left: '&sq_Ck_stickyC', right: →}
-  - {t: O, s: Shift, left: ;, right: Enter}
-  - {t: Z, s: F10, h: BT CLR}
-  - {t: X, s: F1, left: '1'}
-  - {t: C, s: F2, left: '2'}
-  - {t: D, s: F3, h: Reset, left: '3', right: Gui}
-  - {t: V, s: PAUSE BREAK, h: Boot}
-  - {t: K, s: '$$mdi:skip-backward$$', right: INSERT}
-  - {t: H, s: '$$mdi:skip-forward$$', right: Home}
-  - {t: ',', s: '$$mdi:volume-off$$', right: Tab}
-  - {t: ., s: '$$mdi:volume-medium$$', right: End}
-  - {t: /, s: '$$mdi:volume-high$$'}
-  - {t: l_nav, s: l_nav}
-  - {t: Spc, s: Spc}
-  - {t: Shift, right: CANCEL}
-  - {t: Numword, right: l_num}
+  - {t: A, h: Shift, tl: F11, tr: BT1, bl: '0', br: Shift}
+  - {t: R, h: Ctrl, tl: F4, tr: BT2, bl: '4', br: Ctrl}
+  - {t: S, h: Alt, tl: F5, tr: BT3, bl: '5', br: Alt}
+  - {t: T, h: Gui, tl: F6, tr: BT4, bl: '6', br: Gui}
+  - {t: G, tl: SLCK, tr: BT, br: Tab}
+  - {t: M, tl: '$$mdi:play-pause$$', br: PgDn}
+  - {t: N, h: Gui, tl: Gui, br: ←}
+  - {t: E, h: Alt, tl: Alt, bl: APP, br: ↓}
+  - {t: I, h: Ctrl, tl: Ctrl, bl: '&sq_Ck_stickyC', br: →}
+  - {t: O, h: Shift, tl: Shift, bl: ;, br: Enter}
+  - {t: Z, tl: F10, tr: BT CLR}
+  - {t: X, tl: F1, bl: '1'}
+  - {t: C, tl: F2, bl: '2'}
+  - {t: D, tl: F3, tr: Reset, bl: '3', br: Gui}
+  - {t: V, tl: PAUSE BREAK, tr: Boot}
+  - {t: K, tl: '$$mdi:skip-backward$$', br: INSERT}
+  - {t: H, tl: '$$mdi:skip-forward$$', br: Home}
+  - {t: ',', s: ;, tl: '$$mdi:volume-off$$', br: Tab}
+  - {t: ., s: ':', tl: '$$mdi:volume-medium$$', br: End}
+  - {t: /, tl: '$$mdi:volume-high$$'}
+  - {t: l_nav, h: sticky, tl: l_nav}
+  - {t: Spc, tl: Spc}
+  - {t: Shift, s: Caps Word, h: sticky, br: CANCEL}
+  - {t: Numword, s: Sticky Num, h: l_num, br: l_num}

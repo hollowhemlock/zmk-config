@@ -115,21 +115,32 @@ draw-gaming:
     yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
-# merge layers into single multi-position diagram with corner legends
+# merge layers into single multi-position diagram with 7 legend positions
 draw-merged *layers: draw
     #!/usr/bin/env bash
     set -euo pipefail
+    # Call 1: Merge layers into YAML with 7 positions (t/s/h from center, tl/tr/bl/br from corners)
     python "{{ draw }}/merge_layers.py" \
         --input "{{ draw }}/base.yaml" \
         --center l_colemak_dh \
-        --top l_fun \
-        --bottom l_utility \
-        --left l_num \
-        --right l_nav \
+        --tl l_fun \
+        --tr l_utility \
+        --bl l_num \
+        --br l_nav \
         --output "{{ draw }}/merged.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
-    python "{{ draw }}/merge_layers.py" --corners "{{ draw }}/merged.svg" --config "{{ draw }}/config.yaml" --pad-x 0 --pad-y 0
-    echo "Created {{ draw }}/merged.svg"
+    # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
+    yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \
+        "{{ draw }}/merged.yaml" > "{{ draw }}/merged_draw.yaml"
+    # keymap-drawer renders t/s/h
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged_draw.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
+    # Call 2: Post-process SVG to inject corner legends from full merged.yaml
+    python "{{ draw }}/merge_layers.py" \
+        --inject-corners "{{ draw }}/merged.svg" \
+        --merged-yaml "{{ draw }}/merged.yaml" \
+        --config "{{ draw }}/config.yaml" \
+        --pad-x 0 --pad-y 0
+    rm "{{ draw }}/merged_draw.yaml"
+    echo "Created {{ draw }}/merged.svg with 7 legend positions"
 
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
 copy-artifacts:
