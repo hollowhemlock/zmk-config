@@ -25,12 +25,17 @@ def calculate_corner_offsets(key_w: float = 60, key_h: float = 56, pad_x: float 
     Args:
         key_w: Key width (default: 60)
         key_h: Key height (default: 56)
-        pad_x: Padding from left/right edges
-        pad_y: Padding from top/bottom edges
+        pad_x: Padding from left/right edges (minimum 2px for font clearance)
+        pad_y: Padding from top/bottom edges (minimum 2px for font clearance)
 
     Returns:
         (x_offset, y_offset) - distances from key center to corner text
     """
+    # Minimum 2px padding to account for font rendering
+    min_pad = 2
+    pad_x = max(pad_x, min_pad)
+    pad_y = max(pad_y, min_pad)
+
     x_offset = int(key_w / 2 - pad_x)
     y_offset = int(key_h / 2 - pad_y)
     return x_offset, y_offset
@@ -59,7 +64,14 @@ def move_legends_to_corners(svg_content: str, pad_x: float = 10, pad_y: float = 
         key_h: Key height (default: 56)
     """
     x_offset, y_offset = calculate_corner_offsets(key_w, key_h, pad_x, pad_y)
+
+    # Calculate original keymap-drawer positions (what we're matching in regex)
+    orig_y = int(key_h * 3 / 7)  # shifted/hold y offset (24 for key_h=56)
+    orig_x = int(key_w * 2 / 5)  # left/right x offset (24 for key_w=60)
+
     # Update CSS for text anchoring
+    # hanging = top of text at y position
+    # text-after-edge = bottom of text at y position
     css_updates = '''
 /* Corner positioning for merged layer view */
 text.shifted {
@@ -72,11 +84,11 @@ text.hold {
 }
 text.left {
     text-anchor: start;
-    dominant-baseline: auto;
+    dominant-baseline: text-after-edge;
 }
 text.right {
     text-anchor: end;
-    dominant-baseline: auto;
+    dominant-baseline: text-after-edge;
 }
 '''
 
@@ -84,30 +96,30 @@ text.right {
     if '</style>' in svg_content:
         svg_content = svg_content.replace('</style>', css_updates + '</style>')
 
-    # Update shifted (top-left): x=0 -> -x_offset, y=-24 -> -y_offset
+    # Update shifted (top-left): x=0 -> -x_offset, y=-orig_y -> -y_offset
     svg_content = re.sub(
-        r'(<text x=")0(" y=")-24(" class="[^"]*shifted)',
+        rf'(<text x=")0(" y=")-{orig_y}(" class="[^"]*shifted)',
         rf'\g<1>-{x_offset}\g<2>-{y_offset}\g<3>',
         svg_content
     )
 
-    # Update hold (top-right): x=0 -> +x_offset, y=24 -> -y_offset
+    # Update hold (top-right): x=0 -> +x_offset, y=orig_y -> -y_offset
     svg_content = re.sub(
-        r'(<text x=")0(" y=")24(" class="[^"]*hold)',
+        rf'(<text x=")0(" y="){orig_y}(" class="[^"]*hold)',
         rf'\g<1>{x_offset}\g<2>-{y_offset}\g<3>',
         svg_content
     )
 
-    # Update left (bottom-left): x=-24 -> -x_offset, y=0 -> +y_offset
+    # Update left (bottom-left): x=-orig_x -> -x_offset, y=0 -> +y_offset
     svg_content = re.sub(
-        r'(<text x=")-24(" y=")0(" class="[^"]*left)',
+        rf'(<text x=")-{orig_x}(" y=")0(" class="[^"]*left)',
         rf'\g<1>-{x_offset}\g<2>{y_offset}\g<3>',
         svg_content
     )
 
-    # Update right (bottom-right): x=24 -> +x_offset, y=0 -> +y_offset
+    # Update right (bottom-right): x=orig_x -> +x_offset, y=0 -> +y_offset
     svg_content = re.sub(
-        r'(<text x=")24(" y=")0(" class="[^"]*right)',
+        rf'(<text x="){orig_x}(" y=")0(" class="[^"]*right)',
         rf'\g<1>{x_offset}\g<2>{y_offset}\g<3>',
         svg_content
     )
