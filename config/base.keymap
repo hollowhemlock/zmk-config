@@ -9,7 +9,7 @@
   #define _BT_SEL_KEYS_                                                        \
       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
 #else
-  #define _BT_SEL_KEYS_ &trans &trans &trans &trans &trans
+  #define _BT_SEL_KEYS_ &none &none &none &none &none
 #endif
 
 // Layers
@@ -191,10 +191,10 @@ ZMK_LAYER(l_qwerty,
 )
   
 ZMK_LAYER(l_num,
-    &trans          &kp N7          &kp N8          &kp N9          &trans          &trans          &trans          &trans          &trans          &trans
-    &kp  N0         &kp N4          &kp N5          &kp N6          &trans          &trans          &trans          &kp K_APP       &sq_Ck_stickyC  &kp SEMI
-    &trans          &kp N1          &kp N2          &kp N3          &trans          &trans          &trans          &trans          &trans          &trans
-                                                    &trans          &trans          &trans          &trans      
+    &none           &kp N7          &kp N8          &kp N9          &none          &none          &none          &none          &none          &none
+    &kp  N0         &kp N4          &kp N5          &kp N6          &none          &none          &none          &kp K_APP      &sq_Ck_stickyC &kp SEMI
+    &none           &kp N1          &kp N2          &kp N3          &none          &none          &none          &none          &none          &none
+                                                    &none          &none          &none          &none      
 )
 ZMK_LAYER(l_nav,
     &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none

@@ -71,39 +71,39 @@ layers:
   - {t: Shift, h: sticky, s: Caps Word}
   - {t: Numword, h: l_num, s: Sticky Num}
   l_num:
-  - {type: trans}
+  - ''
   - '7'
   - '8'
   - '9'
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - '0'
   - '4'
   - '5'
   - '6'
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
+  - ''
+  - ''
+  - ''
   - APP
   - '&sq_Ck_stickyC'
   - ;
-  - {type: trans}
+  - ''
   - '1'
   - '2'
   - '3'
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
-  - {type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - {type: held}
   l_nav:
   - Tab
