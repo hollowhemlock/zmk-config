@@ -115,6 +115,22 @@ draw-gaming:
     yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
+# merge layers into single multi-position diagram with corner legends
+draw-merged *layers:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    python "{{ draw }}/merge_layers.py" \
+        --input "{{ draw }}/base.yaml" \
+        --center l_colemak_dh \
+        --top l_nav \
+        --bottom l_num \
+        --left l_fun \
+        --right l_utility \
+        --output "{{ draw }}/merged.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
+    python "{{ draw }}/merge_layers.py" --corners "{{ draw }}/merged.svg"
+    echo "Created {{ draw }}/merged.svg"
+
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
 copy-artifacts:
     #!/usr/bin/env bash

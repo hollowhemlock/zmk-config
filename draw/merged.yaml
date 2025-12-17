@@ -1,0 +1,37 @@
+layout: {zmk_keyboard: base}
+layers:
+  merged:
+  - {t: Q, s: Tab, left: F12, right: l_qwerty}
+  - {t: W, h: '7', left: F7, right: l_gam}
+  - {t: F, h: '8', left: F8, right: l_colemak_dh}
+  - {t: P, h: '9', left: F9, right: OUT BLE}
+  - {t: B, left: PSCRN, right: OUT USB}
+  - {t: J, s: PgUp}
+  - {t: L, s: Bspc}
+  - {t: U, s: ↑}
+  - {t: Y, s: Del}
+  - ''''
+  - {t: A, s: Shift, h: '0', left: F11, right: BT 1}
+  - {t: R, s: Ctrl, h: '4', left: F4, right: BT 2}
+  - {t: S, s: Alt, h: '5', left: F5, right: BT 3}
+  - {t: T, s: Gui, h: '6', left: F6, right: BT 4}
+  - {t: G, s: Tab, left: SLCK, right: BT}
+  - {t: M, s: PgDn, left: '$$mdi:play-pause$$'}
+  - {t: N, s: ←, left: Gui}
+  - {t: E, s: ↓, h: APP, left: Alt}
+  - {t: I, s: →, h: '&sq_Ck_stickyC', left: Ctrl}
+  - {t: O, s: Enter, h: ;, left: Shift}
+  - {t: Z, left: F10, right: BT CLR}
+  - {t: X, h: '1', left: F1}
+  - {t: C, h: '2', left: F2}
+  - {t: D, s: Gui, h: '3', left: F3, right: Reset}
+  - {t: V, left: PAUSE BREAK, right: Boot}
+  - {t: K, s: INSERT, left: '$$mdi:skip-backward$$'}
+  - {t: H, s: Home, left: '$$mdi:skip-forward$$'}
+  - {t: ',', s: Tab, left: '$$mdi:volume-off$$'}
+  - {t: ., s: End, left: '$$mdi:volume-medium$$'}
+  - {t: /, left: '$$mdi:volume-high$$'}
+  - {t: l_nav, left: l_nav}
+  - {t: Spc, left: Spc}
+  - {t: Shift, s: CANCEL}
+  - {t: Numword, s: l_num}
