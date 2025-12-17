@@ -186,10 +186,10 @@ layers:
     - ''
     - ''
     - ''
-    - BT 1
-    - BT 2
-    - BT 3
-    - {t: BT 4, type: held}
+    - BT1
+    - BT2
+    - BT3
+    - {t: BT4, type: held}
     - {t: BT, h: '4', type: held}
     - ''
     - ''

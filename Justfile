@@ -122,10 +122,10 @@ draw-merged *layers:
     python "{{ draw }}/merge_layers.py" \
         --input "{{ draw }}/base.yaml" \
         --center l_colemak_dh \
-        --top l_nav \
-        --bottom l_num \
-        --left l_fun \
-        --right l_utility \
+        --top l_fun \
+        --bottom l_utility \
+        --left l_num \
+        --right l_nav \
         --output "{{ draw }}/merged.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
     python "{{ draw }}/merge_layers.py" --corners "{{ draw }}/merged.svg"
