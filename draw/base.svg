@@ -1,4 +1,4 @@
-<svg width="732" height="3783" viewBox="0 0 732 3783" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="732" height="3471" viewBox="0 0 732 3471" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>/* start glyphs */
 <svg id="mdi:play-pause">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-play-pause" viewBox="0 0 24 24"><path d="M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5" /></svg>
@@ -162,8 +162,8 @@ text.left { fill: #98c379; }     /* bottom-left: numbers - green */
 text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </style>
 <g transform="translate(30, 0)" class="layer-l_colemak_dh">
-<text x="0" y="28" class="label" id="l_colemak_dh">l_colemak_dh</text>
-<g transform="translate(0, 56)">
+<text x="0" y="15" class="label" id="l_colemak_dh">l_colemak_dh</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Q</text>
@@ -451,9 +451,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </g>
 </g>
 </g>
-<g transform="translate(30, 339)" class="layer-l_qwerty">
-<text x="0" y="28" class="label" id="l_qwerty">l_qwerty</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 313)" class="layer-l_qwerty">
+<text x="0" y="15" class="label" id="l_qwerty">l_qwerty</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Q</text>
@@ -739,9 +739,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </g>
 </g>
 </g>
-<g transform="translate(30, 678)" class="layer-l_num">
-<text x="0" y="28" class="label" id="l_num">l_num</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 626)" class="layer-l_num">
+<text x="0" y="15" class="label" id="l_num">l_num</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 </g>
@@ -985,9 +985,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </g>
 </g>
 </g>
-<g transform="translate(30, 1016)" class="layer-l_nav">
-<text x="0" y="28" class="label" id="l_nav">l_nav</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 938)" class="layer-l_nav">
+<text x="0" y="15" class="label" id="l_nav">l_nav</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Tab</text>
@@ -1248,9 +1248,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </g>
 </g>
 </g>
-<g transform="translate(30, 1355)" class="layer-l_fun">
-<text x="0" y="28" class="label" id="l_fun">l_fun</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 1251)" class="layer-l_fun">
+<text x="0" y="15" class="label" id="l_fun">l_fun</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">F12</text>
@@ -1400,9 +1400,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </a></g>
 </g>
 </g>
-<g transform="translate(30, 1694)" class="layer-l_utility">
-<text x="0" y="28" class="label" id="l_utility">l_utility</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 1564)" class="layer-l_utility">
+<text x="0" y="15" class="label" id="l_utility">l_utility</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <a href="#l_qwerty">
@@ -1543,9 +1543,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </a></g>
 </g>
 </g>
-<g transform="translate(30, 2033)" class="layer-l_gam">
-<text x="0" y="28" class="label" id="l_gam">l_gam</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 1877)" class="layer-l_gam">
+<text x="0" y="15" class="label" id="l_gam">l_gam</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Tab</text>
@@ -1760,9 +1760,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </g>
 </g>
 </g>
-<g transform="translate(30, 2372)" class="layer-l_gam_num">
-<text x="0" y="28" class="label" id="l_gam_num">l_gam_num</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 2190)" class="layer-l_gam_num">
+<text x="0" y="15" class="label" id="l_gam_num">l_gam_num</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Gui</text>
@@ -1904,9 +1904,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </a></g>
 </g>
 </g>
-<g transform="translate(30, 2710)" class="layer-l_gam_r_alpha">
-<text x="0" y="28" class="label" id="l_gam_r_alpha">l_gam_r_alpha</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 2502)" class="layer-l_gam_r_alpha">
+<text x="0" y="15" class="label" id="l_gam_r_alpha">l_gam_r_alpha</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Y</text>
@@ -2052,9 +2052,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </a></g>
 </g>
 </g>
-<g transform="translate(30, 3049)" class="layer-Combos">
-<text x="0" y="28" class="label" id="Combos">Combos</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 2815)" class="layer-Combos">
+<text x="0" y="15" class="label" id="Combos">Combos</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
@@ -2169,9 +2169,9 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </a></g>
 </g>
 </g>
-<g transform="translate(30, 3388)" class="layer-Gaming">
-<text x="0" y="28" class="label" id="Gaming">Gaming</text>
-<g transform="translate(0, 56)">
+<g transform="translate(30, 3128)" class="layer-Gaming">
+<text x="0" y="15" class="label" id="Gaming">Gaming</text>
+<g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
@@ -2286,4 +2286,4 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </a></g>
 </g>
 </g>
-<text x="702.0" y="3755.0" class="footer">hollowhemlock/zmk-config</text></svg>
+<text x="702.0" y="3456.0" class="footer">hollowhemlock/zmk-config</text></svg>

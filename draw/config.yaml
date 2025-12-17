@@ -184,7 +184,7 @@ draw_config:
   inner_pad_w: 2.0
   inner_pad_h: 2.0
   outer_pad_w: 30.0
-  outer_pad_h: 56.0
+  outer_pad_h: 30.0
   line_spacing: 1.2
   arc_radius: 6.0
   small_pad: 2.0

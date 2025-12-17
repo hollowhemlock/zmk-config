@@ -29,10 +29,10 @@ def move_legends_to_corners(svg_content: str) -> str:
     - right: x=24, y=0 (right center)
 
     New corner positions:
-    - shifted -> top-left: x=-22, y=-18
-    - hold -> top-right: x=22, y=-18
-    - left -> bottom-left: x=-22, y=20
-    - right -> bottom-right: x=22, y=20
+    - shifted -> top-left: x=-20, y=-20
+    - hold -> top-right: x=20, y=-20
+    - left -> bottom-left: x=-20, y=20
+    - right -> bottom-right: x=20, y=20
     """
     # Update CSS for text anchoring
     css_updates = '''
@@ -59,31 +59,31 @@ text.right {
     if '</style>' in svg_content:
         svg_content = svg_content.replace('</style>', css_updates + '</style>')
 
-    # Update shifted: y=-24 -> y=-18, x=0 -> x=-22
+    # Update shifted: y=-24 -> y=-20, x=0 -> x=-20
     svg_content = re.sub(
         r'(<text x=")0(" y=")-24(" class="[^"]*shifted)',
-        r'\g<1>-22\g<2>-18\g<3>',
+        r'\g<1>-20\g<2>-20\g<3>',
         svg_content
     )
 
-    # Update hold: y=24 -> y=-18, x=0 -> x=22
+    # Update hold: y=24 -> y=-20, x=0 -> x=20
     svg_content = re.sub(
         r'(<text x=")0(" y=")24(" class="[^"]*hold)',
-        r'\g<1>22\g<2>-18\g<3>',
+        r'\g<1>20\g<2>-20\g<3>',
         svg_content
     )
 
-    # Update left: x=-24 -> x=-22, y=0 -> y=20
+    # Update left: x=-24 -> x=-20, y=0 -> y=20
     svg_content = re.sub(
         r'(<text x=")-24(" y=")0(" class="[^"]*left)',
-        r'\g<1>-22\g<2>20\g<3>',
+        r'\g<1>-20\g<2>20\g<3>',
         svg_content
     )
 
-    # Update right: x=24 -> x=22, y=0 -> y=20
+    # Update right: x=24 -> x=20, y=0 -> y=20
     svg_content = re.sub(
         r'(<text x=")24(" y=")0(" class="[^"]*right)',
-        r'\g<1>22\g<2>20\g<3>',
+        r'\g<1>20\g<2>20\g<3>',
         svg_content
     )
 
