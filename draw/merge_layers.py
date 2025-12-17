@@ -18,21 +18,47 @@ from pathlib import Path
 import yaml
 
 
-def move_legends_to_corners(svg_content: str, x_offset: int = 20, y_offset: int = 20) -> str:
+def calculate_corner_offsets(key_w: float = 60, key_h: float = 56, pad_x: float = 10, pad_y: float = 8) -> tuple[int, int]:
+    """
+    Calculate corner text offsets from key center based on edge padding.
+
+    Args:
+        key_w: Key width (default: 60)
+        key_h: Key height (default: 56)
+        pad_x: Padding from left/right edges
+        pad_y: Padding from top/bottom edges
+
+    Returns:
+        (x_offset, y_offset) - distances from key center to corner text
+    """
+    x_offset = int(key_w / 2 - pad_x)
+    y_offset = int(key_h / 2 - pad_y)
+    return x_offset, y_offset
+
+
+def move_legends_to_corners(svg_content: str, pad_x: float = 10, pad_y: float = 8,
+                            key_w: float = 60, key_h: float = 56) -> str:
     """
     Post-process SVG to move legend text to corners.
 
-    Original positions (relative to key center):
-    - shifted: x=0, y=-24 (top center)
-    - hold: x=0, y=24 (bottom center)
-    - left: x=-24, y=0 (left center)
-    - right: x=24, y=0 (right center)
+    Original keymap-drawer positions (relative to key center):
+    - shifted: x=0, y=-24 (top center, y = -key_h * 3/7)
+    - hold: x=0, y=24 (bottom center, y = key_h * 3/7)
+    - left: x=-24, y=0 (left center, x = -key_w * 2/5)
+    - right: x=24, y=0 (right center, x = key_w * 2/5)
+
+    New corner positions are calculated from edge padding:
+    - x_offset = key_w/2 - pad_x
+    - y_offset = key_h/2 - pad_y
 
     Args:
         svg_content: The SVG content to process
-        x_offset: Horizontal distance from key center to corner text
-        y_offset: Vertical distance from key center to corner text
+        pad_x: Padding from left/right key edges (default: 10)
+        pad_y: Padding from top/bottom key edges (default: 8)
+        key_w: Key width (default: 60)
+        key_h: Key height (default: 56)
     """
+    x_offset, y_offset = calculate_corner_offsets(key_w, key_h, pad_x, pad_y)
     # Update CSS for text anchoring
     css_updates = '''
 /* Corner positioning for merged layer view */
@@ -231,16 +257,28 @@ def main():
         help="Post-process an SVG file to move legends to corners"
     )
     parser.add_argument(
-        "--x-offset",
-        type=int,
-        default=20,
-        help="Horizontal distance from key center to corner text (default: 20)"
+        "--pad-x",
+        type=float,
+        default=10,
+        help="Padding from left/right key edges (default: 10)"
     )
     parser.add_argument(
-        "--y-offset",
-        type=int,
-        default=20,
-        help="Vertical distance from key center to corner text (default: 20)"
+        "--pad-y",
+        type=float,
+        default=8,
+        help="Padding from top/bottom key edges (default: 8)"
+    )
+    parser.add_argument(
+        "--key-w",
+        type=float,
+        default=60,
+        help="Key width (default: 60)"
+    )
+    parser.add_argument(
+        "--key-h",
+        type=float,
+        default=56,
+        help="Key height (default: 56)"
     )
 
     args = parser.parse_args()
@@ -253,7 +291,7 @@ def main():
             sys.exit(1)
 
         svg_content = svg_path.read_text()
-        modified = move_legends_to_corners(svg_content, args.x_offset, args.y_offset)
+        modified = move_legends_to_corners(svg_content, args.pad_x, args.pad_y, args.key_w, args.key_h)
         svg_path.write_text(modified)
         print(f"Moved legends to corners in {svg_path}")
         sys.exit(0)
