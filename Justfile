@@ -44,7 +44,7 @@ build expr *west_args:
     done
 
 # build firmware and autocommit changes
-bld expr *west_args:
+release expr *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -87,8 +87,8 @@ clean-all: clean
 clean-nix:
     nix-collect-garbage --delete-old
 
-# draw all combo diagrams
-draw: draw-base draw-main draw-gaming
+# draw all diagrams
+draw: draw-base draw-main draw-gaming draw-merged
 
 # parse & plot keymap
 draw-base:
@@ -116,7 +116,7 @@ draw-gaming:
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
 # merge layers into single multi-position diagram with 7 legend positions
-draw-merged *layers: draw
+draw-merged *layers:
     #!/usr/bin/env bash
     set -euo pipefail
     # Call 1: Merge layers into YAML with 7 positions (t/s/h from center, tl/tr/bl/br from corners)
