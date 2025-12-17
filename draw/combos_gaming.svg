@@ -143,9 +143,26 @@ path.combo {
     visibility: hidden;
 }
 /* End Tabler Icons Cleanup */
+
+@media (prefers-color-scheme: dark) {
+svg.keymap { fill: #d1d6db; }
+rect.key { fill: #3f4750; }
+rect.key, rect.combo { stroke: #60666c; }
+rect.combo, rect.combo-separate { fill: #1f3d7a; }
+rect.held, rect.combo.held { fill: #854747; }
+text.label, text.footer { stroke: black; }
+text.trans { fill: #7e8184; }
+path.combo { stroke: #7f7f7f; }
+
+}
+/* Merged layer position colors */
+text.shifted { fill: #e5c07b; }  /* top-left: function - yellow */
+text.hold { fill: #61afef; }     /* top-right: utility - blue */
+text.left { fill: #98c379; }     /* bottom-left: numbers - green */
+text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </style>
 <g transform="translate(30, 0)" class="layer-l_gam">
-<text x="0" y="28" class="label" id="l_gam">l_gam:</text>
+<text x="0" y="28" class="label" id="l_gam">l_gam</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -291,7 +308,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 339)" class="layer-l_gam_num">
-<text x="0" y="28" class="label" id="l_gam_num">l_gam_num:</text>
+<text x="0" y="28" class="label" id="l_gam_num">l_gam_num</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -425,7 +442,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 678)" class="layer-l_gam_r_alpha">
-<text x="0" y="28" class="label" id="l_gam_r_alpha">l_gam_r_alpha:</text>
+<text x="0" y="28" class="label" id="l_gam_r_alpha">l_gam_r_alpha</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -563,7 +580,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 1016)" class="layer-GAMING_COMBOS">
-<text x="0" y="28" class="label" id="GAMING_COMBOS">GAMING_COMBOS:</text>
+<text x="0" y="28" class="label" id="GAMING_COMBOS">GAMING_COMBOS</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -729,4 +746,4 @@ path.combo {
 </g>
 </g>
 </g>
-</svg>
+<text x="702.0" y="1383.0" class="footer">hollowhemlock/zmk-config</text></svg>

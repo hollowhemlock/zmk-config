@@ -116,7 +116,7 @@ draw-gaming:
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
 # merge layers into single multi-position diagram with corner legends
-draw-merged *layers:
+draw-merged *layers: draw
     #!/usr/bin/env bash
     set -euo pipefail
     python "{{ draw }}/merge_layers.py" \

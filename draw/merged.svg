@@ -144,6 +144,23 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
+@media (prefers-color-scheme: dark) {
+svg.keymap { fill: #d1d6db; }
+rect.key { fill: #3f4750; }
+rect.key, rect.combo { stroke: #60666c; }
+rect.combo, rect.combo-separate { fill: #1f3d7a; }
+rect.held, rect.combo.held { fill: #854747; }
+text.label, text.footer { stroke: black; }
+text.trans { fill: #7e8184; }
+path.combo { stroke: #7f7f7f; }
+
+}
+/* Merged layer position colors */
+text.shifted { fill: #e5c07b; }  /* top-left: function - yellow */
+text.hold { fill: #61afef; }     /* top-right: utility - blue */
+text.left { fill: #98c379; }     /* bottom-left: numbers - green */
+text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
+
 /* Corner positioning for merged layer view */
 text.shifted {
     text-anchor: start;
@@ -163,7 +180,7 @@ text.right {
 }
 </style>
 <g transform="translate(30, 0)" class="layer-merged">
-<text x="0" y="28" class="label" id="merged">merged:</text>
+<text x="0" y="28" class="label" id="merged">merged</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -378,4 +395,4 @@ text.right {
 </g>
 </g>
 </g>
-</svg>
+<text x="702.0" y="367.0" class="footer">hollowhemlock/zmk-config</text></svg>
