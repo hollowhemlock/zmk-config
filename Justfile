@@ -128,7 +128,7 @@ draw-merged *layers: draw
         --right l_nav \
         --output "{{ draw }}/merged.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
-    python "{{ draw }}/merge_layers.py" --corners "{{ draw }}/merged.svg"
+    python "{{ draw }}/merge_layers.py" --corners "{{ draw }}/merged.svg" --x-offset 20 --y-offset 20
     echo "Created {{ draw }}/merged.svg"
 
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder

@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 
 
-def move_legends_to_corners(svg_content: str) -> str:
+def move_legends_to_corners(svg_content: str, x_offset: int = 20, y_offset: int = 20) -> str:
     """
     Post-process SVG to move legend text to corners.
 
@@ -28,11 +28,10 @@ def move_legends_to_corners(svg_content: str) -> str:
     - left: x=-24, y=0 (left center)
     - right: x=24, y=0 (right center)
 
-    New corner positions:
-    - shifted -> top-left: x=-20, y=-20
-    - hold -> top-right: x=20, y=-20
-    - left -> bottom-left: x=-20, y=20
-    - right -> bottom-right: x=20, y=20
+    Args:
+        svg_content: The SVG content to process
+        x_offset: Horizontal distance from key center to corner text
+        y_offset: Vertical distance from key center to corner text
     """
     # Update CSS for text anchoring
     css_updates = '''
@@ -59,31 +58,31 @@ text.right {
     if '</style>' in svg_content:
         svg_content = svg_content.replace('</style>', css_updates + '</style>')
 
-    # Update shifted: y=-24 -> y=-20, x=0 -> x=-20
+    # Update shifted (top-left): x=0 -> -x_offset, y=-24 -> -y_offset
     svg_content = re.sub(
         r'(<text x=")0(" y=")-24(" class="[^"]*shifted)',
-        r'\g<1>-20\g<2>-20\g<3>',
+        rf'\g<1>-{x_offset}\g<2>-{y_offset}\g<3>',
         svg_content
     )
 
-    # Update hold: y=24 -> y=-20, x=0 -> x=20
+    # Update hold (top-right): x=0 -> +x_offset, y=24 -> -y_offset
     svg_content = re.sub(
         r'(<text x=")0(" y=")24(" class="[^"]*hold)',
-        r'\g<1>20\g<2>-20\g<3>',
+        rf'\g<1>{x_offset}\g<2>-{y_offset}\g<3>',
         svg_content
     )
 
-    # Update left: x=-24 -> x=-20, y=0 -> y=20
+    # Update left (bottom-left): x=-24 -> -x_offset, y=0 -> +y_offset
     svg_content = re.sub(
         r'(<text x=")-24(" y=")0(" class="[^"]*left)',
-        r'\g<1>-20\g<2>20\g<3>',
+        rf'\g<1>-{x_offset}\g<2>{y_offset}\g<3>',
         svg_content
     )
 
-    # Update right: x=24 -> x=20, y=0 -> y=20
+    # Update right (bottom-right): x=24 -> +x_offset, y=0 -> +y_offset
     svg_content = re.sub(
         r'(<text x=")24(" y=")0(" class="[^"]*right)',
-        r'\g<1>20\g<2>20\g<3>',
+        rf'\g<1>{x_offset}\g<2>{y_offset}\g<3>',
         svg_content
     )
 
@@ -231,6 +230,18 @@ def main():
         metavar="SVG_FILE",
         help="Post-process an SVG file to move legends to corners"
     )
+    parser.add_argument(
+        "--x-offset",
+        type=int,
+        default=20,
+        help="Horizontal distance from key center to corner text (default: 20)"
+    )
+    parser.add_argument(
+        "--y-offset",
+        type=int,
+        default=20,
+        help="Vertical distance from key center to corner text (default: 20)"
+    )
 
     args = parser.parse_args()
 
@@ -242,7 +253,7 @@ def main():
             sys.exit(1)
 
         svg_content = svg_path.read_text()
-        modified = move_legends_to_corners(svg_content)
+        modified = move_legends_to_corners(svg_content, args.x_offset, args.y_offset)
         svg_path.write_text(modified)
         print(f"Moved legends to corners in {svg_path}")
         sys.exit(0)
