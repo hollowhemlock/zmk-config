@@ -165,19 +165,7 @@ ZMK_MACRO(sq_Ck_stickyC,
     bindings = <&kp LC(K)>, <&sticky_long LCTRL>;
 )
 
-// Convert combos to zmk-helpers macros
-// TODO: not generic can't add wider boards
 
-// ZMK_COMBO(to_l_colemak_dh, &to L_CMK_DH, 15 16, ALL, 50)
-// ZMK_COMBO(to_l_gam, &to L_GAM, 5 6, ALL, 50)
-
-ZMK_COMBO(l_utility_l_access, &mo L_UTILITY, 13 14, ALL, 50)
-ZMK_COMBO(l_utility_r_access, &mo L_UTILITY, 15 16, ALL, 50)
-
-// ZMK_COMBO(l_l_double_thumb, &sl LEFT_DOUBLE_THUMB, 30 31, ALL, 50)
-// ZMK_COMBO(l_r_double_thumb, &mo L_FUN, 32 33, ALL, 50) // was function layer, annoying to use
-// ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, L_GAM, 50, 75) // require-prior-idle-ms
-// ZMK_COMBO(test_gaming_num, &kp N1, 1 11, L_GAM, 50, 75) // require-prior-idle-ms
 
 // TODO: clean up nones to trans if needed.
 // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.

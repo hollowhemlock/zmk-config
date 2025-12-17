@@ -23,6 +23,17 @@
 #define HRC_LPAR   &hmr        RA(RGUI)  LPAR
 #define HRC_RPAR   &hmr        RA(RCTRL) RPAR
 
+// ZMK_COMBO(to_l_colemak_dh, &to L_CMK_DH, RM0 RM1, ALL, 50)
+// ZMK_COMBO(to_l_gam, &to L_GAM, RT0 RT1, ALL, 50)
+
+ZMK_COMBO(l_utility_l_access, &mo L_UTILITY, LM1 LM0, ALL, 50)
+ZMK_COMBO(l_utility_r_access, &mo L_UTILITY, RM0 RM1, ALL, 50)
+
+// ZMK_COMBO(l_l_double_thumb, &sl LEFT_DOUBLE_THUMB, LH1 LH0, ALL, 50)
+// ZMK_COMBO(l_r_double_thumb, &mo L_FUN, RH0 RH1, ALL, 50) // was function layer, annoying to use
+// ZMK_COMBO(test_gaming_alt, &kp N2, LT4 LM4, L_GAM, 50, 75) // require-prior-idle-ms
+// ZMK_COMBO(test_gaming_num, &kp N1, LT4 LM4, L_GAM, 50, 75) // require-prior-idle-ms
+
 /* Punctuation (horizontal left hand) */
 
 ZMK_COMBO(ret,   &key_repeat,   LT3 LT2,     L_CMK_DH L_QWERTY L_NAV  L_NUM, COMBO_TERM_FAST)
