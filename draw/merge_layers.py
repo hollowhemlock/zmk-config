@@ -18,6 +18,20 @@ from pathlib import Path
 import yaml
 
 
+def load_config(path: Path) -> dict:
+    """Load keymap-drawer config YAML file."""
+    with open(path) as f:
+        return yaml.safe_load(f)
+
+
+def get_key_dimensions(config: dict) -> tuple[float, float]:
+    """Extract key_w and key_h from config's draw_config section."""
+    draw_config = config.get("draw_config", {})
+    key_w = draw_config.get("key_w", 60.0)
+    key_h = draw_config.get("key_h", 56.0)
+    return key_w, key_h
+
+
 def calculate_corner_offsets(key_w: float = 60, key_h: float = 56, pad_x: float = 10, pad_y: float = 8) -> tuple[int, int]:
     """
     Calculate corner text offsets from key center based on edge padding.
@@ -110,17 +124,20 @@ text.right {
         svg_content
     )
 
-    # Update left (bottom-left): x=-orig_x -> -x_offset, y=0 -> +y_offset
+    # Bottom corners need +1 adjustment for text-after-edge baseline alignment
+    y_offset_bottom = y_offset + 1
+
+    # Update left (bottom-left): x=-orig_x -> -x_offset, y=0 -> +y_offset_bottom
     svg_content = re.sub(
         rf'(<text x=")-{orig_x}(" y=")0(" class="[^"]*left)',
-        rf'\g<1>-{x_offset}\g<2>{y_offset}\g<3>',
+        rf'\g<1>-{x_offset}\g<2>{y_offset_bottom}\g<3>',
         svg_content
     )
 
-    # Update right (bottom-right): x=orig_x -> +x_offset, y=0 -> +y_offset
+    # Update right (bottom-right): x=orig_x -> +x_offset, y=0 -> +y_offset_bottom
     svg_content = re.sub(
         rf'(<text x="){orig_x}(" y=")0(" class="[^"]*right)',
-        rf'\g<1>{x_offset}\g<2>{y_offset}\g<3>',
+        rf'\g<1>{x_offset}\g<2>{y_offset_bottom}\g<3>',
         svg_content
     )
 
@@ -281,19 +298,21 @@ def main():
         help="Padding from top/bottom key edges (default: 8)"
     )
     parser.add_argument(
-        "--key-w",
-        type=float,
-        default=60,
-        help="Key width (default: 60)"
-    )
-    parser.add_argument(
-        "--key-h",
-        type=float,
-        default=56,
-        help="Key height (default: 56)"
+        "-c", "--config",
+        type=Path,
+        help="Path to keymap-drawer config.yaml (reads key_w and key_h from draw_config)"
     )
 
     args = parser.parse_args()
+
+    # Get key dimensions from config or use defaults
+    key_w, key_h = 60.0, 56.0
+    if args.config:
+        if args.config.exists():
+            config = load_config(args.config)
+            key_w, key_h = get_key_dimensions(config)
+        else:
+            print(f"Warning: Config file not found: {args.config}, using defaults", file=sys.stderr)
 
     # SVG corner post-processing mode
     if args.corners:
@@ -303,7 +322,7 @@ def main():
             sys.exit(1)
 
         svg_content = svg_path.read_text()
-        modified = move_legends_to_corners(svg_content, args.pad_x, args.pad_y, args.key_w, args.key_h)
+        modified = move_legends_to_corners(svg_content, args.pad_x, args.pad_y, key_w, key_h)
         svg_path.write_text(modified)
         print(f"Moved legends to corners in {svg_path}")
         sys.exit(0)
