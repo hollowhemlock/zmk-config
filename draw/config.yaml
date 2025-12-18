@@ -54,6 +54,33 @@ parse_config:
     "&mkp MB4": Back Click
     "&mkp MB5": Forward Click
 
+    # Home row mods with type for coloring
+    "&hml LSHFT A": {t: A, h: Shift, type: mod}
+    "&hml LCTRL R": {t: R, h: Ctrl, type: mod}
+    "&hml LALT S": {t: S, h: Alt, type: mod}
+    "&hml LGUI T": {t: T, h: Gui, type: mod}
+    "&hmr RGUI N": {t: N, h: Gui, type: mod}
+    "&hmr RALT E": {t: E, h: Alt, type: mod}
+    "&hmr RCTRL I": {t: I, h: Ctrl, type: mod}
+    "&hmr RSHFT O": {t: O, h: Shift, type: mod}
+    # QWERTY HRMs
+    "&hml LCTRL S": {t: S, h: Ctrl, type: mod}
+    "&hml LALT D": {t: D, h: Alt, type: mod}
+    "&hml LGUI F": {t: F, h: Gui, type: mod}
+    "&hmr RGUI J": {t: J, h: Gui, type: mod}
+    "&hmr RALT K": {t: K, h: Alt, type: mod}
+    "&hmr RCTRL L": {t: L, h: Ctrl, type: mod}
+    "&hmr RSHFT SEMI": {t: ";", h: Shift, type: mod}
+    # Sticky modifiers
+    "&sk LSHFT": {t: Shift, h: sticky, type: mod}
+    "&sk RSHFT": {t: Shift, h: sticky, type: mod}
+    "&sk LCTRL": {t: Ctrl, h: sticky, type: mod}
+    "&sk RCTRL": {t: Ctrl, h: sticky, type: mod}
+    "&sk LALT": {t: Alt, h: sticky, type: mod}
+    "&sk RALT": {t: Alt, h: sticky, type: mod}
+    "&sk LGUI": {t: Gui, h: sticky, type: mod}
+    "&sk RGUI": {t: Gui, h: sticky, type: mod}
+
   trans_legend: { "t": "", "type": "trans" }
 
   zmk_combos:
@@ -204,6 +231,8 @@ draw_config:
     text.hold { fill: #61afef; }     /* top-right: utility - blue */
     text.left { fill: #98c379; }     /* bottom-left: numbers - green */
     text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
+    /* Modifier keys - black to match layer 1 */
+    text.mod { fill: #000000; }
   shrink_wide_legends: 7
   style_layer_activators: true
   glyph_tap_size: 14

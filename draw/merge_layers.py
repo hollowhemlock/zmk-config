@@ -231,6 +231,8 @@ def get_key_legend(key, extract_full: bool = False) -> str | dict:
                 result["s"] = key["s"]
             if "h" in key:
                 result["h"] = key["h"]
+            if "type" in key:
+                result["type"] = key["type"]
             return result
         # Return tap value if it exists
         return key.get("t", key.get("tap", ""))
@@ -298,6 +300,8 @@ def merge_layers(
             key_def["s"] = center_full["s"]
         if center_full.get("h"):
             key_def["h"] = center_full["h"]
+        if center_full.get("type"):
+            key_def["type"] = center_full["type"]
 
         # Corner positions (from corner layers) - custom keys for injection
         if tl:

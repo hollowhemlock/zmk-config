@@ -1,7 +1,5 @@
 # Claude Assistant Notes
 
-## keymap-drawer
-
 Tool for parsing and visualizing keyboard keymaps from QMK and ZMK firmware.
 
 ### Installation
@@ -48,4 +46,7 @@ keymap draw keymap.yaml > keymap.svg
 - Support for multiple icon sources
 - Flexible parsing of different keyboard firmware formats
 
-Documentation: https://github.com/caksoylar/keymap-drawer/blob/main/README.md
+### References
+https://github.com/urob/zmk-config
+https://github.com/urob/zmk-helpers
+https://github.com/caksoylar/keymap-drawer
