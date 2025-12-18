@@ -227,11 +227,11 @@ draw_config:
     rx: 4
     ry: 4
   svg_extra_style: |
-    /* Merged layer position colors */
-    text.shifted { fill: #e5c07b; }  /* top-left: function - yellow */
-    text.hold { fill: #61afef; }     /* top-right: utility - blue */
-    text.left { fill: #98c379; }     /* bottom-left: numbers - green */
-    text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
+    /* Merged layer corner position colors */
+    text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
+    text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
+    text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
+    text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
     /* Modifier keys - black to match layer 1 */
     text.mod { fill: #000000; }
   shrink_wide_legends: 7
