@@ -1,5 +1,8 @@
 <svg width="732" height="1907" viewBox="0 0 732 1907" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>/* start glyphs */
+<svg id="mdi:pause">
+<svg xmlns="http://www.w3.org/2000/svg" id="mdi-pause" viewBox="0 0 24 24"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
+</svg>
 <svg id="mdi:play-pause">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-play-pause" viewBox="0 0 24 24"><path d="M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5" /></svg>
 </svg>
@@ -160,6 +163,8 @@ text.shifted { fill: #e5c07b; }  /* top-left: function - yellow */
 text.hold { fill: #61afef; }     /* top-right: utility - blue */
 text.left { fill: #98c379; }     /* bottom-left: numbers - green */
 text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
+/* Modifier keys - black to match layer 1 */
+text.mod { fill: #000000; }
 </style>
 <g transform="translate(30, 0)" class="layer-l_colemak_dh">
 <text x="0" y="15" class="label" id="l_colemak_dh">l_colemak_dh</text>
@@ -204,25 +209,25 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">&#x27;</text>
 </g>
-<g transform="translate(28, 137)" class="key keypos-10">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">A</text>
-<text x="0" y="24" class="key hold">Shift</text>
+<g transform="translate(28, 137)" class="key mod keypos-10">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">A</text>
+<text x="0" y="24" class="key mod hold">Shift</text>
 </g>
-<g transform="translate(84, 102)" class="key keypos-11">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">R</text>
-<text x="0" y="24" class="key hold">Ctrl</text>
+<g transform="translate(84, 102)" class="key mod keypos-11">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">R</text>
+<text x="0" y="24" class="key mod hold">Ctrl</text>
 </g>
-<g transform="translate(140, 84)" class="key keypos-12">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">S</text>
-<text x="0" y="24" class="key hold">Alt</text>
+<g transform="translate(140, 84)" class="key mod keypos-12">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">S</text>
+<text x="0" y="24" class="key mod hold">Alt</text>
 </g>
-<g transform="translate(196, 100)" class="key keypos-13">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">T</text>
-<text x="0" y="24" class="key hold">Gui</text>
+<g transform="translate(196, 100)" class="key mod keypos-13">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">T</text>
+<text x="0" y="24" class="key mod hold">Gui</text>
 </g>
 <g transform="translate(252, 108)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -232,25 +237,25 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">M</text>
 </g>
-<g transform="translate(476, 100)" class="key keypos-16">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">N</text>
-<text x="0" y="24" class="key hold">Gui</text>
+<g transform="translate(476, 100)" class="key mod keypos-16">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">N</text>
+<text x="0" y="24" class="key mod hold">Gui</text>
 </g>
-<g transform="translate(532, 84)" class="key keypos-17">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">E</text>
-<text x="0" y="24" class="key hold">Alt</text>
+<g transform="translate(532, 84)" class="key mod keypos-17">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">E</text>
+<text x="0" y="24" class="key mod hold">Alt</text>
 </g>
-<g transform="translate(588, 102)" class="key keypos-18">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">I</text>
-<text x="0" y="24" class="key hold">Ctrl</text>
+<g transform="translate(588, 102)" class="key mod keypos-18">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">I</text>
+<text x="0" y="24" class="key mod hold">Ctrl</text>
 </g>
-<g transform="translate(644, 137)" class="key keypos-19">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">O</text>
-<text x="0" y="24" class="key hold">Shift</text>
+<g transform="translate(644, 137)" class="key mod keypos-19">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">O</text>
+<text x="0" y="24" class="key mod hold">Shift</text>
 </g>
 <g transform="translate(28, 193)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -477,25 +482,25 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 <g transform="translate(644, 81)" class="key keypos-9">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(28, 137)" class="key keypos-10">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Shift</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(28, 137)" class="key mod keypos-10">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Shift</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
-<g transform="translate(84, 102)" class="key keypos-11">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctrl</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(84, 102)" class="key mod keypos-11">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Ctrl</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
-<g transform="translate(140, 84)" class="key keypos-12">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Alt</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(140, 84)" class="key mod keypos-12">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Alt</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
-<g transform="translate(196, 100)" class="key keypos-13">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Gui</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(196, 100)" class="key mod keypos-13">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Gui</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
 <g transform="translate(252, 108)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -636,25 +641,25 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:play-pause"/>
 </g>
-<g transform="translate(476, 100)" class="key keypos-16">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Gui</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(476, 100)" class="key mod keypos-16">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Gui</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
-<g transform="translate(532, 84)" class="key keypos-17">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Alt</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(532, 84)" class="key mod keypos-17">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Alt</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
-<g transform="translate(588, 102)" class="key keypos-18">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctrl</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(588, 102)" class="key mod keypos-18">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Ctrl</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
-<g transform="translate(644, 137)" class="key keypos-19">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Shift</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<g transform="translate(644, 137)" class="key mod keypos-19">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
+<text x="0" y="0" class="key mod tap">Shift</text>
+<text x="0" y="24" class="key mod hold">sticky</text>
 </g>
 <g transform="translate(28, 193)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -674,9 +679,7 @@ text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
 </g>
 <g transform="translate(252, 164)" class="key keypos-24">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">PAUSE</tspan><tspan x="0" dy="1.2em">BREAK</tspan>
-</text>
+<use href="#mdi:pause" xlink:href="#mdi:pause" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:pause"/>
 </g>
 <g transform="translate(420, 164)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

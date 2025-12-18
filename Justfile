@@ -138,6 +138,7 @@ draw-merged *layers:
         --inject-corners "{{ draw }}/merged.svg" \
         --merged-yaml "{{ draw }}/merged.yaml" \
         --config "{{ draw }}/config.yaml" \
+        --glyph-svg "{{ draw }}/base.svg" \
         --pad-x 0 --pad-y 0
     rm "{{ draw }}/merged_draw.yaml"
     echo "Created {{ draw }}/merged.svg with 7 legend positions"

@@ -76,13 +76,25 @@ def escape_xml(text: str) -> str:
         .replace("'", "&#x27;"))
 
 
+def parse_glyph_ref(value: str) -> tuple[str, str] | None:
+    """Parse a glyph reference like $$mdi:play-pause$$.
+
+    Returns (source, name) tuple or None if not a glyph reference.
+    """
+    match = re.match(r'^\$\$([^:]+):([^$]+)\$\$$', value)
+    if match:
+        return match.group(1), match.group(2)
+    return None
+
+
 def inject_corner_legends(
     svg_content: str,
     merged_yaml_path: Path,
     key_w: float = 60,
     key_h: float = 56,
     pad_x: float = 10,
-    pad_y: float = 8
+    pad_y: float = 8,
+    glyph_svg_path: Path | None = None
 ) -> str:
     """Inject corner legend text elements into SVG.
 
@@ -94,6 +106,7 @@ def inject_corner_legends(
         merged_yaml_path: Path to merged.yaml with tl/tr/bl/br values
         key_w, key_h: Key dimensions
         pad_x, pad_y: Padding from key edges for corner text
+        glyph_svg_path: Path to SVG with glyph definitions (e.g., base.svg)
 
     Returns:
         Modified SVG content with corner legends injected
@@ -101,6 +114,20 @@ def inject_corner_legends(
     # Load merged YAML to get corner values
     with open(merged_yaml_path) as f:
         merged = yaml.safe_load(f)
+
+    # Extract glyph defs from source SVG if provided
+    glyph_defs = ""
+    if glyph_svg_path and glyph_svg_path.exists():
+        source_svg = glyph_svg_path.read_text()
+        # Extract glyph SVG elements from defs section
+        # Pattern: <svg id="prefix:name">...<svg>...</svg></svg>
+        glyph_pattern = re.compile(
+            r'<svg id="[^"]+:[^"]+">\s*<svg[^>]*>.*?</svg>\s*</svg>',
+            re.DOTALL
+        )
+        glyphs = glyph_pattern.findall(source_svg)
+        if glyphs:
+            glyph_defs = "\n".join(glyphs)
 
     layer_keys = merged.get("layers", {}).get("merged", [])
 
@@ -135,11 +162,33 @@ text.br {
     font-size: 11px;
     fill: #c678dd;  /* purple */
 }
+/* Corner glyph colors */
+use.tl, .tl path { fill: #e5c07b; }  /* yellow */
+use.tr, .tr path { fill: #61afef; }  /* blue */
+use.bl, .bl path { fill: #98c379; }  /* green */
+use.br, .br path { fill: #c678dd; }  /* purple */
 '''
 
     # Insert CSS before closing </style>
     if '</style>' in svg_content:
         svg_content = svg_content.replace('</style>', corner_css + '</style>')
+
+    # Insert glyph defs if we have them and they're not already present
+    if glyph_defs and '<svg id="mdi:' not in svg_content:
+        if '<defs>' in svg_content:
+            # Insert after existing <defs> tag
+            svg_content = re.sub(
+                r'(<defs>)',
+                r'\1\n' + glyph_defs,
+                svg_content
+            )
+        else:
+            # Create <defs> section after opening <svg> tag
+            svg_content = re.sub(
+                r'(<svg[^>]*>)',
+                r'\1\n<defs>\n' + glyph_defs + '\n</defs>',
+                svg_content
+            )
 
     # Find key groups and inject corner legends
     # Pattern matches key groups with keypos-N class
@@ -165,25 +214,48 @@ text.br {
 
         # Build corner text elements
         corner_elements = []
+        glyph_size = 11  # Size for corner glyphs
+
+        def make_corner_element(value: str, x: int, y: int, css_class: str) -> str:
+            """Create a text or use element for a corner legend."""
+            glyph = parse_glyph_ref(str(value))
+            if glyph:
+                source, name = glyph
+                glyph_id = f"{source}:{name}"
+                # Position glyph - adjust based on corner
+                half = glyph_size // 2
+                if css_class == "tl":
+                    gx, gy = x, y  # top-left: start from corner
+                elif css_class == "tr":
+                    gx, gy = x - glyph_size, y  # top-right: end at corner
+                elif css_class == "bl":
+                    gx, gy = x, y - glyph_size  # bottom-left: start from corner
+                elif css_class == "br":
+                    gx, gy = x - glyph_size, y - glyph_size  # bottom-right
+                else:
+                    gx, gy = x - half, y - half
+                return f'<use href="#{glyph_id}" xlink:href="#{glyph_id}" x="{gx}" y="{gy}" height="{glyph_size}" width="{glyph_size}" class="glyph {css_class}"/>'
+            else:
+                return f'<text x="{x}" y="{y}" class="{css_class}">{escape_xml(str(value))}</text>'
 
         if key.get("tl"):
             corner_elements.append(
-                f'<text x="-{x_offset}" y="-{y_offset}" class="tl">{escape_xml(str(key["tl"]))}</text>'
+                make_corner_element(key["tl"], -x_offset, -y_offset, "tl")
             )
 
         if key.get("tr"):
             corner_elements.append(
-                f'<text x="{x_offset}" y="-{y_offset}" class="tr">{escape_xml(str(key["tr"]))}</text>'
+                make_corner_element(key["tr"], x_offset, -y_offset, "tr")
             )
 
         if key.get("bl"):
             corner_elements.append(
-                f'<text x="-{x_offset}" y="{y_offset_bottom}" class="bl">{escape_xml(str(key["bl"]))}</text>'
+                make_corner_element(key["bl"], -x_offset, y_offset_bottom, "bl")
             )
 
         if key.get("br"):
             corner_elements.append(
-                f'<text x="{x_offset}" y="{y_offset_bottom}" class="br">{escape_xml(str(key["br"]))}</text>'
+                make_corner_element(key["br"], x_offset, y_offset_bottom, "br")
             )
 
         if not corner_elements:
@@ -399,6 +471,11 @@ def main():
         type=Path,
         help="Path to keymap-drawer config.yaml (reads key_w and key_h from draw_config)"
     )
+    parser.add_argument(
+        "--glyph-svg",
+        type=Path,
+        help="Path to SVG with glyph definitions to copy (e.g., base.svg)"
+    )
 
     args = parser.parse_args()
 
@@ -424,7 +501,7 @@ def main():
             sys.exit(1)
 
         svg_content = svg_path.read_text()
-        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, args.pad_y)
+        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, args.pad_y, args.glyph_svg)
         svg_path.write_text(modified)
         print(f"Injected corner legends into {svg_path}")
         sys.exit(0)

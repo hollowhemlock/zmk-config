@@ -11,21 +11,21 @@ layers:
   - {t: U, br: ↑}
   - {t: Y, br: Del}
   - ''''
-  - {t: A, h: Shift, tl: F11, tr: BT1, bl: '0', br: Shift}
-  - {t: R, h: Ctrl, tl: F4, tr: BT2, bl: '4', br: Ctrl}
-  - {t: S, h: Alt, tl: F5, tr: BT3, bl: '5', br: Alt}
-  - {t: T, h: Gui, tl: F6, tr: BT4, bl: '6', br: Gui}
+  - {t: A, h: Shift, type: mod, tl: F11, tr: BT1, bl: '0', br: Shift}
+  - {t: R, h: Ctrl, type: mod, tl: F4, tr: BT2, bl: '4', br: Ctrl}
+  - {t: S, h: Alt, type: mod, tl: F5, tr: BT3, bl: '5', br: Alt}
+  - {t: T, h: Gui, type: mod, tl: F6, tr: BT4, bl: '6', br: Gui}
   - {t: G, tl: SLCK, tr: BT, br: Tab}
   - {t: M, tl: '$$mdi:play-pause$$', br: PgDn}
-  - {t: N, h: Gui, tl: Gui, br: ←}
-  - {t: E, h: Alt, tl: Alt, bl: APP, br: ↓}
-  - {t: I, h: Ctrl, tl: Ctrl, bl: '&sq_Ck_stickyC', br: →}
-  - {t: O, h: Shift, tl: Shift, bl: ;, br: Enter}
+  - {t: N, h: Gui, type: mod, tl: Gui, br: ←}
+  - {t: E, h: Alt, type: mod, tl: Alt, bl: APP, br: ↓}
+  - {t: I, h: Ctrl, type: mod, tl: Ctrl, bl: '&sq_Ck_stickyC', br: →}
+  - {t: O, h: Shift, type: mod, tl: Shift, bl: ;, br: Enter}
   - {t: Z, tl: F10, tr: BT CLR}
   - {t: X, tl: F1, bl: '1'}
   - {t: C, tl: F2, bl: '2'}
   - {t: D, tl: F3, tr: Reset, bl: '3', br: Gui}
-  - {t: V, tl: PAUSE BREAK, tr: Boot}
+  - {t: V, tl: '$$mdi:pause$$', tr: Boot}
   - {t: K, tl: '$$mdi:skip-backward$$', br: INSERT}
   - {t: H, tl: '$$mdi:skip-forward$$', br: Home}
   - {t: ',', s: ;, tl: '$$mdi:volume-off$$', br: Tab}

@@ -127,6 +127,7 @@ parse_config:
     C_VOL_DN: $$mdi:volume-medium$$
     C_NEXT: $$mdi:skip-forward$$
     C_PREV: $$mdi:skip-backward$$
+    PAUSE_BREAK: $$mdi:pause$$
 
     # defaults
     AMPERSAND: "&"
@@ -238,4 +239,5 @@ draw_config:
   glyph_tap_size: 14
   glyph_hold_size: 12
   glyph_shifted_size: 10
-  glyphs: {}
+  glyphs:
+    mdi: https://raw.githubusercontent.com/Templarian/MaterialDesign/master/svg/{glyph_name}.svg

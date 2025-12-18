@@ -11,16 +11,16 @@ layers:
     - U
     - Y
     - ''''
-    - {t: A, h: Shift}
-    - {t: R, h: Ctrl}
-    - {t: S, h: Alt}
-    - {t: T, h: Gui}
+    - {t: A, h: Shift, type: mod}
+    - {t: R, h: Ctrl, type: mod}
+    - {t: S, h: Alt, type: mod}
+    - {t: T, h: Gui, type: mod}
     - G
     - M
-    - {t: N, h: Gui}
-    - {t: E, h: Alt}
-    - {t: I, h: Ctrl}
-    - {t: O, h: Shift}
+    - {t: N, h: Gui, type: mod}
+    - {t: E, h: Alt, type: mod}
+    - {t: I, h: Ctrl, type: mod}
+    - {t: O, h: Shift, type: mod}
     - Z
     - X
     - C
@@ -46,16 +46,16 @@ layers:
     - I
     - O
     - P
-    - {t: A, h: Shift}
-    - {t: S, h: Ctrl}
-    - {t: D, h: Alt}
-    - {t: F, h: Gui}
+    - {t: A, h: Shift, type: mod}
+    - {t: S, h: Ctrl, type: mod}
+    - {t: D, h: Alt, type: mod}
+    - {t: F, h: Gui, type: mod}
     - G
     - H
-    - {t: J, h: Gui}
-    - {t: K, h: Alt}
-    - {t: L, h: Ctrl}
-    - {t: ;, h: Shift}
+    - {t: J, h: Gui, type: mod}
+    - {t: K, h: Alt, type: mod}
+    - {t: L, h: Ctrl, type: mod}
+    - {t: ;, h: Shift, type: mod}
     - Z
     - X
     - C
@@ -116,10 +116,10 @@ layers:
     - ↑
     - Del
     - ''
-    - {t: Shift, h: sticky}
-    - {t: Ctrl, h: sticky}
-    - {t: Alt, h: sticky}
-    - {t: Gui, h: sticky}
+    - {t: Shift, h: sticky, type: mod}
+    - {t: Ctrl, h: sticky, type: mod}
+    - {t: Alt, h: sticky, type: mod}
+    - {t: Gui, h: sticky, type: mod}
     - Tab
     - PgDn
     - ←
@@ -157,15 +157,15 @@ layers:
     - F6
     - SLCK
     - $$mdi:play-pause$$
-    - {t: Gui, h: sticky}
-    - {t: Alt, h: sticky}
-    - {t: Ctrl, h: sticky}
-    - {t: Shift, h: sticky}
+    - {t: Gui, h: sticky, type: mod}
+    - {t: Alt, h: sticky, type: mod}
+    - {t: Ctrl, h: sticky, type: mod}
+    - {t: Shift, h: sticky, type: mod}
     - F10
     - F1
     - F2
     - F3
-    - PAUSE BREAK
+    - $$mdi:pause$$
     - $$mdi:skip-backward$$
     - $$mdi:skip-forward$$
     - $$mdi:volume-off$$
@@ -262,10 +262,10 @@ layers:
     - '6'
     - G
     - ''
-    - {t: Gui, h: sticky}
-    - {t: Alt, h: sticky}
-    - {t: Ctrl, h: sticky}
-    - {t: Shift, h: sticky}
+    - {t: Gui, h: sticky, type: mod}
+    - {t: Alt, h: sticky, type: mod}
+    - {t: Ctrl, h: sticky, type: mod}
+    - {t: Shift, h: sticky, type: mod}
     - Esc
     - '1'
     - '2'
