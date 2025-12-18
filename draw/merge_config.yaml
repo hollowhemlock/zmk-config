@@ -1,0 +1,10 @@
+# merge_layers.py configuration
+# Separate from config.yaml because keymap-drawer doesn't allow extra keys
+
+# Values to hide from corner positions (tl/tr/bl/br)
+# These will show in center layer but be blank in corners
+corner_hide:
+  - Shift
+  - Ctrl
+  - Alt
+  - Gui
