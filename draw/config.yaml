@@ -235,8 +235,8 @@ draw_config:
      *   br = bottom-right  (--br layer, e.g. l_nav)
      *
      * Element types:
-     *   <text class="tl">   - text labels
-     *   <use class="tl">    - glyph icons (references <defs>)
+     *   text.tl   - text labels
+     *   use.tl    - glyph icons (references defs section)
      *
      * Center layer (--center) uses keymap-drawer's built-in classes:
      *   text.tap, text.hold, text.shifted

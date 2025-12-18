@@ -158,11 +158,25 @@ text.trans { fill: #7e8184; }
 path.combo { stroke: #7f7f7f; }
 
 }
-/* Merged layer position colors */
-text.shifted { fill: #e5c07b; }  /* top-left: function - yellow */
-text.hold { fill: #61afef; }     /* top-right: utility - blue */
-text.left { fill: #98c379; }     /* bottom-left: numbers - green */
-text.right { fill: #c678dd; }    /* bottom-right: nav - purple */
+/*
+ * merge_layers.py injects corner legends with these CSS classes:
+ *   tl = top-left      (--tl layer, e.g. l_fun)
+ *   tr = top-right     (--tr layer, e.g. l_utility)
+ *   bl = bottom-left   (--bl layer, e.g. l_num)
+ *   br = bottom-right  (--br layer, e.g. l_nav)
+ *
+ * Element types:
+ *   text.tl   - text labels
+ *   use.tl    - glyph icons (references defs section)
+ *
+ * Center layer (--center) uses keymap-drawer's built-in classes:
+ *   text.tap, text.hold, text.shifted
+ */
+/* Merged layer corner position colors */
+text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
+text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
+text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
+text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
 /* Modifier keys - black to match layer 1 */
 text.mod { fill: #000000; }
 
@@ -191,11 +205,13 @@ text.br {
     font-size: 11px;
     fill: #c678dd;  /* purple */
 }
-/* Corner glyph colors */
+/* Corner glyph/icon colors */
 use.tl, .tl path { fill: #e5c07b; }  /* yellow */
 use.tr, .tr path { fill: #61afef; }  /* blue */
 use.bl, .bl path { fill: #98c379; }  /* green */
 use.br, .br path { fill: #c678dd; }  /* purple */
+/* Hidden corner elements (e.g., modifiers) */
+.hidden { fill: transparent !important; }
 </style>
 <g transform="translate(30, 0)" class="layer-merged">
 <text x="0" y="15" class="label" id="merged">merged</text>
@@ -266,7 +282,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="-28" y="-26" class="tl">F11</text>
 <text x="28" y="-26" class="tr">BT1</text>
 <text x="-28" y="27" class="bl">0</text>
-<text x="28" y="27" class="br">Shift</text></g>
+<text x="28" y="27" class="br hidden">Shift</text></g>
 <g transform="translate(84, 102)" class="key mod keypos-11">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">R</text>
@@ -275,7 +291,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="-28" y="-26" class="tl">F4</text>
 <text x="28" y="-26" class="tr">BT2</text>
 <text x="-28" y="27" class="bl">4</text>
-<text x="28" y="27" class="br">Ctrl</text></g>
+<text x="28" y="27" class="br hidden">Ctrl</text></g>
 <g transform="translate(140, 84)" class="key mod keypos-12">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">S</text>
@@ -284,7 +300,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="-28" y="-26" class="tl">F5</text>
 <text x="28" y="-26" class="tr">BT3</text>
 <text x="-28" y="27" class="bl">5</text>
-<text x="28" y="27" class="br">Alt</text></g>
+<text x="28" y="27" class="br hidden">Alt</text></g>
 <g transform="translate(196, 100)" class="key mod keypos-13">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">T</text>
@@ -293,7 +309,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="-28" y="-26" class="tl">F6</text>
 <text x="28" y="-26" class="tr">BT4</text>
 <text x="-28" y="27" class="bl">6</text>
-<text x="28" y="27" class="br">Gui</text></g>
+<text x="28" y="27" class="br hidden">Gui</text></g>
 <g transform="translate(252, 108)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">G</text>
@@ -305,21 +321,21 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">M</text>
 
-<use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-28" y="-26" height="11" width="11" class="glyph tl"/>
+<use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/>
 <text x="28" y="27" class="br">PgDn</text></g>
 <g transform="translate(476, 100)" class="key mod keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">N</text>
 <text x="0" y="24" class="key mod hold">Gui</text>
 
-<text x="-28" y="-26" class="tl">Gui</text>
+<text x="-28" y="-26" class="tl hidden">Gui</text>
 <text x="28" y="27" class="br">←</text></g>
 <g transform="translate(532, 84)" class="key mod keypos-17">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">E</text>
 <text x="0" y="24" class="key mod hold">Alt</text>
 
-<text x="-28" y="-26" class="tl">Alt</text>
+<text x="-28" y="-26" class="tl hidden">Alt</text>
 <text x="-28" y="27" class="bl">APP</text>
 <text x="28" y="27" class="br">↓</text></g>
 <g transform="translate(588, 102)" class="key mod keypos-18">
@@ -327,7 +343,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="0" y="0" class="key mod tap">I</text>
 <text x="0" y="24" class="key mod hold">Ctrl</text>
 
-<text x="-28" y="-26" class="tl">Ctrl</text>
+<text x="-28" y="-26" class="tl hidden">Ctrl</text>
 <text x="-28" y="27" class="bl">&amp;sq_Ck_stickyC</text>
 <text x="28" y="27" class="br">→</text></g>
 <g transform="translate(644, 137)" class="key mod keypos-19">
@@ -335,7 +351,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="0" y="0" class="key mod tap">O</text>
 <text x="0" y="24" class="key mod hold">Shift</text>
 
-<text x="-28" y="-26" class="tl">Shift</text>
+<text x="-28" y="-26" class="tl hidden">Shift</text>
 <text x="-28" y="27" class="bl">;</text>
 <text x="28" y="27" class="br">Enter</text></g>
 <g transform="translate(28, 193)" class="key keypos-20">
@@ -363,44 +379,44 @@ use.br, .br path { fill: #c678dd; }  /* purple */
 <text x="-28" y="-26" class="tl">F3</text>
 <text x="28" y="-26" class="tr">Reset</text>
 <text x="-28" y="27" class="bl">3</text>
-<text x="28" y="27" class="br">Gui</text></g>
+<text x="28" y="27" class="br hidden">Gui</text></g>
 <g transform="translate(252, 164)" class="key keypos-24">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">V</text>
 
-<use href="#mdi:pause" xlink:href="#mdi:pause" x="-28" y="-26" height="11" width="11" class="glyph tl"/>
+<use href="#mdi:pause" xlink:href="#mdi:pause" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/>
 <text x="28" y="-26" class="tr">Boot</text></g>
 <g transform="translate(420, 164)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">K</text>
 
-<use href="#mdi:skip-backward" xlink:href="#mdi:skip-backward" x="-28" y="-26" height="11" width="11" class="glyph tl"/>
+<use href="#mdi:skip-backward" xlink:href="#mdi:skip-backward" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/>
 <text x="28" y="27" class="br">INSERT</text></g>
 <g transform="translate(476, 156)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">H</text>
 
-<use href="#mdi:skip-forward" xlink:href="#mdi:skip-forward" x="-28" y="-26" height="11" width="11" class="glyph tl"/>
+<use href="#mdi:skip-forward" xlink:href="#mdi:skip-forward" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/>
 <text x="28" y="27" class="br">Home</text></g>
 <g transform="translate(532, 140)" class="key keypos-27">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">,</text>
 <text x="0" y="-24" class="key shifted">;</text>
 
-<use href="#mdi:volume-off" xlink:href="#mdi:volume-off" x="-28" y="-26" height="11" width="11" class="glyph tl"/>
+<use href="#mdi:volume-off" xlink:href="#mdi:volume-off" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/>
 <text x="28" y="27" class="br">Tab</text></g>
 <g transform="translate(588, 158)" class="key keypos-28">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">.</text>
 <text x="0" y="-24" class="key shifted">:</text>
 
-<use href="#mdi:volume-medium" xlink:href="#mdi:volume-medium" x="-28" y="-26" height="11" width="11" class="glyph tl"/>
+<use href="#mdi:volume-medium" xlink:href="#mdi:volume-medium" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/>
 <text x="28" y="27" class="br">End</text></g>
 <g transform="translate(644, 193)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">/</text>
 
-<use href="#mdi:volume-high" xlink:href="#mdi:volume-high" x="-28" y="-26" height="11" width="11" class="glyph tl"/></g>
+<use href="#mdi:volume-high" xlink:href="#mdi:volume-high" x="-28" y="-26" height="11" width="11" fill="#e5c07b" class="glyph tl"/></g>
 <g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">l_nav</text>

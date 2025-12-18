@@ -122,6 +122,8 @@ draw-merged *layers:
     # Call 1: Merge layers into YAML with 7 positions (t/s/h from center, tl/tr/bl/br from corners)
     python "{{ draw }}/merge_layers.py" \
         --input "{{ draw }}/base.yaml" \
+        --config "{{ draw }}/config.yaml" \
+        --merge-config "{{ draw }}/merge_config.yaml" \
         --center l_colemak_dh \
         --tl l_fun \
         --tr l_utility \
@@ -138,6 +140,7 @@ draw-merged *layers:
         --inject-corners "{{ draw }}/merged.svg" \
         --merged-yaml "{{ draw }}/merged.yaml" \
         --config "{{ draw }}/config.yaml" \
+        --merge-config "{{ draw }}/merge_config.yaml" \
         --glyph-svg "{{ draw }}/base.svg" \
         --pad-x 0 --pad-y 0
     rm "{{ draw }}/merged_draw.yaml"
