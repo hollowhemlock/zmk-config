@@ -227,6 +227,20 @@ draw_config:
     rx: 4
     ry: 4
   svg_extra_style: |
+    /*
+     * merge_layers.py injects corner legends with these CSS classes:
+     *   tl = top-left      (--tl layer, e.g. l_fun)
+     *   tr = top-right     (--tr layer, e.g. l_utility)
+     *   bl = bottom-left   (--bl layer, e.g. l_num)
+     *   br = bottom-right  (--br layer, e.g. l_nav)
+     *
+     * Element types:
+     *   <text class="tl">   - text labels
+     *   <use class="tl">    - glyph icons (references <defs>)
+     *
+     * Center layer (--center) uses keymap-drawer's built-in classes:
+     *   text.tap, text.hold, text.shifted
+     */
     /* Merged layer corner position colors */
     text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
     text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */

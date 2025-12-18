@@ -162,7 +162,7 @@ text.br {
     font-size: 11px;
     fill: #c678dd;  /* purple */
 }
-/* Corner glyph colors */
+/* Corner glyph/icon colors */
 use.tl, .tl path { fill: #e5c07b; }  /* yellow */
 use.tr, .tr path { fill: #61afef; }  /* blue */
 use.bl, .bl path { fill: #98c379; }  /* green */
