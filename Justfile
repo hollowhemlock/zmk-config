@@ -126,9 +126,9 @@ draw-merged *layers:
         --merge-config "{{ draw }}/merge_config.yaml" \
         --center l_colemak_dh \
         --tl l_fun \
-        --tr l_utility \
+        --tr l_nav \
         --bl l_num \
-        --br l_nav \
+        --br l_utility \
         --output "{{ draw }}/merged.yaml"
     # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
     yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \
@@ -142,7 +142,7 @@ draw-merged *layers:
         --config "{{ draw }}/config.yaml" \
         --merge-config "{{ draw }}/merge_config.yaml" \
         --glyph-svg "{{ draw }}/base.svg" \
-        --pad-x 0 --pad-y 0
+        --pad-x 4 --pad-y 2
     rm "{{ draw }}/merged_draw.yaml"
     echo "Created {{ draw }}/merged.svg with 7 legend positions"
 
