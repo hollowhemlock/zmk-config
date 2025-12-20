@@ -46,6 +46,19 @@ keymap draw keymap.yaml > keymap.svg
 - Support for multiple icon sources
 - Flexible parsing of different keyboard firmware formats
 
+### draw/ Directory Files
+
+**Source files (edit directly):**
+- `config.yaml` - keymap-drawer configuration
+- `merge_config.yaml` - merge_layers.py settings (corner_hide, held_keys)
+- `merge_layers.py` - script to merge layers into multi-position diagram
+
+**Generated files (do not edit directly):**
+- `base.yaml`, `base.svg` - parsed from config/base.keymap
+- `combos_main.yaml`, `combos_main.svg` - main layer combos
+- `combos_gaming.yaml`, `combos_gaming.svg` - gaming layer combos
+- `merged.yaml`, `merged.svg` - merged multi-position diagram
+
 ### References
 https://github.com/urob/zmk-config
 https://github.com/urob/zmk-helpers
