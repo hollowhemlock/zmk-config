@@ -246,8 +246,7 @@ draw_config:
     text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
     text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
     text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
-    /* Modifier keys - black to match layer 1 */
-    text.mod { fill: #ffffff; }
+    /* Modifier keys - inherit default text color */
   shrink_wide_legends: 7
   style_layer_activators: true
   glyph_tap_size: 14
