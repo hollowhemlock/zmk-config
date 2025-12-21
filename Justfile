@@ -75,6 +75,18 @@ autocommit $model:
         echo "Committed firmware build for $model"
     fi
 
+# format ZMK keymap files
+fmt *files:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [[ -z "{{ files }}" ]]; then
+        python3 scripts/zmk_format.py -i "{{ config }}/base.keymap"
+    else
+        for f in {{ files }}; do
+            python3 scripts/zmk_format.py -i "$f"
+        done
+    fi
+
 # clear build cache and artifacts
 clean:
     rm -rf {{ build }} {{ out }}
