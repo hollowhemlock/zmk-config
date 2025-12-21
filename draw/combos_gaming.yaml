@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: base}
 layers:
-  l_colemak_dh:
+  colemak_dh:
     - Q
     - W
     - F
@@ -31,11 +31,11 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - /
-    - {t: l_nav, h: sticky}
+    - {t: nav, h: sticky}
     - Spc
     - {t: Shift, h: sticky, s: Caps Word}
-    - {t: Numword, h: l_num, s: Sticky Num}
-  l_qwerty:
+    - {t: Numword, h: num, s: Sticky Num}
+  qwerty:
     - Q
     - W
     - E
@@ -66,11 +66,11 @@ layers:
     - CMMA
     - .
     - /
-    - {t: l_nav, h: sticky}
+    - {t: nav, h: sticky}
     - Spc
     - {t: Shift, h: sticky, s: Caps Word}
-    - {t: Numword, h: l_num, s: Sticky Num}
-  l_num:
+    - {t: Numword, h: num, s: Sticky Num}
+  num:
     - ''
     - '7'
     - '8'
@@ -105,7 +105,7 @@ layers:
     - ''
     - ''
     - {type: held}
-  l_nav:
+  nav:
     - Tab
     - ''
     - ''
@@ -139,8 +139,8 @@ layers:
     - {type: held}
     - ''
     - CANCEL
-    - {t: l_num, h: sticky}
-  l_fun:
+    - {t: num, h: sticky}
+  fun:
     - F12
     - F7
     - F8
@@ -171,14 +171,14 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-medium$$
     - $$mdi:volume-high$$
-    - {t: l_nav, h: sticky}
+    - {t: nav, h: sticky}
     - Spc
     - {type: held}
     - {type: held}
-  l_utility:
-    - {t: l_qwerty, h: toggle}
-    - {t: l_gam, h: toggle}
-    - {t: l_colemak_dh, h: toggle}
+  utility:
+    - {t: qwerty, h: toggle}
+    - {t: gam, h: toggle}
+    - {t: colemak_dh, h: toggle}
     - OUT BLE
     - OUT USB
     - ''
@@ -210,7 +210,7 @@ layers:
     - ''
     - ''
     - ''
-  l_gam:
+  gam:
     - Tab
     - Q
     - W
@@ -241,11 +241,11 @@ layers:
     - CMMA
     - .
     - /
-    - {t: l_gam_r_alpha, h: Alt}
+    - {t: gam_ra, h: Alt}
     - Spc
-    - {t: l_fun, h: sticky}
-    - {t: l_gam_r_alpha, h: sticky}
-  l_gam_num:
+    - {t: fun, h: sticky}
+    - {t: gam_ra, h: sticky}
+  gam_num:
     - Gui
     - '7'
     - '8'
@@ -280,7 +280,7 @@ layers:
     - Spc
     - ''
     - ''
-  l_gam_r_alpha:
+  gam_ra:
     - Y
     - U
     - I

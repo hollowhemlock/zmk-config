@@ -160,14 +160,14 @@ path.combo { stroke: #7f7f7f; }
 }
 /*
  * merge_layers.py injects corner legends with these CSS classes:
- *   tl = top-left      (--tl layer, e.g. l_fun)
- *   tr = top-right     (--tr layer, e.g. l_utility)
- *   bl = bottom-left   (--bl layer, e.g. l_num)
- *   br = bottom-right  (--br layer, e.g. l_nav)
+ *   tl = top-left      (--tl layer, e.g. fun)
+ *   tr = top-right     (--tr layer, e.g. utility)
+ *   bl = bottom-left   (--bl layer, e.g. num)
+ *   br = bottom-right  (--br layer, e.g. nav)
  *
  * Element types:
- *   <text class="tl">   - text labels
- *   <use class="tl">    - glyph icons (references <defs>)
+ *   text.tl   - text labels
+ *   use.tl    - glyph icons (references defs section)
  *
  * Center layer (--center) uses keymap-drawer's built-in classes:
  *   text.tap, text.hold, text.shifted
@@ -177,11 +177,15 @@ text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
 text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
 text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
 text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
-/* Modifier keys - black to match layer 1 */
-text.mod { fill: #000000; }
+/* Held key text with layer colors */
+text.held-tl { fill: #e5c07b; }  /* yellow */
+text.held-tr { fill: #61afef; }  /* blue */
+text.held-bl { fill: #98c379; }  /* green */
+text.held-br { fill: #c678dd; }  /* purple */
+/* Modifier keys - inherit default text color */
 </style>
-<g transform="translate(30, 0)" class="layer-l_gam">
-<text x="0" y="15" class="label" id="l_gam">l_gam</text>
+<g transform="translate(30, 0)" class="layer-gam">
+<text x="0" y="15" class="label" id="gam">gam</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -305,8 +309,8 @@ text.mod { fill: #000000; }
 </g>
 <g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<a href="#l_gam_r_alpha">
-<text x="0" y="0" class="key tap layer-activator"><tspan style="font-size: 64%">l_gam_r_al…</tspan></text>
+<a href="#gam_ra">
+<text x="0" y="0" class="key tap layer-activator">gam_ra</text>
 </a><text x="0" y="24" class="key hold">Alt</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
@@ -315,19 +319,19 @@ text.mod { fill: #000000; }
 </g>
 <g transform="translate(393, 245) rotate(-30.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">l_fun</text>
+<text x="0" y="0" class="key tap">fun</text>
 <text x="0" y="24" class="key hold">sticky</text>
 </g>
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<a href="#l_gam_r_alpha">
-<text x="0" y="0" class="key tap layer-activator"><tspan style="font-size: 64%">l_gam_r_al…</tspan></text>
+<a href="#gam_ra">
+<text x="0" y="0" class="key tap layer-activator">gam_ra</text>
 </a><text x="0" y="24" class="key hold">sticky</text>
 </g>
 </g>
 </g>
-<g transform="translate(30, 313)" class="layer-l_gam_num">
-<text x="0" y="15" class="label" id="l_gam_num">l_gam_num</text>
+<g transform="translate(30, 313)" class="layer-gam_num">
+<text x="0" y="15" class="label" id="gam_num">gam_num</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -460,8 +464,8 @@ text.mod { fill: #000000; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 626)" class="layer-l_gam_r_alpha">
-<text x="0" y="15" class="label" id="l_gam_r_alpha">l_gam_r_alpha</text>
+<g transform="translate(30, 626)" class="layer-gam_ra">
+<text x="0" y="15" class="label" id="gam_ra">gam_ra</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

@@ -160,14 +160,14 @@ path.combo { stroke: #7f7f7f; }
 }
 /*
  * merge_layers.py injects corner legends with these CSS classes:
- *   tl = top-left      (--tl layer, e.g. l_fun)
- *   tr = top-right     (--tr layer, e.g. l_utility)
- *   bl = bottom-left   (--bl layer, e.g. l_num)
- *   br = bottom-right  (--br layer, e.g. l_nav)
+ *   tl = top-left      (--tl layer, e.g. fun)
+ *   tr = top-right     (--tr layer, e.g. utility)
+ *   bl = bottom-left   (--bl layer, e.g. num)
+ *   br = bottom-right  (--br layer, e.g. nav)
  *
  * Element types:
- *   <text class="tl">   - text labels
- *   <use class="tl">    - glyph icons (references <defs>)
+ *   text.tl   - text labels
+ *   use.tl    - glyph icons (references defs section)
  *
  * Center layer (--center) uses keymap-drawer's built-in classes:
  *   text.tap, text.hold, text.shifted
@@ -177,11 +177,15 @@ text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
 text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
 text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
 text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
-/* Modifier keys - black to match layer 1 */
-text.mod { fill: #000000; }
+/* Held key text with layer colors */
+text.held-tl { fill: #e5c07b; }  /* yellow */
+text.held-tr { fill: #61afef; }  /* blue */
+text.held-bl { fill: #98c379; }  /* green */
+text.held-br { fill: #c678dd; }  /* purple */
+/* Modifier keys - inherit default text color */
 </style>
-<g transform="translate(30, 0)" class="layer-l_colemak_dh">
-<text x="0" y="15" class="label" id="l_colemak_dh">l_colemak_dh</text>
+<g transform="translate(30, 0)" class="layer-colemak_dh">
+<text x="0" y="15" class="label" id="colemak_dh">colemak_dh</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -315,8 +319,8 @@ text.mod { fill: #000000; }
 </g>
 <g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<a href="#l_nav">
-<text x="0" y="0" class="key tap layer-activator">l_nav</text>
+<a href="#nav">
+<text x="0" y="0" class="key tap layer-activator">nav</text>
 </a><text x="0" y="24" class="key hold">sticky</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
@@ -332,14 +336,14 @@ text.mod { fill: #000000; }
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Numword</text>
-<a href="#l_num">
-<text x="0" y="24" class="key hold layer-activator">l_num</text>
+<a href="#num">
+<text x="0" y="24" class="key hold layer-activator">num</text>
 </a><text x="0" y="-24" class="key shifted"><tspan style="font-size: 70%">Sticky Num</tspan></text>
 </g>
 </g>
 </g>
-<g transform="translate(30, 313)" class="layer-l_num">
-<text x="0" y="15" class="label" id="l_num">l_num</text>
+<g transform="translate(30, 313)" class="layer-num">
+<text x="0" y="15" class="label" id="num">num</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -458,8 +462,8 @@ text.mod { fill: #000000; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 626)" class="layer-l_nav">
-<text x="0" y="15" class="label" id="l_nav">l_nav</text>
+<g transform="translate(30, 626)" class="layer-nav">
+<text x="0" y="15" class="label" id="nav">nav</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -587,14 +591,14 @@ text.mod { fill: #000000; }
 </g>
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<a href="#l_num">
-<text x="0" y="0" class="key tap layer-activator">l_num</text>
+<a href="#num">
+<text x="0" y="0" class="key tap layer-activator">num</text>
 </a><text x="0" y="24" class="key hold">sticky</text>
 </g>
 </g>
 </g>
-<g transform="translate(30, 938)" class="layer-l_fun">
-<text x="0" y="15" class="label" id="l_fun">l_fun</text>
+<g transform="translate(30, 938)" class="layer-fun">
+<text x="0" y="15" class="label" id="fun">fun</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -717,8 +721,8 @@ text.mod { fill: #000000; }
 </g>
 <g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<a href="#l_nav">
-<text x="0" y="0" class="key tap layer-activator">l_nav</text>
+<a href="#nav">
+<text x="0" y="0" class="key tap layer-activator">nav</text>
 </a><text x="0" y="24" class="key hold">sticky</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
@@ -733,23 +737,23 @@ text.mod { fill: #000000; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 1251)" class="layer-l_utility">
-<text x="0" y="15" class="label" id="l_utility">l_utility</text>
+<g transform="translate(30, 1251)" class="layer-utility">
+<text x="0" y="15" class="label" id="utility">utility</text>
 <g transform="translate(0, 30)">
 <g transform="translate(28, 81)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap"><tspan style="font-size: 88%">l_qwerty</tspan></text>
+<text x="0" y="0" class="key tap">qwerty</text>
 <text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g transform="translate(84, 46)" class="key keypos-1">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">l_gam</text>
+<text x="0" y="0" class="key tap">gam</text>
 <text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g transform="translate(140, 28)" class="key keypos-2">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<a href="#l_colemak_dh">
-<text x="0" y="0" class="key tap layer-activator"><tspan style="font-size: 64%">l_colemak_…</tspan></text>
+<a href="#colemak_dh">
+<text x="0" y="0" class="key tap layer-activator"><tspan style="font-size: 70%">colemak_dh</tspan></text>
 </a><text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g transform="translate(196, 44)" class="key keypos-3">
@@ -1175,20 +1179,20 @@ text.mod { fill: #000000; }
 </g>
 <g class="combo combopos-44">
 <rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo"/>
-<a href="#l_fun">
-<text x="422" y="233" class="combo tap layer-activator">l_fun</text>
+<a href="#fun">
+<text x="422" y="233" class="combo tap layer-activator">fun</text>
 </a><text x="422" y="244" class="combo hold">sticky</text>
 </g>
 <g class="combo combopos-45">
 <rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo"/>
-<a href="#l_fun">
-<text x="422" y="233" class="combo tap layer-activator">l_fun</text>
+<a href="#fun">
+<text x="422" y="233" class="combo tap layer-activator">fun</text>
 </a><text x="422" y="244" class="combo hold">sticky</text>
 </g>
 <g class="combo combopos-46">
 <rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo"/>
-<a href="#l_fun">
-<text x="422" y="233" class="combo tap layer-activator">l_fun</text>
+<a href="#fun">
+<text x="422" y="233" class="combo tap layer-activator">fun</text>
 </a><text x="422" y="244" class="combo hold">sticky</text>
 </g>
 <g class="combo combopos-47">
