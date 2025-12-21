@@ -246,6 +246,11 @@ draw_config:
     text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
     text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
     text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
+    /* Held key text with layer colors */
+    text.held-tl { fill: #e5c07b; }  /* yellow */
+    text.held-tr { fill: #61afef; }  /* blue */
+    text.held-bl { fill: #98c379; }  /* green */
+    text.held-br { fill: #c678dd; }  /* purple */
     /* Modifier keys - inherit default text color */
   shrink_wide_legends: 7
   style_layer_activators: true

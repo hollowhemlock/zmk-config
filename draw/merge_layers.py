@@ -321,6 +321,8 @@ def merge_layers(
     bl_layer: str | None = None,
     br_layer: str | None = None,
     corner_hide: list[str] | None = None,
+    held_key_colors: dict[int, str] | None = None,
+    held_hide: list[str] | None = None,
 ) -> dict:
     """Merge multiple layers into a single layer with multi-position legends.
 
@@ -330,9 +332,15 @@ def merge_layers(
 
     Args:
         corner_hide: List of values to hide from corners (e.g., ["Shift", "Ctrl"])
+        held_key_colors: Dict mapping key positions to corner colors (tl/tr/bl/br)
+        held_hide: List of values to hide on held keys (e.g., ["sticky"])
     """
     # Set of values to hide from corners
     hide_set = set(corner_hide) if corner_hide else set()
+    # Dict of key positions to held color class
+    held_colors = held_key_colors if held_key_colors else {}
+    # Set of values to hide on held keys
+    held_hide_set = set(held_hide) if held_hide else set()
     layers = keymap.get("layers", {})
 
     # Validate center layer exists
@@ -382,6 +390,15 @@ def merge_layers(
             key_def["h"] = center_full["h"]
         if center_full.get("type"):
             key_def["type"] = center_full["type"]
+
+        # Override type to "held-{corner}" for specified key positions (layer activators)
+        if i in held_colors:
+            key_def["type"] = f"held-{held_colors[i]}"
+            # Hide specified values on held keys
+            if key_def.get("s") in held_hide_set:
+                del key_def["s"]
+            if key_def.get("h") in held_hide_set:
+                del key_def["h"]
 
         # Corner positions (from corner layers) - custom keys for injection
         if tl:
@@ -503,10 +520,16 @@ def main():
 
     # Get merge settings from separate merge_config
     corner_hide = []
+    held_key_colors = {}
+    held_hide = []
     if args.merge_config:
         if args.merge_config.exists():
             merge_cfg = load_config(args.merge_config)
             corner_hide = merge_cfg.get("corner_hide", [])
+            # Convert held_key_colors keys to int (YAML may load as str)
+            raw_held = merge_cfg.get("held_key_colors", {})
+            held_key_colors = {int(k): v for k, v in raw_held.items()}
+            held_hide = merge_cfg.get("held_hide", [])
         else:
             print(f"Warning: Merge config not found: {args.merge_config}", file=sys.stderr)
 
@@ -558,6 +581,8 @@ def main():
         bl_layer=args.bl,
         br_layer=args.br,
         corner_hide=corner_hide,
+        held_key_colors=held_key_colors,
+        held_hide=held_hide,
     )
 
     # Write output
