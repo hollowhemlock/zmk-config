@@ -14,19 +14,19 @@
 
 // Layers
 // MAIN
-#define L_CMK_DH 0
-#define L_QWERTY 1
-#define L_NUM 2
-#define L_NAV 3
-#define L_FUN 4
+#define CMK_DH 0
+#define QWERTY 1
+#define NUM 2
+#define NAV 3
+#define FUN 4
 
 // UTILITIES
-#define L_UTILITY 5
+#define UTILITY 5
 
 // GAMING
-#define L_GAM 6
-#define L_GAM_NUM 7
-#define L_GAM_R_ALPHA 8
+#define GAM 6
+#define GAM_NUM 7
+#define GAM_RA 8
 
 #define XXX &none
 #define ___ &trans
@@ -119,21 +119,26 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-#define SMART_NUM &smart_num L_NUM 0
-ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
-    tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;
+#define SMART_NUM &smart_num NUM 0
+ZMK_HOLD_TAP(smart_num,
+    bindings = <&mo>, <&num_dance>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
 )
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word L_NUM>, <&sl L_NUM>;  // reverse this for sticky-num on single tap
-              tapping-term-ms = <200>; )
+ZMK_TAP_DANCE(num_dance,
+    bindings = <&num_word NUM>, <&sl NUM>;
+    // reverse this for sticky-num on single tap
+    tapping-term-ms = <200>;
+)
 
 // // TODO: maybe add semi colon to continue list.
 // &num_word {
 //     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LSHIFT COLON>;
 // };
 
-
 // This is ambiguous because it gits rid of the benefit of a quick roll with sticky key and enter. It can accidentily produce a letter.
-ZMK_HOLD_TAP(hsltk, 
+ZMK_HOLD_TAP(hsltk,
     bindings = <&sl>, <&kp>;
     flavor = "hold-preferred";
     tapping-term-ms = <150>;
@@ -148,7 +153,7 @@ ZMK_HOLD_TAP(hktsl,
 )
 
 // ZMK_TAP_DANCE(td_nav_esc,
-//     bindings = <&sl L_NAV>, <&kp ESC>;
+//     bindings = <&sl NAV>, <&kp ESC>;
 //     tapping-term-ms = <200>;
 // )
 
@@ -157,15 +162,14 @@ ZMK_HOLD_TAP(hktsl,
 // NOTE: some combination don't use ctrl but can be accessed by waiting release-after-ms
 ZMK_BEHAVIOR(sticky_long, sticky_key,
     bindings = <&kp>;
-    release-after-ms = <1000>; // Optional: release after 1 second if no key is pressed
+    release-after-ms = <1000>;
+    // Optional: release after 1 second if no key is pressed
 )
 
 // For vscode
 ZMK_MACRO(sq_Ck_stickyC,
     bindings = <&kp LC(K)>, <&sticky_long LCTRL>;
 )
-
-
 
 // TODO: clean up nones to trans if needed.
 // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
@@ -176,60 +180,60 @@ ZMK_MACRO(sq_Ck_stickyC,
       ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
 #endif
 
-ZMK_LAYER(l_colemak_dh,
-    &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J           &kp L           &kp U           &kp Y           &kp SQT 
-    &hml LSHFT A    &hml LCTRL R    &hml LALT S     &hml LGUI T     &kp G           &kp M           &hmr RGUI N     &hmr RALT E     &hmr RCTRL I    &hmr RSHFT O
-    &kp Z           &kp X           &kp C           &kp D           &kp V           &kp K           &kp H           &comma_morph    &dot_morph      &kp SLASH
-                                                    &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
+ZMK_LAYER(colemak_dh,
+    &kp Q              &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
+    &hml LSHFT A       &hml LCTRL R       &hml LALT S        &hml LGUI T        &kp G              &kp M              &hmr RGUI N        &hmr RALT E        &hmr RCTRL I       &hmr RSHFT O
+    &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &comma_morph       &dot_morph         &kp SLASH
+                                                             &sl NAV            &kp SPACE          &smart_shft        SMART_NUM
 )
 
-ZMK_LAYER(l_qwerty,
-    &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P 
-    &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &kp G           &kp H           &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI
-    &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                                    &sl L_NAV   &kp SPACE       &smart_shft     SMART_NUM
+ZMK_LAYER(qwerty,
+    &kp Q              &kp W              &kp E              &kp R              &kp T              &kp Y              &kp U              &kp I              &kp O              &kp P
+    &hml LSHFT A       &hml LCTRL S       &hml LALT D        &hml LGUI F        &kp G              &kp H              &hmr RGUI J        &hmr RALT K        &hmr RCTRL L       &hmr RSHFT SEMI
+    &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &kp CMMA           &kp DOT            &kp SLASH
+                                                             &sl NAV            &kp SPACE          &smart_shft        SMART_NUM
 )
   
-ZMK_LAYER(l_num,
-    &none           &kp N7          &kp N8          &kp N9          &none          &none          &none          &none          &none          &none
-    &kp  N0         &kp N4          &kp N5          &kp N6          &none          &none          &none          &kp K_APP      &sq_Ck_stickyC &kp SEMI
-    &none           &kp N1          &kp N2          &kp N3          &none          &none          &none          &none          &none          &none
-                                                    &none          &none          &none          &none      
+ZMK_LAYER(num,
+    &none              &kp N7             &kp N8             &kp N9             &none              &none              &none              &none              &none              &none
+    &kp  N0            &kp N4             &kp N5             &kp N6             &none              &none              &none              &kp K_APP          &sq_Ck_stickyC     &kp SEMI
+    &none              &kp N1             &kp N2             &kp N3             &none              &none              &none              &none              &none              &none
+                                                             &none              &none              &none              &none
 )
-ZMK_LAYER(l_nav,
-    &kp TAB         &none           &none           &none           &none           &kp PG_UP       &kp BSPC        &kp UP          &kp DEL         &none
-    &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI        &kp TAB         &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp RET 
-    &none           &none           &none           &kp LGUI        &none           &kp INSERT      &kp HOME        &kp TAB         &kp END         &none 
-    &none           &none           &kp K_CANCEL    &sl L_NUM
-)	
-ZMK_LAYER(l_fun,
-    &kp F12         &kp F7          &kp F8          &kp F9          &kp PSCRN       &none           &none           &none           &none           &none
-    &kp F11         &kp F4          &kp F5          &kp F6          &kp SLCK        &kp C_PP        &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
-    &kp F10         &kp F1          &kp F2          &kp F3          &kp PAUSE_BREAK &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP  
-    &sl L_NAV   &kp SPACE       &none           &none
+ZMK_LAYER(nav,
+    &kp TAB            &none              &none              &none              &none              &kp PG_UP          &kp BSPC           &kp UP             &kp DEL            &none
+    &sk LSHFT          &sk LCTRL          &sk LALT           &sk LGUI           &kp TAB            &kp PG_DN          &kp LEFT           &kp DOWN           &kp RIGHT          &kp RET
+    &none              &none              &none              &kp LGUI           &none              &kp INSERT         &kp HOME           &kp TAB            &kp END            &none
+                                                             &none              &none              &kp K_CANCEL       &sl NUM
 )
-ZMK_LAYER(l_utility,
-    &to L_QWERTY    &to L_GAM       &to L_CMK_DH  &out OUT_BLE    &out OUT_USB    &none           &none           &none           &none           &none
-    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &none           &none           &none           &none           &none 
-    &bt BT_CLR      &none           &none           &sys_reset      &bootloader          &none           &none           &none           &none           &none
-    &none           &none           &none           &none
+ZMK_LAYER(fun,
+    &kp F12            &kp F7             &kp F8             &kp F9             &kp PSCRN          &none              &none              &none              &none              &none
+    &kp F11            &kp F4             &kp F5             &kp F6             &kp SLCK           &kp C_PP           &sk RGUI           &sk RALT           &sk RCTRL          &sk RSHFT
+    &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK    &kp C_PREV         &kp C_NEXT         &kp C_MUTE         &kp C_VODN         &kp C_VOL_UP
+                                                             &sl NAV            &kp SPACE          &none              &none
+)
+ZMK_LAYER(utility,
+    &to QWERTY         &to GAM            &to CMK_DH         &out OUT_BLE       &out OUT_USB       &none              &none              &none              &none              &none
+    &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt BT_SEL 4       &none              &none              &none              &none              &none
+    &bt BT_CLR         &none              &none              &sys_reset         &bootloader        &none              &none              &none              &none              &none
+                                                             &none              &none              &none              &none
 )
 // T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
-ZMK_LAYER(l_gam,
-    &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp Y           &kp U           &kp I           &kp O           &kp P 
-    &kp LSHIFT      &kp A           &kp S           &kp D           &kp F           &kp H           &kp J           &kp K           &kp L           &kp SEMI 
-    &kp LCTRL       &kp Z           &kp X           &kp C           &kp V           &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH
-                                    &hktsl LALT L_GAM_R_ALPHA &kp SPACE   &sl L_FUN   &sl L_GAM_R_ALPHA
-)	  
-ZMK_LAYER(l_gam_num,
-    &kp LGUI        &kp N7          &kp N8          &kp N9          &kp T           &none           &none           &none           &none           &none
-    &kp N0          &kp N4          &kp N5          &kp N6          &kp G           &none           &sk RGUI        &sk RALT        &sk RCTRL       &sk RSHFT 
-    &kp ESC         &kp N1          &kp N2          &kp N3          &kp B           &none           &kp APOS        &kp GRAVE       &none           &kp CAPS
-                                                    &none           &kp SPACE       &none           &none
+ZMK_LAYER(gam,
+    &kp TAB            &kp Q              &kp W              &kp E              &kp R              &kp Y              &kp U              &kp I              &kp O              &kp P
+    &kp LSHIFT         &kp A              &kp S              &kp D              &kp F              &kp H              &kp J              &kp K              &kp L              &kp SEMI
+    &kp LCTRL          &kp Z              &kp X              &kp C              &kp V              &kp N              &kp M              &kp CMMA           &kp DOT            &kp SLASH
+                                                             &hktsl LALT GAM_RA &kp SPACE          &sl FUN            &sl GAM_RA
 )
-ZMK_LAYER(l_gam_r_alpha,
-    &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC        &kp PG_UP       &kp UP          &kp PG_DN       &kp DEL
-    &kp H           &kp J           &kp K           &kp L           &kp SEMI        &none           &kp LEFT        &kp DOWN        &kp RIGHT       &kp KP_ENTER
-    &kp N           &kp M           &kp CMMA        &kp DOT         &kp SLASH       &kp INSERT      &kp HOME        &kp TAB         &kp END         &none
-                                                    &none           &kp SPACE       &none           &none
+ZMK_LAYER(gam_num,
+    &kp LGUI           &kp N7             &kp N8             &kp N9             &kp T              &none              &none              &none              &none              &none
+    &kp N0             &kp N4             &kp N5             &kp N6             &kp G              &none              &sk RGUI           &sk RALT           &sk RCTRL          &sk RSHFT
+    &kp ESC            &kp N1             &kp N2             &kp N3             &kp B              &none              &kp APOS           &kp GRAVE          &none              &kp CAPS
+                                                             &none              &kp SPACE          &none              &none
+)
+ZMK_LAYER(gam_ra,
+    &kp Y              &kp U              &kp I              &kp O              &kp P              &kp BSPC           &kp PG_UP          &kp UP             &kp PG_DN          &kp DEL
+    &kp H              &kp J              &kp K              &kp L              &kp SEMI           &none              &kp LEFT           &kp DOWN           &kp RIGHT          &kp KP_ENTER
+    &kp N              &kp M              &kp CMMA           &kp DOT            &kp SLASH          &kp INSERT         &kp HOME           &kp TAB            &kp END            &none
+                                                             &none              &kp SPACE          &none              &none
 )
