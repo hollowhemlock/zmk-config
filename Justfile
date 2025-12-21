@@ -132,6 +132,10 @@ draw-gaming:
     yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_ra GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
+# draw standalone combos overlay (MAIN_COMBOS only)
+draw-combos-main:
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
+
 # merge layers into single multi-position diagram with 7 legend positions
 draw-merged *layers:
     #!/usr/bin/env bash
@@ -161,7 +165,10 @@ draw-merged *layers:
         --glyph-svg "{{ draw }}/base.svg" \
         --pad-x 4 --pad-y 2
     rm "{{ draw }}/merged_draw.yaml"
-    echo "Created {{ draw }}/merged.svg with 7 legend positions"
+    # Generate combos standalone and append to bottom of merged.svg
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
+    python3 "{{ draw }}/append_combos.py" "{{ draw }}/merged.svg" "{{ draw }}/combos_main_standalone.svg"
+    echo "Created {{ draw }}/merged.svg with 7 legend positions + combos"
 
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
 copy-artifacts:
