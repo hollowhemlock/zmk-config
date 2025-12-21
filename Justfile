@@ -99,6 +99,11 @@ clean-all: clean
 clean-nix:
     nix-collect-garbage --delete-old
 
+# you burned it all with a formatter? lucky you
+clean-init: clean-all
+    rm -rf modules zephyr
+    just init
+
 # draw all diagrams
 draw: draw-base draw-main draw-gaming draw-merged
 
@@ -114,7 +119,7 @@ draw-main:
     #!/usr/bin/env bash
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_main.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak","qwerty","nav","num", "fun", "uti"))]' "{{ draw }}/combos_main.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak_dh","qwerty","nav","num", "fun", "utility"))]' "{{ draw }}/combos_main.yaml"
     yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw }}/combos_main.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun utility MAIN_COMBOS >"{{ draw }}/combos_main.svg"
 
@@ -125,7 +130,7 @@ draw-gaming:
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers GAMING_COMBOS >"{{ draw }}/combos_gaming.yaml"
     yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("gam"))]' "{{ draw }}/combos_gaming.yaml"
     yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_ra GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
 # merge layers into single multi-position diagram with 7 legend positions
 draw-merged *layers:
