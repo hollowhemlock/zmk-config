@@ -116,16 +116,16 @@ draw-main:
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_main.yaml"
     yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak","qwerty","nav","num", "fun", "uti"))]' "{{ draw }}/combos_main.yaml"
     yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw }}/combos_main.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s l_colemak_dh l_nav l_num l_fun l_utility MAIN_COMBOS >"{{ draw }}/combos_main.svg"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun utility MAIN_COMBOS >"{{ draw }}/combos_main.svg"
 
 # parse & plot GAMING KEYMAP
 draw-gaming:
     #!/usr/bin/env bash
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers GAMING_COMBOS >"{{ draw }}/combos_gaming.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("l_gam"))]' "{{ draw }}/combos_gaming.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("gam"))]' "{{ draw }}/combos_gaming.yaml"
     yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s l_gam l_gam_num l_gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_r_alpha GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
 
 # merge layers into single multi-position diagram with 7 legend positions
 draw-merged *layers:
@@ -136,11 +136,11 @@ draw-merged *layers:
         --input "{{ draw }}/base.yaml" \
         --config "{{ draw }}/config.yaml" \
         --merge-config "{{ draw }}/merge_config.yaml" \
-        --center l_colemak_dh \
-        --tl l_fun \
-        --tr l_nav \
-        --bl l_num \
-        --br l_utility \
+        --center colemak_dh \
+        --tl fun \
+        --tr nav \
+        --bl num \
+        --br utility \
         --output "{{ draw }}/merged.yaml"
     # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
     yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \

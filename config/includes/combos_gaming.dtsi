@@ -15,16 +15,16 @@
 #define COMBO_HOOK require-prior-idle-ms = <100>;
 
 // Verticals
-ZMK_COMBO(n1,  &kp N1,      LT4 LM4,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n2,  &kp N2,      LT3 LM3,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n3,  &kp N3,      LT2 LM2,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n4,  &kp N4,      LT1 LM1,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n5,  &kp N5,      LT0 LM0,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n6,  &kp N6,      LM4 LB4,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n7,  &kp N7,      LM3 LB3,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n8,  &kp N8,      LM2 LB2,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n9,  &kp N9,      LM1 LB1,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(n0,  &kp N0,      LM0 LB0,     L_GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n1,  &kp N1,      LT4 LM4,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n2,  &kp N2,      LT3 LM3,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n3,  &kp N3,      LT2 LM2,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n4,  &kp N4,      LT1 LM1,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n5,  &kp N5,      LT0 LM0,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n6,  &kp N6,      LM4 LB4,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n7,  &kp N7,      LM3 LB3,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n8,  &kp N8,      LM2 LB2,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n9,  &kp N9,      LM1 LB1,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(n0,  &kp N0,      LM0 LB0,     GAM, COMBO_TERM_GAM_FAST)
 
 // Horizontal
 /* Avoid combos between these keys. They are likely activated simultaneously.
@@ -34,9 +34,9 @@ ZMK_COMBO(n0,  &kp N0,      LM0 LB0,     L_GAM, COMBO_TERM_GAM_FAST)
   │ --- --- --- --- --- │
   ╰───────╮ LH2 LH1 LH0 │
           ╰─────────────╯  */
-ZMK_COMBO(t,  &kp T,      LT1 LT0,     L_GAM, COMBO_TERM_GAM_SLOW)
-ZMK_COMBO(g,  &kp G,      LM1 LM0,     L_GAM, COMBO_TERM_GAM_SLOW)
-ZMK_COMBO(b,  &kp B,      LB1 LB0,     L_GAM, COMBO_TERM_GAM_SLOW)
+ZMK_COMBO(t,  &kp T,      LT1 LT0,     GAM, COMBO_TERM_GAM_SLOW)
+ZMK_COMBO(g,  &kp G,      LM1 LM0,     GAM, COMBO_TERM_GAM_SLOW)
+ZMK_COMBO(b,  &kp B,      LB1 LB0,     GAM, COMBO_TERM_GAM_SLOW)
 
-ZMK_COMBO(esc_gaming,  &kp ESC,      LT4 LT3,     L_GAM, COMBO_TERM_GAM_FAST)
-ZMK_COMBO(lgui,  &kp LGUI,      LB4 LB3,     L_GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(esc_gaming,  &kp ESC,      LT4 LT3,     GAM, COMBO_TERM_GAM_FAST)
+ZMK_COMBO(lgui,  &kp LGUI,      LB4 LB3,     GAM, COMBO_TERM_GAM_FAST)
