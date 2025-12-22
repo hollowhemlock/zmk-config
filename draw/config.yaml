@@ -62,14 +62,14 @@ parse_config:
     "&mkp MB5": Forward Click
 
     # Home row mods with type for coloring
-    "&hml LSHFT A": {t: A, h: Shift, type: mod}
-    "&hml LCTRL R": {t: R, h: Ctrl, type: mod}
-    "&hml LALT S": {t: S, h: Alt, type: mod}
-    "&hml LGUI T": {t: T, h: Gui, type: mod}
-    "&hmr RGUI N": {t: N, h: Gui, type: mod}
-    "&hmr RALT E": {t: E, h: Alt, type: mod}
-    "&hmr RCTRL I": {t: I, h: Ctrl, type: mod}
-    "&hmr RSHFT O": {t: O, h: Shift, type: mod}
+    "&hml LSHFT A": {t: A, h: S, type: mod}
+    "&hml LCTRL R": {t: R, h: C, type: mod}
+    "&hml LALT S": {t: S, h: A, type: mod}
+    "&hml LGUI T": {t: T, h: G, type: mod}
+    "&hmr RGUI N": {t: N, h: G, type: mod}
+    "&hmr RALT E": {t: E, h: A, type: mod}
+    "&hmr RCTRL I": {t: I, h: C, type: mod}
+    "&hmr RSHFT O": {t: O, h: S, type: mod}
     # QWERTY HRMs
     "&hml LCTRL S": {t: S, h: Ctrl, type: mod}
     "&hml LALT D": {t: D, h: Alt, type: mod}
@@ -87,6 +87,16 @@ parse_config:
     "&sk RALT": {t: Alt, h: sticky, type: mod}
     "&sk LGUI": {t: Gui, h: sticky, type: mod}
     "&sk RGUI": {t: Gui, h: sticky, type: mod}
+
+    # Layer keys with type for coloring
+    "&sl FUN": { "t": "Fun", "type": "layer" }
+    "&mo SYS": { "t": "Sys", "type": "layer" }
+    "&mo NAV": { "t": "Nav", "type": "layer" }
+    "&mo NUM": { "t": "Num", "type": "layer" }
+    "&to QWERTY": { "t": "Qwrty", "type": "layer" }
+    "&to CMK_DH": { "t": "CmkDh", "type": "layer" }
+    "&to GAM": { "t": "Gam", "type": "layer" }  
+
 
   trans_legend: { "t": "", "type": "trans" }
 
