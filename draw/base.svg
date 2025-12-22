@@ -172,6 +172,12 @@ path.combo { stroke: #7f7f7f; }
  * Center layer (--center) uses keymap-drawer's built-in classes:
  *   text.tap, text.hold, text.shifted
  */
+/* Key and combo background colors */
+rect.key, rect.combo { fill: #282828; stroke: black; }
+/* Background keys in combo layer - 30% transparent (70% opacity) */
+.layer-MAIN_COMBOS rect.key { opacity: 0.7; }
+/* Default text color */
+text { fill: #eddfb1; }
 /* Merged layer corner position colors */
 text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
 text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
