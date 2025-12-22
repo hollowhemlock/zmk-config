@@ -157,20 +157,6 @@ ZMK_HOLD_TAP(hktsl,
 //     tapping-term-ms = <200>;
 // )
 
-// TODO: optimize release after, 
-// For vscode
-// NOTE: some combination don't use ctrl but can be accessed by waiting release-after-ms
-ZMK_BEHAVIOR(sticky_long, sticky_key,
-    bindings = <&kp>;
-    release-after-ms = <1000>;
-    // Optional: release after 1 second if no key is pressed
-)
-
-// For vscode
-ZMK_MACRO(sq_Ck_stickyC,
-    bindings = <&kp LC(K)>, <&sticky_long LCTRL>;
-)
-
 // TODO: clean up nones to trans if needed.
 // TODO: hide the alt key under the gaming alpha layer so it can be held while gaming.
 // TODO: find a place for gaming functions when needed. must be fluid. maybe a combo on the thumb. can go 15 functions that way.
@@ -196,7 +182,7 @@ ZMK_LAYER(qwerty,
   
 ZMK_LAYER(num,
     &none              &kp N7             &kp N8             &kp N9             &none              &none              &none              &none              &none              &none
-    &kp  N0            &kp N4             &kp N5             &kp N6             &none              &none              &none              &kp K_APP          &sq_Ck_stickyC     &kp SEMI
+    &kp  N0            &kp N4             &kp N5             &kp N6             &none              &none              &none              &kp K_APP          &kp LC(K)     &kp SEMI
     &none              &kp N1             &kp N2             &kp N3             &none              &none              &none              &none              &none              &none
                                                              &none              &none              &none              &none
 )
