@@ -21,7 +21,7 @@
 #define FUN 4
 
 // UTILITIES
-#define UTILITY 5
+#define SYS 5
 
 // GAMING
 #define GAM 6
@@ -212,7 +212,7 @@ ZMK_LAYER(fun,
     &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK    &kp C_PREV         &kp C_NEXT         &kp C_MUTE         &kp C_VOL_DN         &kp C_VOL_UP
                                                              &sl NAV            &kp SPACE          &none              &none
 )
-ZMK_LAYER(utility,
+ZMK_LAYER(sys,
     &to QWERTY         &to GAM            &to CMK_DH         &out OUT_BLE       &out OUT_USB       &none              &none              &none              &none              &none
     &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt BT_SEL 4       &none              &none              &none              &none              &none
     &bt BT_CLR         &none              &none              &sys_reset         &bootloader        &none              &none              &none              &none              &none

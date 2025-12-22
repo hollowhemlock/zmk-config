@@ -106,7 +106,7 @@ layers:
     - ''
     - {type: held}
   nav:
-    - Tab
+    - ''
     - ''
     - ''
     - ''
@@ -120,7 +120,7 @@ layers:
     - {t: Ctrl, h: sticky, type: mod}
     - {t: Alt, h: sticky, type: mod}
     - {t: Gui, h: sticky, type: mod}
-    - Tab
+    - ''
     - PgDn
     - ←
     - ↓
@@ -175,7 +175,7 @@ layers:
     - Spc
     - {type: held}
     - {type: held}
-  utility:
+  sys:
     - {t: qwerty, h: toggle}
     - {t: gam, h: toggle}
     - {t: colemak_dh, h: toggle}
@@ -353,6 +353,30 @@ layers:
     - ''
     - ''
 combos:
+  - p: [13, 14]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [13, 14]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [13, 14]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [13, 14]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [15, 16]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [15, 16]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [15, 16]
+    k: sys
+    l: [MAIN_COMBOS]
+  - p: [15, 16]
+    k: sys
+    l: [MAIN_COMBOS]
   - p: [1, 2]
     k: '&key_repeat'
     l: [MAIN_COMBOS]

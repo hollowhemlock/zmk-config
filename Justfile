@@ -119,9 +119,9 @@ draw-main:
     #!/usr/bin/env bash
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_main.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak_dh","qwerty","nav","num", "fun", "utility"))]' "{{ draw }}/combos_main.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak_dh","qwerty","nav","num", "fun", "sys"))]' "{{ draw }}/combos_main.yaml"
     yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw }}/combos_main.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun utility MAIN_COMBOS >"{{ draw }}/combos_main.svg"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun sys MAIN_COMBOS >"{{ draw }}/combos_main.svg"
 
 # parse & plot GAMING KEYMAP
 draw-gaming:
@@ -147,7 +147,7 @@ draw-merged *layers:
         --merge-config "{{ draw }}/merge_config.yaml" \
         --center colemak_dh \
         --tl fun \
-        --tr utility \
+        --tr sys \
         --bl num \
         --br nav \
         --output "{{ draw }}/merged.yaml"

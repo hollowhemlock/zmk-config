@@ -106,7 +106,7 @@ layers:
     - ''
     - {type: held}
   nav:
-    - Tab
+    - ''
     - ''
     - ''
     - ''
@@ -120,7 +120,7 @@ layers:
     - {t: Ctrl, h: sticky, type: mod}
     - {t: Alt, h: sticky, type: mod}
     - {t: Gui, h: sticky, type: mod}
-    - Tab
+    - ''
     - PgDn
     - ←
     - ↓
@@ -175,7 +175,7 @@ layers:
     - Spc
     - {type: held}
     - {type: held}
-  utility:
+  sys:
     - {t: qwerty, h: toggle}
     - {t: gam, h: toggle}
     - {t: colemak_dh, h: toggle}

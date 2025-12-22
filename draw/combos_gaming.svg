@@ -161,7 +161,7 @@ path.combo { stroke: #7f7f7f; }
 /*
  * merge_layers.py injects corner legends with these CSS classes:
  *   tl = top-left      (--tl layer, e.g. fun)
- *   tr = top-right     (--tr layer, e.g. utility)
+ *   tr = top-right     (--tr layer, e.g. sys)
  *   bl = bottom-left   (--bl layer, e.g. num)
  *   br = bottom-right  (--br layer, e.g. nav)
  *
@@ -180,7 +180,7 @@ rect.key, rect.combo { fill: #282828; stroke: black; }
 text { fill: #eddfb1; }
 /* Merged layer corner position colors */
 text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
-text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
+text.tr, use.tr { fill: #61afef; }  /* top-right: sys - blue */
 text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
 text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
 /* Held key text with layer colors */
@@ -317,7 +317,7 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <a href="#gam_ra">
 <text x="0" y="0" class="key tap layer-activator">gam_ra</text>
-</a><text x="0" y="24" class="key hold">Alt</text>
+</a><text x="0" y="22" class="key hold">Alt</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -326,13 +326,13 @@ text.held-br { fill: #c678dd; }  /* purple */
 <g transform="translate(393, 245) rotate(-30.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">fun</text>
-<text x="0" y="24" class="key hold">sticky</text>
+<text x="0" y="22" class="key hold">sticky</text>
 </g>
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <a href="#gam_ra">
 <text x="0" y="0" class="key tap layer-activator">gam_ra</text>
-</a><text x="0" y="24" class="key hold">sticky</text>
+</a><text x="0" y="22" class="key hold">sticky</text>
 </g>
 </g>
 </g>
@@ -400,22 +400,22 @@ text.held-br { fill: #c678dd; }  /* purple */
 <g transform="translate(476, 100)" class="key mod keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">Gui</text>
-<text x="0" y="24" class="key mod hold">sticky</text>
+<text x="0" y="22" class="key mod hold">sticky</text>
 </g>
 <g transform="translate(532, 84)" class="key mod keypos-17">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">Alt</text>
-<text x="0" y="24" class="key mod hold">sticky</text>
+<text x="0" y="22" class="key mod hold">sticky</text>
 </g>
 <g transform="translate(588, 102)" class="key mod keypos-18">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">Ctrl</text>
-<text x="0" y="24" class="key mod hold">sticky</text>
+<text x="0" y="22" class="key mod hold">sticky</text>
 </g>
 <g transform="translate(644, 137)" class="key mod keypos-19">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
 <text x="0" y="0" class="key mod tap">Shift</text>
-<text x="0" y="24" class="key mod hold">sticky</text>
+<text x="0" y="22" class="key mod hold">sticky</text>
 </g>
 <g transform="translate(28, 193)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

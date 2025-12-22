@@ -230,7 +230,7 @@ draw_config:
     /*
      * merge_layers.py injects corner legends with these CSS classes:
      *   tl = top-left      (--tl layer, e.g. fun)
-     *   tr = top-right     (--tr layer, e.g. utility)
+     *   tr = top-right     (--tr layer, e.g. sys)
      *   bl = bottom-left   (--bl layer, e.g. num)
      *   br = bottom-right  (--br layer, e.g. nav)
      *
@@ -249,7 +249,7 @@ draw_config:
     text { fill: #eddfb1; }
     /* Merged layer corner position colors */
     text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
-    text.tr, use.tr { fill: #61afef; }  /* top-right: utility - blue */
+    text.tr, use.tr { fill: #61afef; }  /* top-right: sys - blue */
     text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
     text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
     /* Held key text with layer colors */
