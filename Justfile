@@ -147,9 +147,9 @@ draw-merged *layers:
         --merge-config "{{ draw }}/merge_config.yaml" \
         --center colemak_dh \
         --tl fun \
-        --tr nav \
+        --tr utility \
         --bl num \
-        --br utility \
+        --br nav \
         --output "{{ draw }}/merged.yaml"
     # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
     yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \
@@ -163,7 +163,7 @@ draw-merged *layers:
         --config "{{ draw }}/config.yaml" \
         --merge-config "{{ draw }}/merge_config.yaml" \
         --glyph-svg "{{ draw }}/base.svg" \
-        --pad-x 4 --pad-y 2
+        --pad-x 6 --pad-y 4
     rm "{{ draw }}/merged_draw.yaml"
     # Generate combos standalone and append to bottom of merged.svg
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
