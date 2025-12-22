@@ -35,12 +35,13 @@ def load_config(path: Path) -> dict:
         return yaml.safe_load(f)
 
 
-def get_key_dimensions(config: dict) -> tuple[float, float]:
-    """Extract key_w and key_h from config's draw_config section."""
+def get_draw_config(config: dict) -> tuple[float, float, float]:
+    """Extract key_w, key_h, and small_pad from config's draw_config section."""
     draw_config = config.get("draw_config", {})
     key_w = draw_config.get("key_w", 60.0)
     key_h = draw_config.get("key_h", 56.0)
-    return key_w, key_h
+    small_pad = draw_config.get("small_pad", 2.0)
+    return key_w, key_h, small_pad
 
 
 def calculate_corner_offsets(key_w: float = 60, key_h: float = 56, pad_x: float = 10, pad_y: float = 8) -> tuple[int, int]:
@@ -488,8 +489,8 @@ def main():
     parser.add_argument(
         "--pad-y",
         type=float,
-        default=8,
-        help="Padding from top/bottom key edges (default: 8)"
+        default=None,
+        help="Padding from top/bottom key edges (default: from config small_pad)"
     )
     parser.add_argument(
         "-c", "--config",
@@ -509,14 +510,17 @@ def main():
 
     args = parser.parse_args()
 
-    # Get key dimensions from keymap-drawer config
-    key_w, key_h = 60.0, 56.0
+    # Get key dimensions and small_pad from keymap-drawer config
+    key_w, key_h, small_pad = 60.0, 56.0, 2.0
     if args.config:
         if args.config.exists():
             config = load_config(args.config)
-            key_w, key_h = get_key_dimensions(config)
+            key_w, key_h, small_pad = get_draw_config(config)
         else:
             print(f"Warning: Config file not found: {args.config}, using defaults", file=sys.stderr)
+
+    # Use small_pad from config for pad_y if not explicitly set
+    pad_y = args.pad_y if args.pad_y is not None else small_pad
 
     # Get merge settings from separate merge_config
     corner_hide = []
@@ -546,7 +550,7 @@ def main():
             sys.exit(1)
 
         svg_content = svg_path.read_text()
-        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, args.pad_y, args.glyph_svg, corner_hide)
+        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide)
         svg_path.write_text(modified)
         print(f"Injected corner legends into {svg_path}")
         sys.exit(0)
