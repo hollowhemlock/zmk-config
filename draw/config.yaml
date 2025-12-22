@@ -33,8 +33,10 @@ parse_config:
     "&num_dance": { "t": "Numword", "s": "Sticky Num" }
     "&magic_shift": { "t": Magic, "h": "Shift" }
     "&smart_mouse": Smart Mouse
-    "&kp LC(K)": Ctrl K
+    "&kp LC(K)": C-k
 
+    "&hml LA(LCTRL) ESC": Esc
+    "&hml LA(LGUI) ENTER": $$mdi:keyboard-return$$
     "&hml LS(LALT)TAB": Tab
     "&hm_combo_ldr": Leader
     "&hm_combo_ldrsh": Shift+Leader
@@ -251,8 +253,8 @@ draw_config:
     rect.key, rect.combo { fill: #282828; stroke: black; }
     /* Background keys in combo layer - 30% transparent (70% opacity) */
     .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
-    /* Default text color */
-    text { fill: #eddfb1; }
+    /* Default text and glyph color */
+    text, use { fill: #eddfb1; }
     /* Merged layer corner position colors */
     text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
     text.tr, use.tr { fill: #61afef; }  /* top-right: sys - blue */
