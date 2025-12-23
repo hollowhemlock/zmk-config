@@ -30,10 +30,9 @@ parse_config:
     "&swapper": Next Win
     "&kp LS(TAB)": Prev Win
     "&dot_spc": Sentence
-    "&num_dance": { "t": "Numword", "s": "Sticky Num" }
-    "&magic_shift": { "t": Magic, "h": "Shift" }
+    
     "&smart_mouse": Smart Mouse
-    "&kp LC(K)": C-k
+    "&kp LC(K)": Ck
 
     "&hml LA(LCTRL) ESC": Esc
     "&hml LA(LGUI) ENTER": $$mdi:keyboard-return$$
@@ -62,37 +61,38 @@ parse_config:
     "&mkp MB5": Forward Click
 
     # Home row mods with type for coloring
-    "&hml LSHFT A": {t: A, h: S, type: mod}
-    "&hml LCTRL R": {t: R, h: C, type: mod}
-    "&hml LALT S": {t: S, h: A, type: mod}
-    "&hml LGUI T": {t: T, h: G, type: mod}
-    "&hmr RGUI N": {t: N, h: G, type: mod}
-    "&hmr RALT E": {t: E, h: A, type: mod}
-    "&hmr RCTRL I": {t: I, h: C, type: mod}
-    "&hmr RSHFT O": {t: O, h: S, type: mod}
+    "&hml LSHFT A": {t: A, h: ⇧, type: mod}
+    "&hml LCTRL R": {t: R, h: ⌃, type: mod}
+    "&hml LALT S": {t: S, h: ⌥, type: mod}
+    "&hml LGUI T": {t: T, h: ⌘, type: mod}
+    "&hmr RGUI N": {t: N, h: ⌘, type: mod}
+    "&hmr RALT E": {t: E, h: ⌥, type: mod}
+    "&hmr RCTRL I": {t: I, h: ⌃, type: mod}
+    "&hmr RSHFT O": {t: O, h: ⇧, type: mod}
     # QWERTY HRMs
-    "&hml LCTRL S": {t: S, h: Ctrl, type: mod}
-    "&hml LALT D": {t: D, h: Alt, type: mod}
-    "&hml LGUI F": {t: F, h: Gui, type: mod}
-    "&hmr RGUI J": {t: J, h: Gui, type: mod}
-    "&hmr RALT K": {t: K, h: Alt, type: mod}
-    "&hmr RCTRL L": {t: L, h: Ctrl, type: mod}
-    "&hmr RSHFT SEMI": {t: ";", h: Shift, type: mod}
+    "&hml LCTRL S": {t: S, h: ⌃, type: mod}
+    "&hml LALT D": {t: D, h: ⌥, type: mod}
+    "&hml LGUI F": {t: F, h: ⌘, type: mod}
+    "&hmr RGUI J": {t: J, h: ⌘, type: mod}
+    "&hmr RALT K": {t: K, h: ⌥, type: mod}
+    "&hmr RCTRL L": {t: L, h: ⌃, type: mod}
+    "&hmr RSHFT SEMI": {t: ";", h: ⇧, type: mod}
     # Sticky modifiers
-    "&sk LSHFT": {t: Shift, h: sticky, type: mod}
-    "&sk RSHFT": {t: Shift, h: sticky, type: mod}
-    "&sk LCTRL": {t: Ctrl, h: sticky, type: mod}
-    "&sk RCTRL": {t: Ctrl, h: sticky, type: mod}
-    "&sk LALT": {t: Alt, h: sticky, type: mod}
-    "&sk RALT": {t: Alt, h: sticky, type: mod}
-    "&sk LGUI": {t: Gui, h: sticky, type: mod}
-    "&sk RGUI": {t: Gui, h: sticky, type: mod}
+    "&sk LSHFT": {t: ⇧, h: sticky, type: mod}
+    "&sk RSHFT": {t: ⇧, h: sticky, type: mod}
+    "&sk LCTRL": {t: ⌃, h: sticky, type: mod}
+    "&sk RCTRL": {t: ⌃, h: sticky, type: mod}
+    "&sk LALT": {t: ⌥, h: sticky, type: mod}
+    "&sk RALT": {t: ⌥, h: sticky, type: mod}
+    "&sk LGUI": {t: ⌘, h: sticky, type: mod}
+    "&sk RGUI": {t: ⌘, h: sticky, type: mod}
 
     # Layer keys with type for coloring
     "&sl FUN": { "t": "Fun", "type": "layer" }
     "&mo SYS": { "t": "Sys", "type": "layer" }
     "&mo NAV": { "t": "Nav", "type": "layer" }
-    "&mo NUM": { "t": "Num", "type": "layer" }
+    "&num_dance": { "t": "Smart-num" }
+    "&magic_shift": { "t": Magic, "h": "⇧" }
     "&to QWERTY": { "t": "Qwrty", "type": "layer" }
     "&to CMK_DH": { "t": "CmkDh", "type": "layer" }
     "&to GAM": { "t": "Gam", "type": "layer" }  
@@ -111,14 +111,14 @@ parse_config:
 
   zmk_keycode_map:
     # custom mappings
-    LALT: Alt
-    RALT: Alt
-    LCTRL: Ctrl
-    RCTRL: Ctrl
-    LGUI: Gui
-    RGUI: Gui
-    LSHFT: Shift
-    RSHFT: Shift
+    LALT: ⌥
+    RALT: ⌥
+    LCTRL: ⌃
+    RCTRL: ⌃
+    LGUI: ⌘
+    RGUI: ⌘
+    LSHFT: ⇧
+    RSHFT: ⇧
 
     BSPC: Bspc
     DEL: Del
