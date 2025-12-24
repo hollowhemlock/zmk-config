@@ -97,7 +97,8 @@ parse_config:
     "&smart_shft": { t: ⇧, s: Caps Word }
     "&mo SYS": { t: Sys, type: layer }
     "&mo NAV": { t: Nav, type: layer }
-    "&num_dance": { t: Smart-num }
+    "&num_dance": { t: Smart-num, h: "" }
+    "&smart_num NUM 0": { t: Smart-num }
     "&magic_shift": { t: Magic, h: "⇧" }
     "&to QWERTY": { t: Qwrty, type: layer }
     "&to CMK_DH": { t: CmkDh, type: layer }

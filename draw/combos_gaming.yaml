@@ -31,10 +31,10 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - /
-    - {t: Nav, h: sticky}
+    - {t: Nav, type: layer}
     - Spc
-    - {t: ⇧, h: sticky, s: Caps Word}
-    - {t: Smart-num, h: num}
+    - {t: ⇧, s: Caps Word}
+    - Smart-num
   qwerty:
     - Q
     - W
@@ -66,10 +66,10 @@ layers:
     - CMMA
     - .
     - /
-    - {t: Nav, h: sticky}
+    - {t: Nav, type: layer}
     - Spc
-    - {t: ⇧, h: sticky, s: Caps Word}
-    - {t: Smart-num, h: num}
+    - {t: ⇧, s: Caps Word}
+    - Smart-num
   num:
     - ''
     - '7'
@@ -104,7 +104,7 @@ layers:
     - ''
     - ''
     - ''
-    - {type: held}
+    - ''
   nav:
     - ''
     - ''
@@ -171,7 +171,7 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-medium$$
     - $$mdi:volume-high$$
-    - {t: Nav, h: sticky}
+    - {t: Nav, type: layer}
     - Spc
     - ''
     - ''

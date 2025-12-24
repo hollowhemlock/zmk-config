@@ -344,10 +344,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">/</text>
 </g>
-<g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Nav</text>
-<text x="0" y="22" class="key hold">sticky</text>
+<g transform="translate(221, 221) rotate(15.0)" class="key layer keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer"/>
+<text x="0" y="0" class="key layer tap">Nav</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -356,17 +355,14 @@ text.held-br { fill: #c678dd; }  /* purple */
 <g transform="translate(393, 245) rotate(-30.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">⇧</text>
-<text x="0" y="22" class="key hold">sticky</text>
 <text x="0" y="-22" class="key shifted"><tspan style="font-size: 78%">Caps Word</tspan></text>
 </g>
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-1.2em">Smart-</tspan><tspan x="0" dy="1.2em">num</tspan>
+<tspan x="0" dy="-0.6em">Smart-</tspan><tspan x="0" dy="1.2em">num</tspan>
 </text>
-<a href="#num">
-<text x="0" y="22" class="key hold layer-activator">num</text>
-</a></g>
+</g>
 </g>
 </g>
 <g transform="translate(30, 313)" class="layer-num">
@@ -492,8 +488,8 @@ text.held-br { fill: #c678dd; }  /* purple */
 <g transform="translate(393, 245) rotate(-30.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(451, 221) rotate(-15.0)" class="key held keypos-33">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
+<g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 </g>
 </g>
@@ -752,10 +748,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <use href="#mdi:volume-high" xlink:href="#mdi:volume-high" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:volume-high"/>
 </g>
-<g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Nav</text>
-<text x="0" y="22" class="key hold">sticky</text>
+<g transform="translate(221, 221) rotate(15.0)" class="key layer keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer"/>
+<text x="0" y="0" class="key layer tap">Nav</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

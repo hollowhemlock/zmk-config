@@ -34,7 +34,7 @@ layers:
   - {t: Nav, type: layer}
   - Spc
   - {t: ⇧, s: Caps Word}
-  - {t: Smart-num, h: num}
+  - Smart-num
   qwerty:
   - Q
   - W
@@ -69,7 +69,7 @@ layers:
   - {t: Nav, type: layer}
   - Spc
   - {t: ⇧, s: Caps Word}
-  - {t: Smart-num, h: num}
+  - Smart-num
   num:
   - ''
   - '7'
@@ -104,7 +104,7 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
+  - ''
   nav:
   - ''
   - ''

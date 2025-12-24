@@ -34,4 +34,4 @@ layers:
   - {t: Nav, type: layer, tl: Nav}
   - {t: Spc, tl: Spc}
   - {t: ⇧, s: Caps Word, br: CANCEL}
-  - {t: Smart-num, h: num, br: num}
+  - {t: Smart-num, br: num}
