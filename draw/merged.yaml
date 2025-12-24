@@ -31,7 +31,7 @@ layers:
   - {t: ',', s: ;, tl: '$$mdi:volume-off$$', bl: '$$mdi:menu$$', br: Tab}
   - {t: ., s: ':', tl: '$$mdi:volume-medium$$', br: End}
   - {t: /, tl: '$$mdi:volume-high$$', bl: ;}
-  - {t: Nav, type: layer, tl: Nav}
+  - {t: Nav, type: layer-nav, tl: Nav}
   - {t: Spc, tl: Spc}
   - {t: ⇧, s: Caps Word, br: CANCEL}
-  - {t: Smart-num, br: num}
+  - {t: Smart-num, type: layer-num, br: num}

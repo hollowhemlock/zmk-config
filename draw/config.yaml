@@ -92,13 +92,13 @@ parse_config:
     "&sk RGUI": {t: ⌘, h: sticky, type: mod}
 
     # Layer keys with type for coloring
-    "&sl FUN": { t: Fun, type: layer }
-    "&sl NAV": { t: Nav, type: layer }
+    "&sl FUN": { t: Fun, type: layer-fun }
+    "&sl NAV": { t: Nav, type: layer-nav }
     "&smart_shft": { t: ⇧, s: Caps Word }
-    "&mo SYS": { t: Sys, type: layer }
-    "&mo NAV": { t: Nav, type: layer }
-    "&num_dance": { t: Smart-num, h: "" }
-    "&smart_num NUM 0": { t: Smart-num }
+    "&mo SYS": { t: Sys, type: layer-sys }
+    "&mo NAV": { t: Nav, type: layer-nav }
+    "&num_dance": { t: Smart-num, h: "", type: layer-num }
+    "&smart_num NUM 0": { t: Smart-num, type: layer-num }
     "&magic_shift": { t: Magic, h: "⇧" }
     "&to QWERTY": { t: Qwrty, type: layer }
     "&to CMK_DH": { t: CmkDh, type: layer }
@@ -276,6 +276,11 @@ draw_config:
     text.held-bl { fill: #98c379; }  /* green */
     text.held-br { fill: #c678dd; }  /* purple */
     /* Modifier keys - inherit default text color */
+    /* Layer activator keys colored to match their layer */
+    .layer-fun text, .layer-fun use { fill: #e5c07b; }  /* yellow */
+    .layer-sys text, .layer-sys use { fill: #61afef; }  /* blue */
+    .layer-num text, .layer-num use { fill: #98c379; }  /* green */
+    .layer-nav text, .layer-nav use { fill: #c678dd; }  /* purple */
   shrink_wide_legends: 7
   style_layer_activators: true
   glyph_tap_size: 14

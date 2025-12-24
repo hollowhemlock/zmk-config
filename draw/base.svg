@@ -210,6 +210,11 @@ text.held-tr { fill: #61afef; }  /* blue */
 text.held-bl { fill: #98c379; }  /* green */
 text.held-br { fill: #c678dd; }  /* purple */
 /* Modifier keys - inherit default text color */
+/* Layer activator keys colored to match their layer */
+.layer-fun text, .layer-fun use { fill: #e5c07b; }  /* yellow */
+.layer-sys text, .layer-sys use { fill: #61afef; }  /* blue */
+.layer-num text, .layer-num use { fill: #98c379; }  /* green */
+.layer-nav text, .layer-nav use { fill: #c678dd; }  /* purple */
 </style>
 <g transform="translate(30, 0)" class="layer-colemak_dh">
 <text x="0" y="15" class="label" id="colemak_dh">colemak_dh</text>
@@ -344,9 +349,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">/</text>
 </g>
-<g transform="translate(221, 221) rotate(15.0)" class="key layer keypos-30">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer"/>
-<text x="0" y="0" class="key layer tap">Nav</text>
+<g transform="translate(221, 221) rotate(15.0)" class="key layer-nav keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-nav"/>
+<text x="0" y="0" class="key layer-nav tap">Nav</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -357,19 +362,19 @@ text.held-br { fill: #c678dd; }  /* purple */
 <text x="0" y="0" class="key tap">⇧</text>
 <text x="0" y="-22" class="key shifted"><tspan style="font-size: 78%">Caps Word</tspan></text>
 </g>
-<g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
+<g transform="translate(451, 221) rotate(-15.0)" class="key layer-num keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-num"/>
+<text x="0" y="0" class="key layer-num tap">
 <tspan x="0" dy="-0.6em">Smart-</tspan><tspan x="0" dy="1.2em">num</tspan>
 </text>
 </g>
-<g class="combo layer combopos-0">
-<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer"/>
-<text x="224" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-0">
+<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="224" y="104" class="combo layer-sys tap">Sys</text>
 </g>
-<g class="combo layer combopos-1">
-<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer"/>
-<text x="448" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-1">
+<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="448" y="104" class="combo layer-sys tap">Sys</text>
 </g>
 <g class="combo combopos-2">
 <rect rx="6" ry="6" x="98" y="24" width="28" height="26" class="combo"/>
@@ -419,9 +424,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="546" y="136" width="28" height="26" class="combo"/>
 <text x="560" y="149" class="combo tap">]</text>
 </g>
-<g class="combo layer combopos-13">
-<rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo layer"/>
-<text x="422" y="233" class="combo layer tap">Fun</text>
+<g class="combo layer-fun combopos-13">
+<rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo layer-fun"/>
+<text x="422" y="233" class="combo layer-fun tap">Fun</text>
 </g>
 <g class="combo combopos-14">
 <rect rx="6" ry="6" x="70" y="61" width="28" height="26" class="combo"/>
@@ -620,9 +625,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">/</text>
 </g>
-<g transform="translate(221, 221) rotate(15.0)" class="key layer keypos-30">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer"/>
-<text x="0" y="0" class="key layer tap">Nav</text>
+<g transform="translate(221, 221) rotate(15.0)" class="key layer-nav keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-nav"/>
+<text x="0" y="0" class="key layer-nav tap">Nav</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -633,19 +638,19 @@ text.held-br { fill: #c678dd; }  /* purple */
 <text x="0" y="0" class="key tap">⇧</text>
 <text x="0" y="-22" class="key shifted"><tspan style="font-size: 78%">Caps Word</tspan></text>
 </g>
-<g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
+<g transform="translate(451, 221) rotate(-15.0)" class="key layer-num keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-num"/>
+<text x="0" y="0" class="key layer-num tap">
 <tspan x="0" dy="-0.6em">Smart-</tspan><tspan x="0" dy="1.2em">num</tspan>
 </text>
 </g>
-<g class="combo layer combopos-0">
-<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer"/>
-<text x="224" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-0">
+<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="224" y="104" class="combo layer-sys tap">Sys</text>
 </g>
-<g class="combo layer combopos-1">
-<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer"/>
-<text x="448" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-1">
+<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="448" y="104" class="combo layer-sys tap">Sys</text>
 </g>
 <g class="combo combopos-2">
 <rect rx="6" ry="6" x="98" y="24" width="28" height="26" class="combo"/>
@@ -695,9 +700,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="546" y="136" width="28" height="26" class="combo"/>
 <text x="560" y="149" class="combo tap">]</text>
 </g>
-<g class="combo layer combopos-13">
-<rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo layer"/>
-<text x="422" y="233" class="combo layer tap">Fun</text>
+<g class="combo layer-fun combopos-13">
+<rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo layer-fun"/>
+<text x="422" y="233" class="combo layer-fun tap">Fun</text>
 </g>
 <g class="combo combopos-14">
 <rect rx="6" ry="6" x="70" y="61" width="28" height="26" class="combo"/>
@@ -891,13 +896,13 @@ text.held-br { fill: #c678dd; }  /* purple */
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g class="combo layer combopos-0">
-<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer"/>
-<text x="224" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-0">
+<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="224" y="104" class="combo layer-sys tap">Sys</text>
 </g>
-<g class="combo layer combopos-1">
-<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer"/>
-<text x="448" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-1">
+<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="448" y="104" class="combo layer-sys tap">Sys</text>
 </g>
 <g class="combo combopos-2">
 <rect rx="6" ry="6" x="98" y="24" width="28" height="26" class="combo"/>
@@ -1144,13 +1149,13 @@ text.held-br { fill: #c678dd; }  /* purple */
 <text x="0" y="0" class="key tap layer-activator">num</text>
 </a><text x="0" y="22" class="key hold">sticky</text>
 </g>
-<g class="combo layer combopos-0">
-<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer"/>
-<text x="224" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-0">
+<rect rx="6" ry="6" x="210" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="224" y="104" class="combo layer-sys tap">Sys</text>
 </g>
-<g class="combo layer combopos-1">
-<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer"/>
-<text x="448" y="104" class="combo layer tap">Sys</text>
+<g class="combo layer-sys combopos-1">
+<rect rx="6" ry="6" x="434" y="91" width="28" height="26" class="combo layer-sys"/>
+<text x="448" y="104" class="combo layer-sys tap">Sys</text>
 </g>
 <g class="combo combopos-2">
 <rect rx="6" ry="6" x="98" y="24" width="28" height="26" class="combo"/>
@@ -1198,9 +1203,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="546" y="136" width="28" height="26" class="combo"/>
 <text x="560" y="149" class="combo tap">]}</text>
 </g>
-<g class="combo layer combopos-13">
-<rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo layer"/>
-<text x="422" y="233" class="combo layer tap">Fun</text>
+<g class="combo layer-fun combopos-13">
+<rect rx="6" ry="6" x="408" y="220" width="28" height="26" class="combo layer-fun"/>
+<text x="422" y="233" class="combo layer-fun tap">Fun</text>
 </g>
 <g class="combo combopos-14">
 <rect rx="6" ry="6" x="70" y="61" width="28" height="26" class="combo"/>
@@ -1390,9 +1395,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <use href="#mdi:volume-high" xlink:href="#mdi:volume-high" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:volume-high"/>
 </g>
-<g transform="translate(221, 221) rotate(15.0)" class="key layer keypos-30">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer"/>
-<text x="0" y="0" class="key layer tap">Nav</text>
+<g transform="translate(221, 221) rotate(15.0)" class="key layer-nav keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-nav"/>
+<text x="0" y="0" class="key layer-nav tap">Nav</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1659,9 +1664,9 @@ text.held-br { fill: #c678dd; }  /* purple */
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Spc</text>
 </g>
-<g transform="translate(393, 245) rotate(-30.0)" class="key layer keypos-32">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer"/>
-<text x="0" y="0" class="key layer tap">Fun</text>
+<g transform="translate(393, 245) rotate(-30.0)" class="key layer-fun keypos-32">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-fun"/>
+<text x="0" y="0" class="key layer-fun tap">Fun</text>
 </g>
 <g transform="translate(451, 221) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
