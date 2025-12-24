@@ -181,12 +181,12 @@ path.combo { stroke: #7f7f7f; }
 }
 /* === COLOR SCHEME === */
 :root {
-  --color-bg: #282828;
-  --color-text: #eddfb1;
-  --color-fun: #e5c07b;   /* yellow - function layer (tl) */
-  --color-sys: #61afef;   /* blue - system layer (tr) */
-  --color-num: #98c379;   /* green - number layer (bl) */
-  --color-nav: #c678dd;   /* purple - nav layer (br) */
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-fun: #b45309;   /* orange - function layer (tl) */
+  --color-sys: #1d4ed8;   /* blue - system layer (tr) */
+  --color-num: #15803d;   /* green - number layer (bl) */
+  --color-nav: #7e22ce;   /* purple - nav layer (br) */
 }
 /*
  * merge_layers.py injects corner legends with these CSS classes:
@@ -606,12 +606,12 @@ path.combo { stroke: #7f7f7f; }
 }
 /* === COLOR SCHEME === */
 :root {
-  --color-bg: #282828;
-  --color-text: #eddfb1;
-  --color-fun: #e5c07b;   /* yellow - function layer (tl) */
-  --color-sys: #61afef;   /* blue - system layer (tr) */
-  --color-num: #98c379;   /* green - number layer (bl) */
-  --color-nav: #c678dd;   /* purple - nav layer (br) */
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-fun: #b45309;   /* orange - function layer (tl) */
+  --color-sys: #1d4ed8;   /* blue - system layer (tr) */
+  --color-num: #15803d;   /* green - number layer (bl) */
+  --color-nav: #7e22ce;   /* purple - nav layer (br) */
 }
 /*
  * merge_layers.py injects corner legends with these CSS classes:
