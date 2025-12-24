@@ -179,42 +179,30 @@ text.trans { fill: #7e8184; }
 path.combo { stroke: #7f7f7f; }
 
 }
+/* === COLOR SCHEME === */
+:root {
+  --color-bg: #282828;
+  --color-text: #eddfb1;
+  --color-fun: #e5c07b;   /* yellow - function layer (tl) */
+  --color-sys: #61afef;   /* blue - system layer (tr) */
+  --color-num: #98c379;   /* green - number layer (bl) */
+  --color-nav: #c678dd;   /* purple - nav layer (br) */
+}
 /*
  * merge_layers.py injects corner legends with these CSS classes:
- *   tl = top-left      (--tl layer, e.g. fun)
- *   tr = top-right     (--tr layer, e.g. sys)
- *   bl = bottom-left   (--bl layer, e.g. num)
- *   br = bottom-right  (--br layer, e.g. nav)
- *
- * Element types:
- *   text.tl   - text labels
- *   use.tl    - glyph icons (references defs section)
- *
- * Center layer (--center) uses keymap-drawer's built-in classes:
- *   text.tap, text.hold, text.shifted
+ *   tl = top-left (fun), tr = top-right (sys)
+ *   bl = bottom-left (num), br = bottom-right (nav)
  */
-/* Key and combo background colors */
-rect.key, rect.combo { fill: #282828; stroke: black; }
-/* Background keys in combo layer - 30% transparent (70% opacity) */
+/* Key and combo background */
+rect.key, rect.combo { fill: var(--color-bg); stroke: black; }
 .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
-/* Default text and glyph color */
-text, use { fill: #eddfb1; }
-/* Merged layer corner position colors */
-text.tl, use.tl { fill: #e5c07b; }  /* top-left: function - yellow */
-text.tr, use.tr { fill: #61afef; }  /* top-right: sys - blue */
-text.bl, use.bl { fill: #98c379; }  /* bottom-left: numbers - green */
-text.br, use.br { fill: #c678dd; }  /* bottom-right: nav - purple */
-/* Held key text with layer colors */
-text.held-tl { fill: #e5c07b; }  /* yellow */
-text.held-tr { fill: #61afef; }  /* blue */
-text.held-bl { fill: #98c379; }  /* green */
-text.held-br { fill: #c678dd; }  /* purple */
-/* Modifier keys - inherit default text color */
-/* Layer activator keys colored to match their layer */
-.layer-fun text, .layer-fun use { fill: #e5c07b; }  /* yellow */
-.layer-sys text, .layer-sys use { fill: #61afef; }  /* blue */
-.layer-num text, .layer-num use { fill: #98c379; }  /* green */
-.layer-nav text, .layer-nav use { fill: #c678dd; }  /* purple */
+/* Default text color */
+text, use { fill: var(--color-text); }
+/* Layer corner colors */
+text.tl, use.tl, text.held-tl, .layer-fun text, .layer-fun use { fill: var(--color-fun); }
+text.tr, use.tr, text.held-tr, .layer-sys text, .layer-sys use { fill: var(--color-sys); }
+text.bl, use.bl, text.held-bl, .layer-num text, .layer-num use { fill: var(--color-num); }
+text.br, use.br, text.held-br, .layer-nav text, .layer-nav use { fill: var(--color-nav); }
 </style>
 <g transform="translate(30, 0)" class="layer-colemak_dh">
 <text x="0" y="15" class="label" id="colemak_dh">colemak_dh</text>
