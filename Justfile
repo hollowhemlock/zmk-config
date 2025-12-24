@@ -106,6 +106,7 @@ clean-init: clean-all
 
 # draw all diagrams
 draw: draw-base draw-main draw-gaming draw-merged
+    code {{ draw }}/merged.svg || true
 
 # parse & plot keymap
 draw-base:
