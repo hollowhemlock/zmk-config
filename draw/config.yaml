@@ -33,10 +33,10 @@ parse_config:
     "&swapper": Next Win
     "&kp LS(TAB)": Prev Win
     # NAV layer combos share positions with main layer combos: ( ) [ ]
-    "&kp LT": "( <"
-    "&kp GT": ") >"
-    "&kp LBRC": "[ {"
-    "&kp RBRC": "] }"
+    "&kp LT": "(<"
+    "&kp GT": ")>"
+    "&kp LBRC": "[{"
+    "&kp RBRC": "]}"
     "&dot_spc": Sentence
     
     "&smart_mouse": Smart Mouse

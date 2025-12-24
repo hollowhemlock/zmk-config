@@ -352,10 +352,10 @@ combos:
   k: {t: ), h: AltGr+⌃}
   l: [colemak_dh, qwerty, num]
 - p: [16, 17]
-  k: ( <
+  k: (<
   l: [nav]
 - p: [17, 18]
-  k: ) >
+  k: )>
   l: [nav]
 - p: [26, 27]
   k: '['
@@ -364,10 +364,10 @@ combos:
   k: ']'
   l: [colemak_dh, qwerty, num]
 - p: [26, 27]
-  k: '[ {'
+  k: '[{'
   l: [nav]
 - p: [27, 28]
-  k: '] }'
+  k: ']}'
   l: [nav]
 - p: [32, 33]
   k: {t: Fun, type: layer}
