@@ -11,16 +11,16 @@ layers:
     - U
     - Y
     - ''''
-    - {t: A, h: Shift, type: mod}
-    - {t: R, h: Ctrl, type: mod}
-    - {t: S, h: Alt, type: mod}
-    - {t: T, h: Gui, type: mod}
+    - {t: A, h: ⇧, type: mod}
+    - {t: R, h: ⌃, type: mod}
+    - {t: S, h: ⌥, type: mod}
+    - {t: T, h: ⌘, type: mod}
     - G
     - M
-    - {t: N, h: Gui, type: mod}
-    - {t: E, h: Alt, type: mod}
-    - {t: I, h: Ctrl, type: mod}
-    - {t: O, h: Shift, type: mod}
+    - {t: N, h: ⌘, type: mod}
+    - {t: E, h: ⌥, type: mod}
+    - {t: I, h: ⌃, type: mod}
+    - {t: O, h: ⇧, type: mod}
     - Z
     - X
     - C
@@ -31,10 +31,10 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - /
-    - {t: nav, h: sticky}
+    - {t: Nav, h: sticky}
     - Spc
-    - {t: Shift, h: sticky, s: Caps Word}
-    - {t: Numword, h: num, s: Sticky Num}
+    - {t: ⇧, h: sticky, s: Caps Word}
+    - {t: Smart-num, h: num}
   qwerty:
     - Q
     - W
@@ -46,16 +46,16 @@ layers:
     - I
     - O
     - P
-    - {t: A, h: Shift, type: mod}
-    - {t: S, h: Ctrl, type: mod}
-    - {t: D, h: Alt, type: mod}
-    - {t: F, h: Gui, type: mod}
+    - {t: A, h: ⇧, type: mod}
+    - {t: S, h: ⌃, type: mod}
+    - {t: D, h: ⌥, type: mod}
+    - {t: F, h: ⌘, type: mod}
     - G
     - H
-    - {t: J, h: Gui, type: mod}
-    - {t: K, h: Alt, type: mod}
-    - {t: L, h: Ctrl, type: mod}
-    - {t: ;, h: Shift, type: mod}
+    - {t: J, h: ⌘, type: mod}
+    - {t: K, h: ⌥, type: mod}
+    - {t: L, h: ⌃, type: mod}
+    - {t: ;, h: ⇧, type: mod}
     - Z
     - X
     - C
@@ -66,10 +66,10 @@ layers:
     - CMMA
     - .
     - /
-    - {t: nav, h: sticky}
+    - {t: Nav, h: sticky}
     - Spc
-    - {t: Shift, h: sticky, s: Caps Word}
-    - {t: Numword, h: num, s: Sticky Num}
+    - {t: ⇧, h: sticky, s: Caps Word}
+    - {t: Smart-num, h: num}
   num:
     - ''
     - '7'
@@ -87,20 +87,20 @@ layers:
     - '6'
     - ''
     - ''
-    - ''
-    - APP
-    - '&sq_Ck_stickyC'
-    - ;
+    - {t: ⌘, h: sticky, type: mod}
+    - {t: ⌥, h: sticky, type: mod}
+    - {t: ⌃, h: sticky, type: mod}
+    - {t: ⇧, h: sticky, type: mod}
     - ''
     - '1'
     - '2'
     - '3'
     - ''
     - ''
+    - Ck
+    - $$mdi:menu$$
     - ''
-    - ''
-    - ''
-    - ''
+    - ;
     - ''
     - ''
     - ''
@@ -116,27 +116,27 @@ layers:
     - ↑
     - Del
     - ''
-    - {t: Shift, h: sticky, type: mod}
-    - {t: Ctrl, h: sticky, type: mod}
-    - {t: Alt, h: sticky, type: mod}
-    - {t: Gui, h: sticky, type: mod}
+    - {t: ⇧, h: sticky, type: mod}
+    - {t: ⌃, h: sticky, type: mod}
+    - {t: ⌥, h: sticky, type: mod}
+    - {t: ⌘, h: sticky, type: mod}
     - ''
     - PgDn
     - ←
     - ↓
     - →
-    - Enter
+    - $$mdi:keyboard-return$$
     - ''
     - ''
     - ''
-    - Gui
+    - Ck
     - ''
     - INSERT
     - Home
     - Tab
     - End
     - ''
-    - {type: held}
+    - ''
     - ''
     - CANCEL
     - {t: num, h: sticky}
@@ -157,10 +157,10 @@ layers:
     - F6
     - SLCK
     - $$mdi:play-pause$$
-    - {t: Gui, h: sticky, type: mod}
-    - {t: Alt, h: sticky, type: mod}
-    - {t: Ctrl, h: sticky, type: mod}
-    - {t: Shift, h: sticky, type: mod}
+    - {t: ⌘, h: sticky, type: mod}
+    - {t: ⌥, h: sticky, type: mod}
+    - {t: ⌃, h: sticky, type: mod}
+    - {t: ⇧, h: sticky, type: mod}
     - F10
     - F1
     - F2
@@ -171,16 +171,16 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-medium$$
     - $$mdi:volume-high$$
-    - {t: nav, h: sticky}
+    - {t: Nav, h: sticky}
     - Spc
-    - {type: held}
-    - {type: held}
+    - ''
+    - ''
   sys:
-    - {t: qwerty, h: toggle}
-    - {t: gam, h: toggle}
-    - {t: colemak_dh, h: toggle}
-    - OUT BLE
-    - OUT USB
+    - {t: Qwrty, type: layer}
+    - {t: Gam, type: layer}
+    - {t: CmkDh, type: layer}
+    - $$mdi:bluetooth$$
+    - $$mdi:usb$$
     - ''
     - ''
     - ''
@@ -189,18 +189,18 @@ layers:
     - BT1
     - BT2
     - BT3
-    - {t: BT4, type: held}
-    - {t: BT, h: '4', type: held}
+    - BT4
+    - BT5
     - ''
     - ''
     - ''
     - ''
     - ''
-    - BT CLR
+    - $$mdi:bluetooth-off$$
     - ''
     - ''
-    - Reset
-    - Boot
+    - $$mdi:restart$$
+    - $$mdi:progress-download$$
     - ''
     - ''
     - ''
@@ -231,7 +231,7 @@ layers:
     - K
     - L
     - ;
-    - Ctrl
+    - ⌃
     - Z
     - X
     - C
@@ -241,12 +241,12 @@ layers:
     - CMMA
     - .
     - /
-    - {t: gam_ra, h: Alt}
+    - {t: gam_ra, h: ⌥}
     - Spc
-    - {t: fun, h: sticky}
+    - {t: Fun, type: layer}
     - {t: gam_ra, h: sticky}
   gam_num:
-    - Gui
+    - ⌘
     - '7'
     - '8'
     - '9'
@@ -262,10 +262,10 @@ layers:
     - '6'
     - G
     - ''
-    - {t: Gui, h: sticky, type: mod}
-    - {t: Alt, h: sticky, type: mod}
-    - {t: Ctrl, h: sticky, type: mod}
-    - {t: Shift, h: sticky, type: mod}
+    - {t: ⌘, h: sticky, type: mod}
+    - {t: ⌥, h: sticky, type: mod}
+    - {t: ⌃, h: sticky, type: mod}
+    - {t: ⇧, h: sticky, type: mod}
     - Esc
     - '1'
     - '2'
@@ -361,5 +361,5 @@ combos:
     k: Esc
     l: [GAMING_COMBOS]
   - p: [20, 21]
-    k: Gui
+    k: ⌘
     l: [GAMING_COMBOS]

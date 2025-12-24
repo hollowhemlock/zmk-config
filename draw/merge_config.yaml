@@ -4,7 +4,10 @@
 # Values to hide from corner positions (tl/tr/bl/br)
 # These will show in center layer but be blank in corners
 corner_hide:
-  - Shift
-  - Ctrl
-  - Alt
-  - Gui
+  - ⇧
+  - ⌃
+  - ⌥
+  - ⌘
+  - Nav
+  - Spc
+  - sticky

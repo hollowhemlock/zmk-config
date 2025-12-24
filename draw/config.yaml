@@ -39,10 +39,10 @@ parse_config:
     "&hml LS(LALT)TAB": Tab
     "&hm_combo_ldr": Leader
     "&hm_combo_ldrsh": Shift+Leader
-    "&hm_combo_lpar": { "t": "(", "right": "<" }
-    "&hm_combo_rpar": { "t": ")", "right": ">" }
-    "&kp LBKT": { "t": "[", "right": "{" }
-    "&kp RBKT": { "t": "]", "right": "}" }
+    "&hmr RA(RGUI) LPAR": { t: "(", h: ">" }
+    "&hmr RA(RCTRL) RPAR": { t: ")", h: ">" }
+    "&kp LBKT": { t: "[", h: "}" }
+    "&kp RBKT": { t: "]", h: "}" }
 
     "&mmv MOVE_UP": Mouse ↑
     "&mmv MOVE_DOWN": Mouse ↓
@@ -88,26 +88,26 @@ parse_config:
     "&sk RGUI": {t: ⌘, h: sticky, type: mod}
 
     # Layer keys with type for coloring
-    "&sl FUN": { "t": "Fun", "type": "layer" }
-    "&mo SYS": { "t": "Sys", "type": "layer" }
-    "&mo NAV": { "t": "Nav", "type": "layer" }
-    "&num_dance": { "t": "Smart-num" }
-    "&magic_shift": { "t": Magic, "h": "⇧" }
-    "&to QWERTY": { "t": "Qwrty", "type": "layer" }
-    "&to CMK_DH": { "t": "CmkDh", "type": "layer" }
-    "&to GAM": { "t": "Gam", "type": "layer" }  
+    "&sl FUN": { t: Fun, type: layer }
+    "&mo SYS": { t: Sys, type: layer }
+    "&mo NAV": { t: Nav, type: layer }
+    "&num_dance": { t: Smart-num }
+    "&magic_shift": { t: Magic, h: "⇧" }
+    "&to QWERTY": { t: Qwrty, type: layer }
+    "&to CMK_DH": { t: CmkDh, type: layer }
+    "&to GAM": { t: Gam, type: layer }  
 
-
-  trans_legend: { "t": "", "type": "trans" }
+  trans_legend: { t: "", type: trans }
 
   zmk_combos:
     combo_cut: { align: bottom, o: 0.15 }
     combo_ldrsh: { align: top, o: 1.35 }
-
-    combo_lt: { hidden: true }
-    combo_gt: { hidden: true }
-    combo_lbrc: { hidden: true }
-    combo_rbrc: { hidden: true }
+    combo_rbrc: { "t": "]", "r": "}" } 
+    combo_lbrc: { "t": "[", "r": "{" }
+    # combo_lt: { hidden: true }
+    # combo_gt: { hidden: true }
+    # combo_lbrc: { hidden: true }
+    # combo_rbrc: { hidden: true }
 
   zmk_keycode_map:
     # custom mappings
