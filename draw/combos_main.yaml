@@ -462,52 +462,52 @@ combos:
     k: Paste
     l: [MAIN_COMBOS]
   - p: [16, 17]
-    k: {t: (, h: '>'}
+    k: {t: (, h: AltGr+⌘}
     l: [MAIN_COMBOS]
   - p: [16, 17]
-    k: {t: (, h: '>'}
+    k: {t: (, h: AltGr+⌘}
     l: [MAIN_COMBOS]
   - p: [16, 17]
-    k: {t: (, h: '>'}
+    k: {t: (, h: AltGr+⌘}
     l: [MAIN_COMBOS]
   - p: [17, 18]
-    k: {t: ), h: '>'}
+    k: {t: ), h: AltGr+⌃}
     l: [MAIN_COMBOS]
   - p: [17, 18]
-    k: {t: ), h: '>'}
+    k: {t: ), h: AltGr+⌃}
     l: [MAIN_COMBOS]
   - p: [17, 18]
-    k: {t: ), h: '>'}
+    k: {t: ), h: AltGr+⌃}
     l: [MAIN_COMBOS]
   - p: [16, 17]
-    k: <
+    k: ( <
     l: [MAIN_COMBOS]
   - p: [17, 18]
-    k: '>'
+    k: ) >
     l: [MAIN_COMBOS]
   - p: [26, 27]
-    k: {t: '[', h: '}'}
+    k: '['
     l: [MAIN_COMBOS]
   - p: [26, 27]
-    k: {t: '[', h: '}'}
+    k: '['
     l: [MAIN_COMBOS]
   - p: [26, 27]
-    k: {t: '[', h: '}'}
+    k: '['
     l: [MAIN_COMBOS]
   - p: [27, 28]
-    k: {t: ']', h: '}'}
+    k: ']'
     l: [MAIN_COMBOS]
   - p: [27, 28]
-    k: {t: ']', h: '}'}
+    k: ']'
     l: [MAIN_COMBOS]
   - p: [27, 28]
-    k: {t: ']', h: '}'}
+    k: ']'
     l: [MAIN_COMBOS]
   - p: [26, 27]
-    k: '{'
+    k: '[ {'
     l: [MAIN_COMBOS]
   - p: [27, 28]
-    k: '}'
+    k: '] }'
     l: [MAIN_COMBOS]
   - p: [32, 33]
     k: {t: Fun, type: layer}

@@ -41,6 +41,23 @@ keymap draw keymap.yaml > keymap.svg
 - Configure drawing styles and layouts
 - Support for complex keyboard layouts
 
+### Customizing Combo Labels in config.yaml
+
+**To override a combo's displayed key label**, use `raw_binding_map` with the ZMK binding:
+```yaml
+raw_binding_map:
+  "&kp LT": "( <"
+  "&kp GT": ") >"
+```
+
+**The `zmk-combos` section** is for display properties (alignment, offset), NOT key legends:
+```yaml
+zmk-combos:
+  combo_cut: { align: bottom, o: 0.15 }  # position adjustments only
+```
+
+This is useful for combos that share the same key positions across different layers (e.g., `( )` on main layers vs `< >` on NAV layer).
+
 ### Unique Features
 - Automated GitHub workflow for generating keymap visualizations
 - Support for multiple icon sources
