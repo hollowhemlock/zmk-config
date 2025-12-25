@@ -97,6 +97,7 @@ def inject_corner_legends(
     pad_y: float = 8,
     glyph_svg_path: Path | None = None,
     corner_hide: list[str] | None = None,
+    colors: dict[str, str] | None = None,
 ) -> str:
     """Inject corner legend text elements into SVG.
 
@@ -110,12 +111,20 @@ def inject_corner_legends(
         pad_x, pad_y: Padding from key edges for corner text
         glyph_svg_path: Path to SVG with glyph definitions (e.g., base.svg)
         corner_hide: List of values to make transparent in corners
+        colors: Dict with keys 'fun', 'sys', 'num', 'nav' for layer colors
 
     Returns:
         Modified SVG content with corner legends injected
     """
     # Set of values to hide (make transparent) in corners
     hide_set = set(corner_hide) if corner_hide else set()
+
+    # Default colors if not provided
+    c = colors or {}
+    color_fun = c.get("fun", "#e5c07b")
+    color_sys = c.get("sys", "#61afef")
+    color_num = c.get("num", "#98c379")
+    color_nav = c.get("nav", "#c678dd")
     # Load merged YAML to get corner values
     with open(merged_yaml_path) as f:
         merged = yaml.safe_load(f)
@@ -141,39 +150,49 @@ def inject_corner_legends(
     y_offset_bottom = y_offset + 1  # Adjustment for text-after-edge baseline
 
     # CSS for corner legend styling
-    corner_css = '''
+    corner_css = f'''
 /* Corner legend styles for merged view */
-text.tl {
+text.tl {{
     text-anchor: start;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: #e5c07b;  /* yellow */
-}
-text.tr {
+    fill: {color_fun};
+}}
+text.tr {{
     text-anchor: end;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: #61afef;  /* blue */
-}
-text.bl {
+    fill: {color_sys};
+}}
+text.bl {{
     text-anchor: start;
     dominant-baseline: text-after-edge;
     font-size: 11px;
-    fill: #98c379;  /* green */
-}
-text.br {
+    fill: {color_num};
+}}
+text.br {{
     text-anchor: end;
     dominant-baseline: text-after-edge;
     font-size: 11px;
-    fill: #c678dd;  /* purple */
-}
+    fill: {color_nav};
+}}
 /* Corner glyph/icon colors */
-use.tl, .tl path { fill: #e5c07b; }  /* yellow */
-use.tr, .tr path { fill: #61afef; }  /* blue */
-use.bl, .bl path { fill: #98c379; }  /* green */
-use.br, .br path { fill: #c678dd; }  /* purple */
+use.tl, .tl path {{ fill: {color_fun}; }}
+use.tr, .tr path {{ fill: {color_sys}; }}
+use.bl, .bl path {{ fill: {color_num}; }}
+use.br, .br path {{ fill: {color_nav}; }}
+/* Layer activator keys */
+.layer-fun text, .layer-fun use {{ fill: {color_fun}; }}
+.layer-sys text, .layer-sys use {{ fill: {color_sys}; }}
+.layer-num text, .layer-num use {{ fill: {color_num}; }}
+.layer-nav text, .layer-nav use {{ fill: {color_nav}; }}
+/* Held key text */
+text.held-tl {{ fill: {color_fun}; }}
+text.held-tr {{ fill: {color_sys}; }}
+text.held-bl {{ fill: {color_num}; }}
+text.held-br {{ fill: {color_nav}; }}
 /* Hidden corner elements (e.g., modifiers) */
-.hidden { fill: transparent !important; }
+.hidden {{ fill: transparent !important; }}
 '''
 
     # Insert CSS before closing </style>
@@ -235,7 +254,7 @@ use.br, .br path { fill: #c678dd; }  /* purple */
                 else:
                     gx, gy = x - half, y - half
                 # Map corner class to fill color
-                fill_colors = {"tl": "#e5c07b", "tr": "#61afef", "bl": "#98c379", "br": "#c678dd"}
+                fill_colors = {"tl": color_fun, "tr": color_sys, "bl": color_num, "br": color_nav}
                 fill = fill_colors.get(css_class, "#000")
                 return f'<use href="#{glyph_id}" xlink:href="#{glyph_id}" x="{gx}" y="{gy}" height="{glyph_size}" width="{glyph_size}" fill="{fill}" class="glyph {css_class}{extra_class}"/>'
             else:
@@ -507,6 +526,22 @@ def main():
         type=Path,
         help="Path to merge_config.yaml with corner_hide settings"
     )
+    parser.add_argument(
+        "--color-fun",
+        help="Color for function layer (tl corner), e.g. '#e5c07b'"
+    )
+    parser.add_argument(
+        "--color-sys",
+        help="Color for system layer (tr corner), e.g. '#61afef'"
+    )
+    parser.add_argument(
+        "--color-num",
+        help="Color for number layer (bl corner), e.g. '#98c379'"
+    )
+    parser.add_argument(
+        "--color-nav",
+        help="Color for nav layer (br corner), e.g. '#c678dd'"
+    )
 
     args = parser.parse_args()
 
@@ -550,7 +585,17 @@ def main():
             sys.exit(1)
 
         svg_content = svg_path.read_text()
-        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide)
+        # Build colors dict from command line args
+        colors = {}
+        if args.color_fun:
+            colors["fun"] = args.color_fun
+        if args.color_sys:
+            colors["sys"] = args.color_sys
+        if args.color_num:
+            colors["num"] = args.color_num
+        if args.color_nav:
+            colors["nav"] = args.color_nav
+        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide, colors if colors else None)
         svg_path.write_text(modified)
         print(f"Injected corner legends into {svg_path}")
         sys.exit(0)
