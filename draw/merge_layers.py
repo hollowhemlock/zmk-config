@@ -121,8 +121,8 @@ def inject_corner_legends(
 
     # Default colors if not provided
     c = colors or {}
-    color_bg = c.get("bg", "#282828")
-    color_text = c.get("text", "#eddfb1")
+    color_bg = c.get("bg", "#ffffff")
+    color_text = c.get("text", "#000000")
     color_tl = c.get("tl", "#e5c07b")
     color_tr = c.get("tr", "#61afef")
     color_bl = c.get("bl", "#98c379")
@@ -532,28 +532,10 @@ def main():
         help="Path to merge_config.yaml with corner_hide settings"
     )
     parser.add_argument(
-        "--color-bg",
-        help="Background color for keys, e.g. '#ffffff'"
-    )
-    parser.add_argument(
-        "--color-text",
-        help="Default text color, e.g. '#1a1a1a'"
-    )
-    parser.add_argument(
-        "--color-tl",
-        help="Color for top-left corner layer, e.g. '#e5c07b'"
-    )
-    parser.add_argument(
-        "--color-tr",
-        help="Color for top-right corner layer, e.g. '#61afef'"
-    )
-    parser.add_argument(
-        "--color-bl",
-        help="Color for bottom-left corner layer, e.g. '#98c379'"
-    )
-    parser.add_argument(
-        "--color-br",
-        help="Color for bottom-right corner layer, e.g. '#c678dd'"
+        "--colors",
+        nargs='+',
+        metavar="COLOR",
+        help="Layer colors (4-6 hex values): tl tr bl br [text] [bg]. Defaults: text='#000000' bg='#ffffff'"
     )
 
     args = parser.parse_args()
@@ -599,20 +581,23 @@ def main():
 
         svg_content = svg_path.read_text()
         # Build colors dict from command line args
-        colors = {}
-        if args.color_bg:
-            colors["bg"] = args.color_bg
-        if args.color_text:
-            colors["text"] = args.color_text
-        if args.color_tl:
-            colors["tl"] = args.color_tl
-        if args.color_tr:
-            colors["tr"] = args.color_tr
-        if args.color_bl:
-            colors["bl"] = args.color_bl
-        if args.color_br:
-            colors["br"] = args.color_br
-        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide, colors if colors else None)
+        colors = None
+        if args.colors:
+            num_colors = len(args.colors)
+            if num_colors < 4 or num_colors > 6:
+                print(f"Error: --colors requires 4-6 values, got {num_colors}", file=sys.stderr)
+                sys.exit(1)
+
+            # Parse colors: tl tr bl br [text] [bg]
+            colors = {
+                "tl": args.colors[0],
+                "tr": args.colors[1],
+                "bl": args.colors[2],
+                "br": args.colors[3],
+                "text": args.colors[4] if num_colors > 4 else "#000000",
+                "bg": args.colors[5] if num_colors > 5 else "#ffffff",
+            }
+        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide, colors)
         svg_path.write_text(modified)
         print(f"Injected corner legends into {svg_path}")
         sys.exit(0)

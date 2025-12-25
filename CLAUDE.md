@@ -78,18 +78,15 @@ This is useful for combos that share the same key positions across different lay
 
 ### Color Scheme Configuration
 
-Colors for the merged diagram are defined in the **Justfile** (not config.yaml):
+Colors for the merged diagram are defined in the **Justfile** as a single array:
 
 ```just
-color_bg := "#ffffff"      # key background
-color_text := "#1a1a1a"    # default text
-color_tl := "#16C47F"      # top-left corner (fun layer)
-color_tr := "#FFD65A"      # top-right corner (sys layer)
-color_bl := "#FF9D23"      # bottom-left corner (num layer)
-color_br := "#F93827"      # bottom-right corner (nav layer)
+# Colors: tl tr bl br [text] [bg]
+# Last two optional (defaults: text=#000000, bg=#ffffff)
+colors := '"#16C47F" "#FFD65A" "#FF9D23" "#F93827" "#1a1a1a" "#ffffff"'
 ```
 
-These are passed to `merge_layers.py` which injects CSS into the SVG. Position-based naming (tl/tr/bl/br) is used instead of layer names for flexibility.
+Order: top-left, top-right, bottom-left, bottom-right, text (optional), background (optional). These are passed to `merge_layers.py` which injects CSS into the SVG. Position-based naming (tl/tr/bl/br) is used instead of layer names for flexibility.
 
 **To color layer activator keys** (Nav, Fun, Sys, Smart-num), set `type: layer-XX` in config.yaml's `raw_binding_map`:
 ```yaml
