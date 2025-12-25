@@ -165,7 +165,7 @@ draw-merged *layers:
         "{{ draw }}/merged.yaml" > "{{ draw }}/merged_draw.yaml"
     # keymap-drawer renders t/s/h
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged_draw.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
-    # Call 2: Post-process SVG to inject corner legends from full merged.yaml
+    # Call 2: Post-process SVG to inject corner legends and colors
     python "{{ draw }}/merge_layers.py" \
         --inject-corners "{{ draw }}/merged.svg" \
         --merged-yaml "{{ draw }}/merged.yaml" \

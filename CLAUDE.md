@@ -76,6 +76,29 @@ This is useful for combos that share the same key positions across different lay
 - `combos_gaming.yaml`, `combos_gaming.svg` - gaming layer combos
 - `merged.yaml`, `merged.svg` - merged multi-position diagram
 
+### Color Scheme Configuration
+
+Colors for the merged diagram are defined in the **Justfile** (not config.yaml):
+
+```just
+color_bg := "#ffffff"      # key background
+color_text := "#1a1a1a"    # default text
+color_tl := "#16C47F"      # top-left corner (fun layer)
+color_tr := "#FFD65A"      # top-right corner (sys layer)
+color_bl := "#FF9D23"      # bottom-left corner (num layer)
+color_br := "#F93827"      # bottom-right corner (nav layer)
+```
+
+These are passed to `merge_layers.py` which injects CSS into the SVG. Position-based naming (tl/tr/bl/br) is used instead of layer names for flexibility.
+
+**To color layer activator keys** (Nav, Fun, Sys, Smart-num), set `type: layer-XX` in config.yaml's `raw_binding_map`:
+```yaml
+"&sl FUN": { t: Fun, type: layer-tl }
+"&mo SYS": { t: Sys, type: layer-tr }
+"&smart_num NUM 0": { t: Smart-num, type: layer-bl }
+"&sl NAV": { t: Nav, type: layer-br }
+```
+
 ### References
 https://github.com/urob/zmk-config
 https://github.com/urob/zmk-helpers

@@ -5,9 +5,7 @@ parse_config:
     #include <zmk-helpers/key-labels/34.h>
     #define CONFIG_WIRELESS
   raw_binding_map:
-    # Lay
-
-
+    # sys keys
     "&sys_reset": $$mdi:restart$$
     "&bootloader": $$mdi:progress-download$$
     "&caps_word": Caps Word
@@ -21,6 +19,7 @@ parse_config:
     "&out OUT_BLE": $$mdi:bluetooth$$
     "&out OUT_USB": $$mdi:usb$$
 
+    # combo keys
     "&kp LC(INS)": Copy
     "&kp LC(X)": Cut
     "&kp LS(INS)": Paste
@@ -32,6 +31,7 @@ parse_config:
 
     "&swapper": Next Win
     "&kp LS(TAB)": Prev Win
+
     # NAV layer combos share positions with main layer combos: ( ) [ ]
     "&kp LT": "(<"
     "&kp GT": ")>"
@@ -64,7 +64,7 @@ parse_config:
     "&mkp MB4": Back Click
     "&mkp MB5": Forward Click
 
-    # Home row mods with type for coloring
+    # Home row mods with type for editing
     "&hml LSHFT A": {t: A, h: ⇧, type: mod}
     "&hml LCTRL R": {t: R, h: ⌃, type: mod}
     "&hml LALT S": {t: S, h: ⌥, type: mod}
@@ -91,18 +91,20 @@ parse_config:
     "&sk LGUI": {t: ⌘, h: sticky, type: mod}
     "&sk RGUI": {t: ⌘, h: sticky, type: mod}
 
-    # Layer keys with type for coloring
+    "&smart_shft": { t: ⇧, s: Caps Word }
+    "&magic_shift": { t: Magic, h: "⇧" }
+
+    "&to QWERTY": { t: Qwrty, type: layer }
+    "&to CMK_DH": { t: CmkDh, type: layer }
+    "&to GAM": { t: Gam, type: layer }  
+    
+    # Layer activator keys - type: layer-XX matches colors from Justfile (tl/tr/bl/br)
     "&sl FUN": { t: Fun, type: layer-tl }
     "&sl NAV": { t: Nav, type: layer-br }
-    "&smart_shft": { t: ⇧, s: Caps Word }
     "&mo SYS": { t: Sys, type: layer-tr }
     "&mo NAV": { t: Nav, type: layer-br }
     "&num_dance": { t: Smart-num, h: "", type: layer-bl }
     "&smart_num NUM 0": { t: Smart-num, type: layer-bl }
-    "&magic_shift": { t: Magic, h: "⇧" }
-    "&to QWERTY": { t: Qwrty, type: layer }
-    "&to CMK_DH": { t: CmkDh, type: layer }
-    "&to GAM": { t: Gam, type: layer }  
 
   trans_legend: { t: "", type: trans }
 

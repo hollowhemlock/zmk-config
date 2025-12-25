@@ -111,7 +111,7 @@ def inject_corner_legends(
         pad_x, pad_y: Padding from key edges for corner text
         glyph_svg_path: Path to SVG with glyph definitions (e.g., base.svg)
         corner_hide: List of values to make transparent in corners
-        colors: Dict with keys 'fun', 'sys', 'num', 'nav' for layer colors
+        colors: Dict with keys 'bg', 'text', 'tl', 'tr', 'bl', 'br' for colors
 
     Returns:
         Modified SVG content with corner legends injected
