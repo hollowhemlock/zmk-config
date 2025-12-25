@@ -140,10 +140,10 @@ draw-combos-main:
 # Colors for merged diagram (edit these to change color scheme)
 color_bg := "#ffffff"
 color_text := "#1a1a1a"
-color_fun := "#16C47F"
-color_sys := "#FFD65A"
-color_num := "#FF9D23"
-color_nav := "#F93827"
+color_tl := "#16C47F"   # top-left: fun layer
+color_tr := "#FFD65A"   # top-right: sys layer
+color_bl := "#FF9D23"   # bottom-left: num layer
+color_br := "#F93827"   # bottom-right: nav layer
 
 # merge layers into single multi-position diagram with 7 legend positions
 draw-merged *layers:
@@ -175,10 +175,10 @@ draw-merged *layers:
         --pad-x 6 --pad-y 4 \
         --color-bg "{{ color_bg }}" \
         --color-text "{{ color_text }}" \
-        --color-fun "{{ color_fun }}" \
-        --color-sys "{{ color_sys }}" \
-        --color-num "{{ color_num }}" \
-        --color-nav "{{ color_nav }}"
+        --color-tl "{{ color_tl }}" \
+        --color-tr "{{ color_tr }}" \
+        --color-bl "{{ color_bl }}" \
+        --color-br "{{ color_br }}"
     rm "{{ draw }}/merged_draw.yaml"
     # Generate combos standalone and append to bottom of merged.svg
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"

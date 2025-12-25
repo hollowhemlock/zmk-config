@@ -92,13 +92,13 @@ parse_config:
     "&sk RGUI": {t: ⌘, h: sticky, type: mod}
 
     # Layer keys with type for coloring
-    "&sl FUN": { t: Fun, type: layer-fun }
-    "&sl NAV": { t: Nav, type: layer-nav }
+    "&sl FUN": { t: Fun, type: layer-tl }
+    "&sl NAV": { t: Nav, type: layer-br }
     "&smart_shft": { t: ⇧, s: Caps Word }
-    "&mo SYS": { t: Sys, type: layer-sys }
-    "&mo NAV": { t: Nav, type: layer-nav }
-    "&num_dance": { t: Smart-num, h: "", type: layer-num }
-    "&smart_num NUM 0": { t: Smart-num, type: layer-num }
+    "&mo SYS": { t: Sys, type: layer-tr }
+    "&mo NAV": { t: Nav, type: layer-br }
+    "&num_dance": { t: Smart-num, h: "", type: layer-bl }
+    "&smart_num NUM 0": { t: Smart-num, type: layer-bl }
     "&magic_shift": { t: Magic, h: "⇧" }
     "&to QWERTY": { t: Qwrty, type: layer }
     "&to CMK_DH": { t: CmkDh, type: layer }

@@ -123,10 +123,10 @@ def inject_corner_legends(
     c = colors or {}
     color_bg = c.get("bg", "#282828")
     color_text = c.get("text", "#eddfb1")
-    color_fun = c.get("fun", "#e5c07b")
-    color_sys = c.get("sys", "#61afef")
-    color_num = c.get("num", "#98c379")
-    color_nav = c.get("nav", "#c678dd")
+    color_tl = c.get("tl", "#e5c07b")
+    color_tr = c.get("tr", "#61afef")
+    color_bl = c.get("bl", "#98c379")
+    color_br = c.get("br", "#c678dd")
     # Load merged YAML to get corner values
     with open(merged_yaml_path) as f:
         merged = yaml.safe_load(f)
@@ -161,41 +161,41 @@ text.tl {{
     text-anchor: start;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: {color_fun};
+    fill: {color_tl};
 }}
 text.tr {{
     text-anchor: end;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: {color_sys};
+    fill: {color_tr};
 }}
 text.bl {{
     text-anchor: start;
     dominant-baseline: text-after-edge;
     font-size: 11px;
-    fill: {color_num};
+    fill: {color_bl};
 }}
 text.br {{
     text-anchor: end;
     dominant-baseline: text-after-edge;
     font-size: 11px;
-    fill: {color_nav};
+    fill: {color_br};
 }}
 /* Corner glyph/icon colors */
-use.tl, .tl path {{ fill: {color_fun}; }}
-use.tr, .tr path {{ fill: {color_sys}; }}
-use.bl, .bl path {{ fill: {color_num}; }}
-use.br, .br path {{ fill: {color_nav}; }}
+use.tl, .tl path {{ fill: {color_tl}; }}
+use.tr, .tr path {{ fill: {color_tr}; }}
+use.bl, .bl path {{ fill: {color_bl}; }}
+use.br, .br path {{ fill: {color_br}; }}
 /* Layer activator keys */
-.layer-fun text, .layer-fun use {{ fill: {color_fun}; }}
-.layer-sys text, .layer-sys use {{ fill: {color_sys}; }}
-.layer-num text, .layer-num use {{ fill: {color_num}; }}
-.layer-nav text, .layer-nav use {{ fill: {color_nav}; }}
+.layer-tl text, .layer-tl use {{ fill: {color_tl}; }}
+.layer-tr text, .layer-tr use {{ fill: {color_tr}; }}
+.layer-bl text, .layer-bl use {{ fill: {color_bl}; }}
+.layer-br text, .layer-br use {{ fill: {color_br}; }}
 /* Held key text */
-text.held-tl {{ fill: {color_fun}; }}
-text.held-tr {{ fill: {color_sys}; }}
-text.held-bl {{ fill: {color_num}; }}
-text.held-br {{ fill: {color_nav}; }}
+text.held-tl {{ fill: {color_tl}; }}
+text.held-tr {{ fill: {color_tr}; }}
+text.held-bl {{ fill: {color_bl}; }}
+text.held-br {{ fill: {color_br}; }}
 /* Hidden corner elements (e.g., modifiers) */
 .hidden {{ fill: transparent !important; }}
 '''
@@ -259,7 +259,7 @@ text.held-br {{ fill: {color_nav}; }}
                 else:
                     gx, gy = x - half, y - half
                 # Map corner class to fill color
-                fill_colors = {"tl": color_fun, "tr": color_sys, "bl": color_num, "br": color_nav}
+                fill_colors = {"tl": color_tl, "tr": color_tr, "bl": color_bl, "br": color_br}
                 fill = fill_colors.get(css_class, "#000")
                 return f'<use href="#{glyph_id}" xlink:href="#{glyph_id}" x="{gx}" y="{gy}" height="{glyph_size}" width="{glyph_size}" fill="{fill}" class="glyph {css_class}{extra_class}"/>'
             else:
@@ -540,20 +540,20 @@ def main():
         help="Default text color, e.g. '#1a1a1a'"
     )
     parser.add_argument(
-        "--color-fun",
-        help="Color for function layer (tl corner), e.g. '#e5c07b'"
+        "--color-tl",
+        help="Color for top-left corner layer, e.g. '#e5c07b'"
     )
     parser.add_argument(
-        "--color-sys",
-        help="Color for system layer (tr corner), e.g. '#61afef'"
+        "--color-tr",
+        help="Color for top-right corner layer, e.g. '#61afef'"
     )
     parser.add_argument(
-        "--color-num",
-        help="Color for number layer (bl corner), e.g. '#98c379'"
+        "--color-bl",
+        help="Color for bottom-left corner layer, e.g. '#98c379'"
     )
     parser.add_argument(
-        "--color-nav",
-        help="Color for nav layer (br corner), e.g. '#c678dd'"
+        "--color-br",
+        help="Color for bottom-right corner layer, e.g. '#c678dd'"
     )
 
     args = parser.parse_args()
@@ -604,14 +604,14 @@ def main():
             colors["bg"] = args.color_bg
         if args.color_text:
             colors["text"] = args.color_text
-        if args.color_fun:
-            colors["fun"] = args.color_fun
-        if args.color_sys:
-            colors["sys"] = args.color_sys
-        if args.color_num:
-            colors["num"] = args.color_num
-        if args.color_nav:
-            colors["nav"] = args.color_nav
+        if args.color_tl:
+            colors["tl"] = args.color_tl
+        if args.color_tr:
+            colors["tr"] = args.color_tr
+        if args.color_bl:
+            colors["bl"] = args.color_bl
+        if args.color_br:
+            colors["br"] = args.color_br
         modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide, colors if colors else None)
         svg_path.write_text(modified)
         print(f"Injected corner legends into {svg_path}")
