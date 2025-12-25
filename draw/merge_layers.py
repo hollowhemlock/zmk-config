@@ -121,6 +121,8 @@ def inject_corner_legends(
 
     # Default colors if not provided
     c = colors or {}
+    color_bg = c.get("bg", "#282828")
+    color_text = c.get("text", "#eddfb1")
     color_fun = c.get("fun", "#e5c07b")
     color_sys = c.get("sys", "#61afef")
     color_num = c.get("num", "#98c379")
@@ -151,6 +153,9 @@ def inject_corner_legends(
 
     # CSS for corner legend styling
     corner_css = f'''
+/* Base colors */
+rect.key, rect.combo {{ fill: {color_bg}; stroke: black; }}
+text, use {{ fill: {color_text}; }}
 /* Corner legend styles for merged view */
 text.tl {{
     text-anchor: start;
@@ -527,6 +532,14 @@ def main():
         help="Path to merge_config.yaml with corner_hide settings"
     )
     parser.add_argument(
+        "--color-bg",
+        help="Background color for keys, e.g. '#ffffff'"
+    )
+    parser.add_argument(
+        "--color-text",
+        help="Default text color, e.g. '#1a1a1a'"
+    )
+    parser.add_argument(
         "--color-fun",
         help="Color for function layer (tl corner), e.g. '#e5c07b'"
     )
@@ -587,6 +600,10 @@ def main():
         svg_content = svg_path.read_text()
         # Build colors dict from command line args
         colors = {}
+        if args.color_bg:
+            colors["bg"] = args.color_bg
+        if args.color_text:
+            colors["text"] = args.color_text
         if args.color_fun:
             colors["fun"] = args.color_fun
         if args.color_sys:

@@ -245,12 +245,8 @@ draw_config:
     rx: 4
     ry: 4
   svg_extra_style: |
-    /* Key and combo background */
-    rect.key, rect.combo { fill: #ffffff; stroke: black; }
+    /* Base styles - colors injected by merge_layers.py from Justfile */
     .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
-    /* Default text color */
-    text, use { fill: #1a1a1a; }
-    /* Layer colors are injected by merge_layers.py from Justfile variables */
   shrink_wide_legends: 7
   style_layer_activators: true
   glyph_tap_size: 14

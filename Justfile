@@ -137,7 +137,9 @@ draw-gaming:
 draw-combos-main:
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
 
-# Layer colors for merged diagram (edit these to change color scheme)
+# Colors for merged diagram (edit these to change color scheme)
+color_bg := "#ffffff"
+color_text := "#1a1a1a"
 color_fun := "#16C47F"
 color_sys := "#FFD65A"
 color_num := "#FF9D23"
@@ -171,6 +173,8 @@ draw-merged *layers:
         --merge-config "{{ draw }}/merge_config.yaml" \
         --glyph-svg "{{ draw }}/base.svg" \
         --pad-x 6 --pad-y 4 \
+        --color-bg "{{ color_bg }}" \
+        --color-text "{{ color_text }}" \
         --color-fun "{{ color_fun }}" \
         --color-sys "{{ color_sys }}" \
         --color-num "{{ color_num }}" \
