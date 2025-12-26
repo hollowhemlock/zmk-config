@@ -1,0 +1,17 @@
+# merge_layers.py configuration
+# Separate from config.yaml because keymap-drawer doesn't allow extra keys
+
+# Size in pixels for corner glyph icons (e.g., mdi icons)
+corner_glyph_size: 11
+
+# Values to hide from corner positions (tl/tr/bl/br)
+# These will show in center layer but be blank in corners
+corner_hide:
+  - ⇧
+  - ⌃
+  - ⌥
+  - ⌘
+  - Nav
+  - Spc
+  - sticky
+  - num

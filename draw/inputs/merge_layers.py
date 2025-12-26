@@ -2,14 +2,18 @@
 """
 Merge multiple keymap layers into a single layer with multi-position legends.
 
+Two modes of operation:
+1. Merge mode: Combine layers into merged.yaml with corner positions
+2. Inject mode: Post-process SVG to add corner legends and apply theme colors
+
 Each key can show up to 7 positions:
 - center (t): primary layer tap value
 - top-center (s): primary layer shifted value
 - bottom-center (h): primary layer hold value (e.g., home row mods)
-- top-left (tl): corner layer 1
-- top-right (tr): corner layer 2
-- bottom-left (bl): corner layer 3
-- bottom-right (br): corner layer 4
+- top-left (tl): corner layer 1 (e.g., fun)
+- top-right (tr): corner layer 2 (e.g., sys)
+- bottom-left (bl): corner layer 3 (e.g., num)
+- bottom-right (br): corner layer 4 (e.g., nav)
 
 Position layout:
 +---------------------------+
@@ -19,6 +23,14 @@ Position layout:
 |                           |
 |  bl           h        br |
 +---------------------------+
+
+Color arguments (--colors): tl tr bl br [text] [bg] [combo_bg]
+  - tl/tr/bl/br: Corner legend colors (required)
+  - text: Text color (default: #000000)
+  - bg: Key background color (default: #ffffff)
+  - combo_bg: Combo key background (default: same as bg)
+
+See themes.yaml for predefined color schemes.
 """
 
 import argparse
@@ -91,8 +103,15 @@ def parse_glyph_ref(value: str) -> tuple[str, str] | None:
 class CornerInjector:
     """Injects corner legend elements into SVG key groups.
 
-    This class holds all state needed for corner injection, avoiding
-    the overhead of recreating closures for each regex match.
+    Used as a regex substitution callback. Holds pre-computed state to avoid
+    recreating closures for each key match. Supports both text and glyph icons.
+
+    Attributes:
+        layer_keys: List of key definitions from merged.yaml
+        x_offset, y_offset: Pixel offsets from key center to corners
+        hide_set: Values to render as transparent (e.g., modifier symbols)
+        fill_colors: Dict mapping corner positions (tl/tr/bl/br) to hex colors
+        glyph_size: Size in pixels for corner glyph icons
     """
 
     # Glyph position offsets by corner class
@@ -189,10 +208,10 @@ def inject_corner_legends(
     colors: dict[str, str] | None = None,
     glyph_size: int = 11,
 ) -> str:
-    """Inject corner legend text elements into SVG.
+    """Inject corner legend text elements and theme colors into SVG.
 
-    Reads tl/tr/bl/br values from merged.yaml and adds them as new
-    text elements at corner positions within each key group.
+    Reads tl/tr/bl/br values from merged.yaml and adds them as text/glyph
+    elements at corner positions. Also injects CSS for theme colors.
 
     Args:
         svg_content: The SVG content from keymap-drawer
@@ -201,7 +220,8 @@ def inject_corner_legends(
         pad_x, pad_y: Padding from key edges for corner text
         glyph_svg_path: Path to SVG with glyph definitions (e.g., base.svg)
         corner_hide: List of values to make transparent in corners
-        colors: Dict with keys 'bg', 'text', 'tl', 'tr', 'bl', 'br' for colors
+        colors: Theme colors dict with keys: tl, tr, bl, br (corner colors),
+            text, bg (key background), combo_bg (combo key background)
         glyph_size: Size in pixels for corner glyph icons
 
     Returns:

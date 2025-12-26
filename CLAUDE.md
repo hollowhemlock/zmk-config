@@ -63,32 +63,56 @@ This is useful for combos that share the same key positions across different lay
 - Support for multiple icon sources
 - Flexible parsing of different keyboard firmware formats
 
-### draw/ Directory Files
+### draw/ Directory Structure
 
-**Source files (edit directly):**
-- `config.yaml` - keymap-drawer configuration
-- `merge_config.yaml` - merge_layers.py settings (corner_hide, held_keys)
-- `merge_layers.py` - script to merge layers into multi-position diagram
-
-**Generated files (do not edit directly):**
-- `base.yaml`, `base.svg` - parsed from config/base.keymap
-- `combos_main.yaml`, `combos_main.svg` - main layer combos
-- `combos_gaming.yaml`, `combos_gaming.svg` - gaming layer combos
-- `merged.yaml`, `merged.svg` - merged multi-position diagram
-
-### Color Scheme Configuration
-
-Colors for the merged diagram are defined in the **Justfile** as a single array:
-
-```just
-# Colors: tl tr bl br [text] [bg]
-# Last two optional (defaults: text=#000000, bg=#ffffff)
-colors := '"#16C47F" "#FFD65A" "#FF9D23" "#F93827" "#1a1a1a" "#ffffff"'
+```
+draw/
+├── inputs/                  # Source files (edit directly)
+│   ├── config.yaml          # keymap-drawer configuration
+│   ├── merge_config.yaml    # merge_layers.py settings (corner_hide, corner_glyph_size)
+│   ├── merge_layers.py      # script to merge layers into multi-position diagram
+│   ├── append_combos.py     # script to append combo diagrams to merged SVGs
+│   └── themes.yaml          # color themes for merged diagram generation
+└── outputs/
+    ├── keymap_drawer/       # keymap-drawer generated (do not edit)
+    │   ├── base.yaml, base.svg
+    │   ├── combos_main.yaml, combos_main.svg, combos_main_standalone.svg
+    │   └── combos_gaming.yaml, combos_gaming.svg
+    └── merged/              # merge_layers.py generated (do not edit)
+        ├── merged.yaml, merged.svg (default theme)
+        └── merged_<theme>.svg (light, dark, primary, etc.)
 ```
 
-Order: top-left, top-right, bottom-left, bottom-right, text (optional), background (optional). These are passed to `merge_layers.py` which injects CSS into the SVG. Position-based naming (tl/tr/bl/br) is used instead of layer names for flexibility.
+### Theme System
 
-**To color layer activator keys** (Nav, Fun, Sys, Smart-num), set `type: layer-XX` in config.yaml's `raw_binding_map`:
+Themes are defined in `draw/inputs/themes.yaml`. Each theme specifies colors and dark_mode setting:
+
+```yaml
+themes:
+  light:
+    dark_mode: false
+    colors:
+      tl: "#16C47F"     # Green (top-left / fun layer)
+      tr: "#2563EB"     # Blue (top-right / sys layer)
+      bl: "#FF9D23"     # Orange (bottom-left / num layer)
+      br: "#F93827"     # Red (bottom-right / nav layer)
+      text: "#1a1a1a"
+      bg: "#ffffff"
+      combo_bg: "#ffffff"  # Optional, defaults to bg
+```
+
+**Commands:**
+```bash
+just draw-merged              # Generate default theme (merged.svg)
+just draw-merged-all          # Generate all themes (merged_<name>.svg)
+just _draw-merged-theme dark  # Generate specific theme
+```
+
+**Color order for merge_layers.py:** `tl tr bl br [text] [bg] [combo_bg]`
+
+Position-based naming (tl/tr/bl/br) allows flexibility - corners match layer positions in the merged diagram.
+
+**To color layer activator keys** (Nav, Fun, Sys, Smart-num), set `type: layer-XX` in `draw/inputs/config.yaml`'s `raw_binding_map`:
 ```yaml
 "&sl FUN": { t: Fun, type: layer-tl }
 "&mo SYS": { t: Sys, type: layer-tr }

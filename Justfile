@@ -5,6 +5,9 @@ config := absolute_path('config')
 build := absolute_path('.build')
 out := absolute_path('firmware')
 draw := absolute_path('draw')
+draw_in := draw / "inputs"
+draw_kd := draw / "outputs/keymap_drawer"
+draw_merged := draw / "outputs/merged"
 artifacts := absolute_path('artifacts')
 
 # parse build.yaml and filter targets by expression
@@ -61,7 +64,7 @@ release expr *west_args:
     just copy-artifacts
 
     echo "Adding diagram files to git..."
-    git add {{ draw }}/*.{yaml,svg} 2>/dev/null || true
+    git add {{ draw_kd }}/*.{yaml,svg} {{ draw_merged }}/*.{yaml,svg} 2>/dev/null || true
 
 autocommit $model:
     #!/usr/bin/env bash
@@ -106,43 +109,46 @@ clean-init: clean-all
 
 # draw all diagrams
 draw: draw-base draw-main draw-gaming draw-merged
-    code {{ draw }}/merged.svg || true
+    code {{ draw_merged }}/merged.svg || true
 
 # parse & plot keymap
 draw-base:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos Gaming >"{{ draw }}/base.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg"
+    keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos Gaming >"{{ draw_kd }}/base.yaml"
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/base.yaml" -k "ferris/sweep" >"{{ draw_kd }}/base.svg"
 
 # parse & plot MAIN KEYMAP
 draw-main:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/combos_main.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak_dh","qwerty","nav","num", "fun", "sys"))]' "{{ draw }}/combos_main.yaml"
-    yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw }}/combos_main.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun sys MAIN_COMBOS >"{{ draw }}/combos_main.svg"
+    keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw_kd }}/combos_main.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak_dh","qwerty","nav","num", "fun", "sys"))]' "{{ draw_kd }}/combos_main.yaml"
+    yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw_kd }}/combos_main.yaml"
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun sys MAIN_COMBOS >"{{ draw_kd }}/combos_main.svg"
 
 # parse & plot GAMING KEYMAP
 draw-gaming:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers GAMING_COMBOS >"{{ draw }}/combos_gaming.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("gam"))]' "{{ draw }}/combos_gaming.yaml"
-    yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw }}/combos_gaming.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_ra GAMING_COMBOS >"{{ draw }}/combos_gaming.svg"
+    keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers GAMING_COMBOS >"{{ draw_kd }}/combos_gaming.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("gam"))]' "{{ draw_kd }}/combos_gaming.yaml"
+    yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw_kd }}/combos_gaming.yaml"
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_ra GAMING_COMBOS >"{{ draw_kd }}/combos_gaming.svg"
 
 # draw standalone combos overlay (MAIN_COMBOS only)
 draw-combos-main:
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw_kd }}/combos_main_standalone.svg"
 
-# Generate merged diagram for a specific theme (helper)
+# --- Theme-based merged diagram generation ---
+# Themes defined in draw/inputs/themes.yaml with colors: tl tr bl br text bg combo_bg
+
+# Generate merged diagram for a specific theme (internal helper)
 _draw-merged-theme $theme_name:
     #!/usr/bin/env bash
     set -euo pipefail
-    theme_yaml="{{ draw }}/themes.yaml"
-    config_yaml="{{ draw }}/config.yaml"
+    theme_yaml="{{ draw_in }}/themes.yaml"
+    config_yaml="{{ draw_in }}/config.yaml"
 
     # Extract theme settings from themes.yaml
     dark=$(yq -r ".themes.${theme_name}.dark_mode // false" "$theme_yaml")
@@ -154,49 +160,49 @@ _draw-merged-theme $theme_name:
     bg=$(yq -r ".themes.${theme_name}.colors.bg // \"#ffffff\"" "$theme_yaml")
     combo_bg=$(yq -r ".themes.${theme_name}.colors.combo_bg // \"$bg\"" "$theme_yaml")
 
-    output_svg="{{ draw }}/merged_${theme_name}.svg"
+    output_svg="{{ draw_merged }}/merged_${theme_name}.svg"
 
     # Call 1: Merge layers into YAML (shared across themes, only run once)
-    if [[ ! -f "{{ draw }}/merged.yaml" ]] || [[ "{{ draw }}/base.yaml" -nt "{{ draw }}/merged.yaml" ]]; then
-        python "{{ draw }}/merge_layers.py" \
-            --input "{{ draw }}/base.yaml" \
+    if [[ ! -f "{{ draw_merged }}/merged.yaml" ]] || [[ "{{ draw_kd }}/base.yaml" -nt "{{ draw_merged }}/merged.yaml" ]]; then
+        python "{{ draw_in }}/merge_layers.py" \
+            --input "{{ draw_kd }}/base.yaml" \
             --config "$config_yaml" \
-            --merge-config "{{ draw }}/merge_config.yaml" \
+            --merge-config "{{ draw_in }}/merge_config.yaml" \
             --center colemak_dh \
             --tl fun --tr sys --bl num --br nav \
-            --output "{{ draw }}/merged.yaml"
+            --output "{{ draw_merged }}/merged.yaml"
     fi
 
     # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
     yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \
-        "{{ draw }}/merged.yaml" > "{{ draw }}/merged_draw.yaml"
+        "{{ draw_merged }}/merged.yaml" > "{{ draw_merged }}/merged_draw.yaml"
 
     # Create temporary config with theme's dark_mode setting
     temp_config="{{ draw }}/config_${theme_name}.yaml"
     yq ".draw_config.dark_mode = $dark" "$config_yaml" > "$temp_config"
 
     # keymap-drawer renders t/s/h with theme-specific dark mode
-    keymap -c "$temp_config" draw "{{ draw }}/merged_draw.yaml" \
+    keymap -c "$temp_config" draw "{{ draw_merged }}/merged_draw.yaml" \
         -k "ferris/sweep" >"$output_svg"
 
     # Call 2: Post-process SVG to inject corner legends with theme colors
-    python "{{ draw }}/merge_layers.py" \
+    python "{{ draw_in }}/merge_layers.py" \
         --inject-corners "$output_svg" \
-        --merged-yaml "{{ draw }}/merged.yaml" \
+        --merged-yaml "{{ draw_merged }}/merged.yaml" \
         --config "$config_yaml" \
-        --merge-config "{{ draw }}/merge_config.yaml" \
-        --glyph-svg "{{ draw }}/base.svg" \
+        --merge-config "{{ draw_in }}/merge_config.yaml" \
+        --glyph-svg "{{ draw_kd }}/base.svg" \
         --pad-x 6 --pad-y 4 \
         --colors "$tl" "$tr" "$bl" "$br" "$text" "$bg" "$combo_bg"
 
-    rm "{{ draw }}/merged_draw.yaml" "$temp_config"
+    rm "{{ draw_merged }}/merged_draw.yaml" "$temp_config"
     echo "Created $output_svg"
 
-# Generate all themed merged SVGs
+# Generate all themed merged SVGs (merged_<theme>.svg for each theme in themes.yaml)
 draw-merged-all: draw-base draw-main
     #!/usr/bin/env bash
     set -euo pipefail
-    theme_yaml="{{ draw }}/themes.yaml"
+    theme_yaml="{{ draw_in }}/themes.yaml"
     themes=$(yq -r '.themes | keys | .[]' "$theme_yaml")
 
     for theme in $themes; do
@@ -204,39 +210,39 @@ draw-merged-all: draw-base draw-main
     done
 
     # Generate combos standalone once
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" \
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" \
         -k "ferris/sweep" -s MAIN_COMBOS \
-        >"{{ draw }}/combos_main_standalone.svg"
+        >"{{ draw_kd }}/combos_main_standalone.svg"
 
     # Append combos to each themed SVG
     for theme in $themes; do
-        python3 "{{ draw }}/append_combos.py" \
-            "{{ draw }}/merged_${theme}.svg" \
-            "{{ draw }}/combos_main_standalone.svg"
+        python3 "{{ draw_in }}/append_combos.py" \
+            "{{ draw_merged }}/merged_${theme}.svg" \
+            "{{ draw_kd }}/combos_main_standalone.svg"
     done
 
     echo "Generated themed SVGs: $(echo $themes | tr '\n' ' ')"
 
-# merge layers into single diagram (default theme, backwards compatible)
+# Generate merged diagram using default theme from themes.yaml (outputs merged.svg)
 draw-merged:
     #!/usr/bin/env bash
     set -euo pipefail
-    theme_yaml="{{ draw }}/themes.yaml"
+    theme_yaml="{{ draw_in }}/themes.yaml"
     default_theme=$(yq -r '.default // "light"' "$theme_yaml")
 
     just _draw-merged-theme "$default_theme"
 
     # Copy to merged.svg for backwards compatibility
-    cp "{{ draw }}/merged_${default_theme}.svg" "{{ draw }}/merged.svg"
+    cp "{{ draw_merged }}/merged_${default_theme}.svg" "{{ draw_merged }}/merged.svg"
 
     # Generate combos and append
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" \
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" \
         -k "ferris/sweep" -s MAIN_COMBOS \
-        >"{{ draw }}/combos_main_standalone.svg"
-    python3 "{{ draw }}/append_combos.py" "{{ draw }}/merged.svg" \
-        "{{ draw }}/combos_main_standalone.svg"
+        >"{{ draw_kd }}/combos_main_standalone.svg"
+    python3 "{{ draw_in }}/append_combos.py" "{{ draw_merged }}/merged.svg" \
+        "{{ draw_kd }}/combos_main_standalone.svg"
 
-    echo "Created {{ draw }}/merged.svg (theme: $default_theme)"
+    echo "Created {{ draw_merged }}/merged.svg (theme: $default_theme)"
 
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
 copy-artifacts:
@@ -245,7 +251,8 @@ copy-artifacts:
     dateTime=$(date +%Y%m%d_%H%M%S)
     mkdir -p "{{ artifacts }}/$date"
     cp {{ out }}/*.{uf2,bin} "{{ artifacts }}/$date" 2>/dev/null || true
-    cp {{ draw }}/*.{yaml,svg} "{{ artifacts }}/$date" 2>/dev/null || true
+    cp {{ draw_kd }}/*.{yaml,svg} "{{ artifacts }}/$date" 2>/dev/null || true
+    cp {{ draw_merged }}/*.{yaml,svg} "{{ artifacts }}/$date" 2>/dev/null || true
     echo "Copied artifacts to {{ artifacts }}/$date"
 
 # initialize west
