@@ -63,15 +63,28 @@ This is useful for combos that share the same key positions across different lay
 - Support for multiple icon sources
 - Flexible parsing of different keyboard firmware formats
 
-### draw/ Directory Structure
+### Directory Structure
 
 ```
+scripts/keymap_merge/        # Modular package for layer merging
+├── __init__.py              # Public API exports
+├── __main__.py              # CLI entry point
+├── cli.py                   # Subcommand CLI (merge, inject, combine)
+├── config.py                # Pydantic models (CornerLayers, ThemeColors, etc.)
+├── keymap.py                # Keymap loading & legend extraction
+├── merger.py                # Layer merging logic
+└── svg/
+    ├── utils.py             # XML/SVG utilities
+    ├── css.py               # CSS template generation
+    ├── injector.py          # CornerInjector class
+    └── combiner.py          # SVG stacking
+
 draw/
 ├── inputs/                  # Source files (edit directly)
 │   ├── config.yaml          # keymap-drawer configuration
-│   ├── merge_config.yaml    # merge_layers.py settings (corner_hide, corner_glyph_size)
-│   ├── merge_layers.py      # script to merge layers into multi-position diagram
-│   ├── append_combos.py     # script to append combo diagrams to merged SVGs
+│   ├── merge_config.yaml    # merge settings (corner_hide, corner_glyph_size)
+│   ├── merge_layers.py      # thin wrapper (imports from keymap_merge)
+│   ├── append_combos.py     # thin wrapper (imports from keymap_merge)
 │   └── themes.yaml          # color themes for merged diagram generation
 └── outputs/
     ├── keymap_drawer/       # keymap-drawer generated (do not edit)
@@ -108,7 +121,7 @@ just draw-merged-all          # Generate all themes (merged_<name>.svg)
 just _draw-merged-theme dark  # Generate specific theme
 ```
 
-**Color order for merge_layers.py:** `tl tr bl br [text] [bg] [combo_bg]`
+**Color order for --colors arg:** `tl tr bl br [text] [bg] [combo_bg]`
 
 Position-based naming (tl/tr/bl/br) allows flexibility - corners match layer positions in the merged diagram.
 
