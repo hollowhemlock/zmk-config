@@ -137,44 +137,105 @@ draw-gaming:
 draw-combos-main:
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
 
-# Colors for merged diagram: tl tr bl br [text] [bg]
-# Last two optional (defaults: text=#000000, bg=#ffffff)
-colors := '"#16C47F" "#FFD65A" "#FF9D23" "#F93827" "#1a1a1a" "#ffffff"'
-
-# merge layers into single multi-position diagram with 7 legend positions
-draw-merged *layers:
+# Generate merged diagram for a specific theme (helper)
+_draw-merged-theme $theme_name:
     #!/usr/bin/env bash
     set -euo pipefail
-    # Call 1: Merge layers into YAML with 7 positions (t/s/h from center, tl/tr/bl/br from corners)
-    python "{{ draw }}/merge_layers.py" \
-        --input "{{ draw }}/base.yaml" \
-        --config "{{ draw }}/config.yaml" \
-        --merge-config "{{ draw }}/merge_config.yaml" \
-        --center colemak_dh \
-        --tl fun \
-        --tr sys \
-        --bl num \
-        --br nav \
-        --output "{{ draw }}/merged.yaml"
+    theme_yaml="{{ draw }}/themes.yaml"
+    config_yaml="{{ draw }}/config.yaml"
+
+    # Extract theme settings from themes.yaml
+    dark=$(yq -r ".themes.${theme_name}.dark_mode // false" "$theme_yaml")
+    tl=$(yq -r ".themes.${theme_name}.colors.tl" "$theme_yaml")
+    tr=$(yq -r ".themes.${theme_name}.colors.tr" "$theme_yaml")
+    bl=$(yq -r ".themes.${theme_name}.colors.bl" "$theme_yaml")
+    br=$(yq -r ".themes.${theme_name}.colors.br" "$theme_yaml")
+    text=$(yq -r ".themes.${theme_name}.colors.text // \"#000000\"" "$theme_yaml")
+    bg=$(yq -r ".themes.${theme_name}.colors.bg // \"#ffffff\"" "$theme_yaml")
+
+    output_svg="{{ draw }}/merged_${theme_name}.svg"
+
+    # Call 1: Merge layers into YAML (shared across themes, only run once)
+    if [[ ! -f "{{ draw }}/merged.yaml" ]] || [[ "{{ draw }}/base.yaml" -nt "{{ draw }}/merged.yaml" ]]; then
+        python "{{ draw }}/merge_layers.py" \
+            --input "{{ draw }}/base.yaml" \
+            --config "$config_yaml" \
+            --merge-config "{{ draw }}/merge_config.yaml" \
+            --center colemak_dh \
+            --tl fun --tr sys --bl num --br nav \
+            --output "{{ draw }}/merged.yaml"
+    fi
+
     # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
     yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \
         "{{ draw }}/merged.yaml" > "{{ draw }}/merged_draw.yaml"
-    # keymap-drawer renders t/s/h
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/merged_draw.yaml" -k "ferris/sweep" >"{{ draw }}/merged.svg"
-    # Call 2: Post-process SVG to inject corner legends and colors
+
+    # Create temporary config with theme's dark_mode setting
+    temp_config="{{ draw }}/config_${theme_name}.yaml"
+    yq ".draw_config.dark_mode = $dark" "$config_yaml" > "$temp_config"
+
+    # keymap-drawer renders t/s/h with theme-specific dark mode
+    keymap -c "$temp_config" draw "{{ draw }}/merged_draw.yaml" \
+        -k "ferris/sweep" >"$output_svg"
+
+    # Call 2: Post-process SVG to inject corner legends with theme colors
     python "{{ draw }}/merge_layers.py" \
-        --inject-corners "{{ draw }}/merged.svg" \
+        --inject-corners "$output_svg" \
         --merged-yaml "{{ draw }}/merged.yaml" \
-        --config "{{ draw }}/config.yaml" \
+        --config "$config_yaml" \
         --merge-config "{{ draw }}/merge_config.yaml" \
         --glyph-svg "{{ draw }}/base.svg" \
         --pad-x 6 --pad-y 4 \
-        --colors {{ colors }}
-    rm "{{ draw }}/merged_draw.yaml"
-    # Generate combos standalone and append to bottom of merged.svg
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw }}/combos_main_standalone.svg"
-    python3 "{{ draw }}/append_combos.py" "{{ draw }}/merged.svg" "{{ draw }}/combos_main_standalone.svg"
-    echo "Created {{ draw }}/merged.svg with 7 legend positions + combos"
+        --colors "$tl" "$tr" "$bl" "$br" "$text" "$bg"
+
+    rm "{{ draw }}/merged_draw.yaml" "$temp_config"
+    echo "Created $output_svg"
+
+# Generate all themed merged SVGs
+draw-merged-all: draw-base draw-main
+    #!/usr/bin/env bash
+    set -euo pipefail
+    theme_yaml="{{ draw }}/themes.yaml"
+    themes=$(yq -r '.themes | keys | .[]' "$theme_yaml")
+
+    for theme in $themes; do
+        just _draw-merged-theme "$theme"
+    done
+
+    # Generate combos standalone once
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" \
+        -k "ferris/sweep" -s MAIN_COMBOS \
+        >"{{ draw }}/combos_main_standalone.svg"
+
+    # Append combos to each themed SVG
+    for theme in $themes; do
+        python3 "{{ draw }}/append_combos.py" \
+            "{{ draw }}/merged_${theme}.svg" \
+            "{{ draw }}/combos_main_standalone.svg"
+    done
+
+    echo "Generated themed SVGs: $(echo $themes | tr '\n' ' ')"
+
+# merge layers into single diagram (default theme, backwards compatible)
+draw-merged:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    theme_yaml="{{ draw }}/themes.yaml"
+    default_theme=$(yq -r '.default // "light"' "$theme_yaml")
+
+    just _draw-merged-theme "$default_theme"
+
+    # Copy to merged.svg for backwards compatibility
+    cp "{{ draw }}/merged_${default_theme}.svg" "{{ draw }}/merged.svg"
+
+    # Generate combos and append
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/combos_main.yaml" \
+        -k "ferris/sweep" -s MAIN_COMBOS \
+        >"{{ draw }}/combos_main_standalone.svg"
+    python3 "{{ draw }}/append_combos.py" "{{ draw }}/merged.svg" \
+        "{{ draw }}/combos_main_standalone.svg"
+
+    echo "Created {{ draw }}/merged.svg (theme: $default_theme)"
 
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
 copy-artifacts:

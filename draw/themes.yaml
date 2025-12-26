@@ -1,0 +1,31 @@
+# Named color themes for merged diagram generation
+# Each theme produces: merged_<name>.svg
+#
+# Usage:
+#   just draw-merged              # Uses default theme
+#   just draw-merged-all          # Generates all themes
+#   just _draw-merged-theme dark  # Generate specific theme
+
+themes:
+  light:
+    dark_mode: false
+    colors:
+      tl: "#16C47F"     # Green (top-left / fun layer)
+      tr: "#FFD65A"     # Yellow (top-right / sys layer)
+      bl: "#FF9D23"     # Orange (bottom-left / num layer)
+      br: "#F93827"     # Red (bottom-right / nav layer)
+      text: "#1a1a1a"   # Dark text
+      bg: "#ffffff"     # White background
+
+  dark:
+    dark_mode: true
+    colors:
+      tl: "#4ADE80"     # Lighter green for dark bg
+      tr: "#FBBF24"     # Amber
+      bl: "#FB923C"     # Light orange
+      br: "#F87171"     # Light red
+      text: "#e5e5e5"   # Light text
+      bg: "#1f1f1f"     # Dark background
+
+# Default theme used when no specific theme requested
+default: light

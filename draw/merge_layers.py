@@ -88,6 +88,95 @@ def parse_glyph_ref(value: str) -> tuple[str, str] | None:
     return None
 
 
+class CornerInjector:
+    """Injects corner legend elements into SVG key groups.
+
+    This class holds all state needed for corner injection, avoiding
+    the overhead of recreating closures for each regex match.
+    """
+
+    # Glyph position offsets by corner class
+    GLYPH_POSITIONS = {
+        "tl": lambda x, y, gs: (x, y),
+        "tr": lambda x, y, gs: (x - gs, y),
+        "bl": lambda x, y, gs: (x, y - gs),
+        "br": lambda x, y, gs: (x - gs, y - gs),
+    }
+
+    def __init__(
+        self,
+        layer_keys: list,
+        x_offset: int,
+        y_offset: int,
+        y_offset_bottom: int,
+        hide_set: set[str],
+        fill_colors: dict[str, str],
+        glyph_size: int = 11,
+    ):
+        self.layer_keys = layer_keys
+        self.x_offset = x_offset
+        self.y_offset = y_offset
+        self.y_offset_bottom = y_offset_bottom
+        self.hide_set = hide_set
+        self.fill_colors = fill_colors
+        self.glyph_size = glyph_size
+
+    def make_corner_element(self, value: str, x: int, y: int, css_class: str) -> str:
+        """Create a text or use element for a corner legend."""
+        extra_class = " hidden" if str(value) in self.hide_set else ""
+        glyph = parse_glyph_ref(str(value))
+
+        if glyph:
+            source, name = glyph
+            glyph_id = f"{source}:{name}"
+            gs = self.glyph_size
+            half = gs // 2
+            pos_func = self.GLYPH_POSITIONS.get(css_class, lambda x, y, gs: (x - half, y - half))
+            gx, gy = pos_func(x, y, gs)
+            fill = self.fill_colors.get(css_class, "#000")
+            return (
+                f'<use href="#{glyph_id}" xlink:href="#{glyph_id}" '
+                f'x="{gx}" y="{gy}" height="{gs}" width="{gs}" '
+                f'fill="{fill}" class="glyph {css_class}{extra_class}"/>'
+            )
+        else:
+            return f'<text x="{x}" y="{y}" class="{css_class}{extra_class}">{escape_xml(str(value))}</text>'
+
+    def inject(self, match: re.Match) -> str:
+        """Regex substitution callback for key groups."""
+        opening_tag = match.group(1)
+        keypos = int(match.group(2))
+        content = match.group(3)
+        closing_tag = match.group(4)
+
+        if keypos >= len(self.layer_keys):
+            return match.group(0)
+
+        key = self.layer_keys[keypos]
+        if not isinstance(key, dict):
+            return match.group(0)
+
+        # Build corner elements using pre-computed specs
+        corner_specs = [
+            ("tl", -self.x_offset, -self.y_offset),
+            ("tr", self.x_offset, -self.y_offset),
+            ("bl", -self.x_offset, self.y_offset_bottom),
+            ("br", self.x_offset, self.y_offset_bottom),
+        ]
+
+        corner_elements = [
+            self.make_corner_element(key[corner], x, y, corner)
+            for corner, x, y in corner_specs
+            if key.get(corner)
+        ]
+
+        if not corner_elements:
+            return match.group(0)
+
+        new_content = content + "\n" + "\n".join(corner_elements)
+        return opening_tag + new_content + closing_tag
+
+
 def inject_corner_legends(
     svg_content: str,
     merged_yaml_path: Path,
@@ -98,6 +187,7 @@ def inject_corner_legends(
     glyph_svg_path: Path | None = None,
     corner_hide: list[str] | None = None,
     colors: dict[str, str] | None = None,
+    glyph_size: int = 11,
 ) -> str:
     """Inject corner legend text elements into SVG.
 
@@ -112,6 +202,7 @@ def inject_corner_legends(
         glyph_svg_path: Path to SVG with glyph definitions (e.g., base.svg)
         corner_hide: List of values to make transparent in corners
         colors: Dict with keys 'bg', 'text', 'tl', 'tr', 'bl', 'br' for colors
+        glyph_size: Size in pixels for corner glyph icons
 
     Returns:
         Modified SVG content with corner legends injected
@@ -127,6 +218,10 @@ def inject_corner_legends(
     color_tr = c.get("tr", "#61afef")
     color_bl = c.get("bl", "#98c379")
     color_br = c.get("br", "#c678dd")
+
+    # Build fill_colors dict once for CornerInjector
+    fill_colors = {"tl": color_tl, "tr": color_tr, "bl": color_bl, "br": color_br}
+
     # Load merged YAML to get corner values
     with open(merged_yaml_path) as f:
         merged = yaml.safe_load(f)
@@ -160,25 +255,25 @@ text, use {{ fill: {color_text}; }}
 text.tl {{
     text-anchor: start;
     dominant-baseline: hanging;
-    font-size: 11px;
+    font-size: {glyph_size}px;
     fill: {color_tl};
 }}
 text.tr {{
     text-anchor: end;
     dominant-baseline: hanging;
-    font-size: 11px;
+    font-size: {glyph_size}px;
     fill: {color_tr};
 }}
 text.bl {{
     text-anchor: start;
     dominant-baseline: text-after-edge;
-    font-size: 11px;
+    font-size: {glyph_size}px;
     fill: {color_bl};
 }}
 text.br {{
     text-anchor: end;
     dominant-baseline: text-after-edge;
-    font-size: 11px;
+    font-size: {glyph_size}px;
     fill: {color_br};
 }}
 /* Corner glyph/icon colors */
@@ -221,77 +316,18 @@ text.held-br {{ fill: {color_br}; }}
         re.DOTALL
     )
 
-    def inject_corners(match):
-        opening_tag = match.group(1)
-        keypos = int(match.group(2))
-        content = match.group(3)
-        closing_tag = match.group(4)
+    # Create injector instance with pre-computed state
+    injector = CornerInjector(
+        layer_keys=layer_keys,
+        x_offset=x_offset,
+        y_offset=y_offset,
+        y_offset_bottom=y_offset_bottom,
+        hide_set=hide_set,
+        fill_colors=fill_colors,
+        glyph_size=glyph_size,
+    )
 
-        if keypos >= len(layer_keys):
-            return match.group(0)
-
-        key = layer_keys[keypos]
-        if not isinstance(key, dict):
-            return match.group(0)
-
-        # Build corner text elements
-        corner_elements = []
-        glyph_size = 11  # Size for corner glyphs
-
-        def make_corner_element(value: str, x: int, y: int, css_class: str) -> str:
-            """Create a text or use element for a corner legend."""
-            # Add 'hidden' class if value should be transparent
-            extra_class = " hidden" if str(value) in hide_set else ""
-            glyph = parse_glyph_ref(str(value))
-            if glyph:
-                source, name = glyph
-                glyph_id = f"{source}:{name}"
-                # Position glyph - adjust based on corner
-                half = glyph_size // 2
-                if css_class == "tl":
-                    gx, gy = x, y  # top-left: start from corner
-                elif css_class == "tr":
-                    gx, gy = x - glyph_size, y  # top-right: end at corner
-                elif css_class == "bl":
-                    gx, gy = x, y - glyph_size  # bottom-left: start from corner
-                elif css_class == "br":
-                    gx, gy = x - glyph_size, y - glyph_size  # bottom-right
-                else:
-                    gx, gy = x - half, y - half
-                # Map corner class to fill color
-                fill_colors = {"tl": color_tl, "tr": color_tr, "bl": color_bl, "br": color_br}
-                fill = fill_colors.get(css_class, "#000")
-                return f'<use href="#{glyph_id}" xlink:href="#{glyph_id}" x="{gx}" y="{gy}" height="{glyph_size}" width="{glyph_size}" fill="{fill}" class="glyph {css_class}{extra_class}"/>'
-            else:
-                return f'<text x="{x}" y="{y}" class="{css_class}{extra_class}">{escape_xml(str(value))}</text>'
-
-        if key.get("tl"):
-            corner_elements.append(
-                make_corner_element(key["tl"], -x_offset, -y_offset, "tl")
-            )
-
-        if key.get("tr"):
-            corner_elements.append(
-                make_corner_element(key["tr"], x_offset, -y_offset, "tr")
-            )
-
-        if key.get("bl"):
-            corner_elements.append(
-                make_corner_element(key["bl"], -x_offset, y_offset_bottom, "bl")
-            )
-
-        if key.get("br"):
-            corner_elements.append(
-                make_corner_element(key["br"], x_offset, y_offset_bottom, "br")
-            )
-
-        if not corner_elements:
-            return match.group(0)
-
-        new_content = content + "\n" + "\n".join(corner_elements)
-        return opening_tag + new_content + closing_tag
-
-    svg_content = key_pattern.sub(inject_corners, svg_content)
+    svg_content = key_pattern.sub(injector.inject, svg_content)
 
     return svg_content
 
@@ -302,40 +338,51 @@ def load_keymap(path: Path) -> dict:
         return yaml.safe_load(f)
 
 
-def get_key_legend(key, extract_full: bool = False) -> str | dict:
-    """Extract the display legend(s) from a key definition.
+def get_tap_legend(key) -> str:
+    """Extract tap-only legend string from a key definition.
 
     Args:
         key: The key definition (str, dict, or None)
-        extract_full: If True, return dict with t/s/h; if False, return tap string only
 
     Returns:
-        If extract_full=False: string tap value
-        If extract_full=True: dict with {t: ..., s: ..., h: ...}
+        String tap value for the key
     """
     if key is None:
-        return {} if extract_full else ""
+        return ""
     if isinstance(key, str):
-        return {"t": key} if extract_full else key
+        return key
     if isinstance(key, dict):
-        # Skip transparent keys
         if key.get("type") == "trans":
-            return {} if extract_full else ""
-        if extract_full:
-            result = {}
-            tap = key.get("t", key.get("tap", ""))
-            if tap:
-                result["t"] = tap
-            if "s" in key:
-                result["s"] = key["s"]
-            if "h" in key:
-                result["h"] = key["h"]
-            if "type" in key:
-                result["type"] = key["type"]
-            return result
-        # Return tap value if it exists
+            return ""
         return key.get("t", key.get("tap", ""))
-    return {"t": str(key)} if extract_full else str(key)
+    return str(key)
+
+
+def get_full_legend(key) -> dict:
+    """Extract complete legend dict (t/s/h/type) from a key definition.
+
+    Args:
+        key: The key definition (str, dict, or None)
+
+    Returns:
+        Dict with available keys: t, s, h, type
+    """
+    if key is None:
+        return {}
+    if isinstance(key, str):
+        return {"t": key}
+    if isinstance(key, dict):
+        if key.get("type") == "trans":
+            return {}
+        result = {}
+        tap = key.get("t", key.get("tap", ""))
+        if tap:
+            result["t"] = tap
+        for field in ("s", "h", "type"):
+            if field in key:
+                result[field] = key[field]
+        return result
+    return {"t": str(key)}
 
 
 def merge_layers(
@@ -395,13 +442,13 @@ def merge_layers(
     merged_keys = []
     for i in range(num_keys):
         # Get full key definition from center layer (preserves t, s, h)
-        center_full = get_key_legend(center_keys[i], extract_full=True)
+        center_full = get_full_legend(center_keys[i])
 
         # Get tap values from corner layers
-        tl = get_key_legend(tl_keys[i]) if i < len(tl_keys) else ""
-        tr = get_key_legend(tr_keys[i]) if i < len(tr_keys) else ""
-        bl = get_key_legend(bl_keys[i]) if i < len(bl_keys) else ""
-        br = get_key_legend(br_keys[i]) if i < len(br_keys) else ""
+        tl = get_tap_legend(tl_keys[i]) if i < len(tl_keys) else ""
+        tr = get_tap_legend(tr_keys[i]) if i < len(tr_keys) else ""
+        bl = get_tap_legend(bl_keys[i]) if i < len(bl_keys) else ""
+        br = get_tap_legend(br_keys[i]) if i < len(br_keys) else ""
 
         # Build key definition with non-empty positions
         key_def = {}
@@ -556,6 +603,7 @@ def main():
     corner_hide = []
     held_key_colors = {}
     held_hide = []
+    glyph_size = 11  # Default glyph size
     if args.merge_config:
         if args.merge_config.exists():
             merge_cfg = load_config(args.merge_config)
@@ -564,6 +612,7 @@ def main():
             raw_held = merge_cfg.get("held_key_colors", {})
             held_key_colors = {int(k): v for k, v in raw_held.items()}
             held_hide = merge_cfg.get("held_hide", [])
+            glyph_size = merge_cfg.get("corner_glyph_size", 11)
         else:
             print(f"Warning: Merge config not found: {args.merge_config}", file=sys.stderr)
 
@@ -597,7 +646,10 @@ def main():
                 "text": args.colors[4] if num_colors > 4 else "#000000",
                 "bg": args.colors[5] if num_colors > 5 else "#ffffff",
             }
-        modified = inject_corner_legends(svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y, args.glyph_svg, corner_hide, colors)
+        modified = inject_corner_legends(
+            svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y,
+            args.glyph_svg, corner_hide, colors, glyph_size
+        )
         svg_path.write_text(modified)
         print(f"Injected corner legends into {svg_path}")
         sys.exit(0)

@@ -31,10 +31,10 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - /
-    - {t: Nav, type: layer-nav}
+    - {t: Nav, type: layer-br}
     - Spc
     - {t: ⇧, s: Caps Word}
-    - {t: Smart-num, type: layer-num}
+    - {t: Smart-num, type: layer-bl}
   qwerty:
     - Q
     - W
@@ -66,10 +66,10 @@ layers:
     - CMMA
     - .
     - /
-    - {t: Nav, type: layer-nav}
+    - {t: Nav, type: layer-br}
     - Spc
     - {t: ⇧, s: Caps Word}
-    - {t: Smart-num, type: layer-num}
+    - {t: Smart-num, type: layer-bl}
   num:
     - ''
     - '7'
@@ -171,7 +171,7 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-medium$$
     - $$mdi:volume-high$$
-    - {t: Nav, type: layer-nav}
+    - {t: Nav, type: layer-br}
     - Spc
     - ''
     - ''
@@ -243,7 +243,7 @@ layers:
     - /
     - {t: gam_ra, h: ⌥}
     - Spc
-    - {t: Fun, type: layer-fun}
+    - {t: Fun, type: layer-tl}
     - {t: gam_ra, h: sticky}
   gam_num:
     - ⌘
@@ -354,28 +354,28 @@ layers:
     - ''
 combos:
   - p: [13, 14]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [13, 14]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [13, 14]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [13, 14]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [15, 16]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [15, 16]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [15, 16]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [15, 16]
-    k: {t: Sys, type: layer-sys}
+    k: {t: Sys, type: layer-tr}
     l: [MAIN_COMBOS]
   - p: [1, 2]
     k: '&key_repeat'
@@ -510,13 +510,13 @@ combos:
     k: ']}'
     l: [MAIN_COMBOS]
   - p: [32, 33]
-    k: {t: Fun, type: layer-fun}
+    k: {t: Fun, type: layer-tl}
     l: [MAIN_COMBOS]
   - p: [32, 33]
-    k: {t: Fun, type: layer-fun}
+    k: {t: Fun, type: layer-tl}
     l: [MAIN_COMBOS]
   - p: [32, 33]
-    k: {t: Fun, type: layer-fun}
+    k: {t: Fun, type: layer-tl}
     l: [MAIN_COMBOS]
   - p: [1, 11]
     k: '@'

@@ -168,52 +168,61 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
+svg.keymap { fill: #d1d6db; }
+rect.key { fill: #3f4750; }
+rect.key, rect.combo { stroke: #60666c; }
+rect.combo, rect.combo-separate { fill: #1f3d7a; }
+rect.held, rect.combo.held { fill: #854747; }
+text.label, text.footer { stroke: black; }
+text.trans { fill: #7e8184; }
+path.combo { stroke: #7f7f7f; }
+
 /* Base styles - colors injected by merge_layers.py from Justfile */
 .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
 
 /* Base colors */
-rect.key, rect.combo { fill: #ffffff; stroke: black; }
-text, use { fill: #1a1a1a; }
+rect.key, rect.combo { fill: #1f1f1f; stroke: black; }
+text, use { fill: #e5e5e5; }
 /* Corner legend styles for merged view */
 text.tl {
     text-anchor: start;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: #16C47F;
+    fill: #4ADE80;
 }
 text.tr {
     text-anchor: end;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: #FFD65A;
+    fill: #FBBF24;
 }
 text.bl {
     text-anchor: start;
     dominant-baseline: text-after-edge;
     font-size: 11px;
-    fill: #FF9D23;
+    fill: #FB923C;
 }
 text.br {
     text-anchor: end;
     dominant-baseline: text-after-edge;
     font-size: 11px;
-    fill: #F93827;
+    fill: #F87171;
 }
 /* Corner glyph/icon colors */
-use.tl, .tl path { fill: #16C47F; }
-use.tr, .tr path { fill: #FFD65A; }
-use.bl, .bl path { fill: #FF9D23; }
-use.br, .br path { fill: #F93827; }
+use.tl, .tl path { fill: #4ADE80; }
+use.tr, .tr path { fill: #FBBF24; }
+use.bl, .bl path { fill: #FB923C; }
+use.br, .br path { fill: #F87171; }
 /* Layer activator keys */
-.layer-tl text, .layer-tl use { fill: #16C47F; }
-.layer-tr text, .layer-tr use { fill: #FFD65A; }
-.layer-bl text, .layer-bl use { fill: #FF9D23; }
-.layer-br text, .layer-br use { fill: #F93827; }
+.layer-tl text, .layer-tl use { fill: #4ADE80; }
+.layer-tr text, .layer-tr use { fill: #FBBF24; }
+.layer-bl text, .layer-bl use { fill: #FB923C; }
+.layer-br text, .layer-br use { fill: #F87171; }
 /* Held key text */
-text.held-tl { fill: #16C47F; }
-text.held-tr { fill: #FFD65A; }
-text.held-bl { fill: #FF9D23; }
-text.held-br { fill: #F93827; }
+text.held-tl { fill: #4ADE80; }
+text.held-tr { fill: #FBBF24; }
+text.held-bl { fill: #FB923C; }
+text.held-br { fill: #F87171; }
 /* Hidden corner elements (e.g., modifiers) */
 .hidden { fill: transparent !important; }
 </style>
@@ -245,14 +254,14 @@ text.held-br { fill: #F93827; }
 <text x="0" y="0" class="key tap">P</text>
 
 <text x="-24" y="-24" class="tl">F9</text>
-<use href="#mdi:bluetooth" xlink:href="#mdi:bluetooth" x="13" y="-24" height="11" width="11" fill="#FFD65A" class="glyph tr" />
+<use href="#mdi:bluetooth" xlink:href="#mdi:bluetooth" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" />
 <text x="-24" y="25" class="bl">9</text></g>
 <g transform="translate(252, 52)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">B</text>
 
 <text x="-24" y="-24" class="tl">PSCRN</text>
-<use href="#mdi:usb" xlink:href="#mdi:usb" x="13" y="-24" height="11" width="11" fill="#FFD65A" class="glyph tr" /></g>
+<use href="#mdi:usb" xlink:href="#mdi:usb" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" /></g>
 <g transform="translate(420, 52)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">J</text>
@@ -323,7 +332,7 @@ text.held-br { fill: #F93827; }
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">M</text>
 
-<use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
+<use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
 <text x="24" y="25" class="br">PgDn</text></g>
 <g transform="translate(476, 100)" class="key mod keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod" />
@@ -356,13 +365,13 @@ text.held-br { fill: #F93827; }
 
 <text x="-24" y="-24" class="tl hidden">&#8679;</text>
 <text x="-24" y="25" class="bl hidden">&#8679;</text>
-<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="13" y="14" height="11" width="11" fill="#F93827" class="glyph br" /></g>
+<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="13" y="14" height="11" width="11" fill="#F87171" class="glyph br" /></g>
 <g transform="translate(28, 193)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">Z</text>
 
 <text x="-24" y="-24" class="tl">F10</text>
-<use href="#mdi:bluetooth-off" xlink:href="#mdi:bluetooth-off" x="13" y="-24" height="11" width="11" fill="#FFD65A" class="glyph tr" /></g>
+<use href="#mdi:bluetooth-off" xlink:href="#mdi:bluetooth-off" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" /></g>
 <g transform="translate(84, 158)" class="key keypos-21">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">X</text>
@@ -380,26 +389,26 @@ text.held-br { fill: #F93827; }
 <text x="0" y="0" class="key tap">D</text>
 
 <text x="-24" y="-24" class="tl">F3</text>
-<use href="#mdi:restart" xlink:href="#mdi:restart" x="13" y="-24" height="11" width="11" fill="#FFD65A" class="glyph tr" />
+<use href="#mdi:restart" xlink:href="#mdi:restart" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" />
 <text x="-24" y="25" class="bl">3</text>
 <text x="24" y="25" class="br">Ck</text></g>
 <g transform="translate(252, 164)" class="key keypos-24">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">V</text>
 
-<use href="#mdi:pause" xlink:href="#mdi:pause" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
-<use href="#mdi:progress-download" xlink:href="#mdi:progress-download" x="13" y="-24" height="11" width="11" fill="#FFD65A" class="glyph tr" /></g>
+<use href="#mdi:pause" xlink:href="#mdi:pause" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
+<use href="#mdi:progress-download" xlink:href="#mdi:progress-download" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" /></g>
 <g transform="translate(420, 164)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">K</text>
 
-<use href="#mdi:skip-backward" xlink:href="#mdi:skip-backward" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
+<use href="#mdi:skip-backward" xlink:href="#mdi:skip-backward" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
 <text x="24" y="25" class="br">INSERT</text></g>
 <g transform="translate(476, 156)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">H</text>
 
-<use href="#mdi:skip-forward" xlink:href="#mdi:skip-forward" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
+<use href="#mdi:skip-forward" xlink:href="#mdi:skip-forward" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
 <text x="-24" y="25" class="bl">Ck</text>
 <text x="24" y="25" class="br">Home</text></g>
 <g transform="translate(532, 140)" class="key keypos-27">
@@ -407,21 +416,21 @@ text.held-br { fill: #F93827; }
 <text x="0" y="0" class="key tap">,</text>
 <text x="0" y="-22" class="key shifted">;</text>
 
-<use href="#mdi:volume-off" xlink:href="#mdi:volume-off" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
-<use href="#mdi:menu" xlink:href="#mdi:menu" x="-24" y="14" height="11" width="11" fill="#FF9D23" class="glyph bl" />
+<use href="#mdi:volume-off" xlink:href="#mdi:volume-off" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
+<use href="#mdi:menu" xlink:href="#mdi:menu" x="-24" y="14" height="11" width="11" fill="#FB923C" class="glyph bl" />
 <text x="24" y="25" class="br">Tab</text></g>
 <g transform="translate(588, 158)" class="key keypos-28">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">.</text>
 <text x="0" y="-22" class="key shifted">:</text>
 
-<use href="#mdi:volume-medium" xlink:href="#mdi:volume-medium" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
+<use href="#mdi:volume-medium" xlink:href="#mdi:volume-medium" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
 <text x="24" y="25" class="br">End</text></g>
 <g transform="translate(644, 193)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">/</text>
 
-<use href="#mdi:volume-high" xlink:href="#mdi:volume-high" x="-24" y="-24" height="11" width="11" fill="#16C47F" class="glyph tl" />
+<use href="#mdi:volume-high" xlink:href="#mdi:volume-high" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
 <text x="-24" y="25" class="bl">;</text></g>
 <g transform="translate(221, 221) rotate(15.0)" class="key layer-br keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-br" />

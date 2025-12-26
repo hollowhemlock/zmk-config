@@ -217,7 +217,7 @@ parse_config:
     UNDERSCORE: _
 draw_config:
   append_colon_to_layer_header: false
-  dark_mode: auto
+  dark_mode: false
   footer_text: "hollowhemlock/zmk-config"
   key_w: 60.0
   key_h: 56.0
