@@ -11,7 +11,7 @@ themes:
     dark_mode: false
     colors:
       tl: "#16C47F"     # Green (top-left / fun layer)
-      tr: "#FFD65A"     # Yellow (top-right / sys layer)
+      tr: "#2563EB"     # Blue (top-right / qwerty layer)
       bl: "#FF9D23"     # Orange (bottom-left / num layer)
       br: "#F93827"     # Red (bottom-right / nav layer)
       text: "#1a1a1a"   # Dark text
@@ -22,12 +22,69 @@ themes:
     dark_mode: true
     colors:
       tl: "#4ADE80"     # Lighter green for dark bg
-      tr: "#FBBF24"     # Amber
+      tr: "#2563EB"     # Blue
       bl: "#FB923C"     # Light orange
       br: "#F87171"     # Light red
       text: "#e5e5e5"   # Light text
       bg: "#1f1f1f"     # Dark background
-      combo_bg: "#2a2a2a"  # Combo key background (optional, defaults to bg)
+      combo_bg: "#2a2a2a"
+
+  # High contrast themes - each corner distinctly different
+
+  primary:
+    dark_mode: false
+    colors:
+      tl: "#2563EB"     # Blue
+      tr: "#DC2626"     # Red
+      bl: "#16A34A"     # Green
+      br: "#7C3AED"     # Purple
+      text: "#1a1a1a"
+      bg: "#ffffff"
+      combo_bg: "#ffffff"
+
+  vivid:
+    dark_mode: false
+    colors:
+      tl: "#0891B2"     # Cyan
+      tr: "#DC2626"     # Red
+      bl: "#16A34A"     # Green
+      br: "#9333EA"     # Purple
+      text: "#1a1a1a"
+      bg: "#ffffff"
+      combo_bg: "#ffffff"
+
+  print:
+    dark_mode: false
+    colors:
+      tl: "#1D4ED8"     # Navy
+      tr: "#B91C1C"     # Burgundy
+      bl: "#047857"     # Forest
+      br: "#6B21A8"     # Deep purple
+      text: "#1a1a1a"
+      bg: "#ffffff"
+      combo_bg: "#ffffff"
+
+  cool:
+    dark_mode: false
+    colors:
+      tl: "#2563EB"     # Blue
+      tr: "#0891B2"     # Cyan
+      bl: "#059669"     # Emerald
+      br: "#7C3AED"     # Purple
+      text: "#1a1a1a"
+      bg: "#ffffff"
+      combo_bg: "#ffffff"
+
+  warm:
+    dark_mode: false
+    colors:
+      tl: "#DC2626"     # Red
+      tr: "#EA580C"     # Orange
+      bl: "#CA8A04"     # Amber
+      br: "#DB2777"     # Pink
+      text: "#1a1a1a"
+      bg: "#ffffff"
+      combo_bg: "#ffffff"
 
 # Default theme used when no specific theme requested
 default: light

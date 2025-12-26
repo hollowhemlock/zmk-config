@@ -195,7 +195,7 @@ text.tr {
     text-anchor: end;
     dominant-baseline: hanging;
     font-size: 11px;
-    fill: #FBBF24;
+    fill: #2563EB;
 }
 text.bl {
     text-anchor: start;
@@ -211,17 +211,17 @@ text.br {
 }
 /* Corner glyph/icon colors */
 use.tl, .tl path { fill: #4ADE80; }
-use.tr, .tr path { fill: #FBBF24; }
+use.tr, .tr path { fill: #2563EB; }
 use.bl, .bl path { fill: #FB923C; }
 use.br, .br path { fill: #F87171; }
 /* Layer activator keys */
 .layer-tl text, .layer-tl use { fill: #4ADE80; }
-.layer-tr text, .layer-tr use { fill: #FBBF24; }
+.layer-tr text, .layer-tr use { fill: #2563EB; }
 .layer-bl text, .layer-bl use { fill: #FB923C; }
 .layer-br text, .layer-br use { fill: #F87171; }
 /* Held key text */
 text.held-tl { fill: #4ADE80; }
-text.held-tr { fill: #FBBF24; }
+text.held-tr { fill: #2563EB; }
 text.held-bl { fill: #FB923C; }
 text.held-br { fill: #F87171; }
 /* Hidden corner elements (e.g., modifiers) */
@@ -255,14 +255,14 @@ text.held-br { fill: #F87171; }
 <text x="0" y="0" class="key tap">P</text>
 
 <text x="-24" y="-24" class="tl">F9</text>
-<use href="#mdi:bluetooth" xlink:href="#mdi:bluetooth" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" />
+<use href="#mdi:bluetooth" xlink:href="#mdi:bluetooth" x="13" y="-24" height="11" width="11" fill="#2563EB" class="glyph tr" />
 <text x="-24" y="25" class="bl">9</text></g>
 <g transform="translate(252, 52)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">B</text>
 
 <text x="-24" y="-24" class="tl">PSCRN</text>
-<use href="#mdi:usb" xlink:href="#mdi:usb" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" /></g>
+<use href="#mdi:usb" xlink:href="#mdi:usb" x="13" y="-24" height="11" width="11" fill="#2563EB" class="glyph tr" /></g>
 <g transform="translate(420, 52)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">J</text>
@@ -372,7 +372,7 @@ text.held-br { fill: #F87171; }
 <text x="0" y="0" class="key tap">Z</text>
 
 <text x="-24" y="-24" class="tl">F10</text>
-<use href="#mdi:bluetooth-off" xlink:href="#mdi:bluetooth-off" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" /></g>
+<use href="#mdi:bluetooth-off" xlink:href="#mdi:bluetooth-off" x="13" y="-24" height="11" width="11" fill="#2563EB" class="glyph tr" /></g>
 <g transform="translate(84, 158)" class="key keypos-21">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">X</text>
@@ -390,7 +390,7 @@ text.held-br { fill: #F87171; }
 <text x="0" y="0" class="key tap">D</text>
 
 <text x="-24" y="-24" class="tl">F3</text>
-<use href="#mdi:restart" xlink:href="#mdi:restart" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" />
+<use href="#mdi:restart" xlink:href="#mdi:restart" x="13" y="-24" height="11" width="11" fill="#2563EB" class="glyph tr" />
 <text x="-24" y="25" class="bl">3</text>
 <text x="24" y="25" class="br">Ck</text></g>
 <g transform="translate(252, 164)" class="key keypos-24">
@@ -398,7 +398,7 @@ text.held-br { fill: #F87171; }
 <text x="0" y="0" class="key tap">V</text>
 
 <use href="#mdi:pause" xlink:href="#mdi:pause" x="-24" y="-24" height="11" width="11" fill="#4ADE80" class="glyph tl" />
-<use href="#mdi:progress-download" xlink:href="#mdi:progress-download" x="13" y="-24" height="11" width="11" fill="#FBBF24" class="glyph tr" /></g>
+<use href="#mdi:progress-download" xlink:href="#mdi:progress-download" x="13" y="-24" height="11" width="11" fill="#2563EB" class="glyph tr" /></g>
 <g transform="translate(420, 164)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key" />
 <text x="0" y="0" class="key tap">K</text>
