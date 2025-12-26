@@ -10,10 +10,10 @@ themes:
   light:
     dark_mode: false
     colors:
-      tl: "#16C47F"     # Green (top-left / fun layer)
+      tl: "#F93827"    # Green (top-left / fun layer)
       tr: "#2563EB"     # Blue (top-right / qwerty layer)
-      bl: "#FF9D23"     # Orange (bottom-left / num layer)
-      br: "#F93827"     # Red (bottom-right / nav layer)
+      bl: "#16A34A"     # Orange (bottom-left / num layer)
+      br: "#FF9D23"     # Red (bottom-right / nav layer)
       text: "#1a1a1a"   # Dark text
       bg: "#ffffff"     # White background
       combo_bg: "#ffffff"  # Combo key background (optional, defaults to bg)
@@ -88,3 +88,4 @@ themes:
 
 # Default theme used when no specific theme requested
 default: light
+
