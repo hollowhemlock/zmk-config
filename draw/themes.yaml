@@ -16,6 +16,7 @@ themes:
       br: "#F93827"     # Red (bottom-right / nav layer)
       text: "#1a1a1a"   # Dark text
       bg: "#ffffff"     # White background
+      combo_bg: "#ffffff"  # Combo key background (optional, defaults to bg)
 
   dark:
     dark_mode: true
@@ -26,6 +27,7 @@ themes:
       br: "#F87171"     # Light red
       text: "#e5e5e5"   # Light text
       bg: "#1f1f1f"     # Dark background
+      combo_bg: "#2a2a2a"  # Combo key background (optional, defaults to bg)
 
 # Default theme used when no specific theme requested
 default: light

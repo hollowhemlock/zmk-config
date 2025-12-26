@@ -171,8 +171,9 @@ path.combo {
 /* Base styles - colors injected by merge_layers.py from Justfile */
 .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
 
-/* Base colors */
-rect.key, rect.combo { fill: #ffffff; stroke: black; }
+/* Base colors - !important overrides keymap-drawer defaults */
+rect.key { fill: #ffffff !important; }
+rect.combo, rect.combo-separate { fill: #ffffff !important; }
 text, use { fill: #1a1a1a; }
 /* Corner legend styles for merged view */
 text.tl {

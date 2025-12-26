@@ -152,6 +152,7 @@ _draw-merged-theme $theme_name:
     br=$(yq -r ".themes.${theme_name}.colors.br" "$theme_yaml")
     text=$(yq -r ".themes.${theme_name}.colors.text // \"#000000\"" "$theme_yaml")
     bg=$(yq -r ".themes.${theme_name}.colors.bg // \"#ffffff\"" "$theme_yaml")
+    combo_bg=$(yq -r ".themes.${theme_name}.colors.combo_bg // \"$bg\"" "$theme_yaml")
 
     output_svg="{{ draw }}/merged_${theme_name}.svg"
 
@@ -186,7 +187,7 @@ _draw-merged-theme $theme_name:
         --merge-config "{{ draw }}/merge_config.yaml" \
         --glyph-svg "{{ draw }}/base.svg" \
         --pad-x 6 --pad-y 4 \
-        --colors "$tl" "$tr" "$bl" "$br" "$text" "$bg"
+        --colors "$tl" "$tr" "$bl" "$br" "$text" "$bg" "$combo_bg"
 
     rm "{{ draw }}/merged_draw.yaml" "$temp_config"
     echo "Created $output_svg"

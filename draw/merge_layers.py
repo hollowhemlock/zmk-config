@@ -213,6 +213,7 @@ def inject_corner_legends(
     # Default colors if not provided
     c = colors or {}
     color_bg = c.get("bg", "#ffffff")
+    color_combo_bg = c.get("combo_bg", color_bg)
     color_text = c.get("text", "#000000")
     color_tl = c.get("tl", "#e5c07b")
     color_tr = c.get("tr", "#61afef")
@@ -246,10 +247,11 @@ def inject_corner_legends(
     x_offset, y_offset = calculate_corner_offsets(key_w, key_h, pad_x, pad_y)
     y_offset_bottom = y_offset + 1  # Adjustment for text-after-edge baseline
 
-    # CSS for corner legend styling
+    # CSS for corner legend styling (use !important to override keymap-drawer defaults)
     corner_css = f'''
-/* Base colors */
-rect.key, rect.combo {{ fill: {color_bg}; stroke: black; }}
+/* Base colors - !important overrides keymap-drawer defaults */
+rect.key {{ fill: {color_bg} !important; }}
+rect.combo, rect.combo-separate {{ fill: {color_combo_bg} !important; }}
 text, use {{ fill: {color_text}; }}
 /* Corner legend styles for merged view */
 text.tl {{
@@ -582,7 +584,7 @@ def main():
         "--colors",
         nargs='+',
         metavar="COLOR",
-        help="Layer colors (4-6 hex values): tl tr bl br [text] [bg]. Defaults: text='#000000' bg='#ffffff'"
+        help="Layer colors (4-7 hex values): tl tr bl br [text] [bg] [combo_bg]. Defaults: text='#000000' bg='#ffffff' combo_bg=bg"
     )
 
     args = parser.parse_args()
@@ -633,18 +635,20 @@ def main():
         colors = None
         if args.colors:
             num_colors = len(args.colors)
-            if num_colors < 4 or num_colors > 6:
-                print(f"Error: --colors requires 4-6 values, got {num_colors}", file=sys.stderr)
+            if num_colors < 4 or num_colors > 7:
+                print(f"Error: --colors requires 4-7 values, got {num_colors}", file=sys.stderr)
                 sys.exit(1)
 
-            # Parse colors: tl tr bl br [text] [bg]
+            # Parse colors: tl tr bl br [text] [bg] [combo_bg]
+            bg_color = args.colors[5] if num_colors > 5 else "#ffffff"
             colors = {
                 "tl": args.colors[0],
                 "tr": args.colors[1],
                 "bl": args.colors[2],
                 "br": args.colors[3],
                 "text": args.colors[4] if num_colors > 4 else "#000000",
-                "bg": args.colors[5] if num_colors > 5 else "#ffffff",
+                "bg": bg_color,
+                "combo_bg": args.colors[6] if num_colors > 6 else bg_color,
             }
         modified = inject_corner_legends(
             svg_content, args.merged_yaml, key_w, key_h, args.pad_x, pad_y,
