@@ -63,21 +63,62 @@ This is useful for combos that share the same key positions across different lay
 - Support for multiple icon sources
 - Flexible parsing of different keyboard firmware formats
 
+### ZMK Combo Gotchas
+
+**Duplicate combo names fail silently.** Later definitions override earlier ones with no warning. Run `just check` before building to detect duplicates.
+
+**Layer priority matters.** Higher numbered layers win when multiple layers are active. If using `&mo SYS` from a gaming layer, SYS must have a higher layer number than gaming layers:
+```c
+// WRONG: SYS (5) < GAM (6) - gaming layer keys will override SYS
+#define SYS 5
+#define GAM 6
+
+// CORRECT: SYS (8) > GAM (5) - SYS overlays gaming layers
+#define GAM 5
+#define SYS 8
+```
+
+**`require-prior-idle-ms` blocks combos during active typing.** Defined via `COMBO_HOOK` in zmk-helpers:
+```c
+#define COMBO_HOOK require-prior-idle-ms = <100>;
+ZMK_COMBO(my_combo, ...)  // Won't trigger if any key pressed in last 100ms
+```
+Disable for combos that must work anytime (like layer access during gaming):
+```c
+#undef COMBO_HOOK
+#define COMBO_HOOK
+ZMK_COMBO(sys_gam, &mo SYS, RT0 RT1, GAM, 50)  // No idle restriction
+```
+
+### Build Commands
+
+```bash
+just check          # Check for duplicate combos + layer priority (runs before build)
+just build cradio   # Build firmware for cradio
+just build all      # Build all targets
+just draw           # Generate keymap diagrams
+just release cradio # Build + draw + copy artifacts
+```
+
 ### Directory Structure
 
 ```
-scripts/keymap_merge/        # Modular package for layer merging
-├── __init__.py              # Public API exports
-├── __main__.py              # CLI entry point
-├── cli.py                   # Subcommand CLI (merge, inject, combine)
-├── config.py                # Pydantic models (CornerLayers, ThemeColors, etc.)
-├── keymap.py                # Keymap loading & legend extraction
-├── merger.py                # Layer merging logic
-└── svg/
-    ├── utils.py             # XML/SVG utilities
-    ├── css.py               # CSS template generation
-    ├── injector.py          # CornerInjector class
-    └── combiner.py          # SVG stacking
+scripts/
+├── check_combos.sh          # Duplicate combo name checker
+├── check_layers.sh          # Layer priority checker (SYS > gaming)
+├── zmk_format.py            # ZMK keymap formatter
+└── keymap_merge/            # Modular package for layer merging
+    ├── __init__.py          # Public API exports
+    ├── __main__.py          # CLI entry point
+    ├── cli.py               # Subcommand CLI (merge, inject, combine)
+    ├── config.py            # Pydantic models (CornerLayers, ThemeColors, etc.)
+    ├── keymap.py            # Keymap loading & legend extraction
+    ├── merger.py            # Layer merging logic
+    └── svg/
+        ├── utils.py         # XML/SVG utilities
+        ├── css.py           # CSS template generation
+        ├── injector.py      # CornerInjector class
+        └── combiner.py      # SVG stacking
 
 draw/
 ├── inputs/                  # Source files (edit directly)
