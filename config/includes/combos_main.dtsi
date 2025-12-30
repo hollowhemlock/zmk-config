@@ -26,8 +26,8 @@
 // ZMK_COMBO(to_l_colemak_dh, &to CMK_DH, RM0 RM1, ALL, 50)
 // ZMK_COMBO(to_l_gam, &to GAM, RT0 RT1, ALL, 50)
 
-ZMK_COMBO(sys, &mo SYS, LM1 LM0, CMK_DH QWERTY NAV  NUM, 50)
-ZMK_COMBO(sys, &mo SYS, RM0 RM1, CMK_DH QWERTY NAV  NUM, 50)
+ZMK_COMBO(sys_l, &mo SYS, LM1 LM0, CMK_DH QWERTY NAV  NUM, 50)
+ZMK_COMBO(sys_r, &mo SYS, RM0 RM1, CMK_DH QWERTY NAV  NUM, 50)
 
 // ZMK_COMBO(l_double_thumb, &sl LEFT_DOUBLE_THUMB, LH1 LH0, ALL, 50)
 // ZMK_COMBO(r_double_thumb, &mo FUN, RH0 RH1, ALL, 50) // was function layer, annoying to use

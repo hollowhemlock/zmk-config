@@ -10,6 +10,10 @@ draw_kd := draw / "outputs/keymap_drawer"
 draw_merged := draw / "outputs/merged"
 artifacts := absolute_path('artifacts')
 
+# check for duplicate combo names
+check:
+    @scripts/check_combos.sh
+
 # parse build.yaml and filter targets by expression
 _parse_targets $expr:
     #!/usr/bin/env bash
@@ -36,8 +40,8 @@ _build_single $board $shield $snippet $artifact *west_args:
         mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.bin" "{{ out }}/$artifact.bin"
     fi
 
-# build firmware for matching targets
-build expr *west_args:
+# build firmware for matching targets (runs check first)
+build expr *west_args: check
     #!/usr/bin/env bash
     set -euo pipefail
     targets=$(just _parse_targets {{ expr }})
