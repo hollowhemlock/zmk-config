@@ -20,13 +20,13 @@
 #define NAV 3
 #define FUN 4
 
-// UTILITIES
-#define SYS 5
-
 // GAMING
-#define GAM 6
-#define GAM_NUM 7
-#define GAM_RA 8
+#define GAM 5
+#define GAM_NUM 6
+#define GAM_RA 7
+
+// UTILITIES (highest so it overlays everything)
+#define SYS 8
 
 #define XXX &none
 #define ___ &trans
@@ -198,13 +198,7 @@ ZMK_LAYER(fun,
     &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK    &kp C_PREV         &kp C_NEXT         &kp C_MUTE         &kp C_VOL_DN         &kp C_VOL_UP
                                                              &sl NAV            &kp SPACE          &none              &none
 )
-ZMK_LAYER(sys,
-    &to QWERTY         &to GAM            &to CMK_DH         &out OUT_BLE       &out OUT_USB       &none              &none              &none              &none              &none
-    &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt BT_SEL 4       &none              &none              &none              &none              &none
-    &bt BT_CLR         &none              &none              &sys_reset         &bootloader        &none              &none              &none              &none              &none
-                                                             &none              &none              &none              &none
-)
-// T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer. 
+// T G B are horizontal combos in last column. How to incorporate function keys in number layer? 6x3 board would be nice with an isolated alt key and isoltaed gaming number layer.
 ZMK_LAYER(gam,
     &kp TAB            &kp Q              &kp W              &kp E              &kp R              &kp Y              &kp U              &kp I              &kp O              &kp P
     &kp LSHIFT         &kp A              &kp S              &kp D              &kp F              &kp H              &kp J              &kp K              &kp L              &kp SEMI
@@ -222,4 +216,10 @@ ZMK_LAYER(gam_ra,
     &kp H              &kp J              &kp K              &kp L              &kp SEMI           &none              &kp LEFT           &kp DOWN           &kp RIGHT          &kp KP_ENTER
     &kp N              &kp M              &kp CMMA           &kp DOT            &kp SLASH          &kp INSERT         &kp HOME           &kp TAB            &kp END            &none
                                                              &none              &kp SPACE          &none              &none
+)
+ZMK_LAYER(sys,
+    &to QWERTY         &to GAM            &to CMK_DH         &out OUT_BLE       &out OUT_USB       &none              &none              &none              &none              &none
+    &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt BT_SEL 4       &none              &none              &none              &none              &none
+    &bt BT_CLR         &none              &none              &sys_reset         &bootloader        &none              &none              &none              &none              &none
+                                                             &none              &none              &none              &none
 )

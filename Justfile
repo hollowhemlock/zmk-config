@@ -10,9 +10,10 @@ draw_kd := draw / "outputs/keymap_drawer"
 draw_merged := draw / "outputs/merged"
 artifacts := absolute_path('artifacts')
 
-# check for duplicate combo names
+# check for duplicate combo names and layer priority
 check:
     @scripts/check_combos.sh
+    @scripts/ensure_sys_layer_is_last.sh
 
 # parse build.yaml and filter targets by expression
 _parse_targets $expr:
