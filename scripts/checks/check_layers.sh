@@ -34,36 +34,43 @@ done < <(grep -E "#define [A-Z_]+ [0-9]+" "$KEYMAP" | grep -v "COMBO\|KEYS\|THUM
 
 errors=0
 
-echo "Layer order:"
+echo "Checking layer definitions..."
+echo ""
+printf "%-3s %-12s %-12s %-6s %s\n" "#" "LAYER" "DEFINE" "VALUE" "STATUS"
+printf "%.0s─" {1..50}
+echo ""
+
 for i in "${!layers[@]}"; do
     layer="${layers[$i]}"
     upper=$(echo "$layer" | tr '[:lower:]' '[:upper:]')
     defined="${defines[$upper]:-}"
 
     if [[ -z "$defined" ]]; then
-        echo "  $i: $layer (no #define found)"
+        printf "%-3s %-12s %-12s %-6s %s\n" "$i" "$layer" "$upper" "-" "✗ no #define $upper found"
+        ((errors++))
     elif [[ "$defined" -eq "$i" ]]; then
-        echo "  $i: $layer (defined: $defined) ✓"
+        printf "%-3s %-12s %-12s %-6s %s\n" "$i" "$layer" "$upper" "$defined" "✓"
     else
-        echo "  $i: $layer (defined: $defined) ✗ MISMATCH"
+        printf "%-3s %-12s %-12s %-6s %s\n" "$i" "$layer" "$upper" "$defined" "✗ expected $i"
         ((errors++))
     fi
 done
 
+echo ""
+
 # Check overlay layer is last
 last_layer="${layers[-1]}"
 if [[ "$last_layer" != "$OVERLAY_LAYER" ]]; then
-    echo ""
-    echo "ERROR: $OVERLAY_LAYER must be the last layer for highest priority"
-    echo "       Found '$last_layer' as last layer instead"
+    echo "✗ $OVERLAY_LAYER must be the last layer (found '$last_layer')"
     ((errors++))
+else
+    echo "✓ $OVERLAY_LAYER is last (highest priority)"
 fi
 
 if [[ $errors -gt 0 ]]; then
     echo ""
-    echo "Fix: Ensure #define values match ZMK_LAYER order, and $OVERLAY_LAYER is last."
+    echo "Fix: Ensure #define names match UPPERCASE of ZMK_LAYER names, values match order."
     exit 1
 fi
 
-echo ""
-echo "Layer priority OK: $OVERLAY_LAYER is last"
+echo "✓ All ${#layers[@]} layers validated"

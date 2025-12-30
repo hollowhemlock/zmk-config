@@ -166,7 +166,7 @@ ZMK_HOLD_TAP(hktsl,
       ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
 #endif
 
-ZMK_LAYER(colemak_dh,
+ZMK_LAYER(cmk_dh,
     &kp Q              &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
     &hml LSHFT A       &hml LCTRL R       &hml LALT S        &hml LGUI T        &kp G              &kp M              &hmr RGUI N        &hmr RALT E        &hmr RCTRL I       &hmr RSHFT O
     &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &comma_morph       &dot_morph         &kp SLASH
