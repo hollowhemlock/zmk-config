@@ -104,8 +104,9 @@ just release cradio # Build + draw + copy artifacts
 
 ```
 scripts/
-├── check_combos.sh          # Duplicate combo name checker
-├── check_layers.sh          # Layer priority checker (SYS > gaming)
+├── checks/
+│   ├── check_combos.sh      # Duplicate combo name checker
+│   └── check_layers.sh      # Layer priority checker (SYS highest)
 ├── zmk_format.py            # ZMK keymap formatter
 └── keymap_merge/            # Modular package for layer merging
     ├── __init__.py          # Public API exports

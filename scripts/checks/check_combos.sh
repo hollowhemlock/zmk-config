@@ -5,7 +5,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_DIR="${1:-$(dirname "$SCRIPT_DIR")/config}"
+CONFIG_DIR="${1:-$(dirname "$(dirname "$SCRIPT_DIR")")/config}"
 
 # Find all combo definitions and extract names
 duplicates=$(

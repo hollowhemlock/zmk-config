@@ -12,8 +12,8 @@ artifacts := absolute_path('artifacts')
 
 # check for duplicate combo names and layer priority
 check:
-    @scripts/check_combos.sh
-    @scripts/ensure_sys_layer_is_last.sh
+    @scripts/checks/check_combos.sh
+    @scripts/checks/check_layers.sh
 
 # parse build.yaml and filter targets by expression
 _parse_targets $expr:
