@@ -36,8 +36,8 @@ errors=0
 
 echo "Checking layer definitions..."
 echo ""
-printf "%-3s %-12s %-12s %-6s %s\n" "#" "LAYER" "DEFINE" "VALUE" "STATUS"
-printf "%.0s─" {1..50}
+printf "%-6s %-12s %-14s %-14s %s\n" "index" "name" "#define_name" "#define_value" "status"
+printf "%.0s─" {1..60}
 echo ""
 
 for i in "${!layers[@]}"; do
@@ -46,12 +46,12 @@ for i in "${!layers[@]}"; do
     defined="${defines[$upper]:-}"
 
     if [[ -z "$defined" ]]; then
-        printf "%-3s %-12s %-12s %-6s %s\n" "$i" "$layer" "$upper" "-" "✗ no #define $upper found"
+        printf "%-6s %-12s %-14s %-14s %s\n" "$i" "$layer" "$upper" "-" "✗ no #define $upper found"
         ((errors++))
     elif [[ "$defined" -eq "$i" ]]; then
-        printf "%-3s %-12s %-12s %-6s %s\n" "$i" "$layer" "$upper" "$defined" "✓"
+        printf "%-6s %-12s %-14s %-14s %s\n" "$i" "$layer" "$upper" "$defined" "✓"
     else
-        printf "%-3s %-12s %-12s %-6s %s\n" "$i" "$layer" "$upper" "$defined" "✗ expected $i"
+        printf "%-6s %-12s %-14s %-14s %s\n" "$i" "$layer" "$upper" "$defined" "✗ expected $i"
         ((errors++))
     fi
 done
