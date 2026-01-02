@@ -25,7 +25,7 @@ buildPythonApplication rec {
     owner = "hollowhemlock";
     repo = pname;
     rev = "feature/merge-layers-with-corner-glyphs";
-    hash = "sha256-InddS9NxVrYOufiP7iWQTQ3VBeJgX2UlBA+Gf7ZfFrI=";
+    hash = "sha256-LanOW/U/K1sXa/WdjIlg99scYnpe7ojRHVJ+iUZCEP0=";
   };
 
   build-system = [ poetry-core ];

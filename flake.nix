@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     # This pins requirements.txt provided by zephyr-nix.pythonEnv.
     zephyr.url = "github:zmkfirmware/zephyr/v3.5.0+zmk-fixes";
