@@ -88,11 +88,6 @@ ZMK_BEHAVIOR(comma_morph, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
     bindings = <&kp COMMA>, <&kp SEMICOLON>;
 )
-// Not needed greater than is on a combo
-// ZMK_BEHAVIOR(comma_inner_morph, mod_morph,
-//     bindings = <&kp SEMICOLON>, <&kp LESS_THAN>;
-//     mods = <(MOD_LCTL|MOD_RCTL)>;
-// )
 
 // tap: dot | shift + tap: colon | ctrl + shift + tap: >
 // note: program hotkeys sometimes don't respond to non standard keys
@@ -100,11 +95,6 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
     bindings = <&kp DOT>, <&kp COLON>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
-// Not needed greater than is on a combo
-// ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
-//     bindings = <&kp COLON>, <&kp GREATER_THAN>;
-//     mods = <(MOD_LCTL|MOD_RCTL)>;
-// )
 
 /* Caps-word, num-word and smart-mouse */
 
