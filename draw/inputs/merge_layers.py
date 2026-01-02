@@ -6,11 +6,11 @@ This script maintains the original CLI interface for Justfile compatibility.
 All logic has been refactored into the keymap_merge package.
 
 Usage (legacy):
-    python merge_layers.py -i base.yaml --center colemak_dh -o merged.yaml
+    python merge_layers.py -i base.yaml --center cmk_dh -o merged.yaml
     python merge_layers.py --inject-corners merged.svg --merged-yaml merged.yaml
 
 Usage (new):
-    python -m keymap_merge merge -i base.yaml --center colemak_dh -o merged.yaml
+    python -m keymap_merge merge -i base.yaml --center cmk_dh -o merged.yaml
     python -m keymap_merge inject merged.svg --merged-yaml merged.yaml
 """
 

@@ -128,9 +128,9 @@ draw-main:
     #!/usr/bin/env bash
     set -euo pipefail
     keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw_kd }}/combos_main.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("colemak_dh","qwerty","nav","num", "fun", "sys"))]' "{{ draw_kd }}/combos_main.yaml"
+    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("cmk_dh","qwerty","nav","num", "fun", "sys"))]' "{{ draw_kd }}/combos_main.yaml"
     yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw_kd }}/combos_main.yaml"
-    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" -k "ferris/sweep" -s colemak_dh nav num fun sys MAIN_COMBOS >"{{ draw_kd }}/combos_main.svg"
+    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" -k "ferris/sweep" -s cmk_dh nav num fun sys MAIN_COMBOS >"{{ draw_kd }}/combos_main.svg"
 
 # parse & plot GAMING KEYMAP
 draw-gaming:
@@ -173,7 +173,7 @@ _draw-merged-theme $theme_name:
             --input "{{ draw_kd }}/base.yaml" \
             --config "$config_yaml" \
             --merge-config "{{ draw_in }}/merge_config.yaml" \
-            --center colemak_dh \
+            --center cmk_dh \
             --tl fun --tr sys --bl num --br nav \
             --output "{{ draw_merged }}/merged.yaml"
     fi
