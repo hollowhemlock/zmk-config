@@ -22,9 +22,9 @@ buildPythonApplication rec {
   pyproject = true;
 
   src = fetchFromGitHub {
-    owner = "caksoylar";
+    owner = "hollowhemlock";
     repo = pname;
-    rev = "855933863fcc6f0db6098a03e679319dbf7f8bf2";
+    rev = "feature/merge-layers-with-corner-glyphs";
     hash = "sha256-InddS9NxVrYOufiP7iWQTQ3VBeJgX2UlBA+Gf7ZfFrI=";
   };
 
