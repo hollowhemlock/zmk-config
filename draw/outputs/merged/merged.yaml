@@ -65,10 +65,10 @@ combos:
   k: Paste
   l: [stacked_combos]
 - p: [16, 17]
-  k: {t: (, h: AltGr+⌘}
+  k: ''
   l: [stacked_combos]
 - p: [17, 18]
-  k: {t: ), h: AltGr+⌃}
+  k: ''
   l: [stacked_combos]
 - p: [16, 17]
   k: (<

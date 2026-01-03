@@ -113,7 +113,7 @@ clean-init: clean-all
     just init
 
 # draw all diagrams
-draw: draw-base draw-gaming draw-merged
+draw: draw-base draw-merged draw-merged-gaming
     code {{ draw_merged }}/merged.svg || true
 
 # parse & plot keymap
@@ -122,28 +122,6 @@ draw-base:
     set -euo pipefail
     keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos Gaming >"{{ draw_kd }}/base.yaml"
     keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/base.yaml" -k "ferris/sweep" >"{{ draw_kd }}/base.svg"
-
-# parse & plot MAIN KEYMAP
-draw-main:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw_kd }}/combos_main.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("cmk_dh","qwerty","nav","num", "fun", "sys"))]' "{{ draw_kd }}/combos_main.yaml"
-    yq -Yi '.layers."MAIN_COMBOS" = [range(34) | ""] | .combos.[].l = ["MAIN_COMBOS"]' "{{ draw_kd }}/combos_main.yaml"
-    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" -k "ferris/sweep" -s cmk_dh nav num fun sys MAIN_COMBOS >"{{ draw_kd }}/combos_main.svg"
-
-# parse & plot GAMING KEYMAP
-draw-gaming:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    keymap -c "{{ draw_in }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers GAMING_COMBOS >"{{ draw_kd }}/combos_gaming.yaml"
-    yq -Yi '.combos = [.combos[] | select(.l | length > 0) | select(.l[] | test("gam"))]' "{{ draw_kd }}/combos_gaming.yaml"
-    yq -Yi '.layers."GAMING_COMBOS" = [range(34) | ""]| .combos.[].l = ["GAMING_COMBOS"]' "{{ draw_kd }}/combos_gaming.yaml"
-    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_gaming.yaml" -k "ferris/sweep" -s gam gam_num gam_ra GAMING_COMBOS >"{{ draw_kd }}/combos_gaming.svg"
-
-# draw standalone combos overlay (MAIN_COMBOS only)
-draw-combos-main:
-    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" -k "ferris/sweep" -s MAIN_COMBOS >"{{ draw_kd }}/combos_main_standalone.svg"
 
 # --- Theme-based merged diagram generation ---
 # Themes defined in draw/inputs/themes.yaml with colors: tl tr bl br text bg combo_bg
@@ -204,6 +182,25 @@ draw-merged: draw-base
     cp "{{ draw_merged }}/merged_${default_theme}.svg" "{{ draw_merged }}/merged.svg"
 
     echo "Created {{ draw_merged }}/merged.svg (theme: $default_theme)"
+
+# Generate merged gaming diagram
+draw-merged-gaming: draw-base
+    #!/usr/bin/env bash
+    set -euo pipefail
+    config_yaml="{{ draw_in }}/config.yaml"
+
+    # Stack gaming layers
+    keymap -c "$config_yaml" stack-layers \
+        "{{ draw_kd }}/base.yaml" \
+        --center gam --bl gam_num --br gam_ra \
+        --include-combos gam gam_num gam_ra \
+        --separate-combo-layer \
+        -o "{{ draw_merged }}/merged_gaming.yaml"
+
+    keymap -c "$config_yaml" draw "{{ draw_merged }}/merged_gaming.yaml" \
+        -k "ferris/sweep" -o "{{ draw_merged }}/merged_gaming.svg"
+
+    echo "Created {{ draw_merged }}/merged_gaming.svg"
 
 # copy all built artifacts from /firmware and /draw to /out with timestamp in a time-stamped folder
 copy-artifacts:
