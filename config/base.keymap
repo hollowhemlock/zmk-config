@@ -145,7 +145,7 @@ ZMK_HOLD_TAP(hktsl,
   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
       ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
 #endif
-
+// TODO: replace comma_morph and dot_morph replace with CMMA and DOT. It is causing ambiguities with hotkeys and other programs. I need to figure out a place to put the original; key though
 ZMK_LAYER(cmk_dh,
     &kp Q              &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
     &hml LSHFT A       &hml LCTRL R       &hml LALT S        &hml LGUI T        &kp G              &kp M              &hmr RGUI N        &hmr RALT E        &hmr RCTRL I       &hmr RSHFT O
@@ -163,13 +163,13 @@ ZMK_LAYER(qwerty,
 ZMK_LAYER(num,
     &none              &kp N7             &kp N8             &kp N9             &none              &none              &none              &none              &none              &none
     &kp  N0            &kp N4             &kp N5             &kp N6             &none              &none              &sk LGUI           &sk LALT           &sk LCTRL          &sk LSHFT
-    &none              &kp N1             &kp N2             &kp N3             &none              &none              &kp LC(K)          &kp K_APP          &none              &kp SEMI
+    &none              &kp N1             &kp N2             &kp N3             &none              &none              &kp LC(K)          &kp K_APP          &none              &none
                                                              &none              &none              &none              &none
 )
 ZMK_LAYER(nav,
     &none              &none              &none              &none              &none              &kp PG_UP          &kp BSPC           &kp UP             &kp DEL            &none
     &sk LSHFT          &sk LCTRL          &sk LALT           &sk LGUI           &none              &kp PG_DN          &kp LEFT           &kp DOWN           &kp RIGHT          &kp RET
-    &none                 &none              &none              &kp LC(K)          &none              &kp INSERT         &kp HOME           &kp TAB            &kp END            &none
+    &none              &none              &none              &kp LC(K)          &none              &kp INSERT         &kp HOME           &kp TAB            &kp END            &kp SEMI
                                                              &none              &none              &kp K_CANCEL       &sl NUM
 )
 ZMK_LAYER(fun,

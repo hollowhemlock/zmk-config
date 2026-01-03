@@ -100,7 +100,7 @@ layers:
   - Ck
   - $$mdi:menu$$
   - ''
-  - ;
+  - ''
   - ''
   - ''
   - ''
@@ -135,7 +135,7 @@ layers:
   - Home
   - Tab
   - End
-  - ''
+  - ;
   - ''
   - ''
   - CANCEL

@@ -168,7 +168,7 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
-/* Base styles - colors injected by merge_layers.py from Justfile */
+/* Base styles for merged diagrams */
 .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
 
 /* Layer activator key colors */
@@ -848,7 +848,6 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(644, 193)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">;</text>
 </g>
 <g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1094,6 +1093,7 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(644, 193)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">;</text>
 </g>
 <g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

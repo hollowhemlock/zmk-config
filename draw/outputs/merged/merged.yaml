@@ -30,7 +30,7 @@ layers:
   - {t: H, tl: '$$mdi:skip-forward$$', bl: Ck, br: Home}
   - {t: ',', s: ;, tl: '$$mdi:volume-off$$', bl: '$$mdi:menu$$', br: Tab}
   - {t: ., s: ':', tl: '$$mdi:volume-medium$$', br: End}
-  - {t: /, tl: '$$mdi:volume-high$$', bl: ;}
+  - {t: /, tl: '$$mdi:volume-high$$', br: ;}
   - {t: Nav, type: layer-br, tl: Nav}
   - {t: Spc, tl: Spc}
   - {t: ⇧, s: Caps Word, br: CANCEL}
