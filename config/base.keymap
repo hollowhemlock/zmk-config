@@ -169,7 +169,7 @@ ZMK_LAYER(num,
 ZMK_LAYER(nav,
     &none              &none              &none              &none              &none              &kp PG_UP          &kp BSPC           &kp UP             &kp DEL            &none
     &sk LSHFT          &sk LCTRL          &sk LALT           &sk LGUI           &none              &kp PG_DN          &kp LEFT           &kp DOWN           &kp RIGHT          &kp RET
-    &none              &none              &none              &kp LC(K)          &none              &kp INSERT         &kp HOME           &kp TAB            &kp END            &none
+    &none                 &none              &none              &kp LC(K)          &none              &kp INSERT         &kp HOME           &kp TAB            &kp END            &none
                                                              &none              &none              &kp K_CANCEL       &sl NUM
 )
 ZMK_LAYER(fun,
