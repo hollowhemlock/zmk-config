@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: base}
 layers:
-  colemak_dh:
+  cmk_dh:
     - Q
     - W
     - F
@@ -175,41 +175,6 @@ layers:
     - Spc
     - ''
     - ''
-  sys:
-    - {t: Qwrty, type: layer}
-    - {t: Gam, type: layer}
-    - {t: CmkDh, type: layer}
-    - $$mdi:bluetooth$$
-    - $$mdi:usb$$
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - BT1
-    - BT2
-    - BT3
-    - BT4
-    - BT5
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - $$mdi:bluetooth-off$$
-    - ''
-    - ''
-    - $$mdi:restart$$
-    - $$mdi:progress-download$$
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
   gam:
     - Tab
     - Q
@@ -313,6 +278,41 @@ layers:
     - ''
     - {type: held}
     - Spc
+    - ''
+    - ''
+  sys:
+    - {t: Qwrty, type: layer}
+    - {t: Gam, type: layer}
+    - {t: CmkDh, type: layer}
+    - $$mdi:bluetooth$$
+    - $$mdi:usb$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - BT1
+    - BT2
+    - BT3
+    - BT4
+    - BT5
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - $$mdi:bluetooth-off$$
+    - ''
+    - ''
+    - $$mdi:restart$$
+    - $$mdi:progress-download$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - ''
     - ''
   Combos: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',

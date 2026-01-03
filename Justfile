@@ -113,7 +113,7 @@ clean-init: clean-all
     just init
 
 # draw all diagrams
-draw: draw-base draw-main draw-gaming draw-merged
+draw: draw-base draw-gaming draw-merged
     code {{ draw_merged }}/merged.svg || true
 
 # parse & plot keymap
@@ -157,54 +157,29 @@ _draw-merged-theme $theme_name:
 
     # Extract theme settings from themes.yaml
     dark=$(yq -r ".themes.${theme_name}.dark_mode // false" "$theme_yaml")
-    tl=$(yq -r ".themes.${theme_name}.colors.tl" "$theme_yaml")
-    tr=$(yq -r ".themes.${theme_name}.colors.tr" "$theme_yaml")
-    bl=$(yq -r ".themes.${theme_name}.colors.bl" "$theme_yaml")
-    br=$(yq -r ".themes.${theme_name}.colors.br" "$theme_yaml")
-    text=$(yq -r ".themes.${theme_name}.colors.text // \"#000000\"" "$theme_yaml")
-    bg=$(yq -r ".themes.${theme_name}.colors.bg // \"#ffffff\"" "$theme_yaml")
-    combo_bg=$(yq -r ".themes.${theme_name}.colors.combo_bg // \"$bg\"" "$theme_yaml")
 
     output_svg="{{ draw_merged }}/merged_${theme_name}.svg"
-
-    # Call 1: Merge layers into YAML (shared across themes, only run once)
-    if [[ ! -f "{{ draw_merged }}/merged.yaml" ]] || [[ "{{ draw_kd }}/base.yaml" -nt "{{ draw_merged }}/merged.yaml" ]]; then
-        python "{{ draw_in }}/merge_layers.py" \
-            --input "{{ draw_kd }}/base.yaml" \
-            --config "$config_yaml" \
-            --merge-config "{{ draw_in }}/merge_config.yaml" \
-            --center cmk_dh \
-            --tl fun --tr sys --bl num --br nav \
-            --output "{{ draw_merged }}/merged.yaml"
-    fi
-
-    # Strip tl/tr/bl/br keys (keymap-drawer only accepts t/s/h/left/right)
-    yq '.layers.merged = [.layers.merged[] | if type == "object" then del(.tl, .tr, .bl, .br) else . end]' \
-        "{{ draw_merged }}/merged.yaml" > "{{ draw_merged }}/merged_draw.yaml"
 
     # Create temporary config with theme's dark_mode setting
     temp_config="{{ draw }}/config_${theme_name}.yaml"
     yq ".draw_config.dark_mode = $dark" "$config_yaml" > "$temp_config"
 
-    # keymap-drawer renders t/s/h with theme-specific dark mode
-    keymap -c "$temp_config" draw "{{ draw_merged }}/merged_draw.yaml" \
-        -k "ferris/sweep" >"$output_svg"
+    # Stack layers and draw
+    keymap -c "$temp_config" stack-layers \
+        "{{ draw_kd }}/base.yaml" \
+        --center cmk_dh --tl fun --tr sys --bl num --br nav \
+        --include-combos cmk_dh nav num fun sys \
+        --separate-combo-layer \
+        -o "{{ draw_merged }}/merged.yaml"
 
-    # Call 2: Post-process SVG to inject corner legends with theme colors
-    python "{{ draw_in }}/merge_layers.py" \
-        --inject-corners "$output_svg" \
-        --merged-yaml "{{ draw_merged }}/merged.yaml" \
-        --config "$config_yaml" \
-        --merge-config "{{ draw_in }}/merge_config.yaml" \
-        --glyph-svg "{{ draw_kd }}/base.svg" \
-        --pad-x 6 --pad-y 4 \
-        --colors "$tl" "$tr" "$bl" "$br" "$text" "$bg" "$combo_bg"
+    keymap -c "$temp_config" draw "{{ draw_merged }}/merged.yaml" \
+        -k "ferris/sweep" -o "$output_svg"
 
-    rm "{{ draw_merged }}/merged_draw.yaml" "$temp_config"
+    rm "$temp_config"
     echo "Created $output_svg"
 
 # Generate all themed merged SVGs (merged_<theme>.svg for each theme in themes.yaml)
-draw-merged-all: draw-base draw-main
+draw-merged-all: draw-base
     #!/usr/bin/env bash
     set -euo pipefail
     theme_yaml="{{ draw_in }}/themes.yaml"
@@ -214,22 +189,10 @@ draw-merged-all: draw-base draw-main
         just _draw-merged-theme "$theme"
     done
 
-    # Generate combos standalone once
-    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" \
-        -k "ferris/sweep" -s MAIN_COMBOS \
-        >"{{ draw_kd }}/combos_main_standalone.svg"
-
-    # Append combos to each themed SVG
-    for theme in $themes; do
-        python3 "{{ draw_in }}/append_combos.py" \
-            "{{ draw_merged }}/merged_${theme}.svg" \
-            "{{ draw_kd }}/combos_main_standalone.svg"
-    done
-
     echo "Generated themed SVGs: $(echo $themes | tr '\n' ' ')"
 
 # Generate merged diagram using default theme from themes.yaml (outputs merged.svg)
-draw-merged:
+draw-merged: draw-base
     #!/usr/bin/env bash
     set -euo pipefail
     theme_yaml="{{ draw_in }}/themes.yaml"
@@ -239,13 +202,6 @@ draw-merged:
 
     # Copy to merged.svg for backwards compatibility
     cp "{{ draw_merged }}/merged_${default_theme}.svg" "{{ draw_merged }}/merged.svg"
-
-    # Generate combos and append
-    keymap -c "{{ draw_in }}/config.yaml" draw "{{ draw_kd }}/combos_main.yaml" \
-        -k "ferris/sweep" -s MAIN_COMBOS \
-        >"{{ draw_kd }}/combos_main_standalone.svg"
-    python3 "{{ draw_in }}/append_combos.py" "{{ draw_merged }}/merged.svg" \
-        "{{ draw_kd }}/combos_main_standalone.svg"
 
     echo "Created {{ draw_merged }}/merged.svg (theme: $default_theme)"
 

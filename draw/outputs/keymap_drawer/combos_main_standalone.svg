@@ -112,25 +112,25 @@ text.footer {
 }
 
 /* styling for combo tap, and key non-tap label text */
-text.combo, text.hold, text.shifted, text.left, text.right {
+text.combo, text.hold, text.shifted, text.left, text.right, text.tl, text.tr, text.bl, text.br {
     font-size: 11px;
 }
 
-text.hold {
+text.hold, text.bl, text.br {
     text-anchor: middle;
     dominant-baseline: auto;
 }
 
-text.shifted {
+text.shifted, text.tl, text.tr {
     text-anchor: middle;
     dominant-baseline: hanging;
 }
 
-text.left {
+text.left, text.tl, text.bl {
     text-anchor: start;
 }
 
-text.right {
+text.right, text.tr, text.br {
     text-anchor: end;
 }
 
@@ -170,6 +170,25 @@ path.combo {
 
 /* Base styles - colors injected by merge_layers.py from Justfile */
 .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
+
+/* Layer activator key colors */
+.held-tl rect, .layer-tl rect { fill: #F93827; }
+.held-tr rect, .layer-tr rect { fill: #2563EB; }
+.held-bl rect, .layer-bl rect { fill: #16A34A; }
+.held-br rect, .layer-br rect { fill: #FF9D23; }
+
+/* Text on colored layer activator keys */
+.held-tl text, .layer-tl text { fill: white; }
+.held-tr text, .layer-tr text { fill: white; }
+.held-bl text, .layer-bl text { fill: white; }
+.held-br text, .layer-br text { fill: white; }
+
+/* Corner legend text colors, sizing, and alignment */
+/* text grows inward toward key center */
+text.tl { fill: #F93827; font-size: 8px; text-anchor: start; dominant-baseline: hanging; }
+text.tr { fill: #2563EB; font-size: 8px; text-anchor: end; dominant-baseline: hanging; }
+text.bl { fill: #16A34A; font-size: 8px; text-anchor: start; dominant-baseline: auto; }
+text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: auto; }
 </style>
 <g transform="translate(30, 0)" class="layer-MAIN_COMBOS">
 <text x="0" y="15" class="label" id="MAIN_COMBOS">MAIN_COMBOS</text>
