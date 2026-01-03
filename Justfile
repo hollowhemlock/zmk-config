@@ -11,7 +11,7 @@ draw_merged := draw / "outputs/merged"
 artifacts := absolute_path('artifacts')
 
 # check for duplicate combo names and layer priority
-check:
+check: fmt
     @scripts/checks/check_combos.sh
     @scripts/checks/check_layers.sh
 
@@ -213,12 +213,8 @@ copy-artifacts:
     cp {{ draw_merged }}/*.{yaml,svg} "{{ artifacts }}/$date" 2>/dev/null || true
     echo "Copied artifacts to {{ artifacts }}/$date"
 
-# install git hooks
-setup-hooks:
-    git config core.hooksPath .githooks
-
 # initialize west
-init: setup-hooks
+init:
     #!/usr/bin/env bash
     set -euo pipefail
     # Disable fileMode on Windows to avoid permission conflicts with WSL
