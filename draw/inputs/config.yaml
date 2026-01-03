@@ -33,8 +33,12 @@ parse_config:
     "&kp LS(TAB)": Prev Win
 
     # NAV layer combos share positions with main layer combos: ( ) [ ]
+    # positions [16, 17] and [17, 18] - parens
+    "&hmr RA(RGUI) LPAR": ""
     "&kp LT": "(<"
+    "&hmr RA(RCTRL) RPAR": ""
     "&kp GT": ")>"
+    # positions [26, 27] and [27, 28] - brackets
     "&kp LBRC": "[{"
     "&kp RBRC": "]}"
     "&dot_spc": Sentence
