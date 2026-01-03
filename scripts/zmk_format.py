@@ -365,7 +365,7 @@ def format_keymap(content: str, cols: int = 10) -> str:
         line = lines[i]
         stripped = line.strip()
 
-if stripped.startswith('#define') and line.rstrip().endswith('\\'):
+        if stripped.startswith('#define') and line.rstrip().endswith('\\'):
             # Collect entire macro definition
             while i < len(lines) and lines[i].rstrip().endswith('\\'):
                 result.append(lines[i])
