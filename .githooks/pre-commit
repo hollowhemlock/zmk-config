@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Auto-format keymap before commit
+
+# Only format if keymap files are staged
+if git diff --cached --name-only | grep -q '\.keymap$'; then
+    just fmt
+    # Re-stage any formatted files
+    git diff --name-only | grep '\.keymap$' | xargs -r git add
+fi

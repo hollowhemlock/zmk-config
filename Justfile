@@ -213,8 +213,12 @@ copy-artifacts:
     cp {{ draw_merged }}/*.{yaml,svg} "{{ artifacts }}/$date" 2>/dev/null || true
     echo "Copied artifacts to {{ artifacts }}/$date"
 
+# install git hooks
+setup-hooks:
+    git config core.hooksPath .githooks
+
 # initialize west
-init:
+init: setup-hooks
     #!/usr/bin/env bash
     set -euo pipefail
     # Disable fileMode on Windows to avoid permission conflicts with WSL
