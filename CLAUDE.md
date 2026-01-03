@@ -107,35 +107,19 @@ scripts/
 ├── checks/
 │   ├── check_combos.sh      # Duplicate combo name checker
 │   └── check_layers.sh      # Layer priority checker (SYS highest)
-├── zmk_format.py            # ZMK keymap formatter
-└── keymap_merge/            # Modular package for layer merging
-    ├── __init__.py          # Public API exports
-    ├── __main__.py          # CLI entry point
-    ├── cli.py               # Subcommand CLI (merge, inject, combine)
-    ├── config.py            # Pydantic models (CornerLayers, ThemeColors, etc.)
-    ├── keymap.py            # Keymap loading & legend extraction
-    ├── merger.py            # Layer merging logic
-    └── svg/
-        ├── utils.py         # XML/SVG utilities
-        ├── css.py           # CSS template generation
-        ├── injector.py      # CornerInjector class
-        └── combiner.py      # SVG stacking
+└── zmk_format.py            # ZMK keymap formatter
 
 draw/
 ├── inputs/                  # Source files (edit directly)
 │   ├── config.yaml          # keymap-drawer configuration
-│   ├── merge_config.yaml    # merge settings (corner_hide, corner_glyph_size)
-│   ├── merge_layers.py      # thin wrapper (imports from keymap_merge)
-│   ├── append_combos.py     # thin wrapper (imports from keymap_merge)
 │   └── themes.yaml          # color themes for merged diagram generation
 └── outputs/
     ├── keymap_drawer/       # keymap-drawer generated (do not edit)
-    │   ├── base.yaml, base.svg
-    │   ├── combos_main.yaml, combos_main.svg, combos_main_standalone.svg
-    │   └── combos_gaming.yaml, combos_gaming.svg
-    └── merged/              # merge_layers.py generated (do not edit)
+    │   └── base.yaml, base.svg
+    └── merged/              # keymap stack-layers generated (do not edit)
         ├── merged.yaml, merged.svg (default theme)
-        └── merged_<theme>.svg (light, dark, primary, etc.)
+        ├── merged_<theme>.svg (light, dark, primary, etc.)
+        └── merged_gaming.yaml, merged_gaming.svg
 ```
 
 ### Theme System
@@ -160,6 +144,7 @@ themes:
 ```bash
 just draw-merged              # Generate default theme (merged.svg)
 just draw-merged-all          # Generate all themes (merged_<name>.svg)
+just draw-merged-gaming       # Generate gaming merged diagram (merged_gaming.svg)
 just _draw-merged-theme dark  # Generate specific theme
 ```
 
