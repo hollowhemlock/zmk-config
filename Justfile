@@ -215,6 +215,12 @@ copy-artifacts:
 
 # initialize west
 init:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # Disable fileMode on Windows to avoid permission conflicts with WSL
+    if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OS" == "Windows_NT" ]]; then
+        git config core.fileMode false
+    fi
     west init -l config
     west update --fetch-opt=--filter=blob:none
     west zephyr-export
