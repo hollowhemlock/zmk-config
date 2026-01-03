@@ -251,7 +251,7 @@ draw_config:
     rx: 4
     ry: 4
   svg_extra_style: |
-    /* Base styles - colors injected by merge_layers.py from Justfile */
+    /* Base styles for merged diagrams */
     .layer-MAIN_COMBOS rect.key { opacity: 0.7; }
 
     /* Layer activator key colors */
