@@ -131,10 +131,10 @@ themes:
   light:
     dark_mode: false
     colors:
-      tl: "#16C47F"     # Green (top-left / fun layer)
+      tl: "#F93827"     # Red (top-left / fun layer)
       tr: "#2563EB"     # Blue (top-right / sys layer)
-      bl: "#FF9D23"     # Orange (bottom-left / num layer)
-      br: "#F93827"     # Red (bottom-right / nav layer)
+      bl: "#16A34A"     # Green (bottom-left / num layer)
+      br: "#FF9D23"     # Orange (bottom-right / nav layer)
       text: "#1a1a1a"
       bg: "#ffffff"
       combo_bg: "#ffffff"  # Optional, defaults to bg
