@@ -1,11 +1,27 @@
-## Instructions
+## ZMK Keyboard Config
 
-`just release cradio`
+![keymap](draw/outputs/merged/merged.svg)
 
-## References
+### Setup
 
-- **[urob/zmk-config](https://github.com/urob/zmk-config)**: Working example and reference implementation
-- **[urob/zmk-helpers](https://github.com/urob/zmk-helpers)**: Helper macros for simplified ZMK configuration
-- **[ caksoylar/keymap-drawer](https://github.com/caksoylar/keymap-drawer)**: drawings
+```bash
+pipx install keymap-drawer  # Install keymap visualization tool
+just setup-hooks            # Enable automatic keymap formatting on commit
+```
 
-![merged](draw/outputs/merged/merged.svg)
+### Usage
+
+```bash
+just build cradio    # Build firmware
+just check           # Check for duplicate combos + layer priority
+just fmt             # Format keymap files
+just draw            # Generate keymap diagrams
+just release cradio  # Build + draw + copy artifacts
+just list            # List all build targets
+```
+
+### References
+
+- [urob/zmk-config](https://github.com/urob/zmk-config)
+- [urob/zmk-helpers](https://github.com/urob/zmk-helpers)
+- [caksoylar/keymap-drawer](https://github.com/caksoylar/keymap-drawer)

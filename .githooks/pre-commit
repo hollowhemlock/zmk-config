@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Get staged .keymap files
+staged_keymaps=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.keymap$' || true)
+
+if [[ -z "$staged_keymaps" ]]; then
+    exit 0
+fi
+
+echo "Formatting staged keymap files..."
+
+for file in $staged_keymaps; do
+    if [[ -f "$file" ]]; then
+        python3 scripts/zmk_format.py -i "$file"
+        git add "$file"
+    fi
+done
+
+echo "Keymap files formatted."

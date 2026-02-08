@@ -233,6 +233,11 @@ list:
 update:
     west update --fetch-opt=--filter=blob:none
 
+# configure git to use tracked hooks
+setup-hooks:
+    git config core.hooksPath .githooks
+    @echo "Git hooks configured to use .githooks/"
+
 # upgrade zephyr-sdk and python dependencies
 upgrade-sdk:
     nix flake update --flake .

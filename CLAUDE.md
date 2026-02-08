@@ -7,6 +7,14 @@ Tool for parsing and visualizing keyboard keymaps from QMK and ZMK firmware.
 pipx install keymap-drawer
 ```
 
+### Git Hooks
+After cloning, run once to enable automatic keymap formatting on commit:
+```bash
+just setup-hooks
+```
+
+This configures git to use `.githooks/`, which contains a pre-commit hook that formats staged `.keymap` files.
+
 ### Key Capabilities
 - Parse QMK and ZMK keymap files
 - Generate SVG representations of keyboard layouts
