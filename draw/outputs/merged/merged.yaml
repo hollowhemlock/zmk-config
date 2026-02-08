@@ -31,8 +31,8 @@ layers:
   - {t: ',', s: ;, tl: '$$mdi:volume-off$$', bl: '$$mdi:menu$$', br: Tab}
   - {t: ., s: ':', tl: '$$mdi:volume-medium$$', br: End}
   - {t: /, tl: '$$mdi:volume-high$$', br: ;}
-  - {t: Nav, type: layer-br, tl: Nav}
-  - {t: Spc, tl: Spc}
+  - {t: Nav, type: layer-br, tl: Nav, bl: Nav}
+  - {t: Spc, tl: Spc, bl: Spc}
   - {t: ⇧, s: Caps Word, br: CANCEL}
   - {t: Smart-num, type: layer-bl, br: num}
   stacked_combos: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']

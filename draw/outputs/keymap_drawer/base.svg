@@ -849,11 +849,13 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 <g transform="translate(644, 193)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(221, 221) rotate(15.0)" class="key keypos-30">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<g transform="translate(221, 221) rotate(15.0)" class="key layer-br keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key layer-br"/>
+<text x="0" y="0" class="key layer-br tap">Nav</text>
 </g>
 <g transform="translate(279, 245) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Spc</text>
 </g>
 <g transform="translate(393, 245) rotate(-30.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

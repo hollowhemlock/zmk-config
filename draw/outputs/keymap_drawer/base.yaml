@@ -101,8 +101,8 @@ layers:
   - $$mdi:menu$$
   - ''
   - ''
-  - ''
-  - ''
+  - {t: Nav, type: layer-br}
+  - Spc
   - ''
   - ''
   nav:
