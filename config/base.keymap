@@ -14,8 +14,8 @@
 
 // Layers
 // MAIN
-#define CMK_DH 0
-#define QWERTY 1
+#define QWERTY 0
+#define CMK_DH 1
 #define NUM 2
 #define NAV 3
 #define FUN 4
@@ -146,17 +146,17 @@ ZMK_HOLD_TAP(hktsl,
       ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
 #endif
 // TODO: replace comma_morph and dot_morph replace with CMMA and DOT. It is causing ambiguities with hotkeys and other programs. I need to figure out a place to put the original; key though
-ZMK_LAYER(cmk_dh,
-    &kp Q              &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
-    &hml LSHFT A       &hml LCTRL R       &hml LALT S        &hml LGUI T        &kp G              &kp M              &hmr RGUI N        &hmr RALT E        &hmr RCTRL I       &hmr RSHFT O
-    &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &comma_morph       &dot_morph         &kp SLASH
-                                                             &sl NAV            &kp SPACE          &smart_shft        SMART_NUM
-)
-
 ZMK_LAYER(qwerty,
     &kp Q              &kp W              &kp E              &kp R              &kp T              &kp Y              &kp U              &kp I              &kp O              &kp P
     &hml LSHFT A       &hml LCTRL S       &hml LALT D        &hml LGUI F        &kp G              &kp H              &hmr RGUI J        &hmr RALT K        &hmr RCTRL L       &hmr RSHFT SEMI
     &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &kp CMMA           &kp DOT            &kp SLASH
+                                                             &sl NAV            &kp SPACE          &smart_shft        SMART_NUM
+)
+
+ZMK_LAYER(cmk_dh,
+    &kp Q              &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
+    &hml LSHFT A       &hml LCTRL R       &hml LALT S        &hml LGUI T        &kp G              &kp M              &hmr RGUI N        &hmr RALT E        &hmr RCTRL I       &hmr RSHFT O
+    &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &comma_morph       &dot_morph         &kp SLASH
                                                              &sl NAV            &kp SPACE          &smart_shft        SMART_NUM
 )
   

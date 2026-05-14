@@ -44,4 +44,4 @@ ZMK_COMBO(lgui,  &kp LGUI,      LB4 LB3,     GAM, COMBO_TERM_GAM_FAST)
 // Right hand - disable require-prior-idle for sys
 #undef COMBO_HOOK
 #define COMBO_HOOK
-ZMK_COMBO(sys_gam, &mo SYS, RT0 RT1, GAM, 50)
+ZMK_COMBO(sys_gam, &mo SYS, RM0 RM1, GAM, 50)
