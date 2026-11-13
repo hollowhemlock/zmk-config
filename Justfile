@@ -231,8 +231,8 @@ _draw-merged-theme $theme_name:
     # Stack layers and draw
     keymap -c "$temp_config" stack-layers \
         "{{ draw_kd }}/base.yaml" \
-        --center cmk_dh --tl fun --tr sys --bl num --br nav \
-        --include-combos cmk_dh nav num fun sys \
+        --center qwerty --tl fun --tr sys --bl num --br nav \
+        --include-combos qwerty nav num fun sys \
         --separate-combo-layer \
         -o "{{ draw_merged }}/merged.yaml"
 

@@ -76,18 +76,30 @@
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 
-// tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
-// note: program hotkeys sometimes don't respond to non standard keys
-ZMK_BEHAVIOR(comma_morph, mod_morph,
+// Shift alone gives typing punctuation. Shortcut modifiers bypass the morph
+// and preserve the ordinary comma/dot keycode, including any held Shift.
+#define PUNCT_SHORTCUT_MODS (MOD_LCTL|MOD_RCTL|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI)
+
+ZMK_BEHAVIOR(comma_shift, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
     bindings = <&kp COMMA>, <&kp SEMICOLON>;
 )
 
-// tap: dot | shift + tap: colon | ctrl + shift + tap: >
-// note: program hotkeys sometimes don't respond to non standard keys
-ZMK_BEHAVIOR(dot_morph, mod_morph,
+ZMK_BEHAVIOR(dot_shift, mod_morph,
     bindings = <&kp DOT>, <&kp COLON>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+ZMK_BEHAVIOR(comma_morph, mod_morph,
+    bindings = <&comma_shift>, <&kp COMMA>;
+    mods = <PUNCT_SHORTCUT_MODS>;
+    keep-mods = <PUNCT_SHORTCUT_MODS>;
+)
+
+ZMK_BEHAVIOR(dot_morph, mod_morph,
+    bindings = <&dot_shift>, <&kp DOT>;
+    mods = <PUNCT_SHORTCUT_MODS>;
+    keep-mods = <PUNCT_SHORTCUT_MODS>;
 )
 
 /* Caps-word, num-word and smart-mouse */
@@ -145,11 +157,11 @@ ZMK_HOLD_TAP(hktsl,
   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
       ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
 #endif
-// TODO: replace comma_morph and dot_morph replace with CMMA and DOT. It is causing ambiguities with hotkeys and other programs. I need to figure out a place to put the original; key though
+// Plain semicolon on NAV supports shortcuts independently of punctuation morphs.
 ZMK_LAYER(qwerty,
     &kp Q              &kp W              &kp E              &kp R              &kp T              &kp Y              &kp U              &kp I              &kp O              &kp P
-    &hml LSHFT A       &hml LCTRL S       &hml LALT D        &hml LGUI F        &kp G              &kp H              &hmr RGUI J        &hmr RALT K        &hmr RCTRL L       &hmr RSHFT SEMI
-    &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &kp CMMA           &kp DOT            &kp SLASH
+    &hml LSHFT A       &hml LCTRL S       &hml LALT D        &hml LGUI F        &kp G              &kp H              &hmr RGUI J        &hmr RALT K        &hmr RCTRL L       &hmr RSHFT SQT
+    &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &comma_morph       &dot_morph         &kp SLASH
                                                              &sl NAV            &kp SPACE          &smart_shft        SMART_NUM
 )
 

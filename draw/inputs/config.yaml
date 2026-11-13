@@ -5,6 +5,9 @@ parse_config:
     #include <zmk-helpers/key-labels/34.h>
     #define CONFIG_WIRELESS
   raw_binding_map:
+    # Nested shortcut bypasses should display their Shift-only typing legends.
+    "&comma_morph": {t: ",", s: ";"}
+    "&dot_morph": {t: ".", s: ":"}
     # sys keys
     "&sys_reset": $$mdi:restart$$
     "&bootloader": $$mdi:progress-download$$

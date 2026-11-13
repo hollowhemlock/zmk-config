@@ -208,47 +208,47 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(140, 28)" class="key keypos-2">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">F</text>
+<text x="0" y="0" class="key tap">E</text>
 <text x="-22" y="-22" class="key tl">F8</text>
 <text x="22" y="-22" class="key tr">CmkDh</text>
 <text x="-22" y="22" class="key bl">8</text>
 </g>
 <g transform="translate(196, 44)" class="key keypos-3">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">P</text>
+<text x="0" y="0" class="key tap">R</text>
 <text x="-22" y="-22" class="key tl">F9</text>
 <use href="#mdi:bluetooth" xlink:href="#mdi:bluetooth" x="12" y="-22" height="10" width="10.0" class="key tr glyph mdi:bluetooth"/>
 <text x="-22" y="22" class="key bl">9</text>
 </g>
 <g transform="translate(252, 52)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">B</text>
+<text x="0" y="0" class="key tap">T</text>
 <text x="-22" y="-22" class="key tl">PSCRN</text>
 <use href="#mdi:usb" xlink:href="#mdi:usb" x="12" y="-22" height="10" width="10.0" class="key tr glyph mdi:usb"/>
 </g>
 <g transform="translate(420, 52)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">J</text>
+<text x="0" y="0" class="key tap">Y</text>
 <text x="22" y="22" class="key br">PgUp</text>
 </g>
 <g transform="translate(476, 44)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">L</text>
+<text x="0" y="0" class="key tap">U</text>
 <text x="22" y="22" class="key br">Bspc</text>
 </g>
 <g transform="translate(532, 28)" class="key keypos-7">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">U</text>
+<text x="0" y="0" class="key tap">I</text>
 <text x="22" y="22" class="key br">↑</text>
 </g>
 <g transform="translate(588, 46)" class="key keypos-8">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Y</text>
+<text x="0" y="0" class="key tap">O</text>
 <text x="22" y="22" class="key br">Del</text>
 </g>
 <g transform="translate(644, 81)" class="key keypos-9">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">&#x27;</text>
+<text x="0" y="0" class="key tap">P</text>
 </g>
 <g transform="translate(28, 137)" class="key mod keypos-10">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
@@ -261,7 +261,7 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(84, 102)" class="key mod keypos-11">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">R</text>
+<text x="0" y="0" class="key mod tap">S</text>
 <text x="0" y="22" class="key mod hold">⌃</text>
 <text x="-22" y="-22" class="key mod tl">F4</text>
 <text x="22" y="-22" class="key mod tr">BT2</text>
@@ -270,7 +270,7 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(140, 84)" class="key mod keypos-12">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">S</text>
+<text x="0" y="0" class="key mod tap">D</text>
 <text x="0" y="22" class="key mod hold">⌥</text>
 <text x="-22" y="-22" class="key mod tl">F5</text>
 <text x="22" y="-22" class="key mod tr">BT3</text>
@@ -279,7 +279,7 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(196, 100)" class="key mod keypos-13">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">T</text>
+<text x="0" y="0" class="key mod tap">F</text>
 <text x="0" y="22" class="key mod hold">⌘</text>
 <text x="-22" y="-22" class="key mod tl">F6</text>
 <text x="22" y="-22" class="key mod tr">BT4</text>
@@ -294,13 +294,13 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(420, 108)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">M</text>
+<text x="0" y="0" class="key tap">H</text>
 <use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-22" y="-22" height="10" width="10.0" class="key tl glyph mdi:play-pause"/>
 <text x="22" y="22" class="key br">PgDn</text>
 </g>
 <g transform="translate(476, 100)" class="key mod keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">N</text>
+<text x="0" y="0" class="key mod tap">J</text>
 <text x="0" y="22" class="key mod hold">⌘</text>
 <text x="-22" y="-22" class="key mod tl">⌘</text>
 <text x="-22" y="22" class="key mod bl">⌘</text>
@@ -308,7 +308,7 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(532, 84)" class="key mod keypos-17">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">E</text>
+<text x="0" y="0" class="key mod tap">K</text>
 <text x="0" y="22" class="key mod hold">⌥</text>
 <text x="-22" y="-22" class="key mod tl">⌥</text>
 <text x="-22" y="22" class="key mod bl">⌥</text>
@@ -316,19 +316,19 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(588, 102)" class="key mod keypos-18">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">I</text>
+<text x="0" y="0" class="key mod tap">L</text>
 <text x="0" y="22" class="key mod hold">⌃</text>
 <text x="-22" y="-22" class="key mod tl">⌃</text>
 <text x="-22" y="22" class="key mod bl">⌃</text>
 <text x="22" y="22" class="key mod br">→</text>
 </g>
-<g transform="translate(644, 137)" class="key mod keypos-19">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod"/>
-<text x="0" y="0" class="key mod tap">O</text>
-<text x="0" y="22" class="key mod hold">⇧</text>
-<text x="-22" y="-22" class="key mod tl">⇧</text>
-<text x="-22" y="22" class="key mod bl">⇧</text>
-<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="12" y="12" height="10" width="10.0" class="key mod br glyph mdi:keyboard-return"/>
+<g transform="translate(644, 137)" class="key keypos-19">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">&#x27;</text>
+<text x="0" y="22" class="key hold">⇧</text>
+<text x="-22" y="-22" class="key tl">⇧</text>
+<text x="-22" y="22" class="key bl">⇧</text>
+<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="12" y="12" height="10" width="10.0" class="key br glyph mdi:keyboard-return"/>
 </g>
 <g transform="translate(28, 193)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -350,7 +350,7 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(196, 156)" class="key keypos-23">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">D</text>
+<text x="0" y="0" class="key tap">V</text>
 <text x="-22" y="-22" class="key tl">F3</text>
 <use href="#mdi:restart" xlink:href="#mdi:restart" x="12" y="-22" height="10" width="10.0" class="key tr glyph mdi:restart"/>
 <text x="-22" y="22" class="key bl">3</text>
@@ -358,19 +358,19 @@ text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: au
 </g>
 <g transform="translate(252, 164)" class="key keypos-24">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">V</text>
+<text x="0" y="0" class="key tap">B</text>
 <use href="#mdi:pause" xlink:href="#mdi:pause" x="-22" y="-22" height="10" width="10.0" class="key tl glyph mdi:pause"/>
 <use href="#mdi:progress-download" xlink:href="#mdi:progress-download" x="12" y="-22" height="10" width="10.0" class="key tr glyph mdi:progress-download"/>
 </g>
 <g transform="translate(420, 164)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">K</text>
+<text x="0" y="0" class="key tap">N</text>
 <use href="#mdi:skip-backward" xlink:href="#mdi:skip-backward" x="-22" y="-22" height="10" width="10.0" class="key tl glyph mdi:skip-backward"/>
 <text x="22" y="22" class="key br">INSERT</text>
 </g>
 <g transform="translate(476, 156)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">H</text>
+<text x="0" y="0" class="key tap">M</text>
 <use href="#mdi:skip-forward" xlink:href="#mdi:skip-forward" x="-22" y="-22" height="10" width="10.0" class="key tl glyph mdi:skip-forward"/>
 <text x="-22" y="22" class="key bl">Ck</text>
 <text x="22" y="22" class="key br">Home</text>

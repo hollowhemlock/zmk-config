@@ -3,31 +3,31 @@ layers:
   stacked:
   - {t: Q, tl: F12, tr: Qwrty}
   - {t: W, tl: F7, tr: Gam, bl: '7'}
-  - {t: F, tl: F8, tr: CmkDh, bl: '8'}
-  - {t: P, tl: F9, tr: '$$mdi:bluetooth$$', bl: '9'}
-  - {t: B, tl: PSCRN, tr: '$$mdi:usb$$'}
-  - {t: J, br: PgUp}
-  - {t: L, br: Bspc}
-  - {t: U, br: ↑}
-  - {t: Y, br: Del}
-  - ''''
+  - {t: E, tl: F8, tr: CmkDh, bl: '8'}
+  - {t: R, tl: F9, tr: '$$mdi:bluetooth$$', bl: '9'}
+  - {t: T, tl: PSCRN, tr: '$$mdi:usb$$'}
+  - {t: Y, br: PgUp}
+  - {t: U, br: Bspc}
+  - {t: I, br: ↑}
+  - {t: O, br: Del}
+  - P
   - {t: A, h: ⇧, type: mod, tl: F11, tr: BT1, bl: '0', br: ⇧}
-  - {t: R, h: ⌃, type: mod, tl: F4, tr: BT2, bl: '4', br: ⌃}
-  - {t: S, h: ⌥, type: mod, tl: F5, tr: BT3, bl: '5', br: ⌥}
-  - {t: T, h: ⌘, type: mod, tl: F6, tr: BT4, bl: '6', br: ⌘}
+  - {t: S, h: ⌃, type: mod, tl: F4, tr: BT2, bl: '4', br: ⌃}
+  - {t: D, h: ⌥, type: mod, tl: F5, tr: BT3, bl: '5', br: ⌥}
+  - {t: F, h: ⌘, type: mod, tl: F6, tr: BT4, bl: '6', br: ⌘}
   - {t: G, tl: SLCK, tr: BT5}
-  - {t: M, tl: '$$mdi:play-pause$$', br: PgDn}
-  - {t: N, h: ⌘, type: mod, tl: ⌘, bl: ⌘, br: ←}
-  - {t: E, h: ⌥, type: mod, tl: ⌥, bl: ⌥, br: ↓}
-  - {t: I, h: ⌃, type: mod, tl: ⌃, bl: ⌃, br: →}
-  - {t: O, h: ⇧, type: mod, tl: ⇧, bl: ⇧, br: '$$mdi:keyboard-return$$'}
+  - {t: H, tl: '$$mdi:play-pause$$', br: PgDn}
+  - {t: J, h: ⌘, type: mod, tl: ⌘, bl: ⌘, br: ←}
+  - {t: K, h: ⌥, type: mod, tl: ⌥, bl: ⌥, br: ↓}
+  - {t: L, h: ⌃, type: mod, tl: ⌃, bl: ⌃, br: →}
+  - {t: '''', h: ⇧, tl: ⇧, bl: ⇧, br: '$$mdi:keyboard-return$$'}
   - {t: Z, tl: F10, tr: '$$mdi:bluetooth-off$$'}
   - {t: X, tl: F1, bl: '1'}
   - {t: C, tl: F2, bl: '2'}
-  - {t: D, tl: F3, tr: '$$mdi:restart$$', bl: '3', br: Ck}
-  - {t: V, tl: '$$mdi:pause$$', tr: '$$mdi:progress-download$$'}
-  - {t: K, tl: '$$mdi:skip-backward$$', br: INSERT}
-  - {t: H, tl: '$$mdi:skip-forward$$', bl: Ck, br: Home}
+  - {t: V, tl: F3, tr: '$$mdi:restart$$', bl: '3', br: Ck}
+  - {t: B, tl: '$$mdi:pause$$', tr: '$$mdi:progress-download$$'}
+  - {t: N, tl: '$$mdi:skip-backward$$', br: INSERT}
+  - {t: M, tl: '$$mdi:skip-forward$$', bl: Ck, br: Home}
   - {t: ',', s: ;, tl: '$$mdi:volume-off$$', bl: '$$mdi:menu$$', br: Tab}
   - {t: ., s: ':', tl: '$$mdi:volume-medium$$', br: End}
   - {t: /, tl: '$$mdi:volume-high$$', br: ;}
