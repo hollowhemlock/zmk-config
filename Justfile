@@ -219,14 +219,11 @@ _draw-merged-theme $theme_name:
     theme_yaml="{{ draw_in }}/themes.yaml"
     config_yaml="{{ draw_in }}/config.yaml"
 
-    # Extract theme settings from themes.yaml
-    dark=$(yq -r ".themes.${theme_name}.dark_mode // false" "$theme_yaml")
-
     output_svg="{{ draw_merged }}/merged_${theme_name}.svg"
 
-    # Create temporary config with theme's dark_mode setting
-    temp_config="{{ draw }}/config_${theme_name}.yaml"
-    yq ".draw_config.dark_mode = $dark" "$config_yaml" > "$temp_config"
+    temp_config=$(mktemp)
+    trap 'rm -f "$temp_config"' EXIT
+    python3 scripts/draw_theme.py "$config_yaml" "$theme_yaml" "$theme_name" > "$temp_config"
 
     # TODO: Watch https://github.com/caksoylar/keymap-drawer/pull/192 and migrate to transform once released.
     # Stack layers and draw
@@ -240,7 +237,7 @@ _draw-merged-theme $theme_name:
     keymap -c "$temp_config" draw "{{ draw_merged }}/merged.yaml" \
         -k "ferris/sweep" -o "$output_svg"
 
-    rm "$temp_config"
+    python3 scripts/draw_theme.py "$config_yaml" "$theme_yaml" "$theme_name" --svg "$output_svg"
     echo "Created $output_svg"
 
 # Generate all themed merged SVGs (merged_<theme>.svg for each theme in themes.yaml)

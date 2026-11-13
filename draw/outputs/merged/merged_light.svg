@@ -1,4 +1,5 @@
 <svg width="732" height="656" viewBox="0 0 732 656" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="100%" height="100%" fill="#ffffff" class="diagram-background"/>
 <defs>/* start glyphs */
 <svg id="mdi:bluetooth">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-bluetooth" viewBox="0 0 24 24"><path d="M14.88,16.29L13,18.17V14.41M13,5.83L14.88,7.71L13,9.58M17.71,7.71L12,2H11V9.58L6.41,5L5,6.41L10.59,12L5,17.58L6.41,19L11,14.41V22H12L17.71,16.29L13.41,12L17.71,7.71Z" /></svg>
@@ -189,6 +190,29 @@ text.tl { fill: #F93827; font-size: 8px; text-anchor: start; dominant-baseline: 
 text.tr { fill: #2563EB; font-size: 8px; text-anchor: end; dominant-baseline: hanging; }
 text.bl { fill: #16A34A; font-size: 8px; text-anchor: start; dominant-baseline: auto; }
 text.br { fill: #FF9D23; font-size: 8px; text-anchor: end; dominant-baseline: auto; }
+
+/* Named merged theme overrides */
+svg.keymap { background-color: #ffffff; fill: #1a1a1a; }
+rect.key { fill: #ffffff; }
+rect.combo, rect.combo-separate { fill: #ffffff; }
+text, use { fill: #1a1a1a; }
+text.label, text.footer { stroke: #ffffff; }
+text.tl, use.tl { fill: #F93827; }
+text.tl { font-size: 8px; font-weight: 400; }
+text.tr, use.tr { fill: #2563EB; }
+text.tr { font-size: 8px; font-weight: 400; }
+text.bl, use.bl { fill: #16A34A; }
+text.bl { font-size: 8px; font-weight: 400; }
+text.br, use.br { fill: #FF9D23; }
+text.br { font-size: 8px; font-weight: 400; }
+.held-tl rect, .layer-tl rect { fill: #F93827; }
+.held-tl text, .layer-tl text, .held-tl use, .layer-tl use { fill: #000000; }
+.held-tr rect, .layer-tr rect { fill: #2563EB; }
+.held-tr text, .layer-tr text, .held-tr use, .layer-tr use { fill: #FFFFFF; }
+.held-bl rect, .layer-bl rect { fill: #16A34A; }
+.held-bl text, .layer-bl text, .held-bl use, .layer-bl use { fill: #000000; }
+.held-br rect, .layer-br rect { fill: #FF9D23; }
+.held-br text, .layer-br text, .held-br use, .layer-br use { fill: #000000; }
 </style>
 <g transform="translate(30, 0)" class="layer-stacked">
 <text x="0" y="15" class="label" id="stacked">stacked</text>

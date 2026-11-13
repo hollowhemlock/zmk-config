@@ -55,14 +55,18 @@ themes:
 
   print:
     dark_mode: false
+    typography:
+      corner_size: 9px
+      corner_weight: 500
     colors:
-      tl: "#1D4ED8"     # Navy
-      tr: "#B91C1C"     # Burgundy
-      bl: "#047857"     # Forest
-      br: "#6B21A8"     # Deep purple
-      text: "#1a1a1a"
-      bg: "#ffffff"
-      combo_bg: "#ffffff"
+      tl: "#9A3412"     # Rust / function
+      tr: "#1D4ED8"     # Blue / system
+      bl: "#166534"     # Green / numbers
+      br: "#6B21A8"     # Purple / navigation
+      text: "#171717"
+      bg: "#FFFFFF"
+      combo_bg: "#FFFFFF"
+      border: "#737373"
 
   cool:
     dark_mode: false
