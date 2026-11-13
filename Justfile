@@ -228,6 +228,7 @@ _draw-merged-theme $theme_name:
     temp_config="{{ draw }}/config_${theme_name}.yaml"
     yq ".draw_config.dark_mode = $dark" "$config_yaml" > "$temp_config"
 
+    # TODO: Watch https://github.com/caksoylar/keymap-drawer/pull/192 and migrate to transform once released.
     # Stack layers and draw
     keymap -c "$temp_config" stack-layers \
         "{{ draw_kd }}/base.yaml" \
